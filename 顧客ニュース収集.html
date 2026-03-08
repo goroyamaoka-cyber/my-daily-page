@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>顧客ニュース収集 2026/03/06</title>
+<title>顧客ニュース収集 2026/03/08</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Meiryo UI", "Yu Gothic UI", "Segoe UI", sans-serif; background: #f0f2f5; color: #333; font-size: 14px; }
@@ -58,12 +58,39 @@
   .badge-corp { display: inline-block; background: #34a853; color: white; padding: 2px 9px; border-radius: 10px; font-size: 0.78em; }
   .hidden { display: none !important; }
   .footer { text-align: center; color: #aaa; font-size: 0.78em; padding: 20px; }
+
+  /* ===== レスポンシブ ===== */
+  /* テーブルラッパー（横スクロール） */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,0.09); }
+  .table-wrap table { box-shadow: none; border-radius: 0; min-width: 700px; }
+
+  @media (max-width: 768px) {
+    .page-header { padding: 14px 16px; }
+    .page-header h1 { font-size: 1.1em; }
+    .page-header .meta { font-size: 0.78em; line-height: 1.6; }
+    .container { padding: 0 10px 30px; margin: 12px auto; }
+    .filter-panel { padding: 12px; gap: 8px; }
+    .filter-row { gap: 6px; }
+    .filter-label { min-width: 48px; font-size: 0.78em; }
+    .search-input { font-size: 0.88em; padding: 6px 10px; }
+    .date-cb-label { font-size: 0.8em; padding: 4px 8px; }
+    .cb-label { font-size: 0.75em; padding: 3px 6px; }
+    .cb-all-btn { font-size: 0.75em; }
+    td, th { padding: 8px 10px; font-size: 0.8em; }
+    .col-summary { display: none; }  /* スマホでは要約列を非表示 */
+    .col-summary-header { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .col-source { display: none; }
+    .col-source-header { display: none; }
+  }
 </style>
 </head>
 <body>
 <div class="page-header">
   <h1>📰 顧客ニュース収集レポート</h1>
-  <div class="meta">収集日時：2026年03月06日 09:09　／　対象企業：22社　／　収集記事：149件</div>
+  <div class="meta">収集日時：2026年03月08日 14:49　／　対象企業：22社　／　収集記事：124件</div>
 </div>
 <div class="container">
   <div class="filter-panel">
@@ -71,7 +98,7 @@
     <div class="filter-row">
       <span class="filter-label">🔍 検索</span>
       <input type="text" class="search-input" id="searchInput" placeholder="キーワードで絞り込み..." oninput="applyFilters()">
-      <span class="count-label" id="countLabel">149件表示中</span>
+      <span class="count-label" id="countLabel">124件表示中</span>
     </div>
     <!-- 日付フィルター -->
     <div class="filter-row">
@@ -110,14 +137,15 @@
     </div>
   </div>
 
+  <div class="table-wrap">
   <table id="newsTable">
     <thead>
       <tr>
         <th onclick="sortTable(0)">企業名<span class="sort-icon">⇅</span></th>
-        <th onclick="sortTable(1)">ソース<span class="sort-icon">⇅</span></th>
+        <th onclick="sortTable(1)" class="col-source-header">ソース<span class="sort-icon">⇅</span></th>
         <th onclick="sortTable(2)">日付<span class="sort-icon">⇅</span></th>
         <th onclick="sortTable(3)">タイトル<span class="sort-icon">⇅</span></th>
-        <th onclick="sortTable(4)">要約<span class="sort-icon">⇅</span></th>
+        <th onclick="sortTable(4)" class="col-summary-header">要約<span class="sort-icon">⇅</span></th>
       </tr>
     </thead>
     <tbody id="tableBody">
@@ -135,12 +163,12 @@
         <td class="col-title"><a href="https://www.mgco.jp/Japanese/information/20260127/" target="_blank" rel="noopener">価格改定（一部機種）のご案内</a></td>
         <td class="col-summary"></td>
       </tr>
-      <tr data-company="川崎重工業" data-date="2026-03-05">
-        <td class="col-company">川崎重工業</td>
+      <tr data-company="山善" data-date="2026-03-07">
+        <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/03/05</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiS0FVX3lxTE1uY2FuZnZqMTdZTW5NLWhoWFREOEZyY2hubk1XX2h5Y0pmMzl1cndEbTdSQVExeHF4YUY0VFlFMEotbE1NUFJIUFRqWQ?oc=5" target="_blank" rel="noopener">商船三井、大林組、川崎重工、千代田化工の4社がNZから「グリーン水素」調達へ連携 - 月刊ロジスティクス・ビジネス（LOGI-BIZ）</a></td>
-        <td class="col-summary">商船三井、大林組、川崎重工、千代田化工の4社がNZから「グリーン水素」調達へ連携 月刊ロジスティクス・ビジネス（LOGI-BIZ）</td>
+        <td class="col-date">2026/03/07</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE5Nd3FVaDItTmFDcXFJX1NmdmJqUkNYWXlvWDRneVdmMXpQX25YNkVkR2J2YnpQd3F5cERrMGFrUXFZa3NWbGlHTV8yVk5Vam5fRUs0bTQ4U1gtTTdTam1seHVqdHFNVTZWZm1Hai1mYw?oc=5" target="_blank" rel="noopener">僕も買いました。L字で広々なのに｢6.5cmに畳める｣デスク - ギズモード・ジャパン</a></td>
+        <td class="col-summary">僕も買いました。L字で広々なのに｢6.5cmに畳める｣デスク ギズモード・ジャパン</td>
       </tr>
       <tr data-company="川崎重工業" data-date="2026-03-05">
         <td class="col-company">川崎重工業</td>
@@ -155,13 +183,6 @@
         <td class="col-date">2026/03/05</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTE1MX1Bmams2dU56NDIxZnJCV2ZOT1phR3lUSFZTS1prcUhCczhNV1BNTmQ3a2NQQVk2SUp3eXpxaEM2eHpaUk96a2ZVcVJFNURwRlE0QXlR0gFbQVVfeXFMTTU3QUhhY3JuU0VMazRwUVMxRS1aMjdsRkZ3RG5EenZrVmlsTWFGVUJ5S3BZNGhnMFVpU3MyNHJ6QnZFbDc1NnBvZVFhUjY2QTBKbi1xZlpTSEZzYw?oc=5" target="_blank" rel="noopener">今だけ嬉しいお手頃価格！あの【山善】の扇風機で今年の夏も快適に乗り切ろう！お得が止まらないAmazonセールを今すぐ確認だ！ - ウォーカープラス</a></td>
         <td class="col-summary">今だけ嬉しいお手頃価格！あの【山善】の扇風機で今年の夏も快適に乗り切ろう！お得が止まらないAmazonセールを今すぐ確認だ！ ウォーカープラス</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2026-03-05">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/03/05</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE5yMFZkajVyUEtYU09RckVHa0gzSGJ6eThvc2hNcFhUTGZwUW1RZkRpMllOcG84Z09waHRlcXFYVXRSQW9lS19mQ0VtSXJsQUNtR3JTSEJlZ1ZCLURvdG1OaUFNMnJjdTRzQXhOcXFn?oc=5" target="_blank" rel="noopener">カワサキモータース新社長に金子剛史氏 川重常務執行役員|経済ニュース - 神戸新聞</a></td>
-        <td class="col-summary">カワサキモータース新社長に金子剛史氏 川重常務執行役員|経済ニュース 神戸新聞</td>
       </tr>
       <tr data-company="川崎重工業" data-date="2026-03-05">
         <td class="col-company">川崎重工業</td>
@@ -240,13 +261,6 @@
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE5tdE1tVzJrNUFUVC14WWF0VG11QkJPN1dWRlg3LXFEVnh6dVpRVW9KNHloVWVXeWZfUktzRURTZmZaNXZVdUZiZGtQVnozM2FxLWVRUEFETlZjUQ?oc=5" target="_blank" rel="noopener">因幡電機産業、PB「JAPPY」から突起のない安全設計「単管パイプ用ジョイント」を新発売 - オートメーション新聞</a></td>
         <td class="col-summary">因幡電機産業、PB「JAPPY」から突起のない安全設計「単管パイプ用ジョイント」を新発売 オートメーション新聞</td>
       </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-03-03">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/03/03</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE1xVVlfOUtEMWRWZFR3ZGgxMGRRSVF3MElGSUQ0OWxjaDFkN3V2R0RFcWdLOU1YWGt2RW5IU0F6OGt1LXdhdWZpd2NwSk5icnc?oc=5" target="_blank" rel="noopener">sacai × NIKEの AIR MAXのスニーカーです。 - press.co.me</a></td>
-        <td class="col-summary">sacai × NIKEの AIR MAXのスニーカーです。 press.co.me</td>
-      </tr>
       <tr data-company="川崎重工業" data-date="2026-03-03">
         <td class="col-company">川崎重工業</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
@@ -267,13 +281,6 @@
         <td class="col-date">2026/03/03</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTFBnbHk3c2h2MUN6cW5LS3hZR09tZE9JekJaTHh3QnpOdHY5RmhqZU4yZlN5eF81V01FZkF5OE0wYWZHcnZvOWp5UVEyckJ4WTZOYUpmY051dktZUjR2V0JDek5HN2xTYW1G?oc=5" target="_blank" rel="noopener">杉本商事バファローズスタジアム舞洲でのファーム・リーグ春季教育リーグスタンド開放について - オリックス・バファローズ</a></td>
         <td class="col-summary">杉本商事バファローズスタジアム舞洲でのファーム・リーグ春季教育リーグスタンド開放について オリックス・バファローズ</td>
-      </tr>
-      <tr data-company="山善" data-date="2026-03-03">
-        <td class="col-company">山善</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/03/03</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTE1kYnJteUxtVEFaXzVLLXhFR0NmenlBU3kxQXBqMi1ONGM1ZHpTWGtmcGY4RHhaOHhRRVRac1FpdVE1MU9ESXBzT1hTcmJITTZRdmFIVERB0gFbQVVfeXFMUDdLZW1XYnZ1bXBhMEV6dEY2SVdxM2pZSTVmR1I2UVVNZ0x4SlpPNG43eVdiN3NmVXZtdnNNd1R3RGxEcGY4dk50T1lId0pIQ09Fa2FsUi1lQ1M0MA?oc=5" target="_blank" rel="noopener">メラミン樹脂加工だから、傷・汚れ・水分・熱にも強い！【山善】のパソコンデスクがAmazonでお買い得！ - ウォーカープラス</a></td>
-        <td class="col-summary">メラミン樹脂加工だから、傷・汚れ・水分・熱にも強い！【山善】のパソコンデスクがAmazonでお買い得！ ウォーカープラス</td>
       </tr>
       <tr data-company="京セラドキュメントソリューションズ" data-date="2026-03-03">
         <td class="col-company">京セラドキュメントソリューションズ</td>
@@ -345,13 +352,6 @@
         <td class="col-title"><a href="https://www.sumitomo-toolnet.co.jp/news260302/" target="_blank" rel="noopener">アライドマテリアルのPCD回転工具事業移管について</a></td>
         <td class="col-summary">当社で販売している株式会社アライドマテリアルのPCD（多結晶ダイヤモンド）回転工具全般についてグループ会社である住友電気工業株式会社（本社：大阪市中央区、社長：井上 治）ハードメタル事業部へ事業移管を進めることとなりました。</td>
       </tr>
-      <tr data-company="椿本チエイン" data-date="2026-03-01">
-        <td class="col-company">椿本チエイン</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/03/01</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE1QX1RZYUNRVVhkaUltcWlyUExZZmpKOUlFbm1peFJ4d29jTFg4a3FDS2I2dUdMeVhBUkpLLWU4Vl9qeTRXc1R0WERSNXQ?oc=5" target="_blank" rel="noopener">KDDIと椿本チエイン、次世代型の物流倉庫自動化ソリューション提供する合弁会社を設立 - Biz/Zine</a></td>
-        <td class="col-summary">KDDIと椿本チエイン、次世代型の物流倉庫自動化ソリューション提供する合弁会社を設立 Biz/Zine</td>
-      </tr>
       <tr data-company="杉本商事" data-date="2026-03-01">
         <td class="col-company">杉本商事</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
@@ -365,48 +365,6 @@
         <td class="col-date">2026/02/28</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE1nRnUxQURPdXlqZzlUYUN2b3N3WGpyUFpwRjVZbWFJWWVTcXpEbHRHTElSX2xoTUlwazlmVXlXSl80WWozU3dzQjRCWXJQdEk?oc=5" target="_blank" rel="noopener">一人暮らしならこれ！コスパ最強おすすめ電子レンジ「山善 電子レンジ 18L ヘルツフリー フラットテーブル PRW-F180(B)」レビュー｜TATE - note</a></td>
         <td class="col-summary">一人暮らしならこれ！コスパ最強おすすめ電子レンジ「山善 電子レンジ 18L ヘルツフリー フラットテーブル PRW-F180(B)」レビュー｜TATE note</td>
-      </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-02-28">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/28</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE5UOFpFTGFHd2FYcHJqQ2NoaU14YmdQdkFwVnluZThaYjllV28wQzZ4MXpONkQ1TlFjQV9Jb3BadmtZcVpWQUFqeGVVelc3WExGRGhxRHNHV1ZlTnZM?oc=5" target="_blank" rel="noopener">g*様 nike swoosh logo ケーブルニット セーター - The Current Report -</a></td>
-        <td class="col-summary">g*様 nike swoosh logo ケーブルニット セーター The Current Report -</td>
-      </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-02-27">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/27</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTFBEZ1lhNjB3R0ZKUmk4N2RIRnBROHhpTWJ0dEFZX1JTUTlsNy1MaGM4dHBUbVh2b01DRW0xY0Fvb0c3Sm5QdWlEYzl2UUhtU05aUXg5ZGprYjhnV1hT?oc=5" target="_blank" rel="noopener">【未使用】NIKE AEROSWIFT アームスリーブ S/M ブラック - The Current Report -</a></td>
-        <td class="col-summary">【未使用】NIKE AEROSWIFT アームスリーブ S/M ブラック The Current Report -</td>
-      </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-02-27">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/27</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE1hdEZiMmlYZlFLME9RcGw4eV8xYm1LaWptRmthWXI4Mjc0UEwxVmJsTWxEWE5pQTlRUVFxM1E2LWdiRDdGaHhESlRhekl4RFd4Yml5VzcyTGVCVmI2?oc=5" target="_blank" rel="noopener">Nike x Stussy ブラックスウェット セットアップ - The Current Report -</a></td>
-        <td class="col-summary">Nike x Stussy ブラックスウェット セットアップ The Current Report -</td>
-      </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-02-27">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/27</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE1pcHA3N2VUeUZQR2ZrQ2FaYWNkNy0weXlzSVFvOFdfYkhGMXJQaTUwbTZOY094Q0VpQTVPaHVwRlNMa2NWenVnYktmNUMwSDlVcVIxbHVXU2FJc0Fn?oc=5" target="_blank" rel="noopener">00s NIKE バギートラックパンツ 極太 サイドスナップ 刺繍ロゴ y2k - The Current Report -</a></td>
-        <td class="col-summary">00s NIKE バギートラックパンツ 極太 サイドスナップ 刺繍ロゴ y2k The Current Report -</td>
-      </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-02-27">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/27</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiXEFVX3lxTE50Q1lKbUNKSHUtYUdYaUsydkVWeTVuZHF4aENqZUh2XzZQbFNLOEtLbDZ0OG1sNG4weXphNWhlM00zbXJyWVRxaGN2OWZHNDY1d2ZpVHR2MmoxWnot?oc=5" target="_blank" rel="noopener">ナイキ ×サカイ Sacai VAPOR WAFFLE WHITE GUM DD1875-100 ヴェイパーワッフルスニーカー メンズ 27.5cm - The Current Report -</a></td>
-        <td class="col-summary">ナイキ ×サカイ Sacai VAPOR WAFFLE WHITE GUM DD1875-100 ヴェイパーワッフルスニーカー メンズ 27.5cm The Current Report -</td>
-      </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-02-27">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/27</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1NdFVjZW12ZEhwYzFLWllxUl9aRVoySlJpMG5UY3FlZjY0UVlPVjczdkxsaUhJNDBXY1FLeTkyX1hwTEhrdTNpTUpnU3JlTWRoYXJSY1pzYzdENWs?oc=5" target="_blank" rel="noopener">NIKE Stussy コラボ Tシャツ Lサイズ ホワイト - The Current Report -</a></td>
-        <td class="col-summary">NIKE Stussy コラボ Tシャツ Lサイズ ホワイト The Current Report -</td>
       </tr>
       <tr data-company="山善" data-date="2026-02-27">
         <td class="col-company">山善</td>
@@ -426,29 +384,8 @@
         <td class="col-company">椿本チエイン</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/02/26</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiogFBVV95cUxOWEozeXN4VHNwTDNSRVZjaDFaNVU3R00wc05jTmpDUEQ1UUdLRHVOTVJndkkwNDRtSjRybi1abkNoOFpiVE14ZHlnMjlaZmVDYmVqVU1LanFCNzBXMHo1V3I5VVh3STBybWlqMmszS25sYW5oR2NORVNnOHBTY01hQjcwQmpwb0NIMHg0S0xuTXVqVVZwNzJESldjUkVEZFczNFE?oc=5" target="_blank" rel="noopener">（人事・機械）椿本チエイン - 日本経済新聞</a></td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxQc2Y3a3U4Si02NTNmZFdqM014TEJ5YUpGb0xvaTd0UlQzZDFPZjR1N2RCSVFJWXZTQ014U2RIU2o0a3RxV0QzUEsyS19RN2pxRlFaVHR6YUJtTF9IRHlCQ2M3aXp4SlVRam5GaTQ4ckNwanZEUDRpMXh5cTZYWXBDeklrOEl3WC1RU3FaeHU4VFZETmpnNVRMaUx1ZG5FU3pvYl9TVlc1ZXg?oc=5" target="_blank" rel="noopener">（人事・機械）椿本チエイン - 日本経済新聞</a></td>
         <td class="col-summary">（人事・機械）椿本チエイン 日本経済新聞</td>
-      </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-02-26">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/26</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE9taDNQTWJueFdrR3FjRWJZWXZhbmJoaGRiVTlOQnJ0WWxxZE1NeTBhMHFuak01NWNoYVRWNmE0ejYySnF5QmhVOXpmelprVHcwX2FYbG1jRHlIeDg?oc=5" target="_blank" rel="noopener">Vans バンズ メンズ スニーカー 【Vans Authentic 'Golden Coast' VN000W4NDI0】 サイズ US_9.5(27.5cm) - The Current Report -</a></td>
-        <td class="col-summary">Vans バンズ メンズ スニーカー 【Vans Authentic 'Golden Coast' VN000W4NDI0】 サイズ US_9.5(27.5cm) The Current Report -</td>
-      </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-02-26">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/26</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5TdDQtVUZDeGNFZjM3WGwyTklCRWdNTHJaNkFpZ05rWW8xVWFVc2tPODlkVHdMcXViaGxUQ3JJZzV4M3d4VXJwb2ZYUmdQTlVIZVRERTc2bFBOSWc?oc=5" target="_blank" rel="noopener">Nike ブラジル代表 シャツ Lサイズ - The Current Report -</a></td>
-        <td class="col-summary">Nike ブラジル代表 シャツ Lサイズ The Current Report -</td>
-      </tr>
-      <tr data-company="山善" data-date="2026-02-26">
-        <td class="col-company">山善</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/26</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1JaTJXbDgxSkxmeXlPeUpldlhMM0wxMWFPSkxhUWlsSDRFelh4b2lXakVXWGFhbHRwaDAtQUJCMDVHaEZxV3JuTXN1TTBaZ2ZQcGU3WjFxRnRxdE0?oc=5" target="_blank" rel="noopener">「ブラシレスモーター搭載充電式刈払機」 「充電式グラストリマー・カルチ２点セット」3月中旬より発売開始 - 共同通信PRワイヤー</a></td>
-        <td class="col-summary">「ブラシレスモーター搭載充電式刈払機」 「充電式グラストリマー・カルチ２点セット」3月中旬より発売開始 共同通信PRワイヤー</td>
       </tr>
       <tr data-company="山善" data-date="2026-02-26">
         <td class="col-company">山善</td>
@@ -489,15 +426,8 @@
         <td class="col-company">京セラドキュメントソリューションズ</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/02/24</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiZkFVX3lxTE5PVllaTFdiVXd2OTB5MTNKNGU3eERMYXdlQVFlS1l2bDJMVWM5Q2x4MlJ4dU5mSXZZYzJPa0dycWFNTDRWSUp4OE9LNTk3Zk5YSmp6cTZpWk9peEtNTG1vTXRJMUduUQ?oc=5" target="_blank" rel="noopener">写真：京セラドキュメントソリューションズイタリアとファッションブランド Floraniaが2026年秋冬ミラノ・ファッションウィークで4回目のコラボレーション - 沖縄タイムス社</a></td>
-        <td class="col-summary">写真：京セラドキュメントソリューションズイタリアとファッションブランド Floraniaが2026年秋冬ミラノ・ファッションウィークで4回目のコラボレーション 沖縄タイムス社</td>
-      </tr>
-      <tr data-company="京セラドキュメントソリューションズ" data-date="2026-02-24">
-        <td class="col-company">京セラドキュメントソリューションズ</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/24</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBOTWViWThER1k3YmVHYUdtRGpuVk1OYkkxd21ZUjI1N3Q0THBuWEtHNjFEVy13Y1RLUmR0SlVTNFdCZzA?oc=5" target="_blank" rel="noopener">京セラドキュメントソリューションズイタリアとファッションブランド Floraniaが2026年秋冬ミラノ・ファッションウィークで4回目のコラボレーション - Digital PR Platform</a></td>
-        <td class="col-summary">京セラドキュメントソリューションズイタリアとファッションブランド Floraniaが2026年秋冬ミラノ・ファッションウィークで4回目のコラボレーション Digital PR Platform</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBOTWViWThER1k3YmVHYUdtRGpuVk1OYkkxd21ZUjI1N3Q0THBuWEtHNjFEVy13Y1RLUmR0SlVTNFdCZzA?oc=5" target="_blank" rel="noopener">京セラドキュメントソリューションズイタリアとファッションブランド Floraniaが2026年秋冬ミラノ・ファッションウィークで4回目のコラボレーション | 京セラドキュメントソリューションズ株式会社 - Digital PR Platform</a></td>
+        <td class="col-summary">京セラドキュメントソリューションズイタリアとファッションブランド Floraniaが2026年秋冬ミラノ・ファッションウィークで4回目のコラボレーション | 京セラドキュメントソリューションズ株式会社 Digital PR Platform</td>
       </tr>
       <tr data-company="北陽電機" data-date="2026-02-23">
         <td class="col-company">北陽電機</td>
@@ -505,20 +435,6 @@
         <td class="col-date">2026/02/23</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTFBmbWNYRzA1a0hLUF80QVU5eVJVdGpMUEU1ZlBzUFpXdjd0dlFLbHgyLWpKRjlxN3VQV25sN1kwa2dXYkVZNEFBV0tZOGc1dEE5NnFzampxQWVqZw?oc=5" target="_blank" rel="noopener">北陽電機、LiDARを活用した工事現場の安全対策コラムを公開 - オートメーション新聞</a></td>
         <td class="col-summary">北陽電機、LiDARを活用した工事現場の安全対策コラムを公開 オートメーション新聞</td>
-      </tr>
-      <tr data-company="川喜金物" data-date="2026-02-21">
-        <td class="col-company">川喜金物</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/21</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiSkFVX3lxTE16S0Z1SUFqZ3hRSkZjcjJlVU9NUGRLc2c0cUNYejBHN0JXd3dMcGd5MFNzVk5EMjdicXZTOUduLU9QQkFVc1NJS1hB?oc=5" target="_blank" rel="noopener">阿波錠 土佐錠 安芸錠 因幡錠等の和錠図鑑 ７２頁もの写真図鑑 ～ 寛永２年創業！鈴木盛久工房の南部鉄器『角鍋』 ☆032938 フィットハイブリッドGP1フロント 鍵と錠 ドア錠の種類について|川喜金物（株） - Εφημερίδα ΠΡΙΝ</a></td>
-        <td class="col-summary">阿波錠 土佐錠 安芸錠 因幡錠等の和錠図鑑 ７２頁もの写真図鑑 ～ 寛永２年創業！鈴木盛久工房の南部鉄器『角鍋』 ☆032938 フィットハイブリッドGP1フロント 鍵と錠 ドア錠の種類について|川喜金物（株） Εφημερίδα ΠΡΙΝ</td>
-      </tr>
-      <tr data-company="VESSEL（ベッセル）" data-date="2026-02-21">
-        <td class="col-company">VESSEL（ベッセル）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/21</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiPEFVX3lxTE5FRzJDaHNfUFZzT3d0RkszUmRVNllxTVctNmxUQ0xNV1Zhb1dFZTA0RjhtamxBVllCcmdkUQ?oc=5" target="_blank" rel="noopener">トルクスドライバーセット・ヘックスローブドライバーセットのおすすめ人気ランキング【2026年2月】 - my-best.com</a></td>
-        <td class="col-summary">トルクスドライバーセット・ヘックスローブドライバーセットのおすすめ人気ランキング【2026年2月】 my-best.com</td>
       </tr>
       <tr data-company="京都機械工具（KTC）" data-date="2026-02-21">
         <td class="col-company">京都機械工具（KTC）</td>
@@ -533,13 +449,6 @@
         <td class="col-date">2026/02/20</td>
         <td class="col-title"><a href="https://ktc.jp/news/140988" target="_blank" rel="noopener">4段階仮締めモードで締め過ぎを防止「12.7sq. ホイールナット専用コードレストルクリミットインパクトレンチセット」を発売</a></td>
         <td class="col-summary"></td>
-      </tr>
-      <tr data-company="オプテックス" data-date="2026-02-20">
-        <td class="col-company">オプテックス</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/02/20</td>
-        <td class="col-title"><a href="https://www.optex.co.jp/news/2026/0220.html" target="_blank" rel="noopener">Data Center Japan 2026に出展します</a></td>
-        <td class="col-summary">このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。あなたのWebブラウザーでJavaScriptを有効にする方法を参照してください。</td>
       </tr>
       <tr data-company="京都機械工具（KTC）" data-date="2026-02-19">
         <td class="col-company">京都機械工具（KTC）</td>
@@ -562,26 +471,12 @@
         <td class="col-title"><a href="https://www8.mgco.jp/koho/Parametersheet/Default.aspx" target="_blank" rel="noopener">施行の政省令改正に対応した「該非判定書」は、2月14日午前9時よりダウンロードできます。</a></td>
         <td class="col-summary">外国為替及び外国貿易法の定めにより、輸出許可対象貨物（又は技術）に該当する製品を輸出される場合は、経済産業大臣の許可が必要です。下記の誓約書にご誓約いただくと、外国為替及び外国貿易法に基づく当社製品の「安全保障貿易管理に関する該非判定書」をダウンロード可能です。</td>
       </tr>
-      <tr data-company="YUSHIN（ユーシン精機）" data-date="2026-02-13">
-        <td class="col-company">YUSHIN（ユーシン精機）</td>
+      <tr data-company="椿本チエイン" data-date="2026-02-13">
+        <td class="col-company">椿本チエイン</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/02/13</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE1ZZXN4dklnci0xTFVVVFZkODJCZHZ2cEc5Q0ZNV18yOW9DZG90U3R1cGR4RUVwcTVWbnRzT0pUSUdtbHJJZDdxQ0VkUzhQRW02QzN3MjRzaUh3VjdJaWVSZA?oc=5" target="_blank" rel="noopener">(株)ユーシン精機【6482】：決算情報 - Yahoo!ファイナンス</a></td>
-        <td class="col-summary">(株)ユーシン精機【6482】：決算情報 Yahoo!ファイナンス</td>
-      </tr>
-      <tr data-company="オプテックス" data-date="2026-02-13">
-        <td class="col-company">オプテックス</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/02/13</td>
-        <td class="col-title"><a href="https://www.optex.co.jp/news/2026/0213.html" target="_blank" rel="noopener">名古屋市の路面公共交通システムに技研トラステムのバス乗降客カウントシステム「パッセンジャーカウンター」採用～利用状況の把握で運行管理に活用～</a></td>
-        <td class="col-summary">このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。あなたのWebブラウザーでJavaScriptを有効にする方法を参照してください。</td>
-      </tr>
-      <tr data-company="ナイキ（工具）" data-date="2026-02-12">
-        <td class="col-company">ナイキ（工具）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/12</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMia0FVX3lxTE1CUXAyMk9naHhtXzI3NnRUWTVobnQ3aURNel9NNzJaMmFlNHFrOERPc0hxcXdzQnlvdGdtbklCLTNha0pTREgyQ3VLZVJkaXJJRUdoVU1LOHhfeTZmV293MjJCeldoTW12TXBz?oc=5" target="_blank" rel="noopener">新聞分享⁄ 上市之前先看看2022 年復刻版Nike 新品未使用 NIKE◆AIR ZOOM FLIGHT 95 スニーカー 赤目玉 ズームフライト US10.5/28.5cm 赤白 Air Zoom Flight 95 實鞋 - janakhabar.com</a></td>
-        <td class="col-summary">新聞分享⁄ 上市之前先看看2022 年復刻版Nike 新品未使用 NIKE◆AIR ZOOM FLIGHT 95 スニーカー 赤目玉 ズームフライト US10.5/28.5cm 赤白 Air Zoom Flight 95 實鞋 janakhabar.com</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTFByWHVsakg5ak1ubFV6SzZKWkZUVjl1dmsyRGkxRGpTYTB1QVJtVFVTajFGUnNXb3pWLW96QVJ2MGNwV05TWHl2bQ?oc=5" target="_blank" rel="noopener">椿本チエイン、低温自動保管庫「Snorkel」を発売 - LOGISTICS TODAY</a></td>
+        <td class="col-summary">椿本チエイン、低温自動保管庫「Snorkel」を発売 LOGISTICS TODAY</td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-02-12">
         <td class="col-company">椿本チエイン</td>
@@ -597,12 +492,19 @@
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTE1SaVpSUTZ4cnpseS1pWnVpeUVYQ0QzTzFYVzQwT0VwaW5FNkNONlpmTTg0dVFMU0xzYVNDUzM3Sk9EMjRoX0pqeDVqck9VaTFDSVl4ZmNpaWFIX3R3NjUwS1JGbw?oc=5" target="_blank" rel="noopener">モーサテ【2026年もFRBは積極的利下げ】 - TVO テレビ大阪</a></td>
         <td class="col-summary">モーサテ【2026年もFRBは積極的利下げ】 TVO テレビ大阪</td>
       </tr>
+      <tr data-company="川崎重工業" data-date="2026-02-09">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/02/09</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE8yNjdUVVlNYmQtWU1hY3RYR2locGVRdUloUG1kRG9nSVBnY0hNLWZ0X2FPd3NBOWtGWmhkNXZCSjg5NDhVTlNpMTAzOHp6bVJCUWc?oc=5" target="_blank" rel="noopener">川崎重工業【7012】、今期最終を一転2％増益に上方修正・最高益、配当も16円増額 | 決算速報 - 株探ニュース - 株探</a></td>
+        <td class="col-summary">川崎重工業【7012】、今期最終を一転2％増益に上方修正・最高益、配当も16円増額 | 決算速報 - 株探ニュース 株探</td>
+      </tr>
       <tr data-company="守谷商会" data-date="2026-02-09">
         <td class="col-company">守谷商会</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/02/09</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFBYOGNPTENrTTR4d1U2endKMHQzampKTnhyNjZUOUhtcUx0elBrM25mMGxTam12em5KWnlsSW8teGFoeTV6QzYyejVweG41YzFadFE?oc=5" target="_blank" rel="noopener">守谷商会【1798】、4-12月期(3Q累計)経常は84％増益・通期計画を超過 | 決算速報 - 株探ニュース - かぶたん</a></td>
-        <td class="col-summary">守谷商会【1798】、4-12月期(3Q累計)経常は84％増益・通期計画を超過 | 決算速報 - 株探ニュース かぶたん</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFBYOGNPTENrTTR4d1U2endKMHQzampKTnhyNjZUOUhtcUx0elBrM25mMGxTam12em5KWnlsSW8teGFoeTV6QzYyejVweG41YzFadFE?oc=5" target="_blank" rel="noopener">守谷商会【1798】、4-12月期(3Q累計)経常は84％増益・通期計画を超過 | 決算速報 - 株探ニュース - 株探</a></td>
+        <td class="col-summary">守谷商会【1798】、4-12月期(3Q累計)経常は84％増益・通期計画を超過 | 決算速報 - 株探ニュース 株探</td>
       </tr>
       <tr data-company="守谷商会" data-date="2026-02-09">
         <td class="col-company">守谷商会</td>
@@ -622,50 +524,15 @@
         <td class="col-company">守谷商会</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/02/09</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTFB0ZElzR28wWjFMZmV6bGZ5Tm50dngxdGNrMllzMWh6QWlkOGd4SDZ1TG5RUy1RU01rT2VWWC0tUjduSGFEejZhOFdfRXc2TF9SOGE1QW9ocGR4QjJxVjZTWQ?oc=5" target="_blank" rel="noopener">守谷商会、株式分割を発表 | 銘柄速報 - 株探ニュース - かぶたん</a></td>
-        <td class="col-summary">守谷商会、株式分割を発表 | 銘柄速報 - 株探ニュース かぶたん</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTFB0ZElzR28wWjFMZmV6bGZ5Tm50dngxdGNrMllzMWh6QWlkOGd4SDZ1TG5RUy1RU01rT2VWWC0tUjduSGFEejZhOFdfRXc2TF9SOGE1QW9ocGR4QjJxVjZTWQ?oc=5" target="_blank" rel="noopener">守谷商会、株式分割を発表 | 銘柄速報 - 株探ニュース - 株探</a></td>
+        <td class="col-summary">守谷商会、株式分割を発表 | 銘柄速報 - 株探ニュース 株探</td>
       </tr>
       <tr data-company="守谷商会" data-date="2026-02-09">
         <td class="col-company">守谷商会</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/02/09</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxQRTBWM1JKaFU1V0RsbnFmZDBYXzVpZzNMeDhGU0xBNVBNQjhNemdndFZDc2dHVTZJQWtSZE55aEtjcHhjMnpneEw5RUhnTnd0bDQyUGxwa2FyanJjRzZSbVdBR3dxMXc1SFpEeloyWWtwY09WYmNZOVBrRnVTRFljN2tXZVJTY1E?oc=5" target="_blank" rel="noopener">【決算速報】守谷商会、3Q累計経常3,256百万。(アイフィス株予報) - Yahoo!ファイナンス</a></td>
-        <td class="col-summary">【決算速報】守谷商会、3Q累計経常3,256百万。(アイフィス株予報) Yahoo!ファイナンス</td>
-      </tr>
-      <tr data-company="山善" data-date="2026-02-06">
-        <td class="col-company">山善</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/06</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE1VZXNYTG4yMDU3SmREM2cwYkQzY1h6YmpSdTMxcThmOWwtSWMyazN1c0hNUGVRblBseVJpQVNweGhkUmk1ZDRPanlkQ2s?oc=5" target="_blank" rel="noopener">山善 YAMAZEN 高反発マットレス IOM-80の口コミ・評判を元に検証してメリット・デメリットを徹底レビュー - my-best.com</a></td>
-        <td class="col-summary">山善 YAMAZEN 高反発マットレス IOM-80の口コミ・評判を元に検証してメリット・デメリットを徹底レビュー my-best.com</td>
-      </tr>
-      <tr data-company="住友電工ハードメタル" data-date="2026-02-06">
-        <td class="col-company">住友電工ハードメタル</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/06</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBoQzFwWmdENFNaS1E5WDFZNXhjOTVlX0JqNVhvUV8tNGo3SS1hRnkyNHZ1RGtvSUJ1djAwblZVeUlHdUF4WnQxdzhqV1hVV3JlR1dTWTVaaVp0dVRxWHE0?oc=5" target="_blank" rel="noopener">住友電気工業・人事情報 2026年1月1日付 - レスポンス（Response.jp）</a></td>
-        <td class="col-summary">住友電気工業・人事情報 2026年1月1日付 レスポンス（Response.jp）</td>
-      </tr>
-      <tr data-company="椿本チエイン" data-date="2026-02-06">
-        <td class="col-company">椿本チエイン</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/06</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTE5qSkhvYnBhajE2bzFIZGUxbk9YOXk0Q19xUlN1LW5xWEtIa2JWanlkSXlWWS1hM1g3dTQ4ZER6N0FiSDR5dHZoa3hoZGlrZ3owVmc?oc=5" target="_blank" rel="noopener">椿本チエイン【6371】、10-12月期(3Q)経常は7％増益 | 決算速報 - 株探ニュース - かぶたん</a></td>
-        <td class="col-summary">椿本チエイン【6371】、10-12月期(3Q)経常は7％増益 | 決算速報 - 株探ニュース かぶたん</td>
-      </tr>
-      <tr data-company="椿本チエイン" data-date="2026-02-06">
-        <td class="col-company">椿本チエイン</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/02/06</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxPdG1SLWhuOVVkZW0wcVl3RUJOenBXT1JrMDN5YlBJQ2s4QzBScjhVTElpY0pkZ01BR1ZKVTZESEN6Qm55VG5ubkhpRC0yalBQX3E2WFhNX0p4WWdUTC04cG9PRFVNaGEtYmc5NUMxVkpmdk04NUpHTjdGVmdRbUFVMVRiSEdtUE0?oc=5" target="_blank" rel="noopener">【決算速報】椿本チエイン、3Q累計経常17,768百万。(アイフィス株予報) - Yahoo!ファイナンス</a></td>
-        <td class="col-summary">【決算速報】椿本チエイン、3Q累計経常17,768百万。(アイフィス株予報) Yahoo!ファイナンス</td>
-      </tr>
-      <tr data-company="オプテックス" data-date="2026-02-05">
-        <td class="col-company">オプテックス</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/02/05</td>
-        <td class="col-title"><a href="https://www.optex.co.jp/news/2026/0205.html" target="_blank" rel="noopener">技研トラステムがリテールテックJAPAN 2026に出展します</a></td>
-        <td class="col-summary">このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。あなたのWebブラウザーでJavaScriptを有効にする方法を参照してください。</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMihwFBVV95cUxOYVhIdmoxS0d3VmxwYzNDM3FoWkRSbzdDSkM1X3VXcmpQakxrYzRaMzFiWmVWQUhfXy1taWNEb2dQUjBUQTRNZVZnQmFWVmlscVpEd1RINDZlak0xZVA1N3VUSXFQUDhCTUxKR3RiWmFTTkN1UXR6SlduX0Q4cUpybGZCU05CbEk?oc=5" target="_blank" rel="noopener">守谷商会－後場マイナス転換 3月31日を基準日に1株を5株に株式分割(トレーダーズ・ウェブ) - Yahoo!ファイナンス</a></td>
+        <td class="col-summary">守谷商会－後場マイナス転換 3月31日を基準日に1株を5株に株式分割(トレーダーズ・ウェブ) Yahoo!ファイナンス</td>
       </tr>
       <tr data-company="京都機械工具（KTC）" data-date="2026-01-23">
         <td class="col-company">京都機械工具（KTC）</td>
@@ -680,20 +547,6 @@
         <td class="col-date">2026/01/23</td>
         <td class="col-title"><a href="https://www.kawaki-sowa.co.jp/news.html" target="_blank" rel="noopener">社外報「KWKニュース vol.3」掲載</a></td>
         <td class="col-summary"></td>
-      </tr>
-      <tr data-company="オプテックス" data-date="2026-01-15">
-        <td class="col-company">オプテックス</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/01/15</td>
-        <td class="col-title"><a href="https://www.optex.co.jp/news/2026/0115.html" target="_blank" rel="noopener">CDP気候変動分野で最高評価の「A」スコア水セキュリティ分野で「A-」を初取得</a></td>
-        <td class="col-summary">このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。あなたのWebブラウザーでJavaScriptを有効にする方法を参照してください。</td>
-      </tr>
-      <tr data-company="オプテックス" data-date="2026-01-06">
-        <td class="col-company">オプテックス</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/01/06</td>
-        <td class="col-title"><a href="https://www.optex.co.jp/news/2026/0106.html" target="_blank" rel="noopener">連結子会社の統合と名称変更に関するお知らせ</a></td>
-        <td class="col-summary">このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。あなたのWebブラウザーでJavaScriptを有効にする方法を参照してください。</td>
       </tr>
       <tr data-company="京都機械工具（KTC）" data-date="2025-12-23">
         <td class="col-company">京都機械工具（KTC）</td>
@@ -1166,8 +1019,9 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </div>
-<div class="footer">顧客ニュース収集レポート — 2026年03月06日</div>
+<div class="footer">顧客ニュース収集レポート — 2026年03月08日</div>
 <script>
 let sortColIndex = -1;
 let sortAsc = false;
