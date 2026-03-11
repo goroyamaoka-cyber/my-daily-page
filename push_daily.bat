@@ -1,6 +1,3 @@
 @echo off
-copy /Y "C:\Users\goro_yamaoka\OneDrive - 株式会社あかがね\顧客ニュース収集.html" "C:\Users\goro_yamaoka\Desktop\my-daily-page\顧客ニュース収集.html"
-cd /d "C:\Users\goro_yamaoka\Desktop\my-daily-page"
-git add -A
-git commit -m "daily update %date%"
-git push origin main
+chcp 65001 > nul
+"C:\Users\goro_yamaoka\AppData\Local\Programs\Python\Python314\python.exe" "C:\Users\goro_yamaoka\Desktop\Claude_test\push_to_github.py"
