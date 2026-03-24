@@ -529,6 +529,105 @@
     font-size: 10px; color: rgba(255,255,255,.3);
     letter-spacing: .1em;
   }
+
+  /* ──────────────────────────────
+     RESPONSIVE — Tablet (≤900px)
+  ────────────────────────────── */
+  @media (max-width: 900px) {
+    .nav-inner { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-cta { margin-left: 0; }
+
+    .hero { padding: 56px 20px 48px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+    .hero-desc { max-width: 100%; }
+
+    .filter-inner { padding: 0 20px; }
+
+    .wrap { padding: 40px 20px 80px; }
+
+    .pat-grid { grid-template-columns: 1fr; }
+    .pat-card { border-right: none; border-bottom: 1px solid var(--border); }
+    .pat-card:last-child { border-bottom: none; }
+
+    .case-hero { grid-template-columns: 1fr; }
+    .case-hero-img { min-height: 200px; }
+
+    .pa-flow { grid-template-columns: 1fr; }
+    .pa-layout { grid-template-columns: 1fr; }
+    .pa-side-col { flex-direction: row; flex-wrap: wrap; gap: 2px; }
+    .pa-kpi-card { flex: 1; min-width: 130px; }
+    .pa-info-card { width: 100%; flex: none; }
+
+    .pb-kpi-row { grid-template-columns: 1fr 1fr; }
+    .pb-body-grid { grid-template-columns: 1fr; }
+
+    .pc-result-grid { grid-template-columns: 1fr 1fr; }
+
+    .footer {
+      flex-direction: column; align-items: flex-start;
+      gap: 20px; padding: 36px 20px;
+    }
+  }
+
+  /* ──────────────────────────────
+     RESPONSIVE — Mobile (≤640px)
+  ────────────────────────────── */
+  @media (max-width: 640px) {
+    .nav-inner { height: 56px; }
+    .filter-section { top: 56px; }
+
+    .hero-stat-num { font-size: 30px; }
+    .hero-stat { padding: 20px 16px; }
+
+    .case-hero-text { padding: 24px 20px 24px 28px; }
+
+    .pa-section-card { padding: 24px 16px; }
+    .pa-side-col { flex-direction: column; }
+    .pa-kpi-card { flex: none; width: 100%; }
+
+    .pb-kpi-card { padding: 24px 12px; }
+    .pb-kpi-num { font-size: 40px; }
+    .pb-card { padding: 28px 16px; }
+
+    /* Before / After テーブル: 縦積みに変換 */
+    .pc-ba-head { display: none; }
+    .pc-ba-row {
+      grid-template-columns: 1fr;
+      padding: 0;
+    }
+    .pc-ba-label {
+      background: var(--ink); color: #fff;
+      border-right: none; padding: 8px 16px;
+      font-size: 10px; letter-spacing: .1em;
+    }
+    .pc-ba-before {
+      border-right: none; padding: 10px 16px;
+      border-top: 1px solid var(--border2);
+    }
+    .pc-ba-before::before {
+      content: 'Before —';
+      display: block; font-size: 9px; font-weight: 700;
+      letter-spacing: .12em; color: var(--muted);
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    .pc-ba-after {
+      padding: 10px 16px;
+      border-top: 1px solid var(--border2);
+    }
+    .pc-ba-after::before {
+      content: 'After —';
+      display: block; font-size: 9px; font-weight: 700;
+      letter-spacing: .12em; color: var(--gold);
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+
+    .pc-result-grid { grid-template-columns: 1fr; }
+    .pc-result-card { padding: 28px 20px; }
+    .pc-result-num { font-size: 40px; }
+
+    .footer { padding: 32px 16px; }
+  }
 </style>
 </head>
 <body>
