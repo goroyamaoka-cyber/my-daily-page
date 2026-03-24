@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>宝産業株式会社 | 導入事例</title>
+<script>
+(function(){
+  var CORRECT_USER = 'takara';
+  var CORRECT_PASS = 'akagane';
+  var SESSION_KEY = 'auth_ok_mockup';
+  if (sessionStorage.getItem(SESSION_KEY) === '1') return;
+  var user = window.prompt('ユーザー名を入力してください');
+  var pass = window.prompt('パスワードを入力してください');
+  if (user === CORRECT_USER && pass === CORRECT_PASS) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+  } else {
+    document.documentElement.innerHTML = '<body style="font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;background:#f0f0f0"><div style="text-align:center;padding:40px;background:#fff;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.1)"><p style="font-size:18px;color:#c00;margin-bottom:12px">&#x1F512; 認証に失敗しました</p><p style="color:#555">このページを閲覧する権限がありません。</p></div></body>';
+  }
+})();
+</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
