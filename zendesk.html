@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>進捗管理システム — あかがね</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ===================== RESET & BASE ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue:    #007AFF;
+  --green:   #34C759;
+  --orange:  #FF9500;
+  --red:     #FF3B30;
+  --purple:  #AF52DE;
+  --gray6:   #F2F2F7;
+  --gray5:   #E5E5EA;
+  --gray4:   #C7C7CC;
+  --gray3:   #AEAEB2;
+  --gray2:   #636366;
+  --gray1:   #3A3A3C;
+  --black:   #1C1C1E;
+  --white:   #FFFFFF;
+  --sidebar-w: 220px;
+  --header-h:  56px;
+  --radius:    12px;
+  --shadow:    0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.14);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+body { background: var(--gray6); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ===================== HEADER ===================== */
+header {
+  height: var(--header-h);
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--gray5);
+  display: flex; align-items: center; padding: 0 20px;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  gap: 16px;
+}
+.logo { font-size: 17px; font-weight: 700; color: var(--blue); flex-shrink: 0; }
+.logo span { color: var(--gray2); font-weight: 400; font-size: 15px; }
+.header-search {
+  flex: 1; max-width: 480px; margin-left: auto;
+  display: flex; align-items: center; background: var(--gray6);
+  border: 1px solid var(--gray5); border-radius: 10px;
+  padding: 0 12px; gap: 8px;
+}
+.header-search input {
+  border: none; background: transparent; outline: none;
+  font-size: 14px; width: 100%; color: var(--black);
+}
+.header-search .icon { color: var(--gray3); font-size: 16px; }
+.btn-new {
+  margin-left: 12px;
+  background: var(--blue); color: var(--white);
+  border: none; border-radius: 10px;
+  padding: 8px 16px; font-size: 14px; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+  transition: opacity .15s;
+}
+.btn-new:hover { opacity: .88; }
+
+/* ===================== LAYOUT ===================== */
+.app { display: flex; margin-top: var(--header-h); min-height: calc(100vh - var(--header-h)); }
+
+/* ===================== SIDEBAR ===================== */
+aside {
+  width: var(--sidebar-w); flex-shrink: 0;
+  background: var(--white); border-right: 1px solid var(--gray5);
+  padding: 20px 0; position: sticky; top: var(--header-h);
+  height: calc(100vh - var(--header-h)); overflow-y: auto;
+}
+.nav-section { padding: 0 12px 16px; }
+.nav-label { font-size: 11px; font-weight: 600; color: var(--gray3); letter-spacing: .06em; text-transform: uppercase; padding: 0 8px 6px; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 10px; border-radius: 8px;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  color: var(--gray1); transition: background .12s, color .12s;
+  user-select: none;
+}
+.nav-item:hover { background: var(--gray6); }
+.nav-item.active { background: rgba(0,122,255,.1); color: var(--blue); }
+.nav-item .badge {
+  margin-left: auto; background: var(--blue); color: #fff;
+  font-size: 11px; font-weight: 700; border-radius: 10px;
+  padding: 2px 7px; min-width: 20px; text-align: center;
+}
+.nav-item .badge.red { background: var(--red); }
+.nav-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ===================== MAIN ===================== */
+main { flex: 1; padding: 24px; overflow-x: hidden; }
+
+/* ===================== DASHBOARD ===================== */
+.stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 24px; }
+.stat-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow);
+}
+.stat-card .stat-label { font-size: 12px; color: var(--gray2); font-weight: 500; margin-bottom: 6px; }
+.stat-card .stat-value { font-size: 32px; font-weight: 700; line-height: 1; }
+.stat-card .stat-sub { font-size: 12px; color: var(--gray3); margin-top: 6px; }
+.c-total  .stat-value { color: var(--blue); }
+.c-open   .stat-value { color: var(--orange); }
+.c-overdue .stat-value { color: var(--red); }
+.c-done   .stat-value { color: var(--green); }
+
+.charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.chart-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow);
+}
+.chart-card h3 { font-size: 14px; font-weight: 600; color: var(--gray2); margin-bottom: 16px; }
+
+/* ===================== TICKET LIST ===================== */
+.view-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.view-header h2 { font-size: 20px; font-weight: 700; }
+.view-header .count { font-size: 14px; color: var(--gray3); font-weight: 400; margin-left: 4px; }
+.filter-bar { display: flex; gap: 8px; margin-left: auto; flex-wrap: wrap; }
+.filter-select {
+  border: 1px solid var(--gray5); border-radius: 8px;
+  padding: 6px 12px; font-size: 13px; background: var(--white);
+  color: var(--black); cursor: pointer; outline: none;
+}
+.filter-select:focus { border-color: var(--blue); }
+
+.ticket-table { width: 100%; border-collapse: collapse; }
+.ticket-table th {
+  text-align: left; font-size: 12px; font-weight: 600; color: var(--gray2);
+  padding: 10px 14px; background: var(--gray6);
+  border-bottom: 1px solid var(--gray5); letter-spacing: .04em;
+  cursor: pointer; user-select: none;
+}
+.ticket-table th:hover { color: var(--blue); }
+.ticket-table td { padding: 12px 14px; border-bottom: 1px solid var(--gray6); font-size: 14px; vertical-align: middle; }
+.ticket-row { background: var(--white); transition: background .1s; cursor: pointer; }
+.ticket-row:hover { background: rgba(0,122,255,.03); }
+.ticket-row:last-child td { border-bottom: none; }
+
+.table-wrap { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+
+/* BADGES */
+.badge-status, .badge-priority, .badge-type {
+  display: inline-flex; align-items: center;
+  font-size: 12px; font-weight: 600;
+  padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+}
+.s-new      { background: rgba(0,122,255,.1);  color: var(--blue); }
+.s-open     { background: rgba(255,149,0,.12); color: var(--orange); }
+.s-pending  { background: rgba(175,82,222,.12);color: var(--purple); }
+.s-resolved { background: rgba(52,199,89,.12); color: var(--green); }
+.s-closed   { background: var(--gray5);         color: var(--gray2); }
+.p-urgent   { background: rgba(255,59,48,.12); color: var(--red); }
+.p-high     { background: rgba(255,149,0,.12); color: var(--orange); }
+.p-mid      { background: rgba(0,122,255,.1);  color: var(--blue); }
+.p-low      { background: var(--gray5);         color: var(--gray2); }
+
+.ticket-id { font-size: 12px; color: var(--gray3); font-family: monospace; }
+.ticket-title { font-weight: 500; max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.assignee-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.due-date { font-size: 13px; }
+.due-overdue { color: var(--red); font-weight: 600; }
+.due-today   { color: var(--orange); font-weight: 600; }
+.due-ok      { color: var(--gray2); }
+
+/* ===================== MODAL ===================== */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.35);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 200; opacity: 0; pointer-events: none;
+  transition: opacity .2s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--white); border-radius: 18px;
+  width: 680px; max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 80px); overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  transform: scale(.96); transition: transform .2s;
+}
+.modal-overlay.open .modal { transform: scale(1); }
+.modal-header {
+  display: flex; align-items: center; padding: 20px 24px 0;
+  gap: 12px;
+}
+.modal-header h2 { font-size: 18px; font-weight: 700; flex: 1; }
+.btn-close {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: none; background: var(--gray5); color: var(--gray2);
+  font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .12s;
+}
+.btn-close:hover { background: var(--gray4); }
+.modal-body { padding: 20px 24px 24px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-full { grid-column: 1 / -1; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 13px; font-weight: 600; color: var(--gray2); }
+.form-group input, .form-group select, .form-group textarea {
+  border: 1.5px solid var(--gray5); border-radius: 10px;
+  padding: 10px 12px; font-size: 14px; color: var(--black);
+  outline: none; transition: border-color .15s; background: var(--white);
+  font-family: inherit;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.modal-footer { display: flex; gap: 10px; justify-content: flex-end; padding-top: 16px; border-top: 1px solid var(--gray5); margin-top: 20px; }
+.btn-cancel { border: 1.5px solid var(--gray5); background: var(--white); color: var(--gray1); border-radius: 10px; padding: 9px 20px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-cancel:hover { background: var(--gray6); }
+.btn-save { background: var(--blue); color: var(--white); border: none; border-radius: 10px; padding: 9px 22px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-save:hover { opacity: .88; }
+.btn-delete { background: var(--red); color: var(--white); border: none; border-radius: 10px; padding: 9px 18px; font-size: 14px; font-weight: 600; cursor: pointer; margin-right: auto; }
+.btn-delete:hover { opacity: .88; }
+
+/* ===================== DETAIL MODAL ===================== */
+.detail-modal { width: 780px; }
+.detail-grid { display: grid; grid-template-columns: 1fr 260px; gap: 20px; }
+.detail-main {}
+.detail-side { display: flex; flex-direction: column; gap: 14px; }
+.detail-meta { background: var(--gray6); border-radius: 10px; padding: 14px; }
+.detail-meta .meta-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; border-bottom: 1px solid var(--gray5); }
+.detail-meta .meta-row:last-child { border-bottom: none; }
+.detail-meta .meta-label { color: var(--gray2); font-weight: 500; }
+.detail-meta .meta-val { font-weight: 600; }
+.detail-desc { background: var(--gray6); border-radius: 10px; padding: 14px; font-size: 14px; line-height: 1.6; color: var(--gray1); min-height: 80px; }
+.comments-section { margin-top: 16px; }
+.comments-section h4 { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.comment-item { background: var(--gray6); border-radius: 10px; padding: 12px; margin-bottom: 8px; }
+.comment-item .c-meta { font-size: 12px; color: var(--gray3); margin-bottom: 4px; }
+.comment-item .c-body { font-size: 14px; }
+.comment-input-wrap { display: flex; gap: 8px; margin-top: 10px; }
+.comment-input-wrap input { flex: 1; border: 1.5px solid var(--gray5); border-radius: 10px; padding: 9px 12px; font-size: 14px; outline: none; font-family: inherit; }
+.comment-input-wrap input:focus { border-color: var(--blue); }
+.btn-comment { background: var(--blue); color: #fff; border: none; border-radius: 10px; padding: 9px 16px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+.status-change-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.btn-status {
+  border: 1.5px solid var(--gray5); background: var(--white);
+  border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: all .12s; color: var(--gray2);
+}
+.btn-status:hover { border-color: var(--blue); color: var(--blue); }
+.btn-status.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+/* ===================== EMPTY ===================== */
+.empty-state { text-align: center; padding: 64px 20px; color: var(--gray3); }
+.empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; }
+.empty-state p { font-size: 15px; }
+
+/* ===================== TOAST ===================== */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: var(--black); color: #fff;
+  border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 500;
+  z-index: 999; transition: transform .3s, opacity .3s; opacity: 0;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 900px) {
+  .stat-grid { grid-template-columns: repeat(2,1fr); }
+  .charts-row { grid-template-columns: 1fr; }
+  :root { --sidebar-w: 190px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">⚙ あかがね <span>進捗管理</span></div>
+  <div class="header-search">
+    <span class="icon">🔍</span>
+    <input type="text" id="globalSearch" placeholder="チケットを検索..." oninput="applyFilters()">
+  </div>
+  <button class="btn-new" onclick="openNewTicketModal()">＋ 新規チケット</button>
+</header>
+
+<!-- APP -->
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside>
+    <div class="nav-section">
+      <div class="nav-label">ビュー</div>
+      <div class="nav-item active" onclick="setView('dashboard',this)">📊 ダッシュボード</div>
+      <div class="nav-item" onclick="setView('all',this)">📋 すべて</div>
+      <div class="nav-item" onclick="setView('my',this)">👤 自分担当</div>
+      <div class="nav-item" onclick="setView('overdue',this)" id="nav-overdue">⚠ 期限超過 <span class="badge red" id="badge-overdue">0</span></div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">ステータス</div>
+      <div class="nav-item" onclick="setStatusFilter('新規',this)"><span class="nav-dot" style="background:var(--blue)"></span>新規</div>
+      <div class="nav-item" onclick="setStatusFilter('対応中',this)"><span class="nav-dot" style="background:var(--orange)"></span>対応中</div>
+      <div class="nav-item" onclick="setStatusFilter('保留中',this)"><span class="nav-dot" style="background:var(--purple)"></span>保留中</div>
+      <div class="nav-item" onclick="setStatusFilter('解決済み',this)"><span class="nav-dot" style="background:var(--green)"></span>解決済み</div>
+      <div class="nav-item" onclick="setStatusFilter('クローズ',this)"><span class="nav-dot" style="background:var(--gray4)"></span>クローズ</div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">優先度</div>
+      <div class="nav-item" onclick="setPriorityFilter('緊急',this)"><span class="nav-dot" style="background:var(--red)"></span>緊急</div>
+      <div class="nav-item" onclick="setPriorityFilter('高',this)"><span class="nav-dot" style="background:var(--orange)"></span>高</div>
+      <div class="nav-item" onclick="setPriorityFilter('中',this)"><span class="nav-dot" style="background:var(--blue)"></span>中</div>
+      <div class="nav-item" onclick="setPriorityFilter('低',this)"><span class="nav-dot" style="background:var(--gray4)"></span>低</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main id="main">
+    <!-- content injected by JS -->
+  </main>
+</div>
+
+<!-- NEW/EDIT TICKET MODAL -->
+<div class="modal-overlay" id="ticketModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle">新規チケット</h2>
+      <button class="btn-close" onclick="closeModal('ticketModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group form-full">
+          <label>タイトル *</label>
+          <input type="text" id="f-title" placeholder="チケットのタイトルを入力">
+        </div>
+        <div class="form-group form-full">
+          <label>説明</label>
+          <textarea id="f-desc" placeholder="詳細な説明を記入..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>ステータス</label>
+          <select id="f-status">
+            <option>新規</option>
+            <option>対応中</option>
+            <option>保留中</option>
+            <option>解決済み</option>
+            <option>クローズ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>優先度</label>
+          <select id="f-priority">
+            <option>低</option>
+            <option selected>中</option>
+            <option>高</option>
+            <option>緊急</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>担当者</label>
+          <select id="f-assignee">
+            <option value="">未割当</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>種別</label>
+          <select id="f-type">
+            <option>タスク</option>
+            <option>バグ</option>
+            <option>要望</option>
+            <option>問い合わせ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>期日</label>
+          <input type="date" id="f-due">
+        </div>
+        <div class="form-group">
+          <label>顧客名</label>
+          <input type="text" id="f-customer" placeholder="例：川崎重工">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-delete" id="btnDelete" onclick="deleteCurrentTicket()" style="display:none">🗑 削除</button>
+        <button class="btn-cancel" onclick="closeModal('ticketModal')">キャンセル</button>
+        <button class="btn-save" onclick="saveTicket()">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal detail-modal">
+    <div class="modal-header">
+      <h2 id="detailTitle">チケット詳細</h2>
+      <button class="btn-close" onclick="closeModal('detailModal')">✕</button>
+    </div>
+    <div class="modal-body" id="detailBody"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ==================== DATA ==================== */
+const ASSIGNEES = [
+  { name: '山岡', color: '#007AFF' },
+  { name: '田中', color: '#34C759' },
+  { name: '鈴木', color: '#FF9500' },
+  { name: '佐藤', color: '#AF52DE' },
+  { name: '伊藤', color: '#FF3B30' },
+];
+
+const SAMPLE = [
+  { id:'TK-001', title:'OMRON商品データ600万円見積対応', desc:'因幡電機向け。オムロン+IDEC 15万SKU。予算OK確認済み。', status:'対応中', priority:'緊急', type:'タスク', assignee:'山岡', customer:'因幡電機産業', due:'2026-04-18', createdAt:'2026-04-01', comments:[{author:'山岡',body:'見積書提出完了',at:'2026-04-03'}] },
+  { id:'TK-002', title:'Andromedaパーツリスト制作（700万）', desc:'京セラ様。受注確定済み。制作スケジュール確認要。', status:'対応中', priority:'高', type:'タスク', assignee:'田中', customer:'京セラ', due:'2026-05-10', createdAt:'2026-03-27', comments:[] },
+  { id:'TK-003', title:'住友電工 AI翻訳提案書作成', desc:'「ぜひ検討してほしい」と明言済み。最優先提案先。松本さん（後任）へのアポ取得も並走。', status:'新規', priority:'緊急', type:'要望', assignee:'山岡', customer:'住友電工ハードメタル', due:'2026-04-15', createdAt:'2026-04-05', comments:[] },
+  { id:'TK-004', title:'川崎重工 Trados+AI翻訳フロー再提案', desc:'欧州言語コスト課題。翻訳メモリ育成モデルで提案。', status:'新規', priority:'高', type:'要望', assignee:'山岡', customer:'川崎重工', due:'2026-04-20', createdAt:'2026-04-06', comments:[{author:'山岡',body:'3/3商談完了。再提案資料作成中',at:'2026-04-06'}] },
+  { id:'TK-005', title:'VESSEL 英語カタログ提案', desc:'英語カタログ議論が再燃。AI翻訳絡めて提案検討。', status:'保留中', priority:'中', type:'要望', assignee:'鈴木', customer:'VESSEL', due:'2026-04-30', createdAt:'2026-03-20', comments:[] },
+  { id:'TK-006', title:'宝産業 WEBリニューアル失注フォロー', desc:'2026/04/08 失注。他社採用。次のアプローチ機会を探る。', status:'クローズ', priority:'低', type:'タスク', assignee:'佐藤', customer:'宝産業', due:'2026-04-10', createdAt:'2026-03-15', comments:[{author:'佐藤',body:'失注確認。原因分析中',at:'2026-04-08'}] },
+  { id:'TK-007', title:'Yattaro ECサイト拡張対応（2000→20000点）', desc:'因幡電機。2026年夏を目標。仕様確認と作業見積が必要。', status:'新規', priority:'中', type:'タスク', assignee:'田中', customer:'因幡電機産業', due:'2026-06-30', createdAt:'2026-04-02', comments:[] },
+  { id:'TK-008', title:'チョコ停ST カタログリーフレット+動画引き合い', desc:'新製品。2026年9月販売予定。引き合いあり→見積準備。', status:'新規', priority:'高', type:'問い合わせ', assignee:'山岡', customer:'因幡電機産業', due:'2026-05-01', createdAt:'2026-04-07', comments:[] },
+  { id:'TK-009', title:'KTC 日英カタログ改訂タイミング確認', desc:'AI翻訳提案ターゲット。改訂スケジュール把握が先決。', status:'保留中', priority:'中', type:'問い合わせ', assignee:'鈴木', customer:'KTC', due:'2026-04-25', createdAt:'2026-03-28', comments:[] },
+  { id:'TK-010', title:'OPTEX FA 多言語WEB展開提案', desc:'多言語WEB展開課題あり。AI翻訳+PIM組み合わせで提案。', status:'新規', priority:'中', type:'要望', assignee:'伊藤', customer:'OPTEX FA', due:'2026-05-15', createdAt:'2026-04-04', comments:[] },
+];
+
+let tickets = [];
+let currentEdit = null;
+let currentView = 'dashboard';
+let filterStatus = '';
+let filterPriority = '';
+let sortCol = 'createdAt';
+let sortDir = -1;
+
+function load() {
+  const raw = localStorage.getItem('ak_tickets');
+  tickets = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(SAMPLE));
+}
+function save() { localStorage.setItem('ak_tickets', JSON.stringify(tickets)); }
+
+/* ==================== VIEWS ==================== */
+let currentViewName = 'dashboard';
+
+function setView(view, el) {
+  currentViewName = view;
+  filterStatus = '';
+  filterPriority = '';
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (el) el.classList.add('active');
+  render();
+}
+function setStatusFilter(s, el) {
+  currentViewName = 'all';
+  filterStatus = filterStatus === s ? '' : s;
+  filterPriority = '';
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (el && filterStatus) el.classList.add('active');
+  render();
+}
+function setPriorityFilter(p, el) {
+  currentViewName = 'all';
+  filterPriority = filterPriority === p ? '' : p;
+  filterStatus = '';
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (el && filterPriority) el.classList.add('active');
+  render();
+}
+
+function render() {
+  updateBadges();
+  const main = document.getElementById('main');
+  if (currentViewName === 'dashboard') { main.innerHTML = renderDashboard(); initCharts(); return; }
+  main.innerHTML = renderList();
+}
+
+/* ==================== FILTERS ==================== */
+function getFiltered() {
+  const q = (document.getElementById('globalSearch')?.value || '').toLowerCase();
+  const today = new Date(); today.setHours(0,0,0,0);
+  let list = tickets.filter(t => {
+    if (currentViewName === 'my' && t.assignee !== '山岡') return false;
+    if (currentViewName === 'overdue') {
+      if (!t.due) return false;
+      const d = new Date(t.due); d.setHours(0,0,0,0);
+      if (d >= today || t.status === 'クローズ' || t.status === '解決済み') return false;
+    }
+    if (filterStatus && t.status !== filterStatus) return false;
+    if (filterPriority && t.priority !== filterPriority) return false;
+    if (q && !t.title.toLowerCase().includes(q) && !t.customer.toLowerCase().includes(q) && !t.assignee.toLowerCase().includes(q)) return false;
+    return true;
+  });
+  list.sort((a,b) => {
+    let av = a[sortCol] || '', bv = b[sortCol] || '';
+    if (av < bv) return -sortDir;
+    if (av > bv) return sortDir;
+    return 0;
+  });
+  return list;
+}
+
+function applyFilters() { render(); }
+
+/* ==================== BADGES ==================== */
+function updateBadges() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const over = tickets.filter(t => {
+    if (!t.due || t.status === 'クローズ' || t.status === '解決済み') return false;
+    const d = new Date(t.due); d.setHours(0,0,0,0);
+    return d < today;
+  }).length;
+  document.getElementById('badge-overdue').textContent = over;
+  document.getElementById('badge-overdue').style.display = over ? '' : 'none';
+}
+
+/* ==================== DASHBOARD ==================== */
+function renderDashboard() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const total = tickets.length;
+  const open = tickets.filter(t => !['クローズ','解決済み'].includes(t.status)).length;
+  const overdue = tickets.filter(t => {
+    if (!t.due || t.status === 'クローズ' || t.status === '解決済み') return false;
+    const d = new Date(t.due); d.setHours(0,0,0,0);
+    return d < today;
+  }).length;
+  const done = tickets.filter(t => t.status === '解決済み' || t.status === 'クローズ').length;
+
+  const recent = [...tickets].sort((a,b) => b.createdAt > a.createdAt ? 1:-1).slice(0,5);
+
+  return `
+<div class="stat-grid">
+  <div class="stat-card c-total">
+    <div class="stat-label">総チケット数</div>
+    <div class="stat-value">${total}</div>
+    <div class="stat-sub">全期間</div>
+  </div>
+  <div class="stat-card c-open">
+    <div class="stat-label">オープン</div>
+    <div class="stat-value">${open}</div>
+    <div class="stat-sub">未解決</div>
+  </div>
+  <div class="stat-card c-overdue">
+    <div class="stat-label">期限超過</div>
+    <div class="stat-value">${overdue}</div>
+    <div class="stat-sub">要対応</div>
+  </div>
+  <div class="stat-card c-done">
+    <div class="stat-label">完了</div>
+    <div class="stat-value">${done}</div>
+    <div class="stat-sub">解決済み+クローズ</div>
+  </div>
+</div>
+<div class="charts-row">
+  <div class="chart-card"><h3>ステータス別</h3><canvas id="chartStatus" height="180"></canvas></div>
+  <div class="chart-card"><h3>優先度別</h3><canvas id="chartPriority" height="180"></canvas></div>
+</div>
+<div class="view-header">
+  <h2>最近のチケット</h2>
+  <div style="margin-left:auto"><button class="btn-new" onclick="setView('all',null)" style="background:var(--gray5);color:var(--gray1)">すべて表示</button></div>
+</div>
+<div class="table-wrap">${renderTableRows(recent)}</div>`;
+}
+
+function initCharts() {
+  const statusCount = {};
+  const priCount = {};
+  tickets.forEach(t => {
+    statusCount[t.status] = (statusCount[t.status]||0)+1;
+    priCount[t.priority] = (priCount[t.priority]||0)+1;
+  });
+  const sLabels = ['新規','対応中','保留中','解決済み','クローズ'];
+  const sColors = ['#007AFF','#FF9500','#AF52DE','#34C759','#C7C7CC'];
+  new Chart(document.getElementById('chartStatus'), {
+    type:'doughnut',
+    data: { labels: sLabels, datasets: [{ data: sLabels.map(l=>statusCount[l]||0), backgroundColor: sColors, borderWidth:2 }] },
+    options: { plugins: { legend: { position:'right', labels:{ font:{size:12}, boxWidth:12 } } }, cutout:'62%' }
+  });
+  const pLabels = ['緊急','高','中','低'];
+  const pColors = ['#FF3B30','#FF9500','#007AFF','#C7C7CC'];
+  new Chart(document.getElementById('chartPriority'), {
+    type:'bar',
+    data: { labels: pLabels, datasets: [{ data: pLabels.map(l=>priCount[l]||0), backgroundColor: pColors, borderRadius:6, borderSkipped:false }] },
+    options: { plugins:{ legend:{display:false} }, scales:{ y:{beginAtZero:true, ticks:{stepSize:1}} }, indexAxis:'y' }
+  });
+}
+
+/* ==================== LIST ==================== */
+function renderList() {
+  const list = getFiltered();
+  const title = currentViewName === 'my' ? '自分の担当' : currentViewName === 'overdue' ? '期限超過' : filterStatus || filterPriority || 'すべてのチケット';
+  return `
+<div class="view-header">
+  <h2>${title}<span class="count">${list.length} 件</span></h2>
+  <div class="filter-bar">
+    <select class="filter-select" onchange="filterStatus=this.value;render()">
+      <option value="">ステータス: 全て</option>
+      ${['新規','対応中','保留中','解決済み','クローズ'].map(s=>`<option value="${s}" ${filterStatus===s?'selected':''}>${s}</option>`).join('')}
+    </select>
+    <select class="filter-select" onchange="filterPriority=this.value;render()">
+      <option value="">優先度: 全て</option>
+      ${['緊急','高','中','低'].map(p=>`<option value="${p}" ${filterPriority===p?'selected':''}>${p}</option>`).join('')}
+    </select>
+    <select class="filter-select" onchange="sortCol=this.value;render()">
+      <option value="createdAt">並び: 作成日</option>
+      <option value="due">並び: 期日</option>
+      <option value="priority">並び: 優先度</option>
+      <option value="status">並び: ステータス</option>
+    </select>
+  </div>
+</div>
+<div class="table-wrap">${list.length ? renderTableRows(list) : '<div class="empty-state"><div class="empty-icon">📭</div><p>チケットが見つかりません</p></div>'}</div>`;
+}
+
+function renderTableRows(list) {
+  return `<table class="ticket-table">
+<thead><tr>
+  <th onclick="toggleSort('id')">ID</th>
+  <th onclick="toggleSort('title')">タイトル</th>
+  <th onclick="toggleSort('customer')">顧客</th>
+  <th onclick="toggleSort('status')">ステータス</th>
+  <th onclick="toggleSort('priority')">優先度</th>
+  <th onclick="toggleSort('assignee')">担当者</th>
+  <th onclick="toggleSort('due')">期日</th>
+</tr></thead>
+<tbody>
+${list.map(t => `<tr class="ticket-row" onclick="openDetail('${t.id}')">
+  <td><span class="ticket-id">${t.id}</span></td>
+  <td><span class="ticket-title">${t.title}</span></td>
+  <td style="font-size:13px">${t.customer||'—'}</td>
+  <td>${statusBadge(t.status)}</td>
+  <td>${priorityBadge(t.priority)}</td>
+  <td>${avatarHtml(t.assignee)}</td>
+  <td>${dueDateHtml(t.due)}</td>
+</tr>`).join('')}
+</tbody></table>`;
+}
+
+function toggleSort(col) {
+  if (sortCol === col) sortDir *= -1;
+  else { sortCol = col; sortDir = 1; }
+  render();
+}
+
+/* ==================== BADGES HTML ==================== */
+function statusBadge(s) {
+  const map = { '新規':'s-new', '対応中':'s-open', '保留中':'s-pending', '解決済み':'s-resolved', 'クローズ':'s-closed' };
+  return `<span class="badge-status ${map[s]||''}">${s}</span>`;
+}
+function priorityBadge(p) {
+  const map = { '緊急':'p-urgent', '高':'p-high', '中':'p-mid', '低':'p-low' };
+  return `<span class="badge-priority ${map[p]||''}">${p}</span>`;
+}
+function avatarHtml(name) {
+  if (!name) return '<span style="color:var(--gray3);font-size:13px">—</span>';
+  const a = ASSIGNEES.find(x=>x.name===name) || { color:'#636366' };
+  return `<span class="assignee-avatar" style="background:${a.color}" title="${name}">${name.slice(0,1)}</span>`;
+}
+function dueDateHtml(due) {
+  if (!due) return '<span class="due-date due-ok">—</span>';
+  const today = new Date(); today.setHours(0,0,0,0);
+  const d = new Date(due); d.setHours(0,0,0,0);
+  const diff = Math.ceil((d-today)/(1000*60*60*24));
+  let cls = 'due-ok', label = due;
+  if (diff < 0) { cls = 'due-overdue'; label = `${due} (${Math.abs(diff)}日超過)`; }
+  else if (diff === 0) { cls = 'due-today'; label = `${due} (今日)`; }
+  else if (diff <= 3) { cls = 'due-today'; label = `${due} (あと${diff}日)`; }
+  return `<span class="due-date ${cls}">${label}</span>`;
+}
+
+/* ==================== MODAL ==================== */
+function populateAssigneeSelect(sel) {
+  sel.innerHTML = '<option value="">未割当</option>' + ASSIGNEES.map(a=>`<option value="${a.name}">${a.name}</option>`).join('');
+}
+
+function openNewTicketModal() {
+  currentEdit = null;
+  document.getElementById('modalTitle').textContent = '新規チケット';
+  document.getElementById('btnDelete').style.display = 'none';
+  const fields = ['title','desc','status','priority','assignee','type','due','customer'];
+  fields.forEach(f => { const el = document.getElementById('f-'+f); if(el) el.value = f==='status'?'新規':f==='priority'?'中':''; });
+  populateAssigneeSelect(document.getElementById('f-assignee'));
+  document.getElementById('f-due').value = '';
+  openModal('ticketModal');
+}
+
+function openEditModal(id) {
+  const t = tickets.find(x=>x.id===id);
+  if (!t) return;
+  currentEdit = id;
+  document.getElementById('modalTitle').textContent = 'チケット編集';
+  document.getElementById('btnDelete').style.display = '';
+  populateAssigneeSelect(document.getElementById('f-assignee'));
+  document.getElementById('f-title').value = t.title;
+  document.getElementById('f-desc').value = t.desc||'';
+  document.getElementById('f-status').value = t.status;
+  document.getElementById('f-priority').value = t.priority;
+  document.getElementById('f-assignee').value = t.assignee||'';
+  document.getElementById('f-type').value = t.type;
+  document.getElementById('f-due').value = t.due||'';
+  document.getElementById('f-customer').value = t.customer||'';
+  closeModal('detailModal');
+  openModal('ticketModal');
+}
+
+function saveTicket() {
+  const title = document.getElementById('f-title').value.trim();
+  if (!title) { showToast('タイトルを入力してください'); return; }
+  if (currentEdit) {
+    const t = tickets.find(x=>x.id===currentEdit);
+    if (t) {
+      t.title = title;
+      t.desc = document.getElementById('f-desc').value;
+      t.status = document.getElementById('f-status').value;
+      t.priority = document.getElementById('f-priority').value;
+      t.assignee = document.getElementById('f-assignee').value;
+      t.type = document.getElementById('f-type').value;
+      t.due = document.getElementById('f-due').value;
+      t.customer = document.getElementById('f-customer').value;
+    }
+    showToast('チケットを更新しました');
+  } else {
+    const newId = 'TK-' + String(tickets.length + 1).padStart(3,'0');
+    tickets.push({
+      id: newId,
+      title,
+      desc: document.getElementById('f-desc').value,
+      status: document.getElementById('f-status').value,
+      priority: document.getElementById('f-priority').value,
+      assignee: document.getElementById('f-assignee').value,
+      type: document.getElementById('f-type').value,
+      due: document.getElementById('f-due').value,
+      customer: document.getElementById('f-customer').value,
+      createdAt: new Date().toISOString().slice(0,10),
+      comments: []
+    });
+    showToast('チケットを作成しました');
+  }
+  save(); closeModal('ticketModal'); render();
+}
+
+function deleteCurrentTicket() {
+  if (!currentEdit) return;
+  if (!confirm('このチケットを削除しますか？')) return;
+  tickets = tickets.filter(t => t.id !== currentEdit);
+  save(); closeModal('ticketModal'); render();
+  showToast('チケットを削除しました');
+}
+
+/* ==================== DETAIL ==================== */
+function openDetail(id) {
+  const t = tickets.find(x=>x.id===id);
+  if (!t) return;
+  const statuses = ['新規','対応中','保留中','解決済み','クローズ'];
+  document.getElementById('detailTitle').textContent = `${t.id} — ${t.title}`;
+  document.getElementById('detailBody').innerHTML = `
+<div class="detail-grid">
+  <div class="detail-main">
+    <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+      ${statusBadge(t.status)} ${priorityBadge(t.priority)}
+      <span class="badge-type" style="background:var(--gray5);color:var(--gray2)">${t.type}</span>
+    </div>
+    <div class="detail-desc">${t.desc || '<span style="color:var(--gray3)">説明なし</span>'}</div>
+    <div style="margin-top:14px">
+      <div style="font-size:13px;font-weight:600;color:var(--gray2);margin-bottom:8px">ステータス変更</div>
+      <div class="status-change-row">
+        ${statuses.map(s=>`<button class="btn-status ${t.status===s?'active':''}" onclick="changeStatus('${t.id}','${s}')">${s}</button>`).join('')}
+      </div>
+    </div>
+    <div class="comments-section">
+      <h4>コメント (${t.comments.length})</h4>
+      ${t.comments.map(c=>`<div class="comment-item"><div class="c-meta">${c.author} · ${c.at}</div><div class="c-body">${c.body}</div></div>`).join('') || '<p style="color:var(--gray3);font-size:13px">まだコメントはありません</p>'}
+      <div class="comment-input-wrap">
+        <input type="text" id="ci-${id}" placeholder="コメントを追加..." onkeydown="if(event.key==='Enter')addComment('${id}')">
+        <button class="btn-comment" onclick="addComment('${id}')">送信</button>
+      </div>
+    </div>
+  </div>
+  <div class="detail-side">
+    <div class="detail-meta">
+      <div class="meta-row"><span class="meta-label">担当者</span><span class="meta-val">${t.assignee ? avatarHtml(t.assignee)+' '+t.assignee : '—'}</span></div>
+      <div class="meta-row"><span class="meta-label">顧客</span><span class="meta-val">${t.customer||'—'}</span></div>
+      <div class="meta-row"><span class="meta-label">期日</span><span class="meta-val">${dueDateHtml(t.due)}</span></div>
+      <div class="meta-row"><span class="meta-label">作成日</span><span class="meta-val">${t.createdAt}</span></div>
+    </div>
+    <button class="btn-save" style="width:100%" onclick="openEditModal('${t.id}')">✏ 編集</button>
+  </div>
+</div>`;
+  openModal('detailModal');
+}
+
+function changeStatus(id, status) {
+  const t = tickets.find(x=>x.id===id);
+  if (t) { t.status = status; save(); openDetail(id); render(); }
+}
+
+function addComment(id) {
+  const inp = document.getElementById('ci-'+id);
+  const body = inp.value.trim();
+  if (!body) return;
+  const t = tickets.find(x=>x.id===id);
+  if (!t) return;
+  t.comments.push({ author:'山岡', body, at: new Date().toISOString().slice(0,10) });
+  save(); inp.value='';
+  openDetail(id);
+  showToast('コメントを追加しました');
+}
+
+/* ==================== MODAL HELPERS ==================== */
+function openModal(id) { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); });
+});
+
+/* ==================== TOAST ==================== */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+/* ==================== INIT ==================== */
+load();
+render();
+</script>
+</body>
+</html>
