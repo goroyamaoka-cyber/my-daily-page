@@ -183,15 +183,24 @@
     .date-cb-label { font-size: 0.8em; padding: 4px 8px; }
     .cb-label { font-size: 0.75em; padding: 3px 6px; }
     .cb-all-btn { font-size: 0.75em; }
-    td, th { padding: 8px 10px; font-size: 0.8em; }
+    td, th { padding: 6px 8px; font-size: 0.8em; }
     .col-summary { display: none; }
     .col-summary-header { display: none; }
+    /* 列幅をスマホ向けに縮小し、タイトルに幅を譲る */
+    .col-company { width: 72px; font-size: 0.78em; }
+    .col-source  { width: 72px; }
+    .col-date    { width: 64px; font-size: 0.78em; }
+    .badge-google, .badge-corp { padding: 2px 5px; font-size: 0.72em; }
+    /* テーブル最小幅をモバイル用に縮小（要約列が消えるため） */
+    .table-wrap table { min-width: 420px; }
     .tile-container { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
   }
 
   @media (max-width: 480px) {
     .col-source { display: none; }
     .col-source-header { display: none; }
+    /* ソース列も消えるためさらに縮小 */
+    .table-wrap table { min-width: 280px; }
     .tile-container { grid-template-columns: 1fr; }
   }
 </style>
@@ -200,7 +209,7 @@
 <div class="page-header">
   <div>
     <h1>📰 顧客ニュース収集レポート</h1>
-    <div class="meta">収集日時：2026年04月14日 17:52　／　対象企業：23社　／　収集記事：157件</div>
+    <div class="meta">収集日時：2026年04月14日 18:31　／　対象企業：23社　／　収集記事：157件</div>
   </div>
   <div class="view-toggle">
     <button class="view-btn active" id="btnList" onclick="setView('list')" title="リスト表示">
