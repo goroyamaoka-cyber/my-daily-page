@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>顧客ニュース収集 2026/04/15</title>
+<title>顧客ニュース収集 2026/04/16</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Meiryo UI", "Yu Gothic UI", "Segoe UI", sans-serif; background: #f0f2f5; color: #333; font-size: 14px; }
@@ -223,7 +223,7 @@
 <div class="page-header">
   <div>
     <h1>📰 顧客ニュース収集レポート</h1>
-    <div class="meta">収集日時：2026年04月15日 17:49　／　対象企業：23社　／　収集記事：173件（重複除去後）</div>
+    <div class="meta">収集日時：2026年04月16日 14:49　／　対象企業：23社　／　収集記事：174件（重複除去後）</div>
   </div>
   <div class="view-toggle">
     <button class="view-btn active" id="btnList" onclick="setView('list')" title="リスト表示">
@@ -240,7 +240,7 @@
     <div class="filter-header" onclick="toggleFilter()">
       <div class="filter-header-left">
         <span class="filter-header-title">🔍 絞り込み検索</span>
-        <span class="filter-header-summary" id="filterSummary">173件表示中</span>
+        <span class="filter-header-summary" id="filterSummary">174件表示中</span>
       </div>
       <span class="filter-chevron">&#9660;</span>
     </div>
@@ -251,7 +251,7 @@
         <div class="filter-row">
           <span class="filter-label">🔍 検索</span>
           <input type="text" class="search-input" id="searchInput" placeholder="キーワードで絞り込み..." oninput="applyFilters()">
-          <span class="count-label" id="countLabel">173件表示中</span>
+          <span class="count-label" id="countLabel">174件表示中</span>
         </div>
         <!-- 日付フィルター -->
         <div class="filter-row">
@@ -307,12 +307,75 @@
         </tr>
       </thead>
       <tbody id="tableBody">
-      <tr data-company="川崎重工業" data-date="2443-04-01">
+      <tr data-company="川崎重工業" data-date="2026-04-16">
         <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/16</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHRUxvRVBjbmxTd0ZoaWZLVzdVaTFqT1lNYndQRnhWeXhqZVlIU3FOU3BfRFV1S3ZBbkNuUXdtbDRuNWdBQ0ZCRmNKZWJoVWNWN3hjWFA3THFPLWNvdjV3?oc=5" target="_blank" rel="noopener">川崎重工業(株)【7012】：AI値動き解説 - Yahoo!ファイナンス</a></td>
+        <td class="col-summary">川崎重工業(株)【7012】：AI値動き解説 Yahoo!ファイナンス</td>
+      </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-16">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/16</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE56NUFoN3ZEM2V4VFhjWTdlRnpfeXR6MG5HbjRaMVFib2Nvd2JZd29ZdDg5ODJJY3lUcGo5NnFEc3poSERQT05hMy1Ud2xrX0pyMHQtQkREcDQzWGNXZFFSUmZwVlByMk1idDl1Qg?oc=5" target="_blank" rel="noopener">川崎重工、名古屋の中京病院などに搬送ロボット納入 累計10施設に - 日本経済新聞</a></td>
+        <td class="col-summary">川崎重工、名古屋の中京病院などに搬送ロボット納入 累計10施設に 日本経済新聞</td>
+      </tr>
+      <tr data-company="山善" data-date="2026-04-16">
+        <td class="col-company">山善</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/16</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5WYlFFaW16bGxaMUhNU0NGckFyQXF1bTVyajF1dERMVW95eGZ3YXNyN3dOSk4zdDl3YWRWOUlaLUthb3kxbnV4RklBeExaaWo3SDJlcWNIOUJFTlE?oc=5" target="_blank" rel="noopener">水冷服が“面で冷やす”新構造へ進化 「DIRECT COOL ProPLUS水路式」 - 共同通信PRワイヤー</a></td>
+        <td class="col-summary">水冷服が“面で冷やす”新構造へ進化 「DIRECT COOL ProPLUS水路式」 共同通信PRワイヤー</td>
+      </tr>
+      <tr data-company="山善" data-date="2026-04-16">
+        <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2443/04/01</td>
-        <td class="col-title"><a href="https://www.khi.co.jp/pressrelease/detail/20240930_1.html" target="_blank" rel="noopener">産業用サイバーセキュリティ国際標準規格「IEC 6」認証を取得</a></td>
-        <td class="col-summary">川崎重工は、ロボットディビジョンにおいて「IEC62443-4-1」認証を取得しました。この認証は、産業用オートメーションおよび制御システムで使用する機器のセキュアな開発プロセス要件について規定したサイバーセキュリティに関する国際標準規格です。医療機器、産業機器、民生機器、自動車、食品、化学、エネル</td>
+        <td class="col-date">2026/04/16</td>
+        <td class="col-title"><a href="https://www.yamazen.co.jp/archives/001/20260416_Change_of_Directors_j.pdf" target="_blank" rel="noopener">[適時開示] 役員の異動に関するお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="山善" data-date="2026-04-16">
+        <td class="col-company">山善</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/16</td>
+        <td class="col-title"><a href="https://www.yamazen.co.jp/news/entry-2820.html" target="_blank" rel="noopener">[プレスリリース] 水冷服が“面で冷やす”新構造へ進化「DIRECT COOL ProPLUS水路式」を新発売</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="守谷商会" data-date="2026-04-16">
+        <td class="col-company">守谷商会</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/16</td>
+        <td class="col-title"><a href="https://sales.moritani.co.jp/dp/hbk/" target="_blank" rel="noopener">[新着商品] マイクロホン、校正器、加速度ピックアップ</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="守谷商会" data-date="2026-04-16">
+        <td class="col-company">守谷商会</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/16</td>
+        <td class="col-title"><a href="https://sales.moritani.co.jp/newenergy/battery/" target="_blank" rel="noopener">[新着商品] 混錬/分散/造粒/被膜等粉体関連プロセス装置</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-15">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/15</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE9jd3RRZmdUay1zOXpJT1RQa0xPd3FOVTRhS0lFZEJQZXluZk9tX1FTajZKdWp0eEthQTBMQ1hzWjM0Ml9fTFpscw?oc=5" target="_blank" rel="noopener">川崎重工、屋内配送ロボを中京病院に初導入 - LOGISTICS TODAY</a></td>
+        <td class="col-summary">川崎重工、屋内配送ロボを中京病院に初導入 LOGISTICS TODAY</td>
+      </tr>
+      <tr data-company="椿本チエイン" data-date="2026-04-15">
+        <td class="col-company">椿本チエイン</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/15</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPSzZ0QjhMenlVMmdDaDJPb3FMZ3NyWTY0X3lSTnh4OU5RRk5lRlQtaVVlcVhyTmNhUlp2cU42UXQyVnN1Z3pTTVBncm9xMmt5U1R3RzFBOFJiMWtNNVM4dW1ha19nWGxOU0tLVG5nZkY3ZFZpSEJhb1R2a1JfN3dXNmpnV2VDQzlGdWVQeG9RQk50WTEwNFdvLU14M21CaklaVzl0X2xOekk?oc=5" target="_blank" rel="noopener">椿本チエイン、欧州事業統括会社 - 日本経済新聞</a></td>
+        <td class="col-summary">椿本チエイン、欧州事業統括会社 日本経済新聞</td>
+      </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-15">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/15</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1IOHhCd2VOa3lNTXA2Y3VIZjRfMWJhbmdYc2VWNTZIZ2FKSE5uNW00YXRZQmN1ZERieGhMMTlpZXNlNk9HUlNrTWgyQ2pZNlRVMk9CdEptRnA3WV8xajloWmFPLXFlRkdOUjZVV0ln?oc=5" target="_blank" rel="noopener">学生が就職したい兵庫の企業は? 1位は川崎重工業 2位アシックス 人気ランキングを初公開 |経済ニュース - 神戸新聞</a></td>
+        <td class="col-summary">学生が就職したい兵庫の企業は? 1位は川崎重工業 2位アシックス 人気ランキングを初公開 |経済ニュース 神戸新聞</td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-04-15">
         <td class="col-company">椿本チエイン</td>
@@ -335,19 +398,12 @@
         <td class="col-title"><a href="https://www.sumitool.com/news/press/bxbr-ex-ac1135u.html" target="_blank" rel="noopener">高い加工安定性と長寿命化を実現 「超硬ソリッドバーBXBR型」に新材種 AC1135Uを拡充</a></td>
         <td class="col-summary">当社は、PVDコーティング技術の適用により高い加工安定性と長寿命化を実現する「超硬ソリッドバーBXBR型」の新材種を拡充し、2026年5月から販売を開始します。</td>
       </tr>
-      <tr data-company="オムロン（DMS）" data-date="2026-04-15">
-        <td class="col-company">オムロン（DMS）</td>
+      <tr data-company="川崎重工業" data-date="2026-04-15">
+        <td class="col-company">川崎重工業</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/04/15</td>
-        <td class="col-title"><a href="https://components.omron.com/jp-ja/news/20260415" target="_blank" rel="noopener">[お知らせ] 【NEW】DMS GREEN PROJECT｜生産プロセスから始まるDMSの脱炭素への挑戦を紹介する記事を公開しました。</a></td>
+        <td class="col-title"><a href="https://www.khi.co.jp/pressrelease/news_260415-1.pdf" target="_blank" rel="noopener">[プレスリリース] 中京病院にて屋内配送ロボット「FORRO（フォーロ）」の運用を開始</a></td>
         <td class="col-summary"></td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2026-04-14">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE5Ibm5BRV9zczh1MkdDU0xwNnpBT3ljbGdpcGE4MWF0RU9XRlNkVXdtTTEtTUgxYzAtaXE1dVJ1OXRyTGZiQW9WTw?oc=5" target="_blank" rel="noopener">川重・損保J・SB、船舶安全運航で連携 - LOGISTICS TODAY</a></td>
-        <td class="col-summary">川重・損保J・SB、船舶安全運航で連携 LOGISTICS TODAY</td>
       </tr>
       <tr data-company="川崎重工業" data-date="2026-04-14">
         <td class="col-company">川崎重工業</td>
@@ -355,13 +411,6 @@
         <td class="col-date">2026/04/14</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiQkFVX3lxTE9FWlhRWS0xZ2NHWHdiMWVFaXFDeHo0dWVWLXM4bDZUVVBHUGtFTVhnUmVTQWU3akhuUjZZR3lzaHZsZw?oc=5" target="_blank" rel="noopener">川重、破砕機の子会社売却 - ニュースイッチ by 日刊工業新聞社</a></td>
         <td class="col-summary">川重、破砕機の子会社売却 ニュースイッチ by 日刊工業新聞社</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2026-04-14">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5jX21mZTVVektMTnc3OGZBTTFSUTd5eUFUWWloMTViOWM2Qm95OWUxNTNRaFR2ZVc4djdBVXRjT0JXeXNiWm1uZ1lmSFJtaVRXS2k5d3lmSFlIZ3M?oc=5" target="_blank" rel="noopener">水を使わないDC冷却は実現するか…川崎重工が挑む水素冷熱とWUE時代のインフラ戦略 - ビジネスジャーナル</a></td>
-        <td class="col-summary">水を使わないDC冷却は実現するか…川崎重工が挑む水素冷熱とWUE時代のインフラ戦略 ビジネスジャーナル</td>
       </tr>
       <tr data-company="山善" data-date="2026-04-14">
         <td class="col-company">山善</td>
@@ -381,15 +430,15 @@
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE9XMmlzTTRlM054M21Wd2ljZUdGMmJkN1NlVkdrOFVFcUR3RHVId2lMYmhPbDFDRjBMQVRrQkNwdkxoclBKWGxFLUZISEh2bm8?oc=5" target="_blank" rel="noopener">卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので - ROOMIE（ルーミー）</a></td>
-        <td class="col-summary">卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので ROOMIE（ルーミー）</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiSkFVX3lxTE93OFhTbFdmaWk0c2Z3S0J1TllNcUFsWUpyVWxIS1lNY0x0WWhTLXhvcUVfLS15M0w5ZnZjX19fVDN3UWxwcXduaWV3?oc=5" target="_blank" rel="noopener">卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので - まぐまぐ</a></td>
+        <td class="col-summary">卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので まぐまぐ</td>
       </tr>
-      <tr data-company="川崎重工業" data-date="2026-04-14">
-        <td class="col-company">川崎重工業</td>
+      <tr data-company="山善" data-date="2026-04-14">
+        <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHRUxvRVBjbmxTd0ZoaWZLVzdVaTFqT1lNYndQRnhWeXhqZVlIU3FOU3BfRFV1S3ZBbkNuUXdtbDRuNWdBQ0ZCRmNKZWJoVWNWN3hjWFA3THFPLWNvdjV3?oc=5" target="_blank" rel="noopener">川崎重工業(株)【7012】：AI値動き解説 - Yahoo!ファイナンス</a></td>
-        <td class="col-summary">川崎重工業(株)【7012】：AI値動き解説 Yahoo!ファイナンス</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE9XMmlzTTRlM054M21Wd2ljZUdGMmJkN1NlVkdrOFVFcUR3RHVId2lMYmhPbDFDRjBMQVRrQkNwdkxoclBKWGxFLUZISEh2bm8?oc=5" target="_blank" rel="noopener">卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので - ROOMIE（ルーミー）</a></td>
+        <td class="col-summary">卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので ROOMIE（ルーミー）</td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-04-14">
         <td class="col-company">椿本チエイン</td>
@@ -416,8 +465,8 @@
         <td class="col-company">川崎重工業</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE1neUtEOHNUR256REtjN0tPcjB5UUJNaE51TGdIdWF6TTliNVJzLU1QT3hscXM1clZMX2hjZjRwYU1hSFdyeHZ5Nm8tSTk1N1RFakhn?oc=5" target="_blank" rel="noopener">ソフトバンク・川崎重工・損保ジャパンが「船の自動運転」目指す 誤差数センチの位置測位サービスを活用 - ビジネスネットワーク</a></td>
-        <td class="col-summary">ソフトバンク・川崎重工・損保ジャパンが「船の自動運転」目指す 誤差数センチの位置測位サービスを活用 ビジネスネットワーク</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNbloyWTlab1J3bXNLYzlyVjhNb1BOWGtmQk9CdFZYU094b1JMSHJBcWhvVjlTVFZsY3RoQ0g2VnpYUXRUQ0MtUVRpc3o2OGNLNTR5RlQ0c1d3dk9tLXJrWlNDb0JXcm9BWjd4R1BVM25pdDU0N2c3T2ctelBSLUpGMWFRZVlJMjBSa2wxMUVSVzd2UkdUMkJrTmsweDc1WHNIeFIwY3NQZG80cDA5UmQySnhzZXJDaVlWbVE?oc=5" target="_blank" rel="noopener">川崎重工業と損害保険ジャパンがソフトバンクとともに船舶の安全運航を支える統合ソリューションの提供に向けた基本合意を締結 - 北海道新聞デジタル</a></td>
+        <td class="col-summary">川崎重工業と損害保険ジャパンがソフトバンクとともに船舶の安全運航を支える統合ソリューションの提供に向けた基本合意を締結 北海道新聞デジタル</td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-04-14">
         <td class="col-company">椿本チエイン</td>
@@ -430,15 +479,8 @@
         <td class="col-company">椿本チエイン</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNd3hoM0s1dzU0TmVzTzZZZzlzU3BOY0dOWm9GUFNrUEFEY0JTTVdjRlg1Z19JQ09xLThlLVc3N0h6WURZV3BxS0hEa0pHekNEVE1fUUtCY09YdXdROXNiWV9pOEpJMm1obENUdDBVTFd3Mmt6V2NGeHBXZGhubzVaV0lDemkzZ1g5Vkw3QUVrYw?oc=5" target="_blank" rel="noopener">椿本チエイン子会社、「つばきみらいポート」を東京・芝公園に開設…バリアフリー社会実現へ 1枚目の写真・画像 - レスポンス（Response.jp）</a></td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTFBySElCdmMyV2pHREVHOFI3ODV0Qk1XLWJDWDJWYmlFdWNqSjlidE5IcmNDcDZYT1ZUTWdQLTZLcGNwalRkeHZpMVk3WTJJLXdMMWowb0doYkxfZVloQk8xNnZEem1sWmZONnpuUFlfUQ?oc=5" target="_blank" rel="noopener">椿本チエイン子会社、「つばきみらいポート」を東京・芝公園に開設…バリアフリー社会実現へ 1枚目の写真・画像 - レスポンス（Response.jp）</a></td>
         <td class="col-summary">椿本チエイン子会社、「つばきみらいポート」を東京・芝公園に開設…バリアフリー社会実現へ 1枚目の写真・画像 レスポンス（Response.jp）</td>
-      </tr>
-      <tr data-company="オムロン（DMS）" data-date="2026-04-14">
-        <td class="col-company">オムロン（DMS）</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://components.omron.com/jp-ja/news/20260414" target="_blank" rel="noopener">[製品] オムロン電子部品商品リストを追加しました。</a></td>
-        <td class="col-summary"></td>
       </tr>
       <tr data-company="エムジー" data-date="2026-04-14">
         <td class="col-company">エムジー</td>
@@ -451,8 +493,15 @@
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://www.yamazen.co.jp/news/entry-2819.html" target="_blank" rel="noopener">「リビングシェード」を新発売</a></td>
-        <td class="col-summary">“夏が長い日本”のくらしに、庭先にもう一部屋を。猛暑の日よけ×目隠しで快適な屋外空間をつくる「リビングシェード」を新発売～2026年4月下旬より順次発売開始～株式会社山善（本社：大阪市西区、代表取締役社長：岸田貢司）は、日よけと目隠しを両立しながら、ご自宅の庭や軒下を“リビングの延長”として有効活用</td>
+        <td class="col-title"><a href="https://www.yamazen.co.jp/news/entry-2819.html" target="_blank" rel="noopener">[プレスリリース] 「リビングシェード」を新発売</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-14">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/14</td>
+        <td class="col-title"><a href="https://www.khi.co.jp/pressrelease/news_260414-1.pdf" target="_blank" rel="noopener">[プレスリリース] 川崎重工業と損害保険ジャパンがソフトバンクとともに船舶の安全運航を支える統合ソリューションの提供に向けた基本合意を締結</a></td>
+        <td class="col-summary"></td>
       </tr>
       <tr data-company="川崎重工業" data-date="2026-04-13">
         <td class="col-company">川崎重工業</td>
@@ -460,13 +509,6 @@
         <td class="col-date">2026/04/13</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE5pVkxFUWJSeGpveWFmMjJ6QnVCNGt4bHhFS2Z5VjlHOE5ZaGtiMWlxam1nREhKT0lvVDR6QTR3bk9yTWhwUGc3SHFadXMzaV9DUlYyWkQzaGpTNEhvcmV2Z0JDVDlCakNqMkE?oc=5" target="_blank" rel="noopener">【川崎重工グループ ヘリコプター手配サービス Z-Leg™︎】 【特典付きプラン】「富士山と駿河湾をめぐる、パイロットがお薦めするスカイクルーズ」 - PR TIMES</a></td>
         <td class="col-summary">【川崎重工グループ ヘリコプター手配サービス Z-Leg™︎】 【特典付きプラン】「富士山と駿河湾をめぐる、パイロットがお薦めするスカイクルーズ」 PR TIMES</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2026-04-13">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/13</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5oMzFXRHRKX3g4WV9QUGctUEJ6S2s3Y3ZmNTNFTGI3djFOeDhmWVlKRUdZWGtqeGVLRDI2MnNLWGw4VXZEZjV5a2oycGxRdXVaaXpRcHdxNl9HR1BrMllHaEV3TGNZVFNPUi1pag?oc=5" target="_blank" rel="noopener">川崎重工、ごみ処理場の人員半減 AIやロボット活用で - 日本経済新聞</a></td>
-        <td class="col-summary">川崎重工、ごみ処理場の人員半減 AIやロボット活用で 日本経済新聞</td>
       </tr>
       <tr data-company="川崎重工業" data-date="2026-04-13">
         <td class="col-company">川崎重工業</td>
@@ -489,6 +531,13 @@
         <td class="col-title"><a href="https://www.optex-fa.jp/products/photo_sensor/bgs/za-b/" target="_blank" rel="noopener">[製品情報] アンプ内蔵 CMOSレーザセンサ「ZA-Bシリーズ」を発売</a></td>
         <td class="col-summary"></td>
       </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-13">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/13</td>
+        <td class="col-title"><a href="https://www.khi.co.jp/pressrelease/news_260413-1.pdf" target="_blank" rel="noopener">[プレスリリース] 神戸市立西神戸医療センターで屋内配送ロボット「FORRO（フォーロ）」の運用を開始</a></td>
+        <td class="col-summary"></td>
+      </tr>
       <tr data-company="因幡電機産業" data-date="2026-04-12">
         <td class="col-company">因幡電機産業</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
@@ -507,15 +556,15 @@
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/10</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE9RNnBvUndlQVNNTmZFcGVYYzJUX0pacWVSbFRYQkF6bHBiTFhGRDhYUDJRZ1E5ejFhdDBqdURMR28wN0dHQTJtVzh2bVNucUJtLTRrSjJjX2J5cmdZb2d3Qg?oc=5" target="_blank" rel="noopener">猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 - tretsactu.fr</a></td>
-        <td class="col-summary">猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 tretsactu.fr</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE9RNnBvUndlQVNNTmZFcGVYYzJUX0pacWVSbFRYQkF6bHBiTFhGRDhYUDJRZ1E5ejFhdDBqdURMR28wN0dHQTJtVzh2bVNucUJtLTRrSjJjX2J5cmdZb2d3Qg?oc=5" target="_blank" rel="noopener">猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 - Trets au cœur de la Provence</a></td>
+        <td class="col-summary">猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 Trets au cœur de la Provence</td>
       </tr>
-      <tr data-company="山善" data-date="2026-04-10">
-        <td class="col-company">山善</td>
+      <tr data-company="杉本商事" data-date="2026-04-10">
+        <td class="col-company">杉本商事</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/10</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5udnZyU2I4TE1aR1hmUnpETGZWT1NMVEJZZmE0NHhJYURjMnBkT2ZjZFFjZTc2VEFMS3E1VzNEN3FqYnktSkdLRUZMYm56aEpwMmo3cjVrRUp5UDg?oc=5" target="_blank" rel="noopener">梅雨前の“早め対策”に！春先から始める収納空間の湿気ケア「ペルチェ式除湿機」4月下旬より発売開始 - 共同通信PRワイヤー</a></td>
-        <td class="col-summary">梅雨前の“早め対策”に！春先から始める収納空間の湿気ケア「ペルチェ式除湿機」4月下旬より発売開始 共同通信PRワイヤー</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTFBSdENIM2VIeGd3dnY4WTJBMGZKTUNZZ0JEZm1uNzc3QlZsNy1oclNhRkR6eHM4X3QxVE5hN3FaRXl3WFJzaks3eHNGS3FqUE1hWWVYZmQzQWcyeWJfQnk0YnQzM0N2cFBZ?oc=5" target="_blank" rel="noopener">4/12（日）ファーム・リーグ公式戦 対 福岡ソフトバンクホークス戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></td>
+        <td class="col-summary">4/12（日）ファーム・リーグ公式戦 対 福岡ソフトバンクホークス戦（杉本商事BS）当日券販売について オリックス・バファローズ</td>
       </tr>
       <tr data-company="杉本商事" data-date="2026-04-10">
         <td class="col-company">杉本商事</td>
@@ -549,8 +598,15 @@
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/04/10</td>
-        <td class="col-title"><a href="https://www.yamazen.co.jp/news/entry-2818.html" target="_blank" rel="noopener">「ペルチェ式除湿機」を新発売</a></td>
-        <td class="col-summary">～梅雨前の“早め対策”に！春先から始める収納空間の湿気ケア～コンプレッサー不使用の静音設計、モバイルバッテリー対応＋コンパクト設計で狭い空間にも使用可能！「ペルチェ式除湿機」2026年4月下旬より発売開始株式会社山善（本社：大阪市西区、代表取締役社長：岸田貢司）は、コンパクト設計で下駄箱やクローゼッ</td>
+        <td class="col-title"><a href="https://www.yamazen.co.jp/news/entry-2818.html" target="_blank" rel="noopener">[プレスリリース] 「ペルチェ式除湿機」を新発売</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="株式会社ナイキ" data-date="2026-04-10">
+        <td class="col-company">株式会社ナイキ</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/10</td>
+        <td class="col-title"><a href="https://www.naiki.co.jp/websolution/cat-04.html" target="_blank" rel="noopener">NAIKI Style Selection NBook vol.7改訂版を掲載しました。 2026年新製品を加えトータル115シーンの提案をご覧いただけます。</a></td>
+        <td class="col-summary"></td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-04-09">
         <td class="col-company">椿本チエイン</td>
@@ -563,14 +619,7 @@
         <td class="col-company">椿本チエイン</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/09</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPN0JkNF92a3UxUkN5NGFjN3ZDWTliTWJMVTVpZTZZLXRodGJmWlBhbnVUZzVpT3BwTGZ2c0ROMnQ5OHhVY29OMFo0dXl5Z1A5QW5INUlmeXNmd1hOaVVsOUNfTnNTcHFRVHQ2dmNVQVhmQzkwU3ZOMGR1X2IydGVEZF96aVljTWlDUTZqSXh0bVQ4aEhaN1k4OEhuQzJuNWYxam1OdTJhTnA?oc=5" target="_blank" rel="noopener">椿本チエイン、欧州事業の統括子会社をオランダに新設 拠点を集約 - 日本経済新聞</a></td>
-        <td class="col-summary">椿本チエイン、欧州事業の統括子会社をオランダに新設 拠点を集約 日本経済新聞</td>
-      </tr>
-      <tr data-company="椿本チエイン" data-date="2026-04-09">
-        <td class="col-company">椿本チエイン</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/09</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTE9lZEljSEZSVGlFYlVaTk9Jcnc2aUJjMkg1eWxuSTVPQTN2NDQ5ZEVZUDlZU05KaDhKNVliTElFNHZWQ0EzcFNkaG1EeXJNS2dYaXRRXzd1dFlUdHNsOFdNNE9Ydw?oc=5" target="_blank" rel="noopener">椿本チエイン、欧州子会社の組織再編を発表 - marr.jp</a></td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTFBNWkNfeDBjTGtyMHBrTlhISmFCalNsVVotS3AtNlpKMDBkRUgxbjJuWmQyMDJxMjN4c3hXdnFESzNGa0xQaVd5Tk81ZDk?oc=5" target="_blank" rel="noopener">椿本チエイン、欧州子会社の組織再編を発表 - marr.jp</a></td>
         <td class="col-summary">椿本チエイン、欧州子会社の組織再編を発表 marr.jp</td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-04-09">
@@ -612,15 +661,8 @@
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/04/09</td>
-        <td class="col-title"><a href="https://www.yamazen.co.jp/news/entry-2822.html" target="_blank" rel="noopener">インドネシアで機械工具事業を拡大</a></td>
-        <td class="col-summary">インドネシアで機械工具事業を拡大―海外子会社の機械工具商社とセレモニーを開催―株式会社山善（本社：大阪市西区／代表取締役社長：岸田貢司 以下、当社）は、2026年3月27日付で株式譲渡により子会社化した、インドネシアの機械工具商社であるPT. Somagede Indonesia（以下「SGI社」）</td>
-      </tr>
-      <tr data-company="山善" data-date="2026-04-09">
-        <td class="col-company">山善</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/04/09</td>
-        <td class="col-title"><a href="https://www.yamazen.co.jp/news/entry-2817.html" target="_blank" rel="noopener">「熱中対策シェルター」と「エマージェンシープール」を新発売</a></td>
-        <td class="col-summary">どんな場所でも“涼しい避難スペース”を「熱中対策シェルター」～万が一の応急対応に「エマージェンシープール」も展開～2026年4月下旬より発売開始株式会社山善（本社：大阪市西区、代表取締役社長：岸田貢司）は、作業現場における熱中症対策として、移動式の簡易休憩スペース「熱中対策シェルター」（屋外／屋内用</td>
+        <td class="col-title"><a href="https://www.yamazen.co.jp/news/entry-2822.html" target="_blank" rel="noopener">[お知らせ] インドネシアで機械工具事業を拡大</a></td>
+        <td class="col-summary"></td>
       </tr>
       <tr data-company="北陽電機" data-date="2026-04-08">
         <td class="col-company">北陽電機</td>
@@ -650,6 +692,13 @@
         <td class="col-title"><a href="https://www.optex.co.jp/news/2026/n29uk10000006x5s.html" target="_blank" rel="noopener">技研トラステムが「自治体・公共Week2026」に出展します</a></td>
         <td class="col-summary">このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。あなたのWebブラウザーでJavaScriptを有効にする方法を参照してください。</td>
       </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-08">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/08</td>
+        <td class="col-title"><a href="https://www.khi.co.jp/pressrelease/detail/20260408_1.html" target="_blank" rel="noopener">[プレスリリース] ばら積運搬船「MARIDORA」の引き渡し</a></td>
+        <td class="col-summary"></td>
+      </tr>
       <tr data-company="京セラドキュメントソリューションズ" data-date="2026-04-07">
         <td class="col-company">京セラドキュメントソリューションズ</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
@@ -664,18 +713,18 @@
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBfQjlhRGtiMzdBamNMTFFGb3Y2elpBQ3Exc1NKcEZPdEp1TC00TVZOcXRGcmpqWjNyb3A1NHkteHdGNXJvY2JUZXlZLXlqRldhS2xmSVRSTEFrcEIwLTRr?oc=5" target="_blank" rel="noopener">京セラドキュメントソリューションズ、AGVを実機展示へ…関西物流展2026 - レスポンス（Response.jp）</a></td>
         <td class="col-summary">京セラドキュメントソリューションズ、AGVを実機展示へ…関西物流展2026 レスポンス（Response.jp）</td>
       </tr>
-      <tr data-company="山善" data-date="2026-04-07">
-        <td class="col-company">山善</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/07</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9leWhUbDNHaXNDQ0U4aTRtb1VQSHhmN1VVXzdWYWdYRjBQY1FzZ2tQZ1MtZ2Rjd004a0Z4dHY4dkYxTVdobUpvYkhxc2REREJzUjQwanJlWk5hVTU1MGlZRzd5WUE0am9FZnU2T1loUmo?oc=5" target="_blank" rel="noopener">【ガン見】昨年爆売れした山善ポータブル冷蔵庫。さらに保温もできる型が54%オフに!? - ギズモード・ジャパン</a></td>
-        <td class="col-summary">【ガン見】昨年爆売れした山善ポータブル冷蔵庫。さらに保温もできる型が54%オフに!? ギズモード・ジャパン</td>
-      </tr>
       <tr data-company="川喜金物" data-date="2026-04-07">
         <td class="col-company">川喜金物</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/04/07</td>
-        <td class="col-title"><a href="https://www.kawaki-sowa.co.jp/news.html" target="_blank" rel="noopener">NEWお知らせ～健康経営優良法人2026認定～</a></td>
+        <td class="col-title"><a href="https://www.kawaki-sowa.co.jp/dcms_media/other/%E5%81%A5%E5%BA%B7%E7%B5%8C%E5%96%B6%E8%AA%8D%E5%AE%9A%E8%A8%BC2026%EF%BC%BF%E5%B7%9D%E5%96%9C%E9%87%91%E7%89%A9%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE.pdf" target="_blank" rel="noopener">[お知らせ] ～健康経営優良法人2026認定～</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-07">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/07</td>
+        <td class="col-title"><a href="https://www.khi.co.jp/news/detail/20260407_1.html" target="_blank" rel="noopener">Kawasaki CO₂ Capture（KCC）が日刊工業新聞社主催・第55回日本産業技術大賞で文部科学大臣賞を受賞</a></td>
         <td class="col-summary"></td>
       </tr>
       <tr data-company="オプテックス" data-date="2026-04-06">
@@ -692,13 +741,6 @@
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTFBpUmtKMExaeDVtTFV1VzFfRVdyODVuM3p6MDJIekhPeUx6aDlOS2V4UUpvOE5DVDBJcmphaTNTVkQwSV9NYjEwd21jWmlMWEZQQlRYNWhIQmI3Y2cyU0VRLXU3QW1UQlh4?oc=5" target="_blank" rel="noopener">4/7（火）～4/9（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></td>
         <td class="col-summary">4/7（火）～4/9（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について オリックス・バファローズ</td>
       </tr>
-      <tr data-company="因幡電機産業" data-date="2026-04-06">
-        <td class="col-company">因幡電機産業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/06</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE5oSG9yNEFQbzFWU3VZYXVldm16eVN0cTBicG50RG5YbXJ6c2Z0WU9GUmxwZlhqSlRfTGRkTklFTTl0ZXlxWGNTTURuQXdsZGhUeGpCLWZmUFpQSDZ4QVV1bkZXaUJMd1I3aVE?oc=5" target="_blank" rel="noopener">電設業界最大級の展示即売会、「第52回ジャンボびっくり見本市」に参加します。 - PR TIMES</a></td>
-        <td class="col-summary">電設業界最大級の展示即売会、「第52回ジャンボびっくり見本市」に参加します。 PR TIMES</td>
-      </tr>
       <tr data-company="CCS（シーシーエス）" data-date="2026-04-06">
         <td class="col-company">CCS（シーシーエス）</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -713,26 +755,12 @@
         <td class="col-title"><a href="https://www.ccs-inc.co.jp/event/cow/kariya.html" target="_blank" rel="noopener">[お知らせ] 展示会「CCS OpenWorld in 刈谷 2026」開催（2026/5/28～2026/5/29）</a></td>
         <td class="col-summary"></td>
       </tr>
-      <tr data-company="山善" data-date="2026-04-06">
-        <td class="col-company">山善</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/04/06</td>
-        <td class="col-title"><a href="https://www.yamazen.co.jp/news/entry-2816.html" target="_blank" rel="noopener">大分営業所 業務部門移転のお知らせ</a></td>
-        <td class="col-summary">各位株式会社山善では、大分営業所の業務部門につきまして、下記のとおり移転しますので、お知らせします。なお、セールスは大分営業所での営業活動を継続いたします。記【大分営業所 業務部門（産業ソリューション事業部・Ｔ＆Ｅ事業部】・住　所：〒812-8578福岡市博多区東比恵2-20-18　(株)山善 九州</td>
-      </tr>
       <tr data-company="VESSEL（ベッセル）" data-date="2026-04-03">
         <td class="col-company">VESSEL（ベッセル）</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/03</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE90YlRFb2xReWNZSU1FTHZjc2hrWXpvRG9UX2tjN1JNSlNGNjBuM1ZHOGxLMGxYZ0RtVm9YRy1rSUhBYlJFMlNpS3BLMXJ4Vm4xR2t5TTczbkVFVFZmU2JfWGFpWDh2dkROaXc?oc=5" target="_blank" rel="noopener">リフォーム解体、植木伐採、竹伐採の現場に。木用／竹用セーバーソーブレードシリーズを4種追加発売 - PR TIMES</a></td>
         <td class="col-summary">リフォーム解体、植木伐採、竹伐採の現場に。木用／竹用セーバーソーブレードシリーズを4種追加発売 PR TIMES</td>
-      </tr>
-      <tr data-company="オムロン（DMS）" data-date="2026-04-03">
-        <td class="col-company">オムロン（DMS）</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/04/03</td>
-        <td class="col-title"><a href="https://components.omron.com/jp-ja/news/20260403" target="_blank" rel="noopener">[製品] コネクタセレクションガイドを更新しました。</a></td>
-        <td class="col-summary"></td>
       </tr>
       <tr data-company="オプテックス" data-date="2026-04-03">
         <td class="col-company">オプテックス</td>
@@ -818,12 +846,47 @@
         <td class="col-title"><a href="https://www.hokuyo-aut.co.jp/topics/detail.php?id=518" target="_blank" rel="noopener">[お知らせ] 臨時休業のお知らせ(4月10日)</a></td>
         <td class="col-summary"></td>
       </tr>
+      <tr data-company="YUSHIN（ユーシン精機）" data-date="2026-04-01">
+        <td class="col-company">YUSHIN（ユーシン精機）</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/01</td>
+        <td class="col-title"><a href="https://www.yushincompany.jp/newsrelease/archive/2026/20260401.html" target="_blank" rel="noopener">[企業情報] 役員人事のお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="杉本商事" data-date="2026-04-01">
+        <td class="col-company">杉本商事</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/01</td>
+        <td class="col-title"><a href="https://www.sugi-net.co.jp/%e7%a4%be%e4%bc%9a%e8%b2%a2%e7%8c%ae%e3%81%ab%e5%90%91%e3%81%91%e3%81%9f%e5%af%84%e4%bb%98%e3%81%ae%e5%ae%9f%e6%96%bd%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/" target="_blank" rel="noopener">[お知らせ] 社会貢献に向けた寄付の実施について</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="因幡電機産業" data-date="2026-04-01">
+        <td class="col-company">因幡電機産業</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/01</td>
+        <td class="col-title"><a href="https://contents.xj-storage.jp/xcontents/AS70085/92f349f9/f65e/4c31/9d69/fd081dd34b6e/140120260401595281.pdf" target="_blank" rel="noopener">[IRニュース] 自己株式の取得状況に関するお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="旭精工" data-date="2026-04-01">
+        <td class="col-company">旭精工</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/01</td>
+        <td class="col-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/370/ゴールデンウィーク休業のお知らせ2026.pdf" target="_blank" rel="noopener">[会社] ゴールデンウィーク休業のお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="旭精工" data-date="2026-04-01">
+        <td class="col-company">旭精工</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/01</td>
+        <td class="col-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/369/B07_23_stainless.pdf" target="_blank" rel="noopener">[製品] カタログ「ステンレスシリーズ」を更新しました。MFK形など形番追加によりラインアップを強化！</a></td>
+        <td class="col-summary"></td>
+      </tr>
       <tr data-company="山善" data-date="2026-03-31">
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/03/31</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE5rWHJpN2VmSlo3ZWE1eUlCZTM5RUoxb2xOel9GejAtN0xiS0lLNk5NMUhkb2JHbi1oWU00eVhTTjQ5ODFPY00zMHNnRGQ?oc=5" target="_blank" rel="noopener">山善 YAMAZEN サーキュレーター YAR-ND15E(WH)を検証レビュー！サーキュレーターの選び方も紹介 - マイベスト</a></td>
-        <td class="col-summary">山善 YAMAZEN サーキュレーター YAR-ND15E(WH)を検証レビュー！サーキュレーターの選び方も紹介 マイベスト</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE1qb3FXbnNZdUNHU0dqZlFuY1RoeE9WcU9kWm1yNzZnUVRabDdHc0tSbFBfUXUtR1ZSVG5aYWNObVhlSThTRXVYdUpMZjg?oc=5" target="_blank" rel="noopener">山善 YAMAZEN DCサーキュレーター RCRP-W015を検証レビュー！サーキュレーターの選び方も紹介 - マイベスト</a></td>
+        <td class="col-summary">山善 YAMAZEN DCサーキュレーター RCRP-W015を検証レビュー！サーキュレーターの選び方も紹介 マイベスト</td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-03-31">
         <td class="col-company">椿本チエイン</td>
@@ -881,6 +944,13 @@
         <td class="col-title"><a href="https://www.optex-fa.jp/news/ir/detail/3741" target="_blank" rel="noopener">[企業情報] 京都技術生産センターに生産機能を集約</a></td>
         <td class="col-summary"></td>
       </tr>
+      <tr data-company="YUSHIN（ユーシン精機）" data-date="2026-03-31">
+        <td class="col-company">YUSHIN（ユーシン精機）</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/31</td>
+        <td class="col-title"><a href="https://ir.yushincompany.jp/ja/PressRelease/auto_20260327591418.html" target="_blank" rel="noopener">[IR] 投資有価証券売却に伴う特別利益の計上に関するお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
       <tr data-company="オムロン（DMS）" data-date="2026-03-30">
         <td class="col-company">オムロン（DMS）</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
@@ -895,13 +965,6 @@
         <td class="col-title"><a href="https://www.tsubakimoto.jp/company/news/press/2026/03/30/1/" target="_blank" rel="noopener">[プレスリリース] 椿本マシナリーが新ビジネスに特化した営業拠点「つばきみらいポート」を東京都港区に開設</a></td>
         <td class="col-summary"></td>
       </tr>
-      <tr data-company="オムロン（DMS）" data-date="2026-03-30">
-        <td class="col-company">オムロン（DMS）</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/03/30</td>
-        <td class="col-title"><a href="https://components.omron.com/jp-ja/news/20260330" target="_blank" rel="noopener">[プレスリリース] デバイス＆モジュールソリューションビジネスの 会社分割（吸収分割）及び 承継会社の株式譲渡（子会社等の異動）に関するお知らせ</a></td>
-        <td class="col-summary"></td>
-      </tr>
       <tr data-company="オプテックスFA" data-date="2026-03-30">
         <td class="col-company">オプテックスFA</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -909,12 +972,12 @@
         <td class="col-title"><a href="https://www.optex-fa.jp/news/productlist/detail/3740" target="_blank" rel="noopener">[製品情報] WEBサイトにおける価格表記変更について（4/2現在）</a></td>
         <td class="col-summary"></td>
       </tr>
-      <tr data-company="因幡電機産業" data-date="2026-03-27">
-        <td class="col-company">因幡電機産業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/03/27</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE03N3hmaGt0THphbHFLbDdpR1FIS3BUZVM1QXRFaENGWlZqQ3VGRHR6ZG5GbG9aNkxmcjQzT3lPYTdaMW0wMjBGOVpTeGN3SkRtUGs0RFM1bEV5cFJZRmRHdFdwa3lEbzg?oc=5" target="_blank" rel="noopener">【移転】リバージュ品川へ移転、因幡電機産業の東京オフィス - 日経不動産マーケット情報</a></td>
-        <td class="col-summary">【移転】リバージュ品川へ移転、因幡電機産業の東京オフィス 日経不動産マーケット情報</td>
+      <tr data-company="YUSHIN（ユーシン精機）" data-date="2026-03-30">
+        <td class="col-company">YUSHIN（ユーシン精機）</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/30</td>
+        <td class="col-title"><a href="https://www.yushincompany.jp/newsrelease/subsidy-announcement_2.html" target="_blank" rel="noopener">[商品] 補助金対象製品のお知らせ：後工程自動化機能付成形品取出ロボット</a></td>
+        <td class="col-summary"></td>
       </tr>
       <tr data-company="京セラドキュメントソリューションズ" data-date="2026-03-27">
         <td class="col-company">京セラドキュメントソリューションズ</td>
@@ -941,15 +1004,8 @@
         <td class="col-company">京都機械工具（KTC）</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/03/26</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTFBxZk1CQ295dzEzMDF4NUt4dkJFcHNlSmQwWFRWMlNBOVpJOEU2T2swUmVMMlY4Z1ctVzFiWlFfbmMyLVZvNkxSZXliOTVmZW9XNDB2UFNMWXMzSkVMTHRIRWN3?oc=5" target="_blank" rel="noopener">もしかして「これ最高か？」「その使い方に感動」ほぼ全ての車種に対応。手のひらサイズの謎パーツは名門工具メーカー製。想像以上に効果は抜群。 - 月刊自家用車WEB</a></td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE1Gdm5iUFVCQlFYMkk3endKbVJreUExWTQwcFM4eG5LNGJBNkZTMTY0NjQ3dmlGVThWbUo5ZU94SnIya2Z1bWpfOXREOVlBVjFTMm9rSmdxVGV5Z1lzZUNVdWxB?oc=5" target="_blank" rel="noopener">もしかして「これ最高か？」「その使い方に感動」ほぼ全ての車種に対応。手のひらサイズの謎パーツは名門工具メーカー製。想像以上に効果は抜群。 - 月刊自家用車WEB</a></td>
         <td class="col-summary">もしかして「これ最高か？」「その使い方に感動」ほぼ全ての車種に対応。手のひらサイズの謎パーツは名門工具メーカー製。想像以上に効果は抜群。 月刊自家用車WEB</td>
-      </tr>
-      <tr data-company="杉本商事" data-date="2026-03-26">
-        <td class="col-company">杉本商事</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/03/26</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5FcFIyR3ZmdGd0bXV2WkxTbF9zNkhnR0RULUN3aFJ3b0NaYS1GeXJkRVFDTG1TSXVaUU9hdVJfeUxiM1l5dmxSMldqWEJOdEU4Q2hVQVdwZ2VmdEVIQXNiMzNETlA1Wkd1?oc=5" target="_blank" rel="noopener">3/26（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></td>
-        <td class="col-summary">3/26（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について オリックス・バファローズ</td>
       </tr>
       <tr data-company="京セラドキュメントソリューションズ" data-date="2026-03-26">
         <td class="col-company">京セラドキュメントソリューションズ</td>
@@ -972,19 +1028,19 @@
         <td class="col-title"><a href="https://www.hokuyo-aut.co.jp/topics/detail.php?id=517" target="_blank" rel="noopener">[お知らせ] まんがで分かる制御機器　season4  第23話公開</a></td>
         <td class="col-summary"></td>
       </tr>
-      <tr data-company="オムロン（DMS）" data-date="2026-03-26">
-        <td class="col-company">オムロン（DMS）</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/03/26</td>
-        <td class="col-title"><a href="https://components.omron.com/jp-ja/news/20260326-1" target="_blank" rel="noopener">[製品] MOSFETリレーセレクションガイドを更新しました。</a></td>
-        <td class="col-summary"></td>
-      </tr>
       <tr data-company="オプテックス" data-date="2026-03-26">
         <td class="col-company">オプテックス</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/03/26</td>
         <td class="col-title"><a href="https://www.optex.co.jp/news/2026/0326.html" target="_blank" rel="noopener">「健康経営優良法人2026（大規模法人部門）」に認定されました</a></td>
         <td class="col-summary">このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。あなたのWebブラウザーでJavaScriptを有効にする方法を参照してください。</td>
+      </tr>
+      <tr data-company="川喜金物" data-date="2026-03-25">
+        <td class="col-company">川喜金物</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/25</td>
+        <td class="col-title"><a href="https://www.kawaki-sowa.co.jp/dcms_media/other/KWK%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%20vol.4%EF%BC%880325%EF%BC%89.pdf" target="_blank" rel="noopener">[社外報] 「KWKニュース vol.4」掲載</a></td>
+        <td class="col-summary"></td>
       </tr>
       <tr data-company="京セラドキュメントソリューションズ" data-date="2026-03-23">
         <td class="col-company">京セラドキュメントソリューションズ</td>
@@ -1007,6 +1063,13 @@
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE1oVFlFV1hROVVRRXNOMmtmY0lZVThhUFFXWGVGa1htejRnekxIcmtySzdoSTFfR05LME9tdHZFa3JRUUJxWFhXZXVURXg1VDgtVWZJcFpJTnRLVHhSOWtZeUdJdklPNW1kSXc?oc=5" target="_blank" rel="noopener">杉本商事[9932]：人事異動に関するお知らせ 2026年3月19日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞</a></td>
         <td class="col-summary">杉本商事[9932]：人事異動に関するお知らせ 2026年3月19日(適時開示) ：日経会社情報DIGITAL 日本経済新聞</td>
       </tr>
+      <tr data-company="杉本商事" data-date="2026-03-19">
+        <td class="col-company">杉本商事</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/03/19</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE9uQnZMTjB0ZDFWZkhTOERXeURsSHgxVzh5a212T2NHbWpKSHAxWktFOFR6WlVNM25zaFh0ZUM5WjNtdjVvVUZmNzM3WnBjSjQxTWpOd19tN2FhZURkWG5OQncxcjdWUHVC?oc=5" target="_blank" rel="noopener">3/20（金・祝）～22（日）ファーム・リーグ公式戦 対 広島東洋カープ戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></td>
+        <td class="col-summary">3/20（金・祝）～22（日）ファーム・リーグ公式戦 対 広島東洋カープ戦（杉本商事BS）当日券販売について オリックス・バファローズ</td>
+      </tr>
       <tr data-company="京都機械工具（KTC）" data-date="2026-03-19">
         <td class="col-company">京都機械工具（KTC）</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -1019,6 +1082,13 @@
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/03/19</td>
         <td class="col-title"><a href="https://ktc.jp/news/141066" target="_blank" rel="noopener">[製品情報] 40~200N・mまで対応の「12.7sq.プレセット型トルクレンチ」を発売</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="杉本商事" data-date="2026-03-19">
+        <td class="col-company">杉本商事</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/19</td>
+        <td class="col-title"><a href="https://www.sugi-net.co.jp/%e4%ba%ba%e4%ba%8b%e7%95%b0%e5%8b%95%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b-2/" target="_blank" rel="noopener">[IR情報] 人事異動に関するお知らせ</a></td>
         <td class="col-summary"></td>
       </tr>
       <tr data-company="オプテックス" data-date="2026-03-18">
@@ -1046,8 +1116,8 @@
         <td class="col-company">因幡電機産業</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/03/17</td>
-        <td class="col-title"><a href="https://www.jumbo-fair.jp/" target="_blank" rel="noopener">第52回 ジャンボびっくり見本市に出展します。ぜひご来場ください！</a></td>
-        <td class="col-summary">2025年4月に開催された「第51回ジャンボびっくり見本市」は大成功に終わり、多くのお客様にご来場いただきました。こちらから過去数年に渡っての開催概要がご覧いただけます。</td>
+        <td class="col-title"><a href="https://www.jumbo-fair.jp/" target="_blank" rel="noopener">[お知らせ] 第52回 ジャンボびっくり見本市に出展します。ぜひご来場ください！</a></td>
+        <td class="col-summary"></td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-03-16">
         <td class="col-company">椿本チエイン</td>
@@ -1084,11 +1154,46 @@
         <td class="col-title"><a href="https://www.vessel.co.jp/news/detail/2192" target="_blank" rel="noopener">【新製品】「限定品 剛鍛セミロングソケット9本組＜黒仕様＞」発売のご案内</a></td>
         <td class="col-summary"></td>
       </tr>
+      <tr data-company="杉本商事" data-date="2026-03-10">
+        <td class="col-company">杉本商事</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/10</td>
+        <td class="col-title"><a href="https://www.sugi-net.co.jp/%e3%80%8c%e5%81%a5%e5%ba%b7%e7%b5%8c%e5%96%b6%e5%84%aa%e8%89%af%e6%b3%95%e4%ba%ba2026%e3%80%8d%e3%81%ab%e8%aa%8d%e5%ae%9a%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f/" target="_blank" rel="noopener">[お知らせ] 「健康経営優良法人2026」に認定されました</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="杉本商事" data-date="2026-03-09">
+        <td class="col-company">杉本商事</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/09</td>
+        <td class="col-title"><a href="https://www.sugi-net.co.jp/%e4%ba%8b%e6%a5%ad%e7%b4%b9%e4%bb%8b%e3%83%a0%e3%83%bc%e3%83%93%e3%83%bc%e3%82%92%e6%8e%b2%e8%bc%89%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/" target="_blank" rel="noopener">[お知らせ] 事業紹介ムービーを掲載しました</a></td>
+        <td class="col-summary"></td>
+      </tr>
       <tr data-company="CCS（シーシーエス）" data-date="2026-03-06">
         <td class="col-company">CCS（シーシーエス）</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/03/06</td>
         <td class="col-title"><a href="https://www.ccs-inc.co.jp/ecsuites/uploads/news/1/20260306091339644.pdf" target="_blank" rel="noopener">[お知らせ] 東京営業所、恵比寿テスティングルーム、東京AIラボ 移転のお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="株式会社ナイキ" data-date="2026-03-06">
+        <td class="col-company">株式会社ナイキ</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/06</td>
+        <td class="col-title"><a href="https://www.naiki.co.jp/company_info/gaiyou.html" target="_blank" rel="noopener">標準貨物自動車利用運送 （引越） 約款を掲載しました。</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="守谷商会" data-date="2026-03-06">
+        <td class="col-company">守谷商会</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/06</td>
+        <td class="col-title"><a href="https://sales.moritani.co.jp/topics/y2026/bj_202603/" target="_blank" rel="noopener">[新着情報] ［第20回 【国際】二次電池展 春］（2026年3月17日～19日）にアシザワ・ファインテック株式会社と共同出展します。</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="守谷商会" data-date="2026-03-05">
+        <td class="col-company">守谷商会</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/05</td>
+        <td class="col-title"><a href="https://sales.moritani.co.jp/topics/y2026/h2fc-expo2026-3/" target="_blank" rel="noopener">[新着情報] H2&amp;FC EXPO[春]2026第25回 [国際]水素・燃料電池展[春]（2026年3月17日～3月19日）にTELEDYNE ENERGY SYSTEMSと共同出展します。</a></td>
         <td class="col-summary"></td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-03-03">
@@ -1112,6 +1217,13 @@
         <td class="col-title"><a href="https://www.tsubakimoto.jp/company/news/notice/2026/03/02/1" target="_blank" rel="noopener">[お知らせ] 「つばきバーチャルブース　SEMICON® JAPAN 2025編」のご案内</a></td>
         <td class="col-summary"></td>
       </tr>
+      <tr data-company="川喜金物" data-date="2026-03-02">
+        <td class="col-company">川喜金物</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/03/02</td>
+        <td class="col-title"><a href="https://www.kawaki-sowa.co.jp/news.html" target="_blank" rel="noopener">[重要] 棚卸のご案内</a></td>
+        <td class="col-summary"></td>
+      </tr>
       <tr data-company="住友電工ツールネット" data-date="2026-03-02">
         <td class="col-company">住友電工ツールネット</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -1133,6 +1245,13 @@
         <td class="col-title"><a href="https://www.tsubakimoto.jp/company/news/events/#2026-01" target="_blank" rel="noopener">[展示会] 人とくるまのテクノロジー展 2026 YOKOHAMA</a></td>
         <td class="col-summary"></td>
       </tr>
+      <tr data-company="因幡電機産業" data-date="2026-02-24">
+        <td class="col-company">因幡電機産業</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/02/24</td>
+        <td class="col-title"><a href="https://contents.xj-storage.jp/xcontents/AS70085/17c008ea/b2b2/4ec4/9cb5/29c7c7d0d786/140120260224567618.pdf" target="_blank" rel="noopener">[IRニュース] 組織変更および人事異動に関するお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
       <tr data-company="京都機械工具（KTC）" data-date="2026-02-20">
         <td class="col-company">京都機械工具（KTC）</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -1145,6 +1264,34 @@
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/02/20</td>
         <td class="col-title"><a href="https://ktc.jp/news/141027" target="_blank" rel="noopener">[製品情報] サッと広げてすぐ使える！軽くて持ち運びに便利な折りたたみ式ワゴン「アクティブステーション」を発売</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="杉本商事" data-date="2026-02-20">
+        <td class="col-company">杉本商事</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/02/20</td>
+        <td class="col-title"><a href="https://www.sugi-net.co.jp/%e5%8f%96%e7%b7%a0%e5%bd%b9%e4%bc%9a%e3%81%ae%e5%ae%9f%e5%8a%b9%e6%80%a7%e8%a9%95%e4%be%a1%e7%b5%90%e6%9e%9c%e3%81%ae%e6%a6%82%e8%a6%81%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6-3/" target="_blank" rel="noopener">[IR情報] 取締役会の実効性評価結果の概要について</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="YUSHIN（ユーシン精機）" data-date="2026-02-19">
+        <td class="col-company">YUSHIN（ユーシン精機）</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/02/19</td>
+        <td class="col-title"><a href="https://ir.yushincompany.jp/ja/PressRelease/auto_20260219565068.html" target="_blank" rel="noopener">[IR] 自己株式の取得状況および取得終了に関するお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="株式会社ナイキ" data-date="2026-02-16">
+        <td class="col-company">株式会社ナイキ</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/02/16</td>
+        <td class="col-title"><a href="https://www.naiki.co.jp/3dod/index.html" target="_blank" rel="noopener">3Dオフィスデザイナー専用パーツ集2026年版を掲載しました。 （PRO4用、11用それぞれに用意しています）</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="YUSHIN（ユーシン精機）" data-date="2026-02-13">
+        <td class="col-company">YUSHIN（ユーシン精機）</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/02/13</td>
+        <td class="col-title"><a href="https://ir.yushincompany.jp/ja/PressRelease/auto_20260212557354.html" target="_blank" rel="noopener">[IR] 2026年３月期 第３四半期決算短信〔日本基準〕（連結）</a></td>
         <td class="col-summary"></td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-02-09">
@@ -1189,6 +1336,13 @@
         <td class="col-title"><a href="https://www.vessel.co.jp/news/detail/2164" target="_blank" rel="noopener">【新製品】「超剛鍛ミラーソケット 10本組」発売のご案内</a></td>
         <td class="col-summary"></td>
       </tr>
+      <tr data-company="守谷商会" data-date="2026-01-30">
+        <td class="col-company">守谷商会</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/01/30</td>
+        <td class="col-title"><a href="https://sales.moritani.co.jp/newenergy/battery/mill/" target="_blank" rel="noopener">[新着情報] 製品・サービスの 混錬/分散/造粒/被膜等粉体関連プロセス装置（日本スピンドル製造株式会社、株式会社パウレック、アシザワ・ファインテック株式会社） を新規掲載。</a></td>
+        <td class="col-summary"></td>
+      </tr>
       <tr data-company="椿本チエイン" data-date="2026-01-28">
         <td class="col-company">椿本チエイン</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -1203,6 +1357,13 @@
         <td class="col-title"><a href="https://www.mgco.jp/information/20260127/" target="_blank" rel="noopener">[お知らせ] 価格改定（一部機種）のご案内 を公開しました。 （2026年3月31日15時以降当社受注分より改定）</a></td>
         <td class="col-summary"></td>
       </tr>
+      <tr data-company="川喜金物" data-date="2026-01-23">
+        <td class="col-company">川喜金物</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/01/23</td>
+        <td class="col-title"><a href="https://www.kawaki-sowa.co.jp/dcms_media/other/KWK%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%20vol.3.pdf" target="_blank" rel="noopener">[社外報] 「KWKニュース vol.3」掲載</a></td>
+        <td class="col-summary"></td>
+      </tr>
       <tr data-company="椿本チエイン" data-date="2026-01-05">
         <td class="col-company">椿本チエイン</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -1215,6 +1376,20 @@
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2026/01/05</td>
         <td class="col-title"><a href="https://tt-net.tsubakimoto.co.jp/tecs/pdct/ccv/pdct_CVTKHP.asp" target="_blank" rel="noopener">[製品] ケーブルベヤ 長ストローク＆高荷重 TKHP-R形　新発売</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="株式会社ナイキ" data-date="2025-12-25">
+        <td class="col-company">株式会社ナイキ</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2025/12/25</td>
+        <td class="col-title"><a href="https://www.naiki.co.jp/news_pdf/251225news.pdf" target="_blank" rel="noopener">代表取締役社長交代のお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="株式会社ナイキ" data-date="2025-12-17">
+        <td class="col-company">株式会社ナイキ</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2025/12/17</td>
+        <td class="col-title"><a href="https://www.naiki.co.jp/websolution/pdf2026/jpg2026.html" target="_blank" rel="noopener">ナイキオフィス家具総合カタログ2026のJPEGデータを用意しました。</a></td>
         <td class="col-summary"></td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2025-12-15">
@@ -1238,19 +1413,19 @@
         <td class="col-title"><a href="https://www.sumitomo-toolnet.co.jp/news251201/" target="_blank" rel="noopener">Φ14㎜ Φ23㎜ 管内カメラ 「3R-FXS07/3R-FXS10」 シリーズ期間限定キャンペーンのご紹介</a></td>
         <td class="col-summary">スリーアールソリューション(株)Φ14㎜ Φ23㎜ 管内カメラ 「3R-FXS07/3R-FXS10」 シリーズ2月28日まで期間限定キャンペーン中です。</td>
       </tr>
-      <tr data-company="因幡電機産業" data-date="2025-11-28">
-        <td class="col-company">因幡電機産業</td>
+      <tr data-company="旭精工" data-date="2025-12-01">
+        <td class="col-company">旭精工</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2025/11/28</td>
-        <td class="col-title"><a href="https://www.inaba.co.jp/files/e6803896c0c30c71b650774e69584039362bf760.pdf" target="_blank" rel="noopener">冬季休業のご案内</a></td>
+        <td class="col-date">2025/12/01</td>
+        <td class="col-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/368/2025年末年始休業のお知らせ.pdf" target="_blank" rel="noopener">[会社] 年末年始休業のお知らせ</a></td>
         <td class="col-summary"></td>
       </tr>
-      <tr data-company="因幡電機産業" data-date="2025-10-31">
-        <td class="col-company">因幡電機産業</td>
+      <tr data-company="旭精工" data-date="2025-12-01">
+        <td class="col-company">旭精工</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2025/10/31</td>
-        <td class="col-title"><a href="https://www.inaba.co.jp/news/2025/1031_iifes-2025.html" target="_blank" rel="noopener">IIFES 2025に出展いたします。ぜひご来場ください！【終了】</a></td>
-        <td class="col-summary">東京ビッグサイトにて開催されます『IIFES 2025』に出展いたします。本展示では、AI・IoT・DX分野における最先端技術を活用したソリューション、製造現場の課題解決に貢献する商品・サービスに関する実機を展示します。また、セミナーでは「セル生産支援システム」と「AIでの目視検査自動化」を実践的な</td>
+        <td class="col-date">2025/12/01</td>
+        <td class="col-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/366/2025年旭精工_イルミネーション.pdf" target="_blank" rel="noopener">[会社] イルミネーション開催のお知らせ</a></td>
+        <td class="col-summary"></td>
       </tr>
       <tr data-company="住友電工ハードメタル" data-date="2025-10-29">
         <td class="col-company">住友電工ハードメタル</td>
@@ -1273,19 +1448,33 @@
         <td class="col-title"><a href="https://www.sumitomo-toolnet.co.jp/news251015/" target="_blank" rel="noopener">メカトロテックジャパン2025 (MECT2025)のご案内</a></td>
         <td class="col-summary">名古屋で開催される展示会『メカトロテックジャパン2025 (MECT2025)』に、住友電工が新製品を出展いたします。</td>
       </tr>
-      <tr data-company="因幡電機産業" data-date="2025-07-14">
-        <td class="col-company">因幡電機産業</td>
+      <tr data-company="旭精工" data-date="2025-09-01">
+        <td class="col-company">旭精工</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2025/07/14</td>
-        <td class="col-title"><a href="https://www.inaba.co.jp/files/8a68f82a67c1722bb223cee95a73f2ee6a49dba6.pdf" target="_blank" rel="noopener">夏季休業のご案内</a></td>
+        <td class="col-date">2025/09/01</td>
+        <td class="col-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/363/HP掲載用_2025大阪機械要素技術展案内.pdf" target="_blank" rel="noopener">[会社] 第28回大阪機械要素技術展 出展のお知らせ</a></td>
         <td class="col-summary"></td>
       </tr>
-      <tr data-company="因幡電機産業" data-date="2025-04-30">
-        <td class="col-company">因幡電機産業</td>
+      <tr data-company="宝産業" data-date="2025-07-30">
+        <td class="col-company">宝産業</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2025/04/30</td>
-        <td class="col-title"><a href="https://www.jecafair.jp/" target="_blank" rel="noopener">JECA FAIR 2025 ～第73回 電設工業展～に出展します。ぜひご来場ください！【終了】</a></td>
-        <td class="col-summary">本展示会は、電気設備に関する資機材、工具、計測器、ソフト、システム等の新製品紹介を始め、施工技術や施工実績、アカデミックの紹介、電気設備業界の魅力や働き方などを紹介する各種イベントなど、あらゆる情報を発信する国内最大の電気設備総合展示会です。</td>
+        <td class="col-date">2025/07/30</td>
+        <td class="col-title"><a href="https://www.organo.co.jp/products/chemical/cooling-water-treatment/00305_orchaser-5/" target="_blank" rel="noopener">冷却水薬剤濃度自動制御装置「オルチェイサーⅤ」発売のお知らせ</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="宝産業" data-date="2025-06-12">
+        <td class="col-company">宝産業</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2025/06/12</td>
+        <td class="col-title"><a href="https://www.takara-sangyo.co.jp/topics/" target="_blank" rel="noopener">２０２５年６月１２日開催の弊社定時株主総会及びその後の取締役会におきまして</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="宝産業" data-date="2025-06-05">
+        <td class="col-company">宝産業</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2025/06/05</td>
+        <td class="col-title"><a href="http://laserkorea.or.kr/eng/introduce/summary.php" target="_blank" rel="noopener">「LASER KOREA2025」に出展いたします。</a></td>
+        <td class="col-summary"></td>
       </tr>
       <tr data-company="JIMテクノロジー" data-date="2025-01-31">
         <td class="col-company">JIMテクノロジー</td>
@@ -1299,6 +1488,13 @@
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
         <td class="col-date">2024/12/12</td>
         <td class="col-title"><a href="https://www.tsubakimoto.jp/materials-handling/" target="_blank" rel="noopener">[製品] 「マテハン」ページをリニューアルしました</a></td>
+        <td class="col-summary"></td>
+      </tr>
+      <tr data-company="宝産業" data-date="2024-10-25">
+        <td class="col-company">宝産業</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2024/10/25</td>
+        <td class="col-title"><a href="https://jimtof.org/jp/index.html" target="_blank" rel="noopener">「JIMTOF2024」に出展いたします。</a></td>
         <td class="col-summary"></td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2024-07-29">
@@ -1315,13 +1511,6 @@
         <td class="col-title"><a href="https://www.jimt.co.jp/topics/2024/0605.html" target="_blank" rel="noopener">WORLD TUNNEL CONGRESS (WTC)に参加</a></td>
         <td class="col-summary"></td>
       </tr>
-      <tr data-company="川崎重工業" data-date="2024-04-02">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2024/04/02</td>
-        <td class="col-title"><a href="https://www.global-kawasaki-motors.com/jp/news/24-03-14/index.html" target="_blank" rel="noopener">モーターサイクル事業70周年特別展示 第二弾の開催について(～9月29日)（カワサキモータース）</a></td>
-        <td class="col-summary">カワサキモータースは、カワサキワールドでモーターサイクル事業 70周年特別展示“70 Years of Good Times”の第二弾を、4月2日から9月29日まで開催します。</td>
-      </tr>
       <tr data-company="JIMテクノロジー" data-date="2024-04-01">
         <td class="col-company">JIMテクノロジー</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -1335,188 +1524,6 @@
         <td class="col-date">2024/03/25</td>
         <td class="col-title"><a href="https://www.jimt.co.jp/topics/2024/pdf/0325.pdf" target="_blank" rel="noopener">「パートナーシップ構築宣言」を公表しました</a></td>
         <td class="col-summary"></td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2023-12-12">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2023/12/12</td>
-        <td class="col-title"><a href="https://www.khi.co.jp/ir/library/other_presen_231212.html" target="_blank" rel="noopener">グループビジョン2030・進捗報告会（）</a></td>
-        <td class="col-summary">このページに関する更なる情報をご希望の際は、右のボタンよりお問い合わせください。</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2020-05-08">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2020/05/08</td>
-        <td class="col-title"><a href="https://www.khi.co.jp/news/detail/post_62.html" target="_blank" rel="noopener">当社関連施設の臨時休館のお知らせ（更新）</a></td>
-        <td class="col-summary">新型コロナウイルス感染拡大防止のため、以下の施設の休館期間を延長させていただきます。休館日程などの変更がありましたら、随時ホームページでお知らせいたします。</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2017-10-01">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2017/10/01</td>
-        <td class="col-title"><a href="https://www.khi.co.jp/news/detail/2017101.html" target="_blank" rel="noopener">からの当社株式数等について</a></td>
-        <td class="col-summary">川崎重工は、2017年10月1日をもって、普通株式１０株を１株に併合するとともに、単元株式数を１，０００株から１００株に変更しました。</td>
-      </tr>
-      <tr data-company="YUSHIN（ユーシン精機）" data-date="">
-        <td class="col-company">YUSHIN（ユーシン精機）</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.yushin.com/ja-portal" target="_blank" rel="noopener">Global Website</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="YUSHIN（ユーシン精機）" data-date="">
-        <td class="col-company">YUSHIN（ユーシン精機）</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.yushincompany.jp/school/" target="_blank" rel="noopener">YUSHINスクール</a></td>
-        <td class="col-summary">弊社ではお客様を対象として、取出ロボット取扱い時の安全衛生知識の向上及び操作取扱い技術の向上を目的にYUSHINスクールを開講しております。当スクールの産業用ロボット特別教育コースの修了者には、労働安全衛生規則に定められた特別教育の修了証を発行いたします。安全教育、技術習得の教育機関として当スクール</td>
-      </tr>
-      <tr data-company="YUSHIN（ユーシン精機）" data-date="">
-        <td class="col-company">YUSHIN（ユーシン精機）</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.yushin.com/ja/products/detail/pa.html" target="_blank" rel="noopener">パレタイジングロボット</a></td>
-        <td class="col-summary">射出成形品取出ロボットで長年培ってきた開発技術から生まれたパレタイジングロボット。広いスペースが必要な多関節ロボットや、アクセスが1方向のみのガントリー型ロボットに比べて、PAシリーズでは省スペースでかつフリーアクセス、自由なレイアウトが可能です。</td>
-      </tr>
-      <tr data-company="YUSHIN（ユーシン精機）" data-date="">
-        <td class="col-company">YUSHIN（ユーシン精機）</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.yushin.com/ja/products/attachmenthead/" target="_blank" rel="noopener">アタッチメントヘッド</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="YUSHIN（ユーシン精機）" data-date="">
-        <td class="col-company">YUSHIN（ユーシン精機）</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://ype.brandmedia.i-myrefer.jp/media" target="_blank" rel="noopener">“今”を届けるWEBメディア「YUSHIN Times」</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="杉本商事" data-date="">
-        <td class="col-company">杉本商事</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.sugi-net.co.jp/#content" target="_blank" rel="noopener">コンテンツへスキップ</a></td>
-        <td class="col-summary">あなたのビジネスをサポートするため、各トップメーカーが誇る測定器具や機械工具を迅速にご提供しています。</td>
-      </tr>
-      <tr data-company="杉本商事" data-date="">
-        <td class="col-company">杉本商事</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.sugi-net.co.jp/%e7%a4%be%e4%bc%9a%e8%b2%a2%e7%8c%ae%e3%81%ab%e5%90%91%e3%81%91%e3%81%9f%e5%af%84%e4%bb%98%e3%81%ae%e5%ae%9f%e6%96%bd%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/" target="_blank" rel="noopener">社会貢献に向けた寄付の実施について</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="杉本商事" data-date="">
-        <td class="col-company">杉本商事</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.sugi-net.co.jp/%e4%ba%ba%e4%ba%8b%e7%95%b0%e5%8b%95%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b-2/" target="_blank" rel="noopener">人事異動に関するお知らせ</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="杉本商事" data-date="">
-        <td class="col-company">杉本商事</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.sugi-net.co.jp/%e3%80%8c%e5%81%a5%e5%ba%b7%e7%b5%8c%e5%96%b6%e5%84%aa%e8%89%af%e6%b3%95%e4%ba%ba2026%e3%80%8d%e3%81%ab%e8%aa%8d%e5%ae%9a%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f/" target="_blank" rel="noopener">「健康経営優良法人2026」に認定されました</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="杉本商事" data-date="">
-        <td class="col-company">杉本商事</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.sugi-net.co.jp/%e4%ba%8b%e6%a5%ad%e7%b4%b9%e4%bb%8b%e3%83%a0%e3%83%bc%e3%83%93%e3%83%bc%e3%82%92%e6%8e%b2%e8%bc%89%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/" target="_blank" rel="noopener">事業紹介ムービーを掲載しました</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="株式会社ナイキ" data-date="">
-        <td class="col-company">株式会社ナイキ</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.naiki.co.jp/../csr/index.html" target="_blank" rel="noopener">QMS/EMS/SDGs</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="株式会社ナイキ" data-date="">
-        <td class="col-company">株式会社ナイキ</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.naiki.co.jp/../products/meeting_space.html" target="_blank" rel="noopener">コミュニケーションスペース</a></td>
-        <td class="col-summary">情報化時代の理想的なコミュニケーションのあり方を考えたアイテムを取り揃えています。</td>
-      </tr>
-      <tr data-company="株式会社ナイキ" data-date="">
-        <td class="col-company">株式会社ナイキ</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://manual.naiki.jp/Login.jsp" target="_blank" rel="noopener">取説・組説ダウンロード</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="株式会社ナイキ" data-date="">
-        <td class="col-company">株式会社ナイキ</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.naiki.co.jp/../websolution/cat-04.html" target="_blank" rel="noopener">その他のパンフレット</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="守谷商会" data-date="">
-        <td class="col-company">守谷商会</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://sales.moritani.co.jp/topics/" target="_blank" rel="noopener">最新情報Topics</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="守谷商会" data-date="">
-        <td class="col-company">守谷商会</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://sales.moritani.co.jp/map/" target="_blank" rel="noopener">国内/海外拠点Branches</a></td>
-        <td class="col-summary">TEL : 03-3278-6200（営業推進部）商品に関するお問い合わせ・ご案内等を承ります。</td>
-      </tr>
-      <tr data-company="守谷商会" data-date="">
-        <td class="col-company">守谷商会</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.recruit.moritani.jp/esg/" target="_blank" rel="noopener">ESGへの取り組みESG</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="守谷商会" data-date="">
-        <td class="col-company">守谷商会</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://sales.moritani.co.jp/dp/" target="_blank" rel="noopener">試験・計測・検査機器</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="守谷商会" data-date="">
-        <td class="col-company">守谷商会</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://sales.moritani.co.jp/dp/drs/" target="_blank" rel="noopener">NEW光学式表面欠陥検査装置Dr.Schenk GmbH</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="旭精工" data-date="">
-        <td class="col-company">旭精工</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.asahiseiko.co.jp/catalog/" target="_blank" rel="noopener">カタログダウンロード</a></td>
-        <td class="col-summary"></td>
-      </tr>
-      <tr data-company="旭精工" data-date="">
-        <td class="col-company">旭精工</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.asahiseiko.co.jp/tel:072-271‑1221" target="_blank" rel="noopener">072-271‑1221</a></td>
-        <td class="col-summary">多様化するユーザーニーズにお応えするために、製品企画・設計・購買・製造・検査・試験・アフターサービスに至るまでの一貫した品質システムを確立させ、高い品質と次世代に役立つ商品開発の両立を実現。私たちは、常にリーズナブルな価格で高品質な商品を、迅速、的確に提供することをモットーに、あらゆる産業にお役立て</td>
-      </tr>
-      <tr data-company="旭精工" data-date="">
-        <td class="col-company">旭精工</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.asahiseiko.co.jp/contact/" target="_blank" rel="noopener">メールでのお問い合せ</a></td>
-        <td class="col-summary">これまでにいただきましたご質問を「よくある質問」にまとめましたので、そちらもご利用ください。お電話でのお問い合せをご希望の場合は、最寄りの弊社営業支社・支店・営業所若しくは、販売店までお問い合せ下さい。</td>
-      </tr>
-      <tr data-company="旭精工" data-date="">
-        <td class="col-company">旭精工</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">日付不明</td>
-        <td class="col-title"><a href="https://www.asahiseiko.co.jp/legal/" target="_blank" rel="noopener">Webサイトご利用条件</a></td>
-        <td class="col-summary">このホームページ，ウエブサイトは旭精工株式会社（以下旭精工と表現いたします）が開設、運営しています。このホームページをご利用されるに際し、以下のご利用条件を確認いただき、これらの条件を同意された場合のみご利用頂きます様お願いいたします。</td>
       </tr>
       </tbody>
     </table>
@@ -1664,44 +1671,44 @@
     <div class="company-group" data-company-group="YUSHIN（ユーシン精機）">
       <div class="company-group-header">YUSHIN（ユーシン精機）</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="">
+        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="2026-04-01">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/04/01</span>
           </div>
-          <div class="card-title"><a href="https://www.yushin.com/ja-portal" target="_blank" rel="noopener">Global Website</a></div>
+          <div class="card-title"><a href="https://www.yushincompany.jp/newsrelease/archive/2026/20260401.html" target="_blank" rel="noopener">[企業情報] 役員人事のお知らせ</a></div>
           
         </div>
-        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="">
+        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="2026-03-31">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/03/31</span>
           </div>
-          <div class="card-title"><a href="https://www.yushincompany.jp/school/" target="_blank" rel="noopener">YUSHINスクール</a></div>
-          <div class='card-summary'>弊社ではお客様を対象として、取出ロボット取扱い時の安全衛生知識の向上及び操作取扱い技術の向上を目的にYUSHINスクールを開講しております。当スクールの産業用ロボット特別教育コースの修了者には、労働安全衛生規則に定められた特別教育の修了証を発行いたします。安全教育、技術習得の教育機関として当スクール</div>
-        </div>
-        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
-          </div>
-          <div class="card-title"><a href="https://www.yushin.com/ja/products/detail/pa.html" target="_blank" rel="noopener">パレタイジングロボット</a></div>
-          <div class='card-summary'>射出成形品取出ロボットで長年培ってきた開発技術から生まれたパレタイジングロボット。広いスペースが必要な多関節ロボットや、アクセスが1方向のみのガントリー型ロボットに比べて、PAシリーズでは省スペースでかつフリーアクセス、自由なレイアウトが可能です。</div>
-        </div>
-        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
-          </div>
-          <div class="card-title"><a href="https://www.yushin.com/ja/products/attachmenthead/" target="_blank" rel="noopener">アタッチメントヘッド</a></div>
+          <div class="card-title"><a href="https://ir.yushincompany.jp/ja/PressRelease/auto_20260327591418.html" target="_blank" rel="noopener">[IR] 投資有価証券売却に伴う特別利益の計上に関するお知らせ</a></div>
           
         </div>
-        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="">
+        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="2026-03-30">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/03/30</span>
           </div>
-          <div class="card-title"><a href="https://ype.brandmedia.i-myrefer.jp/media" target="_blank" rel="noopener">“今”を届けるWEBメディア「YUSHIN Times」</a></div>
+          <div class="card-title"><a href="https://www.yushincompany.jp/newsrelease/subsidy-announcement_2.html" target="_blank" rel="noopener">[商品] 補助金対象製品のお知らせ：後工程自動化機能付成形品取出ロボット</a></div>
+          
+        </div>
+        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="2026-02-19">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/02/19</span>
+          </div>
+          <div class="card-title"><a href="https://ir.yushincompany.jp/ja/PressRelease/auto_20260219565068.html" target="_blank" rel="noopener">[IR] 自己株式の取得状況および取得終了に関するお知らせ</a></div>
+          
+        </div>
+        <div class="news-card" data-company="YUSHIN（ユーシン精機）" data-date="2026-02-13">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/02/13</span>
+          </div>
+          <div class="card-title"><a href="https://ir.yushincompany.jp/ja/PressRelease/auto_20260212557354.html" target="_blank" rel="noopener">[IR] 2026年３月期 第３四半期決算短信〔日本基準〕（連結）</a></div>
           
         </div>
       </div>
@@ -1860,30 +1867,6 @@
     <div class="company-group" data-company-group="オムロン（DMS）">
       <div class="company-group-header">オムロン（DMS）</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="オムロン（DMS）" data-date="2026-04-15">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2026/04/15</span>
-          </div>
-          <div class="card-title"><a href="https://components.omron.com/jp-ja/news/20260415" target="_blank" rel="noopener">[お知らせ] 【NEW】DMS GREEN PROJECT｜生産プロセスから始まるDMSの脱炭素への挑戦を紹介する記事を公開しました。</a></div>
-          
-        </div>
-        <div class="news-card" data-company="オムロン（DMS）" data-date="2026-04-14">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2026/04/14</span>
-          </div>
-          <div class="card-title"><a href="https://components.omron.com/jp-ja/news/20260414" target="_blank" rel="noopener">[製品] オムロン電子部品商品リストを追加しました。</a></div>
-          
-        </div>
-        <div class="news-card" data-company="オムロン（DMS）" data-date="2026-04-03">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2026/04/03</span>
-          </div>
-          <div class="card-title"><a href="https://components.omron.com/jp-ja/news/20260403" target="_blank" rel="noopener">[製品] コネクタセレクションガイドを更新しました。</a></div>
-          
-        </div>
         <div class="news-card" data-company="オムロン（DMS）" data-date="2026-03-31">
           <div class="card-header">
             <span class="badge-google">Google News</span>
@@ -1907,22 +1890,6 @@
           </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE02bUV0RmNibzFRc3BMbl9YZlJLS2NPTXdWdkxEVGxYOTBMM2lkOTQ5d2RiV2NzcDVRS2gzd0xkWG82THR3NjNnYVZ0U2RiQUwtc3VadkFocUFuNXdfcU9odVl3dGtITEhjSG1xdEhTdw?oc=5" target="_blank" rel="noopener">オムロン、祖業の電子部品事業を売却へ 事業価値810億円：米投資ファンドに - EE Times Japan</a></div>
           <div class='card-summary'>オムロン、祖業の電子部品事業を売却へ 事業価値810億円：米投資ファンドに EE Times Japan</div>
-        </div>
-        <div class="news-card" data-company="オムロン（DMS）" data-date="2026-03-30">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2026/03/30</span>
-          </div>
-          <div class="card-title"><a href="https://components.omron.com/jp-ja/news/20260330" target="_blank" rel="noopener">[プレスリリース] デバイス＆モジュールソリューションビジネスの 会社分割（吸収分割）及び 承継会社の株式譲渡（子会社等の異動）に関するお知らせ</a></div>
-          
-        </div>
-        <div class="news-card" data-company="オムロン（DMS）" data-date="2026-03-26">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2026/03/26</span>
-          </div>
-          <div class="card-title"><a href="https://components.omron.com/jp-ja/news/20260326-1" target="_blank" rel="noopener">[製品] MOSFETリレーセレクションガイドを更新しました。</a></div>
-          
         </div>
       </div>
     </div>
@@ -2043,7 +2010,7 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/03/26</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTFBxZk1CQ295dzEzMDF4NUt4dkJFcHNlSmQwWFRWMlNBOVpJOEU2T2swUmVMMlY4Z1ctVzFiWlFfbmMyLVZvNkxSZXliOTVmZW9XNDB2UFNMWXMzSkVMTHRIRWN3?oc=5" target="_blank" rel="noopener">もしかして「これ最高か？」「その使い方に感動」ほぼ全ての車種に対応。手のひらサイズの謎パーツは名門工具メーカー製。想像以上に効果は抜群。 - 月刊自家用車WEB</a></div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTE1Gdm5iUFVCQlFYMkk3endKbVJreUExWTQwcFM4eG5LNGJBNkZTMTY0NjQ3dmlGVThWbUo5ZU94SnIya2Z1bWpfOXREOVlBVjFTMm9rSmdxVGV5Z1lzZUNVdWxB?oc=5" target="_blank" rel="noopener">もしかして「これ最高か？」「その使い方に感動」ほぼ全ての車種に対応。手のひらサイズの謎パーツは名門工具メーカー製。想像以上に効果は抜群。 - 月刊自家用車WEB</a></div>
           <div class='card-summary'>もしかして「これ最高か？」「その使い方に感動」ほぼ全ての車種に対応。手のひらサイズの謎パーツは名門工具メーカー製。想像以上に効果は抜群。 月刊自家用車WEB</div>
         </div>
         <div class="news-card" data-company="京都機械工具（KTC）" data-date="2026-03-19">
@@ -2234,14 +2201,6 @@
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTFBpT0RHZG5fOXNJdE9QR3hIMFNTNlkwaGZVOFBsZWpjR1NFaW5wNEZySk1LMGgxNjUyaG43SUg5MUNDcDRTSHNRaWdueEI4dF82Zk9JeG5BODZ1T2s?oc=5" target="_blank" rel="noopener">営業利益が過去最高を更新中――因幡電機産業（9934）は「データセンター建設1兆円時代」の最大受益者になれるか？ - note</a></div>
           <div class='card-summary'>営業利益が過去最高を更新中――因幡電機産業（9934）は「データセンター建設1兆円時代」の最大受益者になれるか？ note</div>
         </div>
-        <div class="news-card" data-company="因幡電機産業" data-date="2026-04-06">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/06</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE5oSG9yNEFQbzFWU3VZYXVldm16eVN0cTBicG50RG5YbXJ6c2Z0WU9GUmxwZlhqSlRfTGRkTklFTTl0ZXlxWGNTTURuQXdsZGhUeGpCLWZmUFpQSDZ4QVV1bkZXaUJMd1I3aVE?oc=5" target="_blank" rel="noopener">電設業界最大級の展示即売会、「第52回ジャンボびっくり見本市」に参加します。 - PR TIMES</a></div>
-          <div class='card-summary'>電設業界最大級の展示即売会、「第52回ジャンボびっくり見本市」に参加します。 PR TIMES</div>
-        </div>
         <div class="news-card" data-company="因幡電機産業" data-date="2026-04-01">
           <div class="card-header">
             <span class="badge-google">Google News</span>
@@ -2250,97 +2209,110 @@
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTFBycDBiSEp0RnZ1Skw1SnlWWFQzZTJnZ21kNmJNUXVUNHdMS1dpQ20yeHpDZ0JBVVZPdTA4c25MWV9DTVJoU1BRU05uV0FwSnBaa3FuRDJFeE1SSEcwSmJWT2g2bzl3bURnNlE?oc=5" target="_blank" rel="noopener">因幡電機産業[9934]：自己株式の取得状況に関するお知らせ 2026年4月1日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞</a></div>
           <div class='card-summary'>因幡電機産業[9934]：自己株式の取得状況に関するお知らせ 2026年4月1日(適時開示) ：日経会社情報DIGITAL 日本経済新聞</div>
         </div>
-        <div class="news-card" data-company="因幡電機産業" data-date="2026-03-27">
+        <div class="news-card" data-company="因幡電機産業" data-date="2026-04-01">
           <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/03/27</span>
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/04/01</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE03N3hmaGt0THphbHFLbDdpR1FIS3BUZVM1QXRFaENGWlZqQ3VGRHR6ZG5GbG9aNkxmcjQzT3lPYTdaMW0wMjBGOVpTeGN3SkRtUGs0RFM1bEV5cFJZRmRHdFdwa3lEbzg?oc=5" target="_blank" rel="noopener">【移転】リバージュ品川へ移転、因幡電機産業の東京オフィス - 日経不動産マーケット情報</a></div>
-          <div class='card-summary'>【移転】リバージュ品川へ移転、因幡電機産業の東京オフィス 日経不動産マーケット情報</div>
+          <div class="card-title"><a href="https://contents.xj-storage.jp/xcontents/AS70085/92f349f9/f65e/4c31/9d69/fd081dd34b6e/140120260401595281.pdf" target="_blank" rel="noopener">[IRニュース] 自己株式の取得状況に関するお知らせ</a></div>
+          
         </div>
         <div class="news-card" data-company="因幡電機産業" data-date="2026-03-17">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
             <span class="card-date">2026/03/17</span>
           </div>
-          <div class="card-title"><a href="https://www.jumbo-fair.jp/" target="_blank" rel="noopener">第52回 ジャンボびっくり見本市に出展します。ぜひご来場ください！</a></div>
-          <div class='card-summary'>2025年4月に開催された「第51回ジャンボびっくり見本市」は大成功に終わり、多くのお客様にご来場いただきました。こちらから過去数年に渡っての開催概要がご覧いただけます。</div>
-        </div>
-        <div class="news-card" data-company="因幡電機産業" data-date="2025-11-28">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2025/11/28</span>
-          </div>
-          <div class="card-title"><a href="https://www.inaba.co.jp/files/e6803896c0c30c71b650774e69584039362bf760.pdf" target="_blank" rel="noopener">冬季休業のご案内</a></div>
+          <div class="card-title"><a href="https://www.jumbo-fair.jp/" target="_blank" rel="noopener">[お知らせ] 第52回 ジャンボびっくり見本市に出展します。ぜひご来場ください！</a></div>
           
         </div>
-        <div class="news-card" data-company="因幡電機産業" data-date="2025-10-31">
+        <div class="news-card" data-company="因幡電機産業" data-date="2026-02-24">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2025/10/31</span>
+            <span class="card-date">2026/02/24</span>
           </div>
-          <div class="card-title"><a href="https://www.inaba.co.jp/news/2025/1031_iifes-2025.html" target="_blank" rel="noopener">IIFES 2025に出展いたします。ぜひご来場ください！【終了】</a></div>
-          <div class='card-summary'>東京ビッグサイトにて開催されます『IIFES 2025』に出展いたします。本展示では、AI・IoT・DX分野における最先端技術を活用したソリューション、製造現場の課題解決に貢献する商品・サービスに関する実機を展示します。また、セミナーでは「セル生産支援システム」と「AIでの目視検査自動化」を実践的な</div>
-        </div>
-        <div class="news-card" data-company="因幡電機産業" data-date="2025-07-14">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2025/07/14</span>
-          </div>
-          <div class="card-title"><a href="https://www.inaba.co.jp/files/8a68f82a67c1722bb223cee95a73f2ee6a49dba6.pdf" target="_blank" rel="noopener">夏季休業のご案内</a></div>
+          <div class="card-title"><a href="https://contents.xj-storage.jp/xcontents/AS70085/17c008ea/b2b2/4ec4/9cb5/29c7c7d0d786/140120260224567618.pdf" target="_blank" rel="noopener">[IRニュース] 組織変更および人事異動に関するお知らせ</a></div>
           
-        </div>
-        <div class="news-card" data-company="因幡電機産業" data-date="2025-04-30">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2025/04/30</span>
-          </div>
-          <div class="card-title"><a href="https://www.jecafair.jp/" target="_blank" rel="noopener">JECA FAIR 2025 ～第73回 電設工業展～に出展します。ぜひご来場ください！【終了】</a></div>
-          <div class='card-summary'>本展示会は、電気設備に関する資機材、工具、計測器、ソフト、システム等の新製品紹介を始め、施工技術や施工実績、アカデミックの紹介、電気設備業界の魅力や働き方などを紹介する各種イベントなど、あらゆる情報を発信する国内最大の電気設備総合展示会です。</div>
         </div>
       </div>
     </div>
     <div class="company-group" data-company-group="守谷商会">
       <div class="company-group-header">守谷商会</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="守谷商会" data-date="">
+        <div class="news-card" data-company="守谷商会" data-date="2026-04-16">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/04/16</span>
           </div>
-          <div class="card-title"><a href="https://sales.moritani.co.jp/topics/" target="_blank" rel="noopener">最新情報Topics</a></div>
+          <div class="card-title"><a href="https://sales.moritani.co.jp/dp/hbk/" target="_blank" rel="noopener">[新着商品] マイクロホン、校正器、加速度ピックアップ</a></div>
           
         </div>
-        <div class="news-card" data-company="守谷商会" data-date="">
+        <div class="news-card" data-company="守谷商会" data-date="2026-04-16">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/04/16</span>
           </div>
-          <div class="card-title"><a href="https://sales.moritani.co.jp/map/" target="_blank" rel="noopener">国内/海外拠点Branches</a></div>
-          <div class='card-summary'>TEL : 03-3278-6200（営業推進部）商品に関するお問い合わせ・ご案内等を承ります。</div>
-        </div>
-        <div class="news-card" data-company="守谷商会" data-date="">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
-          </div>
-          <div class="card-title"><a href="https://www.recruit.moritani.jp/esg/" target="_blank" rel="noopener">ESGへの取り組みESG</a></div>
+          <div class="card-title"><a href="https://sales.moritani.co.jp/newenergy/battery/" target="_blank" rel="noopener">[新着商品] 混錬/分散/造粒/被膜等粉体関連プロセス装置</a></div>
           
         </div>
-        <div class="news-card" data-company="守谷商会" data-date="">
+        <div class="news-card" data-company="守谷商会" data-date="2026-03-06">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/03/06</span>
           </div>
-          <div class="card-title"><a href="https://sales.moritani.co.jp/dp/" target="_blank" rel="noopener">試験・計測・検査機器</a></div>
+          <div class="card-title"><a href="https://sales.moritani.co.jp/topics/y2026/bj_202603/" target="_blank" rel="noopener">[新着情報] ［第20回 【国際】二次電池展 春］（2026年3月17日～19日）にアシザワ・ファインテック株式会社と共同出展します。</a></div>
           
         </div>
-        <div class="news-card" data-company="守谷商会" data-date="">
+        <div class="news-card" data-company="守谷商会" data-date="2026-03-05">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/03/05</span>
           </div>
-          <div class="card-title"><a href="https://sales.moritani.co.jp/dp/drs/" target="_blank" rel="noopener">NEW光学式表面欠陥検査装置Dr.Schenk GmbH</a></div>
+          <div class="card-title"><a href="https://sales.moritani.co.jp/topics/y2026/h2fc-expo2026-3/" target="_blank" rel="noopener">[新着情報] H2&amp;FC EXPO[春]2026第25回 [国際]水素・燃料電池展[春]（2026年3月17日～3月19日）にTELEDYNE ENERGY SYSTEMSと共同出展します。</a></div>
+          
+        </div>
+        <div class="news-card" data-company="守谷商会" data-date="2026-01-30">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/01/30</span>
+          </div>
+          <div class="card-title"><a href="https://sales.moritani.co.jp/newenergy/battery/mill/" target="_blank" rel="noopener">[新着情報] 製品・サービスの 混錬/分散/造粒/被膜等粉体関連プロセス装置（日本スピンドル製造株式会社、株式会社パウレック、アシザワ・ファインテック株式会社） を新規掲載。</a></div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="company-group" data-company-group="宝産業">
+      <div class="company-group-header">宝産業</div>
+      <div class="company-group-cards">
+        <div class="news-card" data-company="宝産業" data-date="2025-07-30">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2025/07/30</span>
+          </div>
+          <div class="card-title"><a href="https://www.organo.co.jp/products/chemical/cooling-water-treatment/00305_orchaser-5/" target="_blank" rel="noopener">冷却水薬剤濃度自動制御装置「オルチェイサーⅤ」発売のお知らせ</a></div>
+          
+        </div>
+        <div class="news-card" data-company="宝産業" data-date="2025-06-12">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2025/06/12</span>
+          </div>
+          <div class="card-title"><a href="https://www.takara-sangyo.co.jp/topics/" target="_blank" rel="noopener">２０２５年６月１２日開催の弊社定時株主総会及びその後の取締役会におきまして</a></div>
+          
+        </div>
+        <div class="news-card" data-company="宝産業" data-date="2025-06-05">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2025/06/05</span>
+          </div>
+          <div class="card-title"><a href="http://laserkorea.or.kr/eng/introduce/summary.php" target="_blank" rel="noopener">「LASER KOREA2025」に出展いたします。</a></div>
+          
+        </div>
+        <div class="news-card" data-company="宝産業" data-date="2024-10-25">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2024/10/25</span>
+          </div>
+          <div class="card-title"><a href="https://jimtof.org/jp/index.html" target="_blank" rel="noopener">「JIMTOF2024」に出展いたします。</a></div>
           
         </div>
       </div>
@@ -2348,6 +2320,30 @@
     <div class="company-group" data-company-group="山善">
       <div class="company-group-header">山善</div>
       <div class="company-group-cards">
+        <div class="news-card" data-company="山善" data-date="2026-04-16">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/16</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5WYlFFaW16bGxaMUhNU0NGckFyQXF1bTVyajF1dERMVW95eGZ3YXNyN3dOSk4zdDl3YWRWOUlaLUthb3kxbnV4RklBeExaaWo3SDJlcWNIOUJFTlE?oc=5" target="_blank" rel="noopener">水冷服が“面で冷やす”新構造へ進化 「DIRECT COOL ProPLUS水路式」 - 共同通信PRワイヤー</a></div>
+          <div class='card-summary'>水冷服が“面で冷やす”新構造へ進化 「DIRECT COOL ProPLUS水路式」 共同通信PRワイヤー</div>
+        </div>
+        <div class="news-card" data-company="山善" data-date="2026-04-16">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/04/16</span>
+          </div>
+          <div class="card-title"><a href="https://www.yamazen.co.jp/archives/001/20260416_Change_of_Directors_j.pdf" target="_blank" rel="noopener">[適時開示] 役員の異動に関するお知らせ</a></div>
+          
+        </div>
+        <div class="news-card" data-company="山善" data-date="2026-04-16">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/04/16</span>
+          </div>
+          <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2820.html" target="_blank" rel="noopener">[プレスリリース] 水冷服が“面で冷やす”新構造へ進化「DIRECT COOL ProPLUS水路式」を新発売</a></div>
+          
+        </div>
         <div class="news-card" data-company="山善" data-date="2026-04-14">
           <div class="card-header">
             <span class="badge-google">Google News</span>
@@ -2363,6 +2359,14 @@
           </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiVkFVX3lxTE5qM20wXzV3S2hLVFQ5aUhSOWd5LXp5MmFHVUlOX2ZHLURUVDcta3FMcW5IdWNIakZpTHhmVTVaQzVoYncyOTlrXzg5VTlwcFh0OTNfSG9n0gFbQVVfeXFMTnZYU0xOa21Yb09DTnRDQUNnT2Vob1M3Wm5xTE1POHY2RlFpSzg4bm1OZWp2Wk9pWEtFcEpBZkZabXRVOFF0X0RZRzZCbUhWVU5sYzFpUXdZVXowNA?oc=5" target="_blank" rel="noopener">いざという時に備えて安心！必要なものが揃った【山善】防災バッグ30点セット（限定エコバッグ付き）がAmazonで手に入る！大切な人のために備えよう！ - ウォーカープラス</a></div>
           <div class='card-summary'>いざという時に備えて安心！必要なものが揃った【山善】防災バッグ30点セット（限定エコバッグ付き）がAmazonで手に入る！大切な人のために備えよう！ ウォーカープラス</div>
+        </div>
+        <div class="news-card" data-company="山善" data-date="2026-04-14">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/14</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiSkFVX3lxTE93OFhTbFdmaWk0c2Z3S0J1TllNcUFsWUpyVWxIS1lNY0x0WWhTLXhvcUVfLS15M0w5ZnZjX19fVDN3UWxwcXduaWV3?oc=5" target="_blank" rel="noopener">卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので - まぐまぐ</a></div>
+          <div class='card-summary'>卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので まぐまぐ</div>
         </div>
         <div class="news-card" data-company="山善" data-date="2026-04-14">
           <div class="card-header">
@@ -2393,72 +2397,40 @@
             <span class="badge-corp">コーポレート</span>
             <span class="card-date">2026/04/14</span>
           </div>
-          <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2819.html" target="_blank" rel="noopener">「リビングシェード」を新発売</a></div>
-          <div class='card-summary'>“夏が長い日本”のくらしに、庭先にもう一部屋を。猛暑の日よけ×目隠しで快適な屋外空間をつくる「リビングシェード」を新発売～2026年4月下旬より順次発売開始～株式会社山善（本社：大阪市西区、代表取締役社長：岸田貢司）は、日よけと目隠しを両立しながら、ご自宅の庭や軒下を“リビングの延長”として有効活用</div>
+          <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2819.html" target="_blank" rel="noopener">[プレスリリース] 「リビングシェード」を新発売</a></div>
+          
         </div>
         <div class="news-card" data-company="山善" data-date="2026-04-10">
           <div class="card-header">
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/10</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE9RNnBvUndlQVNNTmZFcGVYYzJUX0pacWVSbFRYQkF6bHBiTFhGRDhYUDJRZ1E5ejFhdDBqdURMR28wN0dHQTJtVzh2bVNucUJtLTRrSjJjX2J5cmdZb2d3Qg?oc=5" target="_blank" rel="noopener">猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 - tretsactu.fr</a></div>
-          <div class='card-summary'>猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 tretsactu.fr</div>
-        </div>
-        <div class="news-card" data-company="山善" data-date="2026-04-10">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/10</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5udnZyU2I4TE1aR1hmUnpETGZWT1NMVEJZZmE0NHhJYURjMnBkT2ZjZFFjZTc2VEFMS3E1VzNEN3FqYnktSkdLRUZMYm56aEpwMmo3cjVrRUp5UDg?oc=5" target="_blank" rel="noopener">梅雨前の“早め対策”に！春先から始める収納空間の湿気ケア「ペルチェ式除湿機」4月下旬より発売開始 - 共同通信PRワイヤー</a></div>
-          <div class='card-summary'>梅雨前の“早め対策”に！春先から始める収納空間の湿気ケア「ペルチェ式除湿機」4月下旬より発売開始 共同通信PRワイヤー</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE9RNnBvUndlQVNNTmZFcGVYYzJUX0pacWVSbFRYQkF6bHBiTFhGRDhYUDJRZ1E5ejFhdDBqdURMR28wN0dHQTJtVzh2bVNucUJtLTRrSjJjX2J5cmdZb2d3Qg?oc=5" target="_blank" rel="noopener">猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 - Trets au cœur de la Provence</a></div>
+          <div class='card-summary'>猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 Trets au cœur de la Provence</div>
         </div>
         <div class="news-card" data-company="山善" data-date="2026-04-10">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
             <span class="card-date">2026/04/10</span>
           </div>
-          <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2818.html" target="_blank" rel="noopener">「ペルチェ式除湿機」を新発売</a></div>
-          <div class='card-summary'>～梅雨前の“早め対策”に！春先から始める収納空間の湿気ケア～コンプレッサー不使用の静音設計、モバイルバッテリー対応＋コンパクト設計で狭い空間にも使用可能！「ペルチェ式除湿機」2026年4月下旬より発売開始株式会社山善（本社：大阪市西区、代表取締役社長：岸田貢司）は、コンパクト設計で下駄箱やクローゼッ</div>
+          <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2818.html" target="_blank" rel="noopener">[プレスリリース] 「ペルチェ式除湿機」を新発売</a></div>
+          
         </div>
         <div class="news-card" data-company="山善" data-date="2026-04-09">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
             <span class="card-date">2026/04/09</span>
           </div>
-          <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2822.html" target="_blank" rel="noopener">インドネシアで機械工具事業を拡大</a></div>
-          <div class='card-summary'>インドネシアで機械工具事業を拡大―海外子会社の機械工具商社とセレモニーを開催―株式会社山善（本社：大阪市西区／代表取締役社長：岸田貢司 以下、当社）は、2026年3月27日付で株式譲渡により子会社化した、インドネシアの機械工具商社であるPT. Somagede Indonesia（以下「SGI社」）</div>
-        </div>
-        <div class="news-card" data-company="山善" data-date="2026-04-09">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2026/04/09</span>
-          </div>
-          <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2817.html" target="_blank" rel="noopener">「熱中対策シェルター」と「エマージェンシープール」を新発売</a></div>
-          <div class='card-summary'>どんな場所でも“涼しい避難スペース”を「熱中対策シェルター」～万が一の応急対応に「エマージェンシープール」も展開～2026年4月下旬より発売開始株式会社山善（本社：大阪市西区、代表取締役社長：岸田貢司）は、作業現場における熱中症対策として、移動式の簡易休憩スペース「熱中対策シェルター」（屋外／屋内用</div>
-        </div>
-        <div class="news-card" data-company="山善" data-date="2026-04-07">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/07</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTE9leWhUbDNHaXNDQ0U4aTRtb1VQSHhmN1VVXzdWYWdYRjBQY1FzZ2tQZ1MtZ2Rjd004a0Z4dHY4dkYxTVdobUpvYkhxc2REREJzUjQwanJlWk5hVTU1MGlZRzd5WUE0am9FZnU2T1loUmo?oc=5" target="_blank" rel="noopener">【ガン見】昨年爆売れした山善ポータブル冷蔵庫。さらに保温もできる型が54%オフに!? - ギズモード・ジャパン</a></div>
-          <div class='card-summary'>【ガン見】昨年爆売れした山善ポータブル冷蔵庫。さらに保温もできる型が54%オフに!? ギズモード・ジャパン</div>
-        </div>
-        <div class="news-card" data-company="山善" data-date="2026-04-06">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2026/04/06</span>
-          </div>
-          <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2816.html" target="_blank" rel="noopener">大分営業所 業務部門移転のお知らせ</a></div>
-          <div class='card-summary'>各位株式会社山善では、大分営業所の業務部門につきまして、下記のとおり移転しますので、お知らせします。なお、セールスは大分営業所での営業活動を継続いたします。記【大分営業所 業務部門（産業ソリューション事業部・Ｔ＆Ｅ事業部】・住　所：〒812-8578福岡市博多区東比恵2-20-18　(株)山善 九州</div>
+          <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2822.html" target="_blank" rel="noopener">[お知らせ] インドネシアで機械工具事業を拡大</a></div>
+          
         </div>
         <div class="news-card" data-company="山善" data-date="2026-03-31">
           <div class="card-header">
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/03/31</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE5rWHJpN2VmSlo3ZWE1eUlCZTM5RUoxb2xOel9GejAtN0xiS0lLNk5NMUhkb2JHbi1oWU00eVhTTjQ5ODFPY00zMHNnRGQ?oc=5" target="_blank" rel="noopener">山善 YAMAZEN サーキュレーター YAR-ND15E(WH)を検証レビュー！サーキュレーターの選び方も紹介 - マイベスト</a></div>
-          <div class='card-summary'>山善 YAMAZEN サーキュレーター YAR-ND15E(WH)を検証レビュー！サーキュレーターの選び方も紹介 マイベスト</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE1qb3FXbnNZdUNHU0dqZlFuY1RoeE9WcU9kWm1yNzZnUVRabDdHc0tSbFBfUXUtR1ZSVG5aYWNObVhlSThTRXVYdUpMZjg?oc=5" target="_blank" rel="noopener">山善 YAMAZEN DCサーキュレーター RCRP-W015を検証レビュー！サーキュレーターの選び方も紹介 - マイベスト</a></div>
+          <div class='card-summary'>山善 YAMAZEN DCサーキュレーター RCRP-W015を検証レビュー！サーキュレーターの選び方も紹介 マイベスト</div>
         </div>
       </div>
     </div>
@@ -2470,7 +2442,31 @@
             <span class="badge-corp">コーポレート</span>
             <span class="card-date">2026/04/07</span>
           </div>
-          <div class="card-title"><a href="https://www.kawaki-sowa.co.jp/news.html" target="_blank" rel="noopener">NEWお知らせ～健康経営優良法人2026認定～</a></div>
+          <div class="card-title"><a href="https://www.kawaki-sowa.co.jp/dcms_media/other/%E5%81%A5%E5%BA%B7%E7%B5%8C%E5%96%B6%E8%AA%8D%E5%AE%9A%E8%A8%BC2026%EF%BC%BF%E5%B7%9D%E5%96%9C%E9%87%91%E7%89%A9%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE.pdf" target="_blank" rel="noopener">[お知らせ] ～健康経営優良法人2026認定～</a></div>
+          
+        </div>
+        <div class="news-card" data-company="川喜金物" data-date="2026-03-25">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/03/25</span>
+          </div>
+          <div class="card-title"><a href="https://www.kawaki-sowa.co.jp/dcms_media/other/KWK%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%20vol.4%EF%BC%880325%EF%BC%89.pdf" target="_blank" rel="noopener">[社外報] 「KWKニュース vol.4」掲載</a></div>
+          
+        </div>
+        <div class="news-card" data-company="川喜金物" data-date="2026-03-02">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/03/02</span>
+          </div>
+          <div class="card-title"><a href="https://www.kawaki-sowa.co.jp/news.html" target="_blank" rel="noopener">[重要] 棚卸のご案内</a></div>
+          
+        </div>
+        <div class="news-card" data-company="川喜金物" data-date="2026-01-23">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/01/23</span>
+          </div>
+          <div class="card-title"><a href="https://www.kawaki-sowa.co.jp/dcms_media/other/KWK%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%20vol.3.pdf" target="_blank" rel="noopener">[社外報] 「KWKニュース vol.3」掲載</a></div>
           
         </div>
       </div>
@@ -2478,13 +2474,37 @@
     <div class="company-group" data-company-group="川崎重工業">
       <div class="company-group-header">川崎重工業</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="川崎重工業" data-date="2443-04-01">
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-16">
           <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2443/04/01</span>
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/16</span>
           </div>
-          <div class="card-title"><a href="https://www.khi.co.jp/pressrelease/detail/20240930_1.html" target="_blank" rel="noopener">産業用サイバーセキュリティ国際標準規格「IEC 6」認証を取得</a></div>
-          <div class='card-summary'>川崎重工は、ロボットディビジョンにおいて「IEC62443-4-1」認証を取得しました。この認証は、産業用オートメーションおよび制御システムで使用する機器のセキュアな開発プロセス要件について規定したサイバーセキュリティに関する国際標準規格です。医療機器、産業機器、民生機器、自動車、食品、化学、エネル</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHRUxvRVBjbmxTd0ZoaWZLVzdVaTFqT1lNYndQRnhWeXhqZVlIU3FOU3BfRFV1S3ZBbkNuUXdtbDRuNWdBQ0ZCRmNKZWJoVWNWN3hjWFA3THFPLWNvdjV3?oc=5" target="_blank" rel="noopener">川崎重工業(株)【7012】：AI値動き解説 - Yahoo!ファイナンス</a></div>
+          <div class='card-summary'>川崎重工業(株)【7012】：AI値動き解説 Yahoo!ファイナンス</div>
+        </div>
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-16">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/16</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE56NUFoN3ZEM2V4VFhjWTdlRnpfeXR6MG5HbjRaMVFib2Nvd2JZd29ZdDg5ODJJY3lUcGo5NnFEc3poSERQT05hMy1Ud2xrX0pyMHQtQkREcDQzWGNXZFFSUmZwVlByMk1idDl1Qg?oc=5" target="_blank" rel="noopener">川崎重工、名古屋の中京病院などに搬送ロボット納入 累計10施設に - 日本経済新聞</a></div>
+          <div class='card-summary'>川崎重工、名古屋の中京病院などに搬送ロボット納入 累計10施設に 日本経済新聞</div>
+        </div>
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-15">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/15</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE9jd3RRZmdUay1zOXpJT1RQa0xPd3FOVTRhS0lFZEJQZXluZk9tX1FTajZKdWp0eEthQTBMQ1hzWjM0Ml9fTFpscw?oc=5" target="_blank" rel="noopener">川崎重工、屋内配送ロボを中京病院に初導入 - LOGISTICS TODAY</a></div>
+          <div class='card-summary'>川崎重工、屋内配送ロボを中京病院に初導入 LOGISTICS TODAY</div>
+        </div>
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-15">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/15</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE1IOHhCd2VOa3lNTXA2Y3VIZjRfMWJhbmdYc2VWNTZIZ2FKSE5uNW00YXRZQmN1ZERieGhMMTlpZXNlNk9HUlNrTWgyQ2pZNlRVMk9CdEptRnA3WV8xajloWmFPLXFlRkdOUjZVV0ln?oc=5" target="_blank" rel="noopener">学生が就職したい兵庫の企業は? 1位は川崎重工業 2位アシックス 人気ランキングを初公開 |経済ニュース - 神戸新聞</a></div>
+          <div class='card-summary'>学生が就職したい兵庫の企業は? 1位は川崎重工業 2位アシックス 人気ランキングを初公開 |経済ニュース 神戸新聞</div>
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-15">
           <div class="card-header">
@@ -2494,13 +2514,13 @@
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBXX1UyMVBBcHNCaUdBSUZFZkhjZXo5anZUS0hvR0hUaWtKZ2tPVHM3NjlETkNZLTQtVWFnT0xNaTdNYnM?oc=5" target="_blank" rel="noopener">中京病院にて屋内配送ロボット「FORRO（フォーロ）」の運用を開始 - Digital PR Platform</a></div>
           <div class='card-summary'>中京病院にて屋内配送ロボット「FORRO（フォーロ）」の運用を開始 Digital PR Platform</div>
         </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2026-04-14">
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-15">
           <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/14</span>
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/04/15</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE5Ibm5BRV9zczh1MkdDU0xwNnpBT3ljbGdpcGE4MWF0RU9XRlNkVXdtTTEtTUgxYzAtaXE1dVJ1OXRyTGZiQW9WTw?oc=5" target="_blank" rel="noopener">川重・損保J・SB、船舶安全運航で連携 - LOGISTICS TODAY</a></div>
-          <div class='card-summary'>川重・損保J・SB、船舶安全運航で連携 LOGISTICS TODAY</div>
+          <div class="card-title"><a href="https://www.khi.co.jp/pressrelease/news_260415-1.pdf" target="_blank" rel="noopener">[プレスリリース] 中京病院にて屋内配送ロボット「FORRO（フォーロ）」の運用を開始</a></div>
+          
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-14">
           <div class="card-header">
@@ -2515,24 +2535,16 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/14</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE5jX21mZTVVektMTnc3OGZBTTFSUTd5eUFUWWloMTViOWM2Qm95OWUxNTNRaFR2ZVc4djdBVXRjT0JXeXNiWm1uZ1lmSFJtaVRXS2k5d3lmSFlIZ3M?oc=5" target="_blank" rel="noopener">水を使わないDC冷却は実現するか…川崎重工が挑む水素冷熱とWUE時代のインフラ戦略 - ビジネスジャーナル</a></div>
-          <div class='card-summary'>水を使わないDC冷却は実現するか…川崎重工が挑む水素冷熱とWUE時代のインフラ戦略 ビジネスジャーナル</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNbloyWTlab1J3bXNLYzlyVjhNb1BOWGtmQk9CdFZYU094b1JMSHJBcWhvVjlTVFZsY3RoQ0g2VnpYUXRUQ0MtUVRpc3o2OGNLNTR5RlQ0c1d3dk9tLXJrWlNDb0JXcm9BWjd4R1BVM25pdDU0N2c3T2ctelBSLUpGMWFRZVlJMjBSa2wxMUVSVzd2UkdUMkJrTmsweDc1WHNIeFIwY3NQZG80cDA5UmQySnhzZXJDaVlWbVE?oc=5" target="_blank" rel="noopener">川崎重工業と損害保険ジャパンがソフトバンクとともに船舶の安全運航を支える統合ソリューションの提供に向けた基本合意を締結 - 北海道新聞デジタル</a></div>
+          <div class='card-summary'>川崎重工業と損害保険ジャパンがソフトバンクとともに船舶の安全運航を支える統合ソリューションの提供に向けた基本合意を締結 北海道新聞デジタル</div>
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-14">
           <div class="card-header">
-            <span class="badge-google">Google News</span>
+            <span class="badge-corp">コーポレート</span>
             <span class="card-date">2026/04/14</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHRUxvRVBjbmxTd0ZoaWZLVzdVaTFqT1lNYndQRnhWeXhqZVlIU3FOU3BfRFV1S3ZBbkNuUXdtbDRuNWdBQ0ZCRmNKZWJoVWNWN3hjWFA3THFPLWNvdjV3?oc=5" target="_blank" rel="noopener">川崎重工業(株)【7012】：AI値動き解説 - Yahoo!ファイナンス</a></div>
-          <div class='card-summary'>川崎重工業(株)【7012】：AI値動き解説 Yahoo!ファイナンス</div>
-        </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2026-04-14">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/14</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE1neUtEOHNUR256REtjN0tPcjB5UUJNaE51TGdIdWF6TTliNVJzLU1QT3hscXM1clZMX2hjZjRwYU1hSFdyeHZ5Nm8tSTk1N1RFakhn?oc=5" target="_blank" rel="noopener">ソフトバンク・川崎重工・損保ジャパンが「船の自動運転」目指す 誤差数センチの位置測位サービスを活用 - ビジネスネットワーク</a></div>
-          <div class='card-summary'>ソフトバンク・川崎重工・損保ジャパンが「船の自動運転」目指す 誤差数センチの位置測位サービスを活用 ビジネスネットワーク</div>
+          <div class="card-title"><a href="https://www.khi.co.jp/pressrelease/news_260414-1.pdf" target="_blank" rel="noopener">[プレスリリース] 川崎重工業と損害保険ジャパンがソフトバンクとともに船舶の安全運航を支える統合ソリューションの提供に向けた基本合意を締結</a></div>
+          
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-13">
           <div class="card-header">
@@ -2547,91 +2559,91 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/13</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5oMzFXRHRKX3g4WV9QUGctUEJ6S2s3Y3ZmNTNFTGI3djFOeDhmWVlKRUdZWGtqeGVLRDI2MnNLWGw4VXZEZjV5a2oycGxRdXVaaXpRcHdxNl9HR1BrMllHaEV3TGNZVFNPUi1pag?oc=5" target="_blank" rel="noopener">川崎重工、ごみ処理場の人員半減 AIやロボット活用で - 日本経済新聞</a></div>
-          <div class='card-summary'>川崎重工、ごみ処理場の人員半減 AIやロボット活用で 日本経済新聞</div>
-        </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2026-04-13">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/13</span>
-          </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5sU2lkR1FOaU1rdGdoUDN2dk5GRUg5Y2xXT1BqeU5FZEg4U1BoRUNEaDhOdU4tMUdSb0ZXa2plcnJmdTVBOVlRU05qVVBtNkxKVlE0NmZjWWdSRU5yTGdzdUdCbWluS3c?oc=5" target="_blank" rel="noopener">川崎重工ら3社、船舶の自動運航支える統合ソリューションを開発 - ケータイ Watch</a></div>
           <div class='card-summary'>川崎重工ら3社、船舶の自動運航支える統合ソリューションを開発 ケータイ Watch</div>
         </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2024-04-02">
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-13">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2024/04/02</span>
+            <span class="card-date">2026/04/13</span>
           </div>
-          <div class="card-title"><a href="https://www.global-kawasaki-motors.com/jp/news/24-03-14/index.html" target="_blank" rel="noopener">モーターサイクル事業70周年特別展示 第二弾の開催について(～9月29日)（カワサキモータース）</a></div>
-          <div class='card-summary'>カワサキモータースは、カワサキワールドでモーターサイクル事業 70周年特別展示“70 Years of Good Times”の第二弾を、4月2日から9月29日まで開催します。</div>
+          <div class="card-title"><a href="https://www.khi.co.jp/pressrelease/news_260413-1.pdf" target="_blank" rel="noopener">[プレスリリース] 神戸市立西神戸医療センターで屋内配送ロボット「FORRO（フォーロ）」の運用を開始</a></div>
+          
         </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2023-12-12">
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-08">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2023/12/12</span>
+            <span class="card-date">2026/04/08</span>
           </div>
-          <div class="card-title"><a href="https://www.khi.co.jp/ir/library/other_presen_231212.html" target="_blank" rel="noopener">グループビジョン2030・進捗報告会（）</a></div>
-          <div class='card-summary'>このページに関する更なる情報をご希望の際は、右のボタンよりお問い合わせください。</div>
+          <div class="card-title"><a href="https://www.khi.co.jp/pressrelease/detail/20260408_1.html" target="_blank" rel="noopener">[プレスリリース] ばら積運搬船「MARIDORA」の引き渡し</a></div>
+          
         </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2020-05-08">
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-07">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2020/05/08</span>
+            <span class="card-date">2026/04/07</span>
           </div>
-          <div class="card-title"><a href="https://www.khi.co.jp/news/detail/post_62.html" target="_blank" rel="noopener">当社関連施設の臨時休館のお知らせ（更新）</a></div>
-          <div class='card-summary'>新型コロナウイルス感染拡大防止のため、以下の施設の休館期間を延長させていただきます。休館日程などの変更がありましたら、随時ホームページでお知らせいたします。</div>
-        </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2017-10-01">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2017/10/01</span>
-          </div>
-          <div class="card-title"><a href="https://www.khi.co.jp/news/detail/2017101.html" target="_blank" rel="noopener">からの当社株式数等について</a></div>
-          <div class='card-summary'>川崎重工は、2017年10月1日をもって、普通株式１０株を１株に併合するとともに、単元株式数を１，０００株から１００株に変更しました。</div>
+          <div class="card-title"><a href="https://www.khi.co.jp/news/detail/20260407_1.html" target="_blank" rel="noopener">Kawasaki CO₂ Capture（KCC）が日刊工業新聞社主催・第55回日本産業技術大賞で文部科学大臣賞を受賞</a></div>
+          
         </div>
       </div>
     </div>
     <div class="company-group" data-company-group="旭精工">
       <div class="company-group-header">旭精工</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="旭精工" data-date="">
+        <div class="news-card" data-company="旭精工" data-date="2026-04-01">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/04/01</span>
           </div>
-          <div class="card-title"><a href="https://www.asahiseiko.co.jp/catalog/" target="_blank" rel="noopener">カタログダウンロード</a></div>
+          <div class="card-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/370/ゴールデンウィーク休業のお知らせ2026.pdf" target="_blank" rel="noopener">[会社] ゴールデンウィーク休業のお知らせ</a></div>
           
         </div>
-        <div class="news-card" data-company="旭精工" data-date="">
+        <div class="news-card" data-company="旭精工" data-date="2026-04-01">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/04/01</span>
           </div>
-          <div class="card-title"><a href="https://www.asahiseiko.co.jp/tel:072-271‑1221" target="_blank" rel="noopener">072-271‑1221</a></div>
-          <div class='card-summary'>多様化するユーザーニーズにお応えするために、製品企画・設計・購買・製造・検査・試験・アフターサービスに至るまでの一貫した品質システムを確立させ、高い品質と次世代に役立つ商品開発の両立を実現。私たちは、常にリーズナブルな価格で高品質な商品を、迅速、的確に提供することをモットーに、あらゆる産業にお役立て</div>
+          <div class="card-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/369/B07_23_stainless.pdf" target="_blank" rel="noopener">[製品] カタログ「ステンレスシリーズ」を更新しました。MFK形など形番追加によりラインアップを強化！</a></div>
+          
         </div>
-        <div class="news-card" data-company="旭精工" data-date="">
+        <div class="news-card" data-company="旭精工" data-date="2025-12-01">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2025/12/01</span>
           </div>
-          <div class="card-title"><a href="https://www.asahiseiko.co.jp/contact/" target="_blank" rel="noopener">メールでのお問い合せ</a></div>
-          <div class='card-summary'>これまでにいただきましたご質問を「よくある質問」にまとめましたので、そちらもご利用ください。お電話でのお問い合せをご希望の場合は、最寄りの弊社営業支社・支店・営業所若しくは、販売店までお問い合せ下さい。</div>
+          <div class="card-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/368/2025年末年始休業のお知らせ.pdf" target="_blank" rel="noopener">[会社] 年末年始休業のお知らせ</a></div>
+          
         </div>
-        <div class="news-card" data-company="旭精工" data-date="">
+        <div class="news-card" data-company="旭精工" data-date="2025-12-01">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2025/12/01</span>
           </div>
-          <div class="card-title"><a href="https://www.asahiseiko.co.jp/legal/" target="_blank" rel="noopener">Webサイトご利用条件</a></div>
-          <div class='card-summary'>このホームページ，ウエブサイトは旭精工株式会社（以下旭精工と表現いたします）が開設、運営しています。このホームページをご利用されるに際し、以下のご利用条件を確認いただき、これらの条件を同意された場合のみご利用頂きます様お願いいたします。</div>
+          <div class="card-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/366/2025年旭精工_イルミネーション.pdf" target="_blank" rel="noopener">[会社] イルミネーション開催のお知らせ</a></div>
+          
+        </div>
+        <div class="news-card" data-company="旭精工" data-date="2025-09-01">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2025/09/01</span>
+          </div>
+          <div class="card-title"><a href="https://www.asahiseiko.co.jp/system/download/headline/363/HP掲載用_2025大阪機械要素技術展案内.pdf" target="_blank" rel="noopener">[会社] 第28回大阪機械要素技術展 出展のお知らせ</a></div>
+          
         </div>
       </div>
     </div>
     <div class="company-group" data-company-group="杉本商事">
       <div class="company-group-header">杉本商事</div>
       <div class="company-group-cards">
+        <div class="news-card" data-company="杉本商事" data-date="2026-04-10">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/10</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTFBSdENIM2VIeGd3dnY4WTJBMGZKTUNZZ0JEZm1uNzc3QlZsNy1oclNhRkR6eHM4X3QxVE5hN3FaRXl3WFJzaks3eHNGS3FqUE1hWWVYZmQzQWcyeWJfQnk0YnQzM0N2cFBZ?oc=5" target="_blank" rel="noopener">4/12（日）ファーム・リーグ公式戦 対 福岡ソフトバンクホークス戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></div>
+          <div class='card-summary'>4/12（日）ファーム・リーグ公式戦 対 福岡ソフトバンクホークス戦（杉本商事BS）当日券販売について オリックス・バファローズ</div>
+        </div>
         <div class="news-card" data-company="杉本商事" data-date="2026-04-10">
           <div class="card-header">
             <span class="badge-google">Google News</span>
@@ -2648,13 +2660,13 @@
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTFBpUmtKMExaeDVtTFV1VzFfRVdyODVuM3p6MDJIekhPeUx6aDlOS2V4UUpvOE5DVDBJcmphaTNTVkQwSV9NYjEwd21jWmlMWEZQQlRYNWhIQmI3Y2cyU0VRLXU3QW1UQlh4?oc=5" target="_blank" rel="noopener">4/7（火）～4/9（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></div>
           <div class='card-summary'>4/7（火）～4/9（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について オリックス・バファローズ</div>
         </div>
-        <div class="news-card" data-company="杉本商事" data-date="2026-03-26">
+        <div class="news-card" data-company="杉本商事" data-date="2026-04-01">
           <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/03/26</span>
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2026/04/01</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5FcFIyR3ZmdGd0bXV2WkxTbF9zNkhnR0RULUN3aFJ3b0NaYS1GeXJkRVFDTG1TSXVaUU9hdVJfeUxiM1l5dmxSMldqWEJOdEU4Q2hVQVdwZ2VmdEVIQXNiMzNETlA1Wkd1?oc=5" target="_blank" rel="noopener">3/26（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></div>
-          <div class='card-summary'>3/26（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について オリックス・バファローズ</div>
+          <div class="card-title"><a href="https://www.sugi-net.co.jp/%e7%a4%be%e4%bc%9a%e8%b2%a2%e7%8c%ae%e3%81%ab%e5%90%91%e3%81%91%e3%81%9f%e5%af%84%e4%bb%98%e3%81%ae%e5%ae%9f%e6%96%bd%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/" target="_blank" rel="noopener">[お知らせ] 社会貢献に向けた寄付の実施について</a></div>
+          
         </div>
         <div class="news-card" data-company="杉本商事" data-date="2026-03-19">
           <div class="card-header">
@@ -2664,44 +2676,44 @@
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE1oVFlFV1hROVVRRXNOMmtmY0lZVThhUFFXWGVGa1htejRnekxIcmtySzdoSTFfR05LME9tdHZFa3JRUUJxWFhXZXVURXg1VDgtVWZJcFpJTnRLVHhSOWtZeUdJdklPNW1kSXc?oc=5" target="_blank" rel="noopener">杉本商事[9932]：人事異動に関するお知らせ 2026年3月19日(適時開示) ：日経会社情報DIGITAL - 日本経済新聞</a></div>
           <div class='card-summary'>杉本商事[9932]：人事異動に関するお知らせ 2026年3月19日(適時開示) ：日経会社情報DIGITAL 日本経済新聞</div>
         </div>
-        <div class="news-card" data-company="杉本商事" data-date="">
+        <div class="news-card" data-company="杉本商事" data-date="2026-03-19">
           <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/03/19</span>
           </div>
-          <div class="card-title"><a href="https://www.sugi-net.co.jp/#content" target="_blank" rel="noopener">コンテンツへスキップ</a></div>
-          <div class='card-summary'>あなたのビジネスをサポートするため、各トップメーカーが誇る測定器具や機械工具を迅速にご提供しています。</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE9uQnZMTjB0ZDFWZkhTOERXeURsSHgxVzh5a212T2NHbWpKSHAxWktFOFR6WlVNM25zaFh0ZUM5WjNtdjVvVUZmNzM3WnBjSjQxTWpOd19tN2FhZURkWG5OQncxcjdWUHVC?oc=5" target="_blank" rel="noopener">3/20（金・祝）～22（日）ファーム・リーグ公式戦 対 広島東洋カープ戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></div>
+          <div class='card-summary'>3/20（金・祝）～22（日）ファーム・リーグ公式戦 対 広島東洋カープ戦（杉本商事BS）当日券販売について オリックス・バファローズ</div>
         </div>
-        <div class="news-card" data-company="杉本商事" data-date="">
+        <div class="news-card" data-company="杉本商事" data-date="2026-03-19">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/03/19</span>
           </div>
-          <div class="card-title"><a href="https://www.sugi-net.co.jp/%e7%a4%be%e4%bc%9a%e8%b2%a2%e7%8c%ae%e3%81%ab%e5%90%91%e3%81%91%e3%81%9f%e5%af%84%e4%bb%98%e3%81%ae%e5%ae%9f%e6%96%bd%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/" target="_blank" rel="noopener">社会貢献に向けた寄付の実施について</a></div>
+          <div class="card-title"><a href="https://www.sugi-net.co.jp/%e4%ba%ba%e4%ba%8b%e7%95%b0%e5%8b%95%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b-2/" target="_blank" rel="noopener">[IR情報] 人事異動に関するお知らせ</a></div>
           
         </div>
-        <div class="news-card" data-company="杉本商事" data-date="">
+        <div class="news-card" data-company="杉本商事" data-date="2026-03-10">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/03/10</span>
           </div>
-          <div class="card-title"><a href="https://www.sugi-net.co.jp/%e4%ba%ba%e4%ba%8b%e7%95%b0%e5%8b%95%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b%e3%81%8a%e7%9f%a5%e3%82%89%e3%81%9b-2/" target="_blank" rel="noopener">人事異動に関するお知らせ</a></div>
+          <div class="card-title"><a href="https://www.sugi-net.co.jp/%e3%80%8c%e5%81%a5%e5%ba%b7%e7%b5%8c%e5%96%b6%e5%84%aa%e8%89%af%e6%b3%95%e4%ba%ba2026%e3%80%8d%e3%81%ab%e8%aa%8d%e5%ae%9a%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f/" target="_blank" rel="noopener">[お知らせ] 「健康経営優良法人2026」に認定されました</a></div>
           
         </div>
-        <div class="news-card" data-company="杉本商事" data-date="">
+        <div class="news-card" data-company="杉本商事" data-date="2026-03-09">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/03/09</span>
           </div>
-          <div class="card-title"><a href="https://www.sugi-net.co.jp/%e3%80%8c%e5%81%a5%e5%ba%b7%e7%b5%8c%e5%96%b6%e5%84%aa%e8%89%af%e6%b3%95%e4%ba%ba2026%e3%80%8d%e3%81%ab%e8%aa%8d%e5%ae%9a%e3%81%95%e3%82%8c%e3%81%be%e3%81%97%e3%81%9f/" target="_blank" rel="noopener">「健康経営優良法人2026」に認定されました</a></div>
+          <div class="card-title"><a href="https://www.sugi-net.co.jp/%e4%ba%8b%e6%a5%ad%e7%b4%b9%e4%bb%8b%e3%83%a0%e3%83%bc%e3%83%93%e3%83%bc%e3%82%92%e6%8e%b2%e8%bc%89%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/" target="_blank" rel="noopener">[お知らせ] 事業紹介ムービーを掲載しました</a></div>
           
         </div>
-        <div class="news-card" data-company="杉本商事" data-date="">
+        <div class="news-card" data-company="杉本商事" data-date="2026-02-20">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/02/20</span>
           </div>
-          <div class="card-title"><a href="https://www.sugi-net.co.jp/%e4%ba%8b%e6%a5%ad%e7%b4%b9%e4%bb%8b%e3%83%a0%e3%83%bc%e3%83%93%e3%83%bc%e3%82%92%e6%8e%b2%e8%bc%89%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/" target="_blank" rel="noopener">事業紹介ムービーを掲載しました</a></div>
+          <div class="card-title"><a href="https://www.sugi-net.co.jp/%e5%8f%96%e7%b7%a0%e5%bd%b9%e4%bc%9a%e3%81%ae%e5%ae%9f%e5%8a%b9%e6%80%a7%e8%a9%95%e4%be%a1%e7%b5%90%e6%9e%9c%e3%81%ae%e6%a6%82%e8%a6%81%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6-3/" target="_blank" rel="noopener">[IR情報] 取締役会の実効性評価結果の概要について</a></div>
           
         </div>
       </div>
@@ -2709,36 +2721,44 @@
     <div class="company-group" data-company-group="株式会社ナイキ">
       <div class="company-group-header">株式会社ナイキ</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="株式会社ナイキ" data-date="">
+        <div class="news-card" data-company="株式会社ナイキ" data-date="2026-04-10">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/04/10</span>
           </div>
-          <div class="card-title"><a href="https://www.naiki.co.jp/../csr/index.html" target="_blank" rel="noopener">QMS/EMS/SDGs</a></div>
+          <div class="card-title"><a href="https://www.naiki.co.jp/websolution/cat-04.html" target="_blank" rel="noopener">NAIKI Style Selection NBook vol.7改訂版を掲載しました。 2026年新製品を加えトータル115シーンの提案をご覧いただけます。</a></div>
           
         </div>
-        <div class="news-card" data-company="株式会社ナイキ" data-date="">
+        <div class="news-card" data-company="株式会社ナイキ" data-date="2026-03-06">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/03/06</span>
           </div>
-          <div class="card-title"><a href="https://www.naiki.co.jp/../products/meeting_space.html" target="_blank" rel="noopener">コミュニケーションスペース</a></div>
-          <div class='card-summary'>情報化時代の理想的なコミュニケーションのあり方を考えたアイテムを取り揃えています。</div>
-        </div>
-        <div class="news-card" data-company="株式会社ナイキ" data-date="">
-          <div class="card-header">
-            <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
-          </div>
-          <div class="card-title"><a href="https://manual.naiki.jp/Login.jsp" target="_blank" rel="noopener">取説・組説ダウンロード</a></div>
+          <div class="card-title"><a href="https://www.naiki.co.jp/company_info/gaiyou.html" target="_blank" rel="noopener">標準貨物自動車利用運送 （引越） 約款を掲載しました。</a></div>
           
         </div>
-        <div class="news-card" data-company="株式会社ナイキ" data-date="">
+        <div class="news-card" data-company="株式会社ナイキ" data-date="2026-02-16">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">日付不明</span>
+            <span class="card-date">2026/02/16</span>
           </div>
-          <div class="card-title"><a href="https://www.naiki.co.jp/../websolution/cat-04.html" target="_blank" rel="noopener">その他のパンフレット</a></div>
+          <div class="card-title"><a href="https://www.naiki.co.jp/3dod/index.html" target="_blank" rel="noopener">3Dオフィスデザイナー専用パーツ集2026年版を掲載しました。 （PRO4用、11用それぞれに用意しています）</a></div>
+          
+        </div>
+        <div class="news-card" data-company="株式会社ナイキ" data-date="2025-12-25">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2025/12/25</span>
+          </div>
+          <div class="card-title"><a href="https://www.naiki.co.jp/news_pdf/251225news.pdf" target="_blank" rel="noopener">代表取締役社長交代のお知らせ</a></div>
+          
+        </div>
+        <div class="news-card" data-company="株式会社ナイキ" data-date="2025-12-17">
+          <div class="card-header">
+            <span class="badge-corp">コーポレート</span>
+            <span class="card-date">2025/12/17</span>
+          </div>
+          <div class="card-title"><a href="https://www.naiki.co.jp/websolution/pdf2026/jpg2026.html" target="_blank" rel="noopener">ナイキオフィス家具総合カタログ2026のJPEGデータを用意しました。</a></div>
           
         </div>
       </div>
@@ -2746,6 +2766,14 @@
     <div class="company-group" data-company-group="椿本チエイン">
       <div class="company-group-header">椿本チエイン</div>
       <div class="company-group-cards">
+        <div class="news-card" data-company="椿本チエイン" data-date="2026-04-15">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/15</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPSzZ0QjhMenlVMmdDaDJPb3FMZ3NyWTY0X3lSTnh4OU5RRk5lRlQtaVVlcVhyTmNhUlp2cU42UXQyVnN1Z3pTTVBncm9xMmt5U1R3RzFBOFJiMWtNNVM4dW1ha19nWGxOU0tLVG5nZkY3ZFZpSEJhb1R2a1JfN3dXNmpnV2VDQzlGdWVQeG9RQk50WTEwNFdvLU14M21CaklaVzl0X2xOekk?oc=5" target="_blank" rel="noopener">椿本チエイン、欧州事業統括会社 - 日本経済新聞</a></div>
+          <div class='card-summary'>椿本チエイン、欧州事業統括会社 日本経済新聞</div>
+        </div>
         <div class="news-card" data-company="椿本チエイン" data-date="2026-04-15">
           <div class="card-header">
             <span class="badge-google">Google News</span>
@@ -2775,7 +2803,7 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/14</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxNd3hoM0s1dzU0TmVzTzZZZzlzU3BOY0dOWm9GUFNrUEFEY0JTTVdjRlg1Z19JQ09xLThlLVc3N0h6WURZV3BxS0hEa0pHekNEVE1fUUtCY09YdXdROXNiWV9pOEpJMm1obENUdDBVTFd3Mmt6V2NGeHBXZGhubzVaV0lDemkzZ1g5Vkw3QUVrYw?oc=5" target="_blank" rel="noopener">椿本チエイン子会社、「つばきみらいポート」を東京・芝公園に開設…バリアフリー社会実現へ 1枚目の写真・画像 - レスポンス（Response.jp）</a></div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTFBySElCdmMyV2pHREVHOFI3ODV0Qk1XLWJDWDJWYmlFdWNqSjlidE5IcmNDcDZYT1ZUTWdQLTZLcGNwalRkeHZpMVk3WTJJLXdMMWowb0doYkxfZVloQk8xNnZEem1sWmZONnpuUFlfUQ?oc=5" target="_blank" rel="noopener">椿本チエイン子会社、「つばきみらいポート」を東京・芝公園に開設…バリアフリー社会実現へ 1枚目の写真・画像 - レスポンス（Response.jp）</a></div>
           <div class='card-summary'>椿本チエイン子会社、「つばきみらいポート」を東京・芝公園に開設…バリアフリー社会実現へ 1枚目の写真・画像 レスポンス（Response.jp）</div>
         </div>
         <div class="news-card" data-company="椿本チエイン" data-date="2026-04-10">
@@ -2799,15 +2827,7 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/09</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxPN0JkNF92a3UxUkN5NGFjN3ZDWTliTWJMVTVpZTZZLXRodGJmWlBhbnVUZzVpT3BwTGZ2c0ROMnQ5OHhVY29OMFo0dXl5Z1A5QW5INUlmeXNmd1hOaVVsOUNfTnNTcHFRVHQ2dmNVQVhmQzkwU3ZOMGR1X2IydGVEZF96aVljTWlDUTZqSXh0bVQ4aEhaN1k4OEhuQzJuNWYxam1OdTJhTnA?oc=5" target="_blank" rel="noopener">椿本チエイン、欧州事業の統括子会社をオランダに新設 拠点を集約 - 日本経済新聞</a></div>
-          <div class='card-summary'>椿本チエイン、欧州事業の統括子会社をオランダに新設 拠点を集約 日本経済新聞</div>
-        </div>
-        <div class="news-card" data-company="椿本チエイン" data-date="2026-04-09">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/09</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiY0FVX3lxTE9lZEljSEZSVGlFYlVaTk9Jcnc2aUJjMkg1eWxuSTVPQTN2NDQ5ZEVZUDlZU05KaDhKNVliTElFNHZWQ0EzcFNkaG1EeXJNS2dYaXRRXzd1dFlUdHNsOFdNNE9Ydw?oc=5" target="_blank" rel="noopener">椿本チエイン、欧州子会社の組織再編を発表 - marr.jp</a></div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTFBNWkNfeDBjTGtyMHBrTlhISmFCalNsVVotS3AtNlpKMDBkRUgxbjJuWmQyMDJxMjN4c3hXdnFESzNGa0xQaVd5Tk81ZDk?oc=5" target="_blank" rel="noopener">椿本チエイン、欧州子会社の組織再編を発表 - marr.jp</a></div>
           <div class='card-summary'>椿本チエイン、欧州子会社の組織再編を発表 marr.jp</div>
         </div>
         <div class="news-card" data-company="椿本チエイン" data-date="2026-04-09">
@@ -3023,7 +3043,7 @@
     </div>
   </div>
 </div>
-<div class="footer">顧客ニュース収集レポート — 2026年04月15日</div>
+<div class="footer">顧客ニュース収集レポート — 2026年04月16日</div>
 <script>
 let sortColIndex = -1;
 let sortAsc = false;
