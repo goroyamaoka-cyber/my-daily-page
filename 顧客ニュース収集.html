@@ -223,7 +223,7 @@
 <div class="page-header">
   <div>
     <h1>📰 顧客ニュース収集レポート</h1>
-    <div class="meta">収集日時：2026年04月17日 11:48　／　対象企業：23社　／　収集記事：178件（重複除去後）</div>
+    <div class="meta">収集日時：2026年04月17日 14:48　／　対象企業：23社　／　収集記事：177件（重複除去後）</div>
   </div>
   <div class="view-toggle">
     <button class="view-btn active" id="btnList" onclick="setView('list')" title="リスト表示">
@@ -240,7 +240,7 @@
     <div class="filter-header" onclick="toggleFilter()">
       <div class="filter-header-left">
         <span class="filter-header-title">🔍 絞り込み検索</span>
-        <span class="filter-header-summary" id="filterSummary">178件表示中</span>
+        <span class="filter-header-summary" id="filterSummary">177件表示中</span>
       </div>
       <span class="filter-chevron">&#9660;</span>
     </div>
@@ -251,7 +251,7 @@
         <div class="filter-row">
           <span class="filter-label">🔍 検索</span>
           <input type="text" class="search-input" id="searchInput" placeholder="キーワードで絞り込み..." oninput="applyFilters()">
-          <span class="count-label" id="countLabel">178件表示中</span>
+          <span class="count-label" id="countLabel">177件表示中</span>
         </div>
         <!-- 日付フィルター -->
         <div class="filter-row">
@@ -307,6 +307,13 @@
         </tr>
       </thead>
       <tbody id="tableBody">
+      <tr data-company="川崎重工業" data-date="2026-04-17">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/17</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1NNEpCMUhiTndVeFpPaFJOaE5lV2RGTWtOemJnaWFTakpLOG1wbmVkRXU4QUt5Tmkzd1dDZkgwUTBOaF9jN0ZIUnlaTTRZY2x0UlJ6MkVjR3dOVkdnOUhrZTRKdzBwUkdzZGxxcw?oc=5" target="_blank" rel="noopener">川崎重工、建設機械向けの電気リモートコントロールユニット「ERUJ」の量産を開始 - 日本経済新聞</a></td>
+        <td class="col-summary">川崎重工、建設機械向けの電気リモートコントロールユニット「ERUJ」の量産を開始 日本経済新聞</td>
+      </tr>
       <tr data-company="北陽電機" data-date="2026-04-17">
         <td class="col-company">北陽電機</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -348,20 +355,6 @@
         <td class="col-date">2026/04/16</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5YSjZpdklRbjBfbU9NdHpVVGhFMnBYVDUwUjNzMkt5MGZUVC1lWE1FZy1nRWo3SzRCT1pQdnluaVpUQ0oyY2ZoQ0hkVldtQk8zYThwR1pjbmR0ekpCVVBSVlZYTWpoQjZv?oc=5" target="_blank" rel="noopener">川崎重工・過労自殺訴訟：海外出向 「死角」浮き彫り 労基法、適用範囲外 川重、遺族と和解 - 毎日新聞</a></td>
         <td class="col-summary">川崎重工・過労自殺訴訟：海外出向 「死角」浮き彫り 労基法、適用範囲外 川重、遺族と和解 毎日新聞</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2026-04-16">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/16</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE16RVlKOUxVcjNPYktBUk15MmtwbTREbG1hNzhoVTVnQlJ5R0lJaGhScjhVWVItMHRIN2p3bklheXNsRnpIY1pTdlZIcmRoeXcza0VpXzY4VjNRZHpiMjVVak0xdWo1a0xSV0dkQnln?oc=5" target="_blank" rel="noopener">川重社員自死の賠償請求訴訟、高裁で和解成立 会社側が金銭支払い|社会 - 神戸新聞</a></td>
-        <td class="col-summary">川重社員自死の賠償請求訴訟、高裁で和解成立 会社側が金銭支払い|社会 神戸新聞</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2026-04-16">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/16</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBzTWZleWpaUlVLeXVJTmgwQ2VURkM5YnhJTGc1ZGRkeGZTZHJjMG9Nb2hfMnZ5R2V4eTdkaHJ5bzdoTTRQNzhLQ0JtcXdJZVlPbUh2bVowdWxtOFdndm9pMUZfbF81SXplUG1zdHY1bVQ4S2RmNVJXclNJSQ?oc=5" target="_blank" rel="noopener">海外勤務中の労災、出向元と初の和解 遺族側は「画期的」と評価 - au Webポータル</a></td>
-        <td class="col-summary">海外勤務中の労災、出向元と初の和解 遺族側は「画期的」と評価 au Webポータル</td>
       </tr>
       <tr data-company="川崎重工業" data-date="2026-04-16">
         <td class="col-company">川崎重工業</td>
@@ -444,8 +437,15 @@
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE9XdFFaenZ0SWNFODNCN20yMlhhRmdGX2ljU3RSMlZoc1JodE9tNnd4d1ZEVDJkdzRERnNTRzJYbFdvSFMwS1R0dnRrZlRvOENOWDlVM0hHSzRfS2t1SUNr?oc=5" target="_blank" rel="noopener">冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 - ライブドアニュース</a></td>
-        <td class="col-summary">冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 ライブドアニュース</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBfaWdIalFMUEwxajVfY2ZFWkI3bENNSUtNNnVrZWxLcTN1eTRxd0FZcDVYNnBrNkVPQk1aRFU5TS14V2owOTZKRE9qY3JWUTlFVTZyU1l5RFRPaG1EdExOY1MzMzJKQmRVYmxyMUp3VDk?oc=5" target="_blank" rel="noopener">冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 - ギズモード・ジャパン</a></td>
+        <td class="col-summary">冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 ギズモード・ジャパン</td>
+      </tr>
+      <tr data-company="山善" data-date="2026-04-14">
+        <td class="col-company">山善</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/14</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTFBKVVl2cjgxOG5rd3k3SXFCcFdRbEhnUkc5emVrZkJBZjZ1RlZkamJNeEtxNDhTNld1R3RGZTdOX0pCYUVxcWhOS1p6cTRSVlBtRHFseTl0NmFLLVRnWEE?oc=5" target="_blank" rel="noopener">冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 (2026年4月14日掲載) - news.livedoor.com</a></td>
+        <td class="col-summary">冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 (2026年4月14日掲載) news.livedoor.com</td>
       </tr>
       <tr data-company="山善" data-date="2026-04-14">
         <td class="col-company">山善</td>
@@ -479,8 +479,8 @@
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/14</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSGZ3M3RJUEVmb0NMd1JXekk4M1pnMVZZblROSE9XZXBHbGs4RFByZElrNDlMTkpfdThGa01lZGdwU2lKbkp2R09zMEZQTjNybm1Ya0pkMVFHazVpUGZmY0diZlhVZXVuaXBwbTgzMUVYQXpMSHZFWkRzbEZkblhZTUxzRXVtTUZ1cUpV0gGQAUFVX3lxTFA0eXJhMlpLa1Z0QkNIbUdvTXNxcFF4VmJMWmxBajl2WXFpUVlYRElZczY5cDZjY2liWkpFQjIxSVhnSW93U3g5T01nd19CMXJpWGgzdmhOOFd2UzR1UjZDaXUwc0MyNDBGaFViZU9xZ0xReEthOHNONVY1b1N0cERiNlQ3eVMxdHNqWmpLb1ZuNw?oc=5" target="_blank" rel="noopener">コーヒーメーカーや電気ケトルがお買い得！　Amazonで山善製品がセール中 - ｄメニューニュース</a></td>
-        <td class="col-summary">コーヒーメーカーや電気ケトルがお買い得！ Amazonで山善製品がセール中 ｄメニューニュース</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBzN01TQjduVC1rQnFmSWhhYmNOMW9pLVFtZkJLVnMwUUhLVHdBWVlKLUhkZ3liY2xscXotN25faGhxdXhZc1ZzQ1kzbVRoM0RGT1hTZklyNVdOVFQxMElmWTV3cXR3OVF6MlBwVEJpYkg?oc=5" target="_blank" rel="noopener">コーヒーメーカーや電気ケトルがお買い得！ Amazonで山善製品がセール中 - INTERNET Watch</a></td>
+        <td class="col-summary">コーヒーメーカーや電気ケトルがお買い得！ Amazonで山善製品がセール中 INTERNET Watch</td>
       </tr>
       <tr data-company="川崎重工業" data-date="2026-04-14">
         <td class="col-company">川崎重工業</td>
@@ -542,13 +542,6 @@
         <td class="col-company">川崎重工業</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/13</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5oMzFXRHRKX3g4WV9QUGctUEJ6S2s3Y3ZmNTNFTGI3djFOeDhmWVlKRUdZWGtqeGVLRDI2MnNLWGw4VXZEZjV5a2oycGxRdXVaaXpRcHdxNl9HR1BrMllHaEV3TGNZVFNPUi1pag?oc=5" target="_blank" rel="noopener">川崎重工、ごみ処理場の人員半減 AIやロボット活用で - 日本経済新聞</a></td>
-        <td class="col-summary">川崎重工、ごみ処理場の人員半減 AIやロボット活用で 日本経済新聞</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2026-04-13">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/13</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5sU2lkR1FOaU1rdGdoUDN2dk5GRUg5Y2xXT1BqeU5FZEg4U1BoRUNEaDhOdU4tMUdSb0ZXa2plcnJmdTVBOVlRU05qVVBtNkxKVlE0NmZjWWdSRU5yTGdzdUdCbWluS3c?oc=5" target="_blank" rel="noopener">川崎重工ら3社、船舶の自動運航支える統合ソリューションを開発 - ケータイ Watch</a></td>
         <td class="col-summary">川崎重工ら3社、船舶の自動運航支える統合ソリューションを開発 ケータイ Watch</td>
       </tr>
@@ -580,6 +573,13 @@
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTFBpT0RHZG5fOXNJdE9QR3hIMFNTNlkwaGZVOFBsZWpjR1NFaW5wNEZySk1LMGgxNjUyaG43SUg5MUNDcDRTSHNRaWdueEI4dF82Zk9JeG5BODZ1T2s?oc=5" target="_blank" rel="noopener">営業利益が過去最高を更新中――因幡電機産業（9934）は「データセンター建設1兆円時代」の最大受益者になれるか？ - note</a></td>
         <td class="col-summary">営業利益が過去最高を更新中――因幡電機産業（9934）は「データセンター建設1兆円時代」の最大受益者になれるか？ note</td>
       </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-12">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/12</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE1MQVlnVlBBcHhxUGtWc3FQNGo5WHRSTWJjSkZKTjd2NzlMU19HYzNRQzlWbnVYd19obERpN0h4WWV1WmZ1Rm9GeEVhc0vSAU9BVV95cUxOY1lrcEV3c1E0NmM1MnZsYTZqQmQxTXg5RWhRUmhlaXZJXzRlakZ5OUZpbkhhcmhHNlRBZ1RKdmROTkUzeUdkMDJWWWkwNFE0?oc=5" target="_blank" rel="noopener">ファナック・川崎重工・日本製鋼所は追い風で、コマツは逆風!?防衛やフィジカルAIで株価躍進を狙う「機械セクター」の本命企業をトップアナリストが解明 - ダイヤモンド・オンライン</a></td>
+        <td class="col-summary">ファナック・川崎重工・日本製鋼所は追い風で、コマツは逆風!?防衛やフィジカルAIで株価躍進を狙う「機械セクター」の本命企業をトップアナリストが解明 ダイヤモンド・オンライン</td>
+      </tr>
       <tr data-company="京都機械工具（KTC）" data-date="2026-04-11">
         <td class="col-company">京都機械工具（KTC）</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
@@ -593,13 +593,6 @@
         <td class="col-date">2026/04/10</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiYEFVX3lxTE9RNnBvUndlQVNNTmZFcGVYYzJUX0pacWVSbFRYQkF6bHBiTFhGRDhYUDJRZ1E5ejFhdDBqdURMR28wN0dHQTJtVzh2bVNucUJtLTRrSjJjX2J5cmdZb2d3Qg?oc=5" target="_blank" rel="noopener">猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 - Trets au cœur de la Provence</a></td>
         <td class="col-summary">猛暑対策 熱中症予防 山善 YAMAZEN ミニスポットエアコン MSA-Y18 (ニックニューサ) 東新町の季節、空調家電《エアコン》の中古あげます・譲ります｜ジモティーで不用品の処分 Trets au cœur de la Provence</td>
-      </tr>
-      <tr data-company="杉本商事" data-date="2026-04-10">
-        <td class="col-company">杉本商事</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/10</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTFBSdENIM2VIeGd3dnY4WTJBMGZKTUNZZ0JEZm1uNzc3QlZsNy1oclNhRkR6eHM4X3QxVE5hN3FaRXl3WFJzaks3eHNGS3FqUE1hWWVYZmQzQWcyeWJfQnk0YnQzM0N2cFBZ?oc=5" target="_blank" rel="noopener">4/12（日）ファーム・リーグ公式戦 対 福岡ソフトバンクホークス戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></td>
-        <td class="col-summary">4/12（日）ファーム・リーグ公式戦 対 福岡ソフトバンクホークス戦（杉本商事BS）当日券販売について オリックス・バファローズ</td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-04-10">
         <td class="col-company">椿本チエイン</td>
@@ -913,8 +906,8 @@
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/03/31</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE1qb3FXbnNZdUNHU0dqZlFuY1RoeE9WcU9kWm1yNzZnUVRabDdHc0tSbFBfUXUtR1ZSVG5aYWNObVhlSThTRXVYdUpMZjg?oc=5" target="_blank" rel="noopener">山善 YAMAZEN DCサーキュレーター RCRP-W015を検証レビュー！サーキュレーターの選び方も紹介 - my-best.com</a></td>
-        <td class="col-summary">山善 YAMAZEN DCサーキュレーター RCRP-W015を検証レビュー！サーキュレーターの選び方も紹介 my-best.com</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE5rWHJpN2VmSlo3ZWE1eUlCZTM5RUoxb2xOel9GejAtN0xiS0lLNk5NMUhkb2JHbi1oWU00eVhTTjQ5ODFPY00zMHNnRGQ?oc=5" target="_blank" rel="noopener">山善 YAMAZEN サーキュレーター YAR-ND15E(WH)を検証レビュー！サーキュレーターの選び方も紹介 - マイベスト</a></td>
+        <td class="col-summary">山善 YAMAZEN サーキュレーター YAR-ND15E(WH)を検証レビュー！サーキュレーターの選び方も紹介 マイベスト</td>
       </tr>
       <tr data-company="京セラドキュメントソリューションズ" data-date="2026-03-31">
         <td class="col-company">京セラドキュメントソリューションズ</td>
@@ -1025,8 +1018,8 @@
         <td class="col-company">京セラドキュメントソリューションズ</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/03/26</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTFA4R01QbDZvQlFLVV81ZEJzMmIyTkU5ZFFxenJLeE04QzFzVTZYT3I1NXY2UGtRRkgwOFpzMnpHckFWMnc?oc=5" target="_blank" rel="noopener">WithSecure社 「JAPAN PARTNER AWARD 2025」 を、京セラドキュメントソリューションズジャパンが受賞 - Digital PR Platform</a></td>
-        <td class="col-summary">WithSecure社 「JAPAN PARTNER AWARD 2025」 を、京セラドキュメントソリューションズジャパンが受賞 Digital PR Platform</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE5aS3VCMDFFcm1TTEVTcGNkU2ZJVWhEQUdRd29KeGxSUGxuWEJuY2pvRzhDTWxZMDZEeU9MMVpOTnZERHd3S1hVMk9vcENjSmtWbzJmV3RNbk10UQ?oc=5" target="_blank" rel="noopener">WithSecure社 「JAPAN PARTNER AWARD 2025」 を、京セラドキュメントソリューションズジャパンが受賞 - 北海道新聞デジタル</a></td>
+        <td class="col-summary">WithSecure社 「JAPAN PARTNER AWARD 2025」 を、京セラドキュメントソリューションズジャパンが受賞 北海道新聞デジタル</td>
       </tr>
       <tr data-company="京都機械工具（KTC）" data-date="2026-03-26">
         <td class="col-company">京都機械工具（KTC）</td>
@@ -2017,8 +2010,8 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/03/26</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTFA4R01QbDZvQlFLVV81ZEJzMmIyTkU5ZFFxenJLeE04QzFzVTZYT3I1NXY2UGtRRkgwOFpzMnpHckFWMnc?oc=5" target="_blank" rel="noopener">WithSecure社 「JAPAN PARTNER AWARD 2025」 を、京セラドキュメントソリューションズジャパンが受賞 - Digital PR Platform</a></div>
-          <div class='card-summary'>WithSecure社 「JAPAN PARTNER AWARD 2025」 を、京セラドキュメントソリューションズジャパンが受賞 Digital PR Platform</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE5aS3VCMDFFcm1TTEVTcGNkU2ZJVWhEQUdRd29KeGxSUGxuWEJuY2pvRzhDTWxZMDZEeU9MMVpOTnZERHd3S1hVMk9vcENjSmtWbzJmV3RNbk10UQ?oc=5" target="_blank" rel="noopener">WithSecure社 「JAPAN PARTNER AWARD 2025」 を、京セラドキュメントソリューションズジャパンが受賞 - 北海道新聞デジタル</a></div>
+          <div class='card-summary'>WithSecure社 「JAPAN PARTNER AWARD 2025」 を、京セラドキュメントソリューションズジャパンが受賞 北海道新聞デジタル</div>
         </div>
         <div class="news-card" data-company="京セラドキュメントソリューションズ" data-date="2026-03-26">
           <div class="card-header">
@@ -2417,8 +2410,16 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/14</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTE9XdFFaenZ0SWNFODNCN20yMlhhRmdGX2ljU3RSMlZoc1JodE9tNnd4d1ZEVDJkdzRERnNTRzJYbFdvSFMwS1R0dnRrZlRvOENOWDlVM0hHSzRfS2t1SUNr?oc=5" target="_blank" rel="noopener">冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 - ライブドアニュース</a></div>
-          <div class='card-summary'>冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 ライブドアニュース</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBfaWdIalFMUEwxajVfY2ZFWkI3bENNSUtNNnVrZWxLcTN1eTRxd0FZcDVYNnBrNkVPQk1aRFU5TS14V2owOTZKRE9qY3JWUTlFVTZyU1l5RFRPaG1EdExOY1MzMzJKQmRVYmxyMUp3VDk?oc=5" target="_blank" rel="noopener">冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 - ギズモード・ジャパン</a></div>
+          <div class='card-summary'>冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 ギズモード・ジャパン</div>
+        </div>
+        <div class="news-card" data-company="山善" data-date="2026-04-14">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/14</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiXkFVX3lxTFBKVVl2cjgxOG5rd3k3SXFCcFdRbEhnUkc5emVrZkJBZjZ1RlZkamJNeEtxNDhTNld1R3RGZTdOX0pCYUVxcWhOS1p6cTRSVlBtRHFseTl0NmFLLVRnWEE?oc=5" target="_blank" rel="noopener">冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 (2026年4月14日掲載) - news.livedoor.com</a></div>
+          <div class='card-summary'>冷凍も、温めも、外でもOK。全部持ち出せる山善9L冷蔵庫がほぼ半額 (2026年4月14日掲載) news.livedoor.com</div>
         </div>
         <div class="news-card" data-company="山善" data-date="2026-04-14">
           <div class="card-header">
@@ -2449,8 +2450,8 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/14</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxPSGZ3M3RJUEVmb0NMd1JXekk4M1pnMVZZblROSE9XZXBHbGs4RFByZElrNDlMTkpfdThGa01lZGdwU2lKbkp2R09zMEZQTjNybm1Ya0pkMVFHazVpUGZmY0diZlhVZXVuaXBwbTgzMUVYQXpMSHZFWkRzbEZkblhZTUxzRXVtTUZ1cUpV0gGQAUFVX3lxTFA0eXJhMlpLa1Z0QkNIbUdvTXNxcFF4VmJMWmxBajl2WXFpUVlYRElZczY5cDZjY2liWkpFQjIxSVhnSW93U3g5T01nd19CMXJpWGgzdmhOOFd2UzR1UjZDaXUwc0MyNDBGaFViZU9xZ0xReEthOHNONVY1b1N0cERiNlQ3eVMxdHNqWmpLb1ZuNw?oc=5" target="_blank" rel="noopener">コーヒーメーカーや電気ケトルがお買い得！　Amazonで山善製品がセール中 - ｄメニューニュース</a></div>
-          <div class='card-summary'>コーヒーメーカーや電気ケトルがお買い得！ Amazonで山善製品がセール中 ｄメニューニュース</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMicEFVX3lxTFBzN01TQjduVC1rQnFmSWhhYmNOMW9pLVFtZkJLVnMwUUhLVHdBWVlKLUhkZ3liY2xscXotN25faGhxdXhZc1ZzQ1kzbVRoM0RGT1hTZklyNVdOVFQxMElmWTV3cXR3OVF6MlBwVEJpYkg?oc=5" target="_blank" rel="noopener">コーヒーメーカーや電気ケトルがお買い得！ Amazonで山善製品がセール中 - INTERNET Watch</a></div>
+          <div class='card-summary'>コーヒーメーカーや電気ケトルがお買い得！ Amazonで山善製品がセール中 INTERNET Watch</div>
         </div>
         <div class="news-card" data-company="山善" data-date="2026-04-14">
           <div class="card-header">
@@ -2489,8 +2490,8 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/03/31</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE1qb3FXbnNZdUNHU0dqZlFuY1RoeE9WcU9kWm1yNzZnUVRabDdHc0tSbFBfUXUtR1ZSVG5aYWNObVhlSThTRXVYdUpMZjg?oc=5" target="_blank" rel="noopener">山善 YAMAZEN DCサーキュレーター RCRP-W015を検証レビュー！サーキュレーターの選び方も紹介 - my-best.com</a></div>
-          <div class='card-summary'>山善 YAMAZEN DCサーキュレーター RCRP-W015を検証レビュー！サーキュレーターの選び方も紹介 my-best.com</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE5rWHJpN2VmSlo3ZWE1eUlCZTM5RUoxb2xOel9GejAtN0xiS0lLNk5NMUhkb2JHbi1oWU00eVhTTjQ5ODFPY00zMHNnRGQ?oc=5" target="_blank" rel="noopener">山善 YAMAZEN サーキュレーター YAR-ND15E(WH)を検証レビュー！サーキュレーターの選び方も紹介 - マイベスト</a></div>
+          <div class='card-summary'>山善 YAMAZEN サーキュレーター YAR-ND15E(WH)を検証レビュー！サーキュレーターの選び方も紹介 マイベスト</div>
         </div>
       </div>
     </div>
@@ -2536,6 +2537,14 @@
       <div class="company-group-cards">
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-17">
           <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/17</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE1NNEpCMUhiTndVeFpPaFJOaE5lV2RGTWtOemJnaWFTakpLOG1wbmVkRXU4QUt5Tmkzd1dDZkgwUTBOaF9jN0ZIUnlaTTRZY2x0UlJ6MkVjR3dOVkdnOUhrZTRKdzBwUkdzZGxxcw?oc=5" target="_blank" rel="noopener">川崎重工、建設機械向けの電気リモートコントロールユニット「ERUJ」の量産を開始 - 日本経済新聞</a></div>
+          <div class='card-summary'>川崎重工、建設機械向けの電気リモートコントロールユニット「ERUJ」の量産を開始 日本経済新聞</div>
+        </div>
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-17">
+          <div class="card-header">
             <span class="badge-corp">コーポレート</span>
             <span class="card-date">2026/04/17</span>
           </div>
@@ -2549,22 +2558,6 @@
           </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5YSjZpdklRbjBfbU9NdHpVVGhFMnBYVDUwUjNzMkt5MGZUVC1lWE1FZy1nRWo3SzRCT1pQdnluaVpUQ0oyY2ZoQ0hkVldtQk8zYThwR1pjbmR0ekpCVVBSVlZYTWpoQjZv?oc=5" target="_blank" rel="noopener">川崎重工・過労自殺訴訟：海外出向 「死角」浮き彫り 労基法、適用範囲外 川重、遺族と和解 - 毎日新聞</a></div>
           <div class='card-summary'>川崎重工・過労自殺訴訟：海外出向 「死角」浮き彫り 労基法、適用範囲外 川重、遺族と和解 毎日新聞</div>
-        </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2026-04-16">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/16</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMibkFVX3lxTE16RVlKOUxVcjNPYktBUk15MmtwbTREbG1hNzhoVTVnQlJ5R0lJaGhScjhVWVItMHRIN2p3bklheXNsRnpIY1pTdlZIcmRoeXcza0VpXzY4VjNRZHpiMjVVak0xdWo1a0xSV0dkQnln?oc=5" target="_blank" rel="noopener">川重社員自死の賠償請求訴訟、高裁で和解成立 会社側が金銭支払い|社会 - 神戸新聞</a></div>
-          <div class='card-summary'>川重社員自死の賠償請求訴訟、高裁で和解成立 会社側が金銭支払い|社会 神戸新聞</div>
-        </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2026-04-16">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/16</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMie0FVX3lxTFBzTWZleWpaUlVLeXVJTmgwQ2VURkM5YnhJTGc1ZGRkeGZTZHJjMG9Nb2hfMnZ5R2V4eTdkaHJ5bzdoTTRQNzhLQ0JtcXdJZVlPbUh2bVowdWxtOFdndm9pMUZfbF81SXplUG1zdHY1bVQ4S2RmNVJXclNJSQ?oc=5" target="_blank" rel="noopener">海外勤務中の労災、出向元と初の和解 遺族側は「画期的」と評価 - au Webポータル</a></div>
-          <div class='card-summary'>海外勤務中の労災、出向元と初の和解 遺族側は「画期的」と評価 au Webポータル</div>
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-16">
           <div class="card-header">
@@ -2627,14 +2620,6 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/13</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE5oMzFXRHRKX3g4WV9QUGctUEJ6S2s3Y3ZmNTNFTGI3djFOeDhmWVlKRUdZWGtqeGVLRDI2MnNLWGw4VXZEZjV5a2oycGxRdXVaaXpRcHdxNl9HR1BrMllHaEV3TGNZVFNPUi1pag?oc=5" target="_blank" rel="noopener">川崎重工、ごみ処理場の人員半減 AIやロボット活用で - 日本経済新聞</a></div>
-          <div class='card-summary'>川崎重工、ごみ処理場の人員半減 AIやロボット活用で 日本経済新聞</div>
-        </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2026-04-13">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/13</span>
-          </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5sU2lkR1FOaU1rdGdoUDN2dk5GRUg5Y2xXT1BqeU5FZEg4U1BoRUNEaDhOdU4tMUdSb0ZXa2plcnJmdTVBOVlRU05qVVBtNkxKVlE0NmZjWWdSRU5yTGdzdUdCbWluS3c?oc=5" target="_blank" rel="noopener">川崎重工ら3社、船舶の自動運航支える統合ソリューションを開発 - ケータイ Watch</a></div>
           <div class='card-summary'>川崎重工ら3社、船舶の自動運航支える統合ソリューションを開発 ケータイ Watch</div>
         </div>
@@ -2645,6 +2630,14 @@
           </div>
           <div class="card-title"><a href="https://www.khi.co.jp/pressrelease/news_260413-1.pdf" target="_blank" rel="noopener">[プレスリリース] 神戸市立西神戸医療センターで屋内配送ロボット「FORRO（フォーロ）」の運用を開始</a></div>
           
+        </div>
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-12">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/12</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiTEFVX3lxTE1MQVlnVlBBcHhxUGtWc3FQNGo5WHRSTWJjSkZKTjd2NzlMU19HYzNRQzlWbnVYd19obERpN0h4WWV1WmZ1Rm9GeEVhc0vSAU9BVV95cUxOY1lrcEV3c1E0NmM1MnZsYTZqQmQxTXg5RWhRUmhlaXZJXzRlakZ5OUZpbkhhcmhHNlRBZ1RKdmROTkUzeUdkMDJWWWkwNFE0?oc=5" target="_blank" rel="noopener">ファナック・川崎重工・日本製鋼所は追い風で、コマツは逆風!?防衛やフィジカルAIで株価躍進を狙う「機械セクター」の本命企業をトップアナリストが解明 - ダイヤモンド・オンライン</a></div>
+          <div class='card-summary'>ファナック・川崎重工・日本製鋼所は追い風で、コマツは逆風!?防衛やフィジカルAIで株価躍進を狙う「機械セクター」の本命企業をトップアナリストが解明 ダイヤモンド・オンライン</div>
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-08">
           <div class="card-header">
@@ -2704,14 +2697,6 @@
     <div class="company-group" data-company-group="杉本商事">
       <div class="company-group-header">杉本商事</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="杉本商事" data-date="2026-04-10">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/10</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTFBSdENIM2VIeGd3dnY4WTJBMGZKTUNZZ0JEZm1uNzc3QlZsNy1oclNhRkR6eHM4X3QxVE5hN3FaRXl3WFJzaks3eHNGS3FqUE1hWWVYZmQzQWcyeWJfQnk0YnQzM0N2cFBZ?oc=5" target="_blank" rel="noopener">4/12（日）ファーム・リーグ公式戦 対 福岡ソフトバンクホークス戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></div>
-          <div class='card-summary'>4/12（日）ファーム・リーグ公式戦 対 福岡ソフトバンクホークス戦（杉本商事BS）当日券販売について オリックス・バファローズ</div>
-        </div>
         <div class="news-card" data-company="杉本商事" data-date="2026-04-06">
           <div class="card-header">
             <span class="badge-google">Google News</span>
