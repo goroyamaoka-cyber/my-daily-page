@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechParts | 産業用締結部品</title>
+<style>
+:root{
+  --ink:#0d0d0f; --ink-80:#2c2c2e; --ink-60:#48484a; --ink-40:#6e6e73; --ink-20:#aeaeb2; --ink-10:#d2d2d7; --ink-05:#f2f2f7;
+  --white:#fff;
+  --blue:#0050d8; --blue-h:#0041b3; --blue-bg:rgba(0,80,216,.07);
+  --green:#1a7f37; --green-bg:rgba(26,127,55,.08);
+  --s0:#fff; --s1:#f8f8fa; --s2:#f2f2f7;
+  --r-sm:6px; --r-md:12px; --r-lg:20px;
+  --sh-xs:0 1px 4px rgba(0,0,0,.06); --sh-sm:0 2px 12px rgba(0,0,0,.08); --sh-md:0 8px 32px rgba(0,0,0,.10); --sh-lg:0 20px 60px rgba(0,0,0,.15);
+  --t:0.2s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;font-size:14px;color:var(--ink);background:var(--s2);line-height:1.5;-webkit-font-smoothing:antialiased}
+
+/* ══ HEADER ══════════════════════════════════════ */
+.hdr{background:#0d0d0f;padding:0 32px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:300}
+.hdr-logo{color:#fff;font-size:17px;font-weight:800;letter-spacing:-.3px;cursor:pointer;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.hdr-logo-icon{width:26px;height:26px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.hdr-logo-icon svg{width:16px;height:16px}
+.hdr-bc{display:flex;align-items:center;gap:0;font-size:12px;flex:1;margin:0 32px;min-width:0;overflow:hidden}
+.hdr-bc a{color:rgba(255,255,255,.5);text-decoration:none;white-space:nowrap;transition:color var(--t)}
+.hdr-bc a:hover{color:#fff}
+.hdr-bc span{color:rgba(255,255,255,.2);margin:0 6px;flex-shrink:0}
+.hdr-bc strong{color:rgba(255,255,255,.85);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hdr-search{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:5px 14px;color:rgba(255,255,255,.5);font-size:12px;cursor:pointer;transition:background var(--t);flex-shrink:0}
+.hdr-search:hover{background:rgba(255,255,255,.13)}
+
+/* ══ PAGES ══════════════════════════════════════ */
+.page{display:none}.page.active{display:block}
+.pg-list-wrap{display:flex;height:calc(100vh - 52px)}
+
+/* ══ PAGE 1: CATEGORY ══════════════════════════ */
+.cat-hero{background:#0d0d0f;padding:72px 64px 56px;position:relative;overflow:hidden}
+.cat-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 80% 50%,rgba(0,80,216,.2) 0%,transparent 60%)}
+.cat-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.cat-hero-inner{position:relative;max-width:640px}
+.cat-eyebrow{font-size:11px;font-weight:600;letter-spacing:2px;color:rgba(0,130,255,.8);text-transform:uppercase;margin-bottom:14px}
+.cat-hero h1{font-size:48px;font-weight:800;line-height:1.1;letter-spacing:-1.5px;color:#fff;margin-bottom:16px}
+.cat-hero p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;max-width:480px;margin-bottom:36px}
+.cat-hero-stats{display:flex;gap:40px}
+.cat-stat-num{font-size:28px;font-weight:800;color:#fff;display:block;letter-spacing:-1px}
+.cat-stat-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
+
+.cat-body{max-width:1280px;margin:0 auto;padding:40px 32px}
+
+.cat-tabs{display:flex;gap:6px;margin-bottom:28px;border-bottom:1px solid var(--ink-10);padding-bottom:0}
+.cat-tab{padding:10px 20px;border-radius:var(--r-sm) var(--r-sm) 0 0;border:none;background:transparent;font-size:13px;font-weight:500;color:var(--ink-40);cursor:pointer;transition:all var(--t);position:relative;bottom:-1px}
+.cat-tab:hover{color:var(--ink)}
+.cat-tab.active{color:var(--blue);background:var(--s0);border:1px solid var(--ink-10);border-bottom-color:var(--s0);font-weight:600}
+
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.cat-card{background:var(--s0);border-radius:var(--r-md);padding:0;cursor:pointer;transition:transform var(--t),box-shadow var(--t);overflow:hidden;border:1px solid var(--ink-10)}
+.cat-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md)}
+.cat-card-top{height:110px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.cat-card-top::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity var(--t);background:rgba(0,80,216,.06)}
+.cat-card:hover .cat-card-top::after{opacity:1}
+.cat-card-top svg{width:56px;height:56px;position:relative;z-index:1;transition:transform var(--t)}
+.cat-card:hover .cat-card-top svg{transform:scale(1.08)}
+.cat-card-body{padding:14px 18px 18px}
+.cat-card-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.4}
+.cat-card.featured .cat-card-name{color:var(--blue)}
+.cat-card-sub{font-size:11px;color:var(--ink-40);line-height:1.5;margin-bottom:10px}
+.cat-card-footer{display:flex;justify-content:space-between;align-items:center}
+.cat-card-count{font-size:12px;font-weight:700;color:var(--blue)}
+.cat-card-arrow{font-size:14px;color:var(--ink-20);transition:transform var(--t)}
+.cat-card:hover .cat-card-arrow{transform:translateX(3px);color:var(--blue)}
+.cat-card.featured{border-color:rgba(0,80,216,.3);background:linear-gradient(135deg,#fff 60%,rgba(0,80,216,.03))}
+.cat-badge-new{background:#ff3b30;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:middle;letter-spacing:.5px}
+
+/* ══ PAGE 2: FILTER PANEL ══════════════════════ */
+.filter-panel{width:248px;flex-shrink:0;background:var(--s0);border-right:1px solid var(--ink-10);overflow-y:auto;padding-bottom:40px}
+.filter-panel::-webkit-scrollbar{width:2px}.filter-panel::-webkit-scrollbar-thumb{background:var(--ink-10)}
+
+.fp-nav{padding:16px 20px;border-bottom:1px solid var(--ink-05)}
+.fp-nav-item{display:flex;align-items:center;gap:6px;padding:4px 0;font-size:12px;color:var(--blue);cursor:pointer;transition:opacity var(--t)}
+.fp-nav-item:hover{opacity:.7}
+.fp-nav-item.current{color:var(--ink-80);font-weight:600;cursor:default}
+.fp-nav-item.current:hover{opacity:1}
+
+.fp-hdr{display:flex;justify-content:space-between;align-items:center;padding:14px 20px 10px;font-weight:700;font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-40);border-bottom:1px solid var(--ink-05)}
+.clear-btn{font-size:11px;color:var(--blue);background:none;border:none;cursor:pointer;font-weight:600;padding:0;transition:opacity var(--t)}
+.clear-btn:hover{opacity:.7}
+
+.fs{border-bottom:1px solid var(--ink-05)}
+.fs-head{display:flex;justify-content:space-between;align-items:center;padding:11px 20px;cursor:pointer;font-weight:600;font-size:12px;color:var(--ink-80);user-select:none;transition:background var(--t)}
+.fs-head:hover{background:var(--ink-05)}
+.ti{font-size:8px;color:var(--ink-20);transition:transform var(--t)}
+.fs-head.closed .ti{transform:rotate(-90deg)}
+.fs-body{padding:6px 20px 14px}
+.fs-body.hidden{display:none}
+
+.fnote{font-size:11px;color:var(--ink-20);margin-bottom:8px;display:flex;align-items:center;gap:4px}
+.sub-lbl{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-20);margin:10px 0 6px}
+
+.cbi{display:flex;align-items:center;gap:8px;padding:4px 0}
+.cbi input[type=checkbox]{-webkit-appearance:none;appearance:none;width:15px;height:15px;border:1.5px solid var(--ink-10);border-radius:4px;cursor:pointer;flex-shrink:0;position:relative;transition:all var(--t)}
+.cbi input[type=checkbox]:checked{background:var(--blue);border-color:var(--blue)}
+.cbi input[type=checkbox]:checked::after{content:'';position:absolute;top:2px;left:4px;width:4px;height:7px;border:1.5px solid #fff;border-top:none;border-left:none;transform:rotate(45deg)}
+.cbi label{font-size:12px;cursor:pointer;display:flex;justify-content:space-between;width:100%;color:var(--ink-60)}
+.fcnt{font-size:10px;color:var(--ink-20)}
+
+/* ─ Slider ─ */
+.sl-sec{margin:8px 0 12px}
+.sl-lbl{display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:10px;color:var(--ink-60)}
+.sl-val{font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-bg);padding:2px 9px;border-radius:10px}
+.sl-wrap{position:relative;height:28px;display:flex;align-items:center}
+.sl-track{position:absolute;left:0;right:0;height:3px;background:var(--ink-05);border-radius:2px}
+.sl-fill{position:absolute;height:3px;background:var(--blue);border-radius:2px;pointer-events:none}
+input.sl{position:absolute;left:0;right:0;width:100%;-webkit-appearance:none;appearance:none;background:transparent;pointer-events:none;outline:none;margin:0}
+input.sl::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border-radius:50%;background:#fff;border:2px solid var(--blue);box-shadow:0 1px 6px rgba(0,80,216,.3);cursor:pointer;pointer-events:auto;transition:transform var(--t)}
+input.sl::-webkit-slider-thumb:active{transform:scale(1.2)}
+input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#fff;border:2px solid var(--blue);box-shadow:0 1px 6px rgba(0,80,216,.3);cursor:pointer;pointer-events:auto;box-sizing:border-box}
+.sl-ticks{display:flex;justify-content:space-between;margin:3px 0 0;font-size:10px;color:var(--ink-20)}
+
+/* ══ PAGE 2: PRODUCT PANEL ══════════════════════ */
+.product-panel{flex:1;overflow-y:auto;padding:24px 28px 48px;background:var(--s2)}
+.product-panel::-webkit-scrollbar{width:4px}.product-panel::-webkit-scrollbar-thumb{background:var(--ink-10);border-radius:2px}
+
+.panel-title{font-size:22px;font-weight:800;letter-spacing:-.5px;margin-bottom:4px}
+.panel-desc{font-size:12px;color:var(--ink-40);margin-bottom:16px;line-height:1.7}
+
+/* Active tags */
+.atags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;min-height:4px}
+.atag{display:flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--blue);color:var(--blue);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500}
+.atag button{background:none;border:none;cursor:pointer;color:var(--blue);font-size:14px;line-height:1;padding:0;opacity:.7}
+.atag button:hover{opacity:1}
+
+/* Toolbar */
+.toolbar{background:#fff;border-radius:var(--r-md);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;box-shadow:var(--sh-xs)}
+.pcnt{font-size:14px;font-weight:700;white-space:nowrap}
+.pcnt em{font-size:12px;font-weight:400;color:var(--ink-40);font-style:normal}
+.tbr{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.vtgl{display:flex;background:var(--s2);border-radius:8px;padding:3px;gap:2px}
+.vbtn{padding:5px 12px;font-size:12px;cursor:pointer;background:transparent;border:none;color:var(--ink-40);border-radius:6px;transition:all var(--t);font-weight:500}
+.vbtn.active{background:#fff;color:var(--ink);box-shadow:var(--sh-xs);font-weight:600}
+.vbtn:hover:not(.active){color:var(--ink)}
+.sel{display:flex;align-items:center;gap:5px;font-size:12px}
+.sel label{color:var(--ink-40);white-space:nowrap}
+.sel select{padding:5px 8px;border:1px solid var(--ink-10);border-radius:var(--r-sm);font-size:12px;cursor:pointer;background:#fff;color:var(--ink);-webkit-appearance:none;appearance:none;padding-right:20px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23aeaeb2' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
+
+/* Export bar */
+.export-bar{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:0 0 14px;flex-wrap:wrap}
+.export-bar-lbl{font-size:11px;color:var(--ink-20);margin-right:4px;letter-spacing:.3px}
+.exp-btn{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;transition:all var(--t)}
+.exp-btn svg{width:12px;height:12px;flex-shrink:0}
+.exp-all{background:#fff;color:var(--ink-60);border:1px solid var(--ink-10)}
+.exp-all:hover{border-color:var(--ink-40);color:var(--ink)}
+.exp-cur{background:var(--ink);color:#fff;border:1px solid var(--ink)}
+.exp-cur:hover{background:var(--ink-80)}
+
+/* LIST VIEW */
+.plist{display:flex;flex-direction:column;gap:10px}
+.pc{background:#fff;border-radius:var(--r-md);padding:18px 20px;display:flex;gap:18px;cursor:pointer;transition:box-shadow var(--t),transform var(--t);border:1px solid transparent}
+.pc:hover{box-shadow:var(--sh-md);transform:translateY(-1px);border-color:rgba(0,80,216,.1)}
+.pimg-wrap{width:90px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:10px}
+.pimg{width:90px;height:90px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pimg svg{width:58px;height:58px}
+.delivery-badge{font-size:10px;font-weight:600;color:var(--green);background:var(--green-bg);padding:2px 8px;border-radius:10px;white-space:nowrap}
+.pinfo{flex:1;min-width:0}
+.pbadges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px}
+.bdg{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;white-space:nowrap;letter-spacing:.2px}
+.bdg-c{background:rgba(26,127,55,.08);color:#1a7f37;border:1px solid rgba(26,127,55,.15)}
+.bdg-r{background:rgba(0,80,216,.07);color:var(--blue);border:1px solid rgba(0,80,216,.15)}
+.pmkr{font-size:11px;color:var(--ink-20);margin-bottom:3px;font-weight:500}
+.pnm{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.4;letter-spacing:-.2px}
+.pdsc{font-size:12px;color:var(--ink-40);margin-bottom:10px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prat{display:flex;align-items:center;gap:6px;margin-bottom:10px}
+.stars{color:#f59e0b;font-size:12px;letter-spacing:.5px}
+.rnum{font-size:13px;font-weight:700;color:var(--ink)}
+.rcnt{font-size:11px;color:var(--ink-20)}
+.spec-pills{display:flex;flex-wrap:wrap;gap:5px}
+.spec-pill{font-size:11px;background:var(--s2);color:var(--ink-60);padding:3px 9px;border-radius:6px;font-weight:500}
+.spec-pill strong{color:var(--ink);font-weight:700}
+
+/* Hover expand spec table */
+.sptbl-wrap{margin-top:10px;border-top:1px solid var(--ink-05);padding-top:10px}
+.sptbl{width:100%;border-collapse:collapse;font-size:11px}
+.sptbl th{background:var(--s2);padding:5px 10px;text-align:left;font-weight:600;color:var(--ink-40);border:1px solid var(--ink-05);white-space:nowrap;letter-spacing:.2px}
+.sptbl td{padding:5px 10px;border:1px solid var(--ink-05);color:var(--ink-60);white-space:nowrap}
+
+/* PHOTO VIEW */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px}
+.pgc{background:#fff;border-radius:var(--r-md);padding:0;cursor:pointer;transition:box-shadow var(--t),transform var(--t);overflow:hidden;border:1px solid transparent}
+.pgc:hover{box-shadow:var(--sh-md);transform:translateY(-2px);border-color:rgba(0,80,216,.1)}
+.gimg{width:100%;height:120px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-md) var(--r-md) 0 0}
+.gimg svg{width:68px;height:68px}
+.gcard-body{padding:12px 14px 14px}
+.gnm{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.gsp{font-size:11px;color:var(--ink-40)}
+
+/* COMPARE VIEW */
+.cmpwrap{overflow-x:auto;background:#fff;border-radius:var(--r-md);border:1px solid var(--ink-10)}
+.cmptbl{width:100%;border-collapse:collapse;font-size:12px}
+.cmptbl th{background:var(--s2);padding:10px 14px;font-weight:600;border:1px solid var(--ink-05);white-space:nowrap;font-size:11px;color:var(--ink-40);letter-spacing:.3px}
+.cmptbl td{padding:9px 14px;border:1px solid var(--ink-05);white-space:nowrap;color:var(--ink-60)}
+.cmptbl tr:nth-child(even) td{background:#fafafa}
+.cmptbl .pcol{font-weight:700;color:var(--blue);min-width:160px;font-size:12px}
+
+/* Empty */
+.empty{text-align:center;padding:80px 20px;background:#fff;border-radius:var(--r-md)}
+.empty-ico{font-size:40px;margin-bottom:14px}
+.empty h3{font-size:16px;font-weight:700;margin-bottom:6px}
+.empty p{font-size:12px;color:var(--ink-40)}
+.empty button{margin-top:16px;padding:10px 24px;background:var(--ink);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:600;transition:background var(--t)}
+.empty button:hover{background:var(--ink-80)}
+
+/* Pagination */
+.pgn{display:flex;justify-content:center;align-items:center;gap:4px;margin-top:24px}
+.pgb{min-width:34px;height:34px;border:1px solid var(--ink-10);border-radius:var(--r-sm);background:#fff;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;padding:0 6px;transition:all var(--t);font-weight:500;color:var(--ink-60)}
+.pgb:hover:not(:disabled){background:var(--s2);border-color:var(--ink-20);color:var(--ink)}
+.pgb.active{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:700}
+.pgb:disabled{opacity:.3;cursor:not-allowed}
+
+/* ══ PAGE 3: DETAIL ════════════════════════════ */
+.detail-hero{background:#0d0d0f;padding:28px 40px 0}
+.detail-hero-inner{max-width:1100px;margin:0 auto}
+.back-btn{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.45);cursor:pointer;background:none;border:none;padding:0;margin-bottom:20px;transition:color var(--t)}
+.back-btn:hover{color:rgba(255,255,255,.8)}
+.detail-hero-name{font-size:26px;font-weight:800;color:#fff;letter-spacing:-.5px;margin-bottom:24px;max-width:700px;line-height:1.3}
+.detail-body{max-width:1100px;margin:0 auto;padding:28px 40px 60px}
+.detail-top{display:flex;gap:32px;margin-bottom:28px;flex-wrap:wrap}
+
+.detail-imgs{width:360px;flex-shrink:0}
+.detail-main-img{width:100%;height:280px;background:linear-gradient(135deg,var(--s2) 0%,var(--s1) 100%);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;margin-bottom:10px;border:1px solid var(--ink-10);position:relative;overflow:hidden}
+.detail-main-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8) 0%,transparent 60%)}
+.detail-main-img svg{width:140px;height:140px;position:relative}
+.detail-thumbs{display:flex;gap:8px}
+.dthmb{width:62px;height:62px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid var(--ink-10);transition:all var(--t);background:var(--s1)}
+.dthmb.active,.dthmb:hover{border-color:var(--blue)}
+.dthmb svg{width:36px;height:36px}
+
+.detail-info{flex:1;min-width:280px}
+.detail-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.detail-mkr{font-size:12px;color:var(--ink-20);margin-bottom:6px;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+.detail-name-sub{font-size:22px;font-weight:800;letter-spacing:-.5px;line-height:1.3;margin-bottom:12px;color:var(--ink)}
+.detail-rat{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.detail-div{border:none;border-top:1px solid var(--ink-05);margin:16px 0}
+.spec-mini{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px}
+.spec-mini th{padding:8px 0;font-weight:500;color:var(--ink-40);border-bottom:1px solid var(--ink-05);width:40%;font-size:12px}
+.spec-mini td{padding:8px 0;font-weight:700;border-bottom:1px solid var(--ink-05);color:var(--ink)}
+
+.order-box{background:var(--s2);border-radius:var(--r-md);padding:18px;margin-top:18px}
+.order-box h4{font-size:12px;font-weight:700;margin-bottom:12px;color:var(--ink-60);text-transform:uppercase;letter-spacing:.8px}
+.qty-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.qty-row label{font-size:12px;color:var(--ink-40)}
+.qty-inp{width:72px;padding:7px 10px;border:1px solid var(--ink-10);border-radius:var(--r-sm);font-size:14px;font-weight:700;text-align:center;background:#fff}
+.qty-unit{font-size:12px;color:var(--ink-40)}
+.order-btn{width:100%;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:var(--r-sm);font-size:14px;font-weight:700;cursor:pointer;transition:background var(--t);letter-spacing:.2px}
+.order-btn:hover{background:var(--blue-h)}
+
+.detail-sec{background:#fff;border-radius:var(--r-md);padding:24px;margin-bottom:16px;border:1px solid var(--ink-05)}
+.detail-sec h3{font-size:14px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--ink-05);letter-spacing:.2px;text-transform:uppercase;color:var(--ink-60)}
+.detail-desc-text{font-size:13px;color:var(--ink-60);line-height:1.9}
+.full-spec{width:100%;border-collapse:collapse;font-size:13px}
+.full-spec th{background:var(--s2);padding:10px 16px;font-weight:500;color:var(--ink-40);border:1px solid var(--ink-05);white-space:nowrap;width:30%;font-size:12px}
+.full-spec td{padding:10px 16px;border:1px solid var(--ink-05);font-weight:600;color:var(--ink)}
+
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.rel-card{background:var(--s2);border-radius:var(--r-md);padding:16px;cursor:pointer;transition:background var(--t),transform var(--t);border:1px solid transparent}
+.rel-card:hover{background:var(--blue-bg);border-color:rgba(0,80,216,.15);transform:translateY(-1px)}
+.rel-img{height:80px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.rel-img svg{width:52px;height:52px}
+.rel-name{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:4px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rel-spec{font-size:11px;color:var(--ink-40)}
+
+.rv-item{padding:16px 0;border-bottom:1px solid var(--ink-05)}
+.rv-item:last-child{border-bottom:none}
+.rv-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.rv-name{font-size:13px;font-weight:700}
+.rv-date{font-size:11px;color:var(--ink-20);margin-left:auto}
+.rv-body{font-size:13px;color:var(--ink-60);line-height:1.7}
+
+/* Badge (shared) */
+.badge{font-size:10px;padding:3px 9px;border-radius:4px;font-weight:600;white-space:nowrap;letter-spacing:.2px}
+.badge-c{background:rgba(26,127,55,.08);color:#1a7f37;border:1px solid rgba(26,127,55,.15)}
+.badge-r{background:rgba(0,80,216,.07);color:var(--blue);border:1px solid rgba(0,80,216,.15)}
+
+/* Toast */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(12px);background:var(--ink);color:#fff;padding:11px 22px;border-radius:24px;font-size:13px;font-weight:500;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:9999;white-space:nowrap;box-shadow:var(--sh-md)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.pc,.pgc,.cat-card,.rel-card{animation:fadeUp .3s ease both}
+
+/* ── Image containers ── */
+.pimg{background:none!important;border-radius:10px;overflow:hidden}
+.pimg svg{width:90px;height:90px;display:block}
+.gimg{background:none!important;overflow:hidden}
+.gimg svg{width:100%;height:120px;display:block}
+.rel-img{background:none}
+.rel-img svg{width:70px;height:70px;display:block;margin:0 auto}
+.dthmb{background:transparent!important}
+.dthmb svg{width:58px;height:58px;display:block}
+.detail-main-img{background:#f5f7f9!important}
+.detail-main-img::before{display:none!important}
+.detail-main-img svg{width:100%;height:100%;display:block}
+.cat-card-top svg{width:100%;height:100%;display:block}
+
+/* ── Mobile filter overlay ── */
+.filter-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:199;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.filter-overlay.open{display:block}
+.filter-btn-mb{display:none;align-items:center;gap:6px;padding:6px 14px;background:var(--ink);color:#fff;border:none;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:background var(--t)}
+.filter-btn-mb:hover{background:var(--ink-80)}
+.filter-btn-mb svg{width:13px;height:13px}
+
+/* ── Mobile close button ── */
+.fp-close-mb{display:none;align-items:center;justify-content:space-between;padding:12px 20px;border-bottom:1px solid var(--ink-05)}
+.fp-close-mb span{font-size:13px;font-weight:700;color:var(--ink-80)}
+.fp-close-mb button{background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink-40);line-height:1;padding:2px}
+
+/* ════════ RESPONSIVE ════════ */
+
+@media(max-width:900px){
+  .cat-hero{padding:52px 40px 44px}
+  .cat-hero h1{font-size:38px}
+}
+
+@media(max-width:768px){
+  /* Header */
+  .hdr{padding:0 16px;height:48px}
+  .hdr-bc{display:none}
+  .hdr-search{padding:4px 12px;font-size:11px}
+
+  /* Category hero */
+  .cat-hero{padding:36px 20px 28px}
+  .cat-hero h1{font-size:26px;letter-spacing:-.5px}
+  .cat-hero p{font-size:12px;margin-bottom:24px}
+  .cat-hero-stats{gap:20px}
+  .cat-stat-num{font-size:20px}
+  .cat-stat-lbl{font-size:10px}
+  .cat-body{padding:20px 16px}
+  .cat-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .cat-card-top{height:90px}
+
+  /* List page layout */
+  .pg-list-wrap{display:block;height:auto;min-height:calc(100vh - 48px)}
+
+  /* Filter panel → slide drawer */
+  .filter-panel{
+    position:fixed;left:-290px;top:48px;height:calc(100vh - 48px);
+    z-index:200;width:280px;transition:left .28s cubic-bezier(.4,0,.2,1);
+    box-shadow:var(--sh-lg)
+  }
+  .filter-panel.open{left:0}
+  .fp-close-mb{display:flex}
+  .fp-nav{display:none}
+
+  /* Product panel */
+  .product-panel{height:auto;overflow-y:visible;padding:16px 14px 48px}
+  .panel-title{font-size:17px}
+  .panel-desc{display:none}
+
+  /* Toolbar */
+  .toolbar{flex-direction:column;align-items:flex-start;gap:8px;padding:10px 12px}
+  .tbr{width:100%;flex-wrap:wrap;gap:6px;justify-content:flex-start}
+  .filter-btn-mb{display:flex}
+  .vtgl{flex:0}
+
+  /* Product list cards */
+  .pc{padding:12px 12px;gap:10px}
+  .pimg-wrap{width:68px}
+  .pimg{width:68px;height:68px}
+  .pimg svg{width:68px!important;height:68px!important}
+  .pdsc{display:none}
+  .sptbl-wrap{display:none}
+  .spec-pills{gap:4px}
+  .spec-pill{font-size:10px;padding:2px 6px}
+  .pnm{font-size:13px}
+
+  /* Photo grid */
+  .pgrid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+  .gimg{height:100px}
+  .gimg svg{height:100px}
+
+  /* Export bar */
+  .export-bar{justify-content:flex-start}
+
+  /* Detail page */
+  .detail-hero{padding:16px 16px 0}
+  .detail-hero-inner{padding:0}
+  .detail-hero-name{font-size:17px;margin-bottom:16px}
+  .detail-body{padding:16px 16px 48px}
+  .detail-top{flex-direction:column}
+  .detail-imgs{width:100%}
+  .detail-main-img{height:200px}
+  .detail-info{min-width:0}
+  .related-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+
+  /* Pagination */
+  .pgb{min-width:30px;height:30px;font-size:11px}
+}
+
+@media(max-width:480px){
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .cat-hero h1{font-size:20px}
+  .cat-hero-stats{gap:16px}
+  .hdr-logo{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════ -->
+<header class="hdr">
+  <div class="hdr-logo" onclick="navTo('cat')">
+    <div class="hdr-logo-icon">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="1" width="6" height="5" rx="1.5" fill="white"/>
+        <rect x="7" y="6" width="2" height="9" rx="1" fill="white" opacity=".85"/>
+        <rect x="4" y="2.5" width="8" height="1.5" rx=".75" fill="white" opacity=".5"/>
+      </svg>
+    </div>
+    TechParts
+  </div>
+  <nav class="hdr-bc" id="bc">
+    <a href="#" onclick="navTo('cat');return false">TOP</a>
+    <span>›</span>
+    <strong>ねじ・ボルト・ナット</strong>
+  </nav>
+  <div class="hdr-search">
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1.3"/><line x1="8.7" y1="8.7" x2="12" y2="12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+    商品を検索
+  </div>
+</header>
+
+<!-- ══ PAGE 1: CATEGORY ══════════════════════════ -->
+<div class="page active" id="pg-cat">
+  <div class="cat-hero">
+    <div class="cat-hero-grid"></div>
+    <div class="cat-hero-inner">
+      <div class="cat-eyebrow">Product Categories</div>
+      <h1>ねじ・ボルト・ナット<br>ワッシャ・カラー</h1>
+      <p>工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。</p>
+      <div class="cat-hero-stats">
+        <div><span class="cat-stat-num">1,200+</span><div class="cat-stat-lbl">商品点数</div></div>
+        <div><span class="cat-stat-num">50+</span><div class="cat-stat-lbl">材質バリエーション</div></div>
+        <div><span class="cat-stat-num">最短1日</span><div class="cat-stat-lbl">出荷対応</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="cat-body">
+    <div class="cat-tabs">
+      <button class="cat-tab active" onclick="filterCatTab(this,'all')">すべて</button>
+      <button class="cat-tab" onclick="filterCatTab(this,'bolt')">ボルト</button>
+      <button class="cat-tab" onclick="filterCatTab(this,'nut')">ナット</button>
+      <button class="cat-tab" onclick="filterCatTab(this,'washer')">ワッシャ</button>
+      <button class="cat-tab" onclick="filterCatTab(this,'collar')">カラー・スペーサ</button>
+    </div>
+    <div class="cat-grid" id="cat-grid"></div>
+  </div>
+</div>
+
+<!-- ══ PAGE 2: PRODUCT LIST ══════════════════════ -->
+<div class="page" id="pg-list">
+  <div class="pg-list-wrap">
+
+    <!-- 左フィルター -->
+    <aside class="filter-panel">
+      <div class="fp-close-mb">
+        <span>絞り込み</span>
+        <button onclick="closeFilter()">×</button>
+      </div>
+      <div class="fp-nav">
+        <div class="fp-nav-item" onclick="navTo('cat')"><span>‹</span> ねじ・ボルト・ナット</div>
+        <div class="fp-nav-item current"><span style="color:var(--ink-20)">‹</span> <span id="fp-cat-name">六角穴付きボルト</span></div>
+      </div>
+      <div class="fp-hdr"><span>絞り込み</span><button class="clear-btn" onclick="clearAll()">すべて解除</button></div>
+
+      <!-- chemSHERPA -->
+      <div class="fs">
+        <div class="fs-head" onclick="toggleSec(this)">chemSHERPA / RoHS <span class="ti">▲</span></div>
+        <div class="fs-body">
+          <div class="fnote">ℹ ミスミ品のみ対象</div>
+          <div class="sub-lbl">chemSHERPA</div>
+          <div class="cbi"><input type="checkbox" id="f-cok" onchange="apply()"><label for="f-cok"><span>回答可能（特定物質なし）</span><span class="fcnt" id="cnt-cok"></span></label></div>
+          <div class="cbi"><input type="checkbox" id="f-cng" onchange="apply()"><label for="f-cng"><span>回答不可（特定物質あり）</span><span class="fcnt" id="cnt-cng"></span></label></div>
+          <div class="cbi"><input type="checkbox" id="f-cp" onchange="apply()"><label for="f-cp"><span>調査中</span><span class="fcnt" id="cnt-cp"></span></label></div>
+          <div class="sub-lbl">EU_RoHS</div>
+          <div class="cbi"><input type="checkbox" id="f-ry" onchange="apply()"><label for="f-ry"><span>対応</span><span class="fcnt" id="cnt-ry"></span></label></div>
+          <div class="cbi"><input type="checkbox" id="f-rn" onchange="apply()"><label for="f-rn"><span>非対応</span><span class="fcnt" id="cnt-rn"></span></label></div>
+        </div>
+      </div>
+
+      <!-- ねじ径スライダー -->
+      <div class="fs">
+        <div class="fs-head" onclick="toggleSec(this)">ねじの呼び（M） <span class="ti">▲</span></div>
+        <div class="fs-body">
+          <div class="sl-sec">
+            <div class="sl-lbl"><span>M径範囲</span><span class="sl-val">M<span id="slv-tmin">3</span> 〜 M<span id="slv-tmax">16</span></span></div>
+            <div class="sl-wrap">
+              <div class="sl-track"></div>
+              <div class="sl-fill" id="slf-t"></div>
+              <input type="range" class="sl" id="sl-tmin" min="3" max="16" value="3" step="1" oninput="onSlider('t')">
+              <input type="range" class="sl" id="sl-tmax" min="3" max="16" value="16" step="1" oninput="onSlider('t')">
+            </div>
+            <div class="sl-ticks"><span>M3</span><span>M6</span><span>M10</span><span>M16</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 長さスライダー -->
+      <div class="fs">
+        <div class="fs-head" onclick="toggleSec(this)">長さL（mm） <span class="ti">▲</span></div>
+        <div class="fs-body">
+          <div class="sl-sec">
+            <div class="sl-lbl"><span>長さ範囲</span><span class="sl-val"><span id="slv-lmin">6</span>〜<span id="slv-lmax">100</span>mm</span></div>
+            <div class="sl-wrap">
+              <div class="sl-track"></div>
+              <div class="sl-fill" id="slf-l"></div>
+              <input type="range" class="sl" id="sl-lmin" min="6" max="100" value="6" step="1" oninput="onSlider('l')">
+              <input type="range" class="sl" id="sl-lmax" min="6" max="100" value="100" step="1" oninput="onSlider('l')">
+            </div>
+            <div class="sl-ticks"><span>6mm</span><span>30mm</span><span>60mm</span><span>100mm</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 材質 -->
+      <div class="fs">
+        <div class="fs-head" onclick="toggleSec(this)">材質 <span class="ti">▲</span></div>
+        <div class="fs-body" id="fb-mat"></div>
+      </div>
+
+      <!-- 表面処理 -->
+      <div class="fs">
+        <div class="fs-head" onclick="toggleSec(this)">表面処理 <span class="ti">▲</span></div>
+        <div class="fs-body" id="fb-surf"></div>
+      </div>
+
+      <!-- 強度区分 -->
+      <div class="fs">
+        <div class="fs-head" onclick="toggleSec(this)">強度区分 <span class="ti">▲</span></div>
+        <div class="fs-body" id="fb-str"></div>
+      </div>
+    </aside>
+
+    <!-- 右商品パネル -->
+    <main class="product-panel">
+      <h1 class="panel-title" id="list-title">六角穴付きボルト（キャップボルト）</h1>
+      <p class="panel-desc">円筒形の頭部に六角形の穴が開いているボルトで、六角レンチにて締結します。</p>
+      <div class="atags" id="atags"></div>
+
+      <div class="toolbar">
+        <div class="pcnt"><em>件数：</em><span id="cnt-num">0</span> 件</div>
+        <div class="tbr">
+          <button class="filter-btn-mb" onclick="openFilter()">
+            <svg viewBox="0 0 13 13" fill="none"><path d="M1 3h11M3 6.5h7M5 10h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            絞り込み
+          </button>
+          <div class="vtgl">
+            <button class="vbtn active" id="vb-list"    onclick="setView('list')">≡ 一覧</button>
+            <button class="vbtn"        id="vb-photo"   onclick="setView('photo')">⊞ 写真</button>
+            <button class="vbtn"        id="vb-compare" onclick="setView('compare')">⊟ 仕様比較</button>
+          </div>
+          <div class="sel"><label>表示件数：</label>
+            <select id="per-page" onchange="apply()"><option value="15">15件</option><option value="30" selected>30件</option><option value="45">45件</option></select></div>
+          <div class="sel"><label>並び替え：</label>
+            <select id="sort" onchange="apply()"><option value="pop">人気順</option><option value="rating">評価順</option><option value="ta">ねじ径 小→大</option><option value="td">ねじ径 大→小</option><option value="la">長さ 短→長</option><option value="ld">長さ 長→短</option></select></div>
+          <div class="sel"><label>出荷日：</label>
+            <select id="deliv" onchange="apply()"><option value="all">すべて</option><option value="1">1日以内</option><option value="3">3日以内</option><option value="7">1週間以内</option></select></div>
+        </div>
+      </div>
+
+      <div class="export-bar">
+        <span class="export-bar-lbl">CSV EXPORT</span>
+        <button class="exp-btn exp-all" onclick="exportCSV('all')">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3.5 6l2.5 2.5L8.5 6M1.5 10h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          全商品（<span id="exp-all-cnt">0</span>件）
+        </button>
+        <button class="exp-btn exp-cur" onclick="exportCSV('current')">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3.5 6l2.5 2.5L8.5 6M1.5 10h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          表示中（<span id="exp-cur-cnt">0</span>件）
+        </button>
+      </div>
+
+      <div id="prod-disp"></div>
+      <div class="pgn" id="pgn"></div>
+    </main>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Mobile filter overlay -->
+<div class="filter-overlay" id="filter-overlay" onclick="closeFilter()"></div>
+
+<!-- ══ PAGE 3: DETAIL ════════════════════════════ -->
+<div class="page" id="pg-detail">
+  <div class="detail-hero">
+    <div class="detail-hero-inner">
+      <button class="back-btn" onclick="navTo('list')">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        商品一覧に戻る
+      </button>
+      <div class="detail-hero-name" id="dt-name"></div>
+    </div>
+  </div>
+  <div class="detail-body">
+    <div class="detail-top">
+      <div class="detail-imgs">
+        <div class="detail-main-img" id="dt-main-img"></div>
+        <div class="detail-thumbs" id="dt-thumbs"></div>
+      </div>
+      <div class="detail-info">
+        <div class="detail-badges" id="dt-badges"></div>
+        <div class="detail-mkr" id="dt-maker"></div>
+        <div class="detail-name-sub" id="dt-name-sub"></div>
+        <div class="detail-rat" id="dt-rat"></div>
+        <hr class="detail-div">
+        <table class="spec-mini" id="dt-spec-mini"></table>
+        <div class="order-box">
+          <h4>注文・見積もり</h4>
+          <div class="qty-row">
+            <label>数量</label>
+            <input type="number" class="qty-inp" value="10" min="1">
+            <span class="qty-unit">個</span>
+          </div>
+          <button class="order-btn">カートに追加</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-sec"><h3>商品説明</h3><p class="detail-desc-text" id="dt-desc"></p></div>
+    <div class="detail-sec"><h3>詳細仕様</h3><table class="full-spec" id="dt-full-spec"></table></div>
+    <div class="detail-sec"><h3>カスタマーレビュー</h3><div id="dt-reviews"></div></div>
+    <div class="detail-sec"><h3>関連商品</h3><div class="related-grid" id="dt-related"></div></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// カテゴリデータ
+// ═══════════════════════════════════════════
+const CATEGORIES = [
+  { id:'cap',   name:'六角穴付きボルト（キャップボルト）', type:'bolt',   cnt:176, desc:'六角レンチで締結。最も汎用的な高強度ボルト',  featured:true },
+  { id:'hex',   name:'六角ボルト',                         type:'bolt',   cnt:89,  desc:'スパナ・レンチで締結する標準的なボルト' },
+  { id:'flng',  name:'六角フランジボルト',                  type:'bolt',   cnt:45,  desc:'ワッシャ不要のフランジ（座面）付きボルト' },
+  { id:'btn',   name:'ボタンボルト（低頭キャップ）',         type:'bolt',   cnt:67,  desc:'頭部が低く薄型設計が可能なボルト',        isNew:true },
+  { id:'wing',  name:'蝶ボルト（ウィングボルト）',           type:'bolt',   cnt:32,  desc:'工具なしで手締めできる蝶型ボルト' },
+  { id:'cross', name:'十字穴付きボルト（トラス・なべ）',    type:'bolt',   cnt:112, desc:'ドライバで締結できる一般用途向けボルト' },
+  { id:'stud',  name:'スタッドボルト（植込みボルト）',      type:'bolt',   cnt:34,  desc:'両端にねじが切られた頭部なしボルト' },
+  { id:'eye',   name:'アイボルト',                          type:'bolt',   cnt:18,  desc:'吊り上げ・牽引に使用するリング付きボルト' },
+  { id:'hexn',  name:'六角ナット',                          type:'nut',    cnt:134, desc:'最も標準的な六角形ナット' },
+  { id:'wign',  name:'蝶ナット（ウィングナット）',           type:'nut',    cnt:28,  desc:'工具なしで手締めできる蝶型ナット' },
+  { id:'lockn', name:'ロックナット（緩み止め）',             type:'nut',    cnt:56,  desc:'振動による緩みを防ぐナット',             isNew:true },
+  { id:'wash',  name:'平ワッシャ（座金）',                   type:'washer', cnt:96,  desc:'座面圧力を分散する汎用ワッシャ' },
+  { id:'spring',name:'スプリングワッシャ（ばね座金）',       type:'washer', cnt:43,  desc:'緩み止め機能付きワッシャ' },
+  { id:'col',   name:'スペーサ・カラー',                    type:'collar', cnt:74,  desc:'部品間の間隔を保持するカラー' },
+];
+
+const MAT_COLOR = {'ステンレス':'#90a4ae','スチール':'#78909c','チタン':'#80cbc4','アルミ':'#b0bec5','黄銅':'#ffd54f','樹脂':'#a5d6a7'};
+const MAT_BG   = {'ステンレス':'#eceff1','スチール':'#eceff1','チタン':'#e0f2f1','アルミ':'#eceff1','黄銅':'#fff8e1','樹脂':'#e8f5e9'};
+
+// ═══════════════════════════════════════════
+// 商品データ（30件）
+// ═══════════════════════════════════════════
+const PRODUCTS = [
+  {id:1,  name:"六角穴付きボルト −高強度βチタン合金−",              maker:"ミスミ",material:"チタン",     detail:"βチタン合金",          thread:"M4", tnum:4,  len:10,  surface:"生地",          str_s:"−",   str_ss:"A4-80",chem:"ok", rohs:true, delivery:3,pop:92,rating:4.6,rev:23, desc:"βチタン合金は純チタンに比べ強度が高く、軽量・高強度・耐食性を兼ね備えます。航空宇宙・医療機器・精密機械に最適な高性能ボルトです。"},
+  {id:2,  name:"六角穴付きボルト −ステンレス（SUS304）標準−",        maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M6", tnum:6,  len:20,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:1,pop:98,rating:4.5,rev:156,desc:"耐食性に優れたSUS304製の標準的なキャップボルトです。食品機械・化学装置・屋外設備など幅広い用途に使用されます。"},
+  {id:3,  name:"六角穴付きボルト −スチール 高強度（SCM435）−",       maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M8", tnum:8,  len:30,  surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:95,rating:4.8,rev:89, desc:"クロムモリブデン鋼SCM435を使用した高強度ボルトです。引張強度1200MPaクラスで、機械構造・産業機械の締結に最適です。"},
+  {id:4,  name:"六角穴付きボルト −ステンレス（SUS316L）耐食強化−",   maker:"ミスミ",material:"ステンレス",detail:"SUS316L",              thread:"M5", tnum:5,  len:16,  surface:"生地",          str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:88,rating:4.7,rev:67, desc:"モリブデン添加の低炭素ステンレスSUS316L。塩水・酸・アルカリに対する耐食性が特に優れ、半導体・薬品工場に最適です。"},
+  {id:5,  name:"六角穴付きボルト −スチール（S45C）汎用−",            maker:"ミスミ",material:"スチール",  detail:"S45C",                 thread:"M10",tnum:10, len:40,  surface:"ユニクロ",      str_s:"8.8", str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:97,rating:4.3,rev:201,desc:"機械構造用炭素鋼S45Cを使用した汎用ボルトです。コストパフォーマンスに優れ、一般機械・設備・治具の組み立てに幅広く使用されます。"},
+  {id:6,  name:"六角穴付きボルト −純チタン（JIS2種）軽量−",         maker:"ミスミ",material:"チタン",     detail:"純チタン",              thread:"M3", tnum:3,  len:8,   surface:"生地",          str_s:"−",   str_ss:"A2-50",chem:"ok", rohs:true, delivery:3,pop:75,rating:4.4,rev:34, desc:"純チタンJIS2種使用。スチールの約60%という軽さで、自転車・カメラ・IT機器などの軽量化に貢献します。"},
+  {id:7,  name:"六角穴付きボルト −黄銅（真鍮）電気絶縁−",           maker:"ミスミ",material:"黄銅",       detail:"黄銅C3604",             thread:"M3", tnum:3,  len:10,  surface:"ニッケルめっき",str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:1,pop:82,rating:4.2,rev:45, desc:"非磁性・電気絶縁性に優れた黄銅（真鍮）製ボルトです。電気機器・精密機器・通信機器・装飾用途などで使用されます。"},
+  {id:8,  name:"六角穴付きボルト −アルミ合金（A2017）超軽量−",      maker:"ミスミ",material:"アルミ",     detail:"A2017（ジュラルミン）", thread:"M5", tnum:5,  len:20,  surface:"アルマイト",    str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:3,pop:79,rating:4.5,rev:28, desc:"アルミ合金A2017（ジュラルミン）使用の超軽量ボルト。スチールの約1/3の重量で、航空機・ロボット・ドローンの軽量化に最適です。"},
+  {id:9,  name:"六角穴付きボルト −スチール（SCM440）高強度−",        maker:"ミスミ",material:"スチール",  detail:"SCM440",               thread:"M12",tnum:12, len:50,  surface:"黒染め",        str_s:"10.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:91,rating:4.6,rev:112,desc:"SCM440焼入れ焼戻し材使用。引張強度1100MPaクラスで、プレス機・建設機械など高負荷環境向けです。"},
+  {id:10, name:"六角穴付きボルト −ステンレス（SUS630）析出硬化−",    maker:"ミスミ",material:"ステンレス",detail:"SUS630（17-4PH）",     thread:"M6", tnum:6,  len:25,  surface:"生地",          str_s:"−",   str_ss:"A4-80",chem:"ok", rohs:true, delivery:7,pop:71,rating:4.7,rev:19, desc:"析出硬化系ステンレスSUS630（17-4PH）使用。高強度と耐食性を両立させたい場面に最適です。"},
+  {id:11, name:"六角穴付きボルト −スチール クロメートめっき−",       maker:"ミスミ",material:"スチール",  detail:"S45C",                 thread:"M4", tnum:4,  len:12,  surface:"クロメート",    str_s:"8.8", str_ss:"−",   chem:"ok", rohs:true, delivery:1,pop:87,rating:4.4,rev:88, desc:"スチール製で三価クロメートめっきを施した耐食ボルトです。RoHS指令対応の三価クロメートを使用しています。"},
+  {id:12, name:"六角穴付きボルト −ステンレス（SUS304）長尺80mm−",    maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M10",tnum:10, len:80,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:68,rating:4.3,rev:22, desc:"SUS304製の長尺キャップボルトです。深ボスや長スパン締結に対応する80mmサイズです。"},
+  {id:13, name:"六角穴付きボルト −PEEK樹脂 絶縁・耐薬品−",          maker:"ミスミ",material:"樹脂",       detail:"PEEK",                  thread:"M4", tnum:4,  len:15,  surface:"−",            str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:3,pop:73,rating:4.5,rev:31, desc:"超高耐熱エンジニアリングプラスチックPEEK樹脂製ボルトです。絶縁性・耐薬品性・耐熱性（200°C連続使用）が必要な箇所に最適。"},
+  {id:14, name:"六角穴付きボルト −スチール（SCM435）極小M3−",        maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M3", tnum:3,  len:6,   surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:84,rating:4.6,rev:58, desc:"高強度SCM435のM3小径ボルトです。精密機器・小型ロボット・光学機器など、小スペースでの高強度締結が必要な箇所に使用。"},
+  {id:15, name:"六角穴付きボルト −ステンレス（SUS304）ニッケルめっき−",maker:"ミスミ",material:"ステンレス",detail:"SUS304",             thread:"M6", tnum:6,  len:16,  surface:"ニッケルめっき",str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:76,rating:4.4,rev:43, desc:"SUS304にニッケルめっきを施した高光沢ボルトです。装飾性と耐食性を兼ね備え、医療機器・食品機械・装飾設備に最適です。"},
+  {id:16, name:"六角穴付きボルト −スチール大径（M16）重機向け−",     maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M16",tnum:16, len:60,  surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:89,rating:4.7,rev:77, desc:"大型建設機械・重機・産業装置向けのM16大径ボルトです。ISO規格準拠で高い締結信頼性を提供します。"},
+  {id:17, name:"六角穴付きボルト −アルミ（A7075）超超ジュラルミン−", maker:"ミスミ",material:"アルミ",     detail:"A7075（超超ジュラルミン）",thread:"M6",tnum:6, len:20,  surface:"アルマイト",    str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:7,pop:67,rating:4.8,rev:15, desc:"A7075（超超ジュラルミン）使用の最高強度アルミボルト。アルミ最高クラスの強度と軽さを両立します。"},
+  {id:18, name:"六角穴付きボルト −ステンレス（SUS316）M8−",          maker:"ミスミ",material:"ステンレス",detail:"SUS316",               thread:"M8", tnum:8,  len:35,  surface:"生地",          str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:81,rating:4.6,rev:52, desc:"SUS316製ボルトです。SUS304に比べモリブデンを多く含み、塩素環境での耐食性に優れます。"},
+  {id:19, name:"六角穴付きボルト −スチール（S45C）ユニクロ 経済品−", maker:"ミスミ",material:"スチール",  detail:"S45C",                 thread:"M6", tnum:6,  len:25,  surface:"ユニクロ",      str_s:"8.8", str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:99,rating:4.2,rev:312,desc:"S45Cにユニクロめっきを施した経済的なボルトです。一般機械・設備・治具等の組み立てに最も多く使われる汎用品です。"},
+  {id:20, name:"六角穴付きボルト −ステンレス（SUS304）M12大径−",     maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M12",tnum:12, len:45,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:78,rating:4.5,rev:61, desc:"SUS304製のM12大径ボルトです。重量物・大型部品の締結に使用されます。食品機械・化学設備でも使用可能。"},
+  {id:21, name:"六角穴付きボルト −スチール（SNCM439）超高強度−",     maker:"ミスミ",material:"スチール",  detail:"SNCM439",              thread:"M10",tnum:10, len:50,  surface:"黒染め",        str_s:"14.9",str_ss:"−",   chem:"pending",rohs:false,delivery:7,pop:60,rating:4.9,rev:8,  desc:"ニッケルクロムモリブデン鋼SNCM439使用の超高強度ボルト。引張強度1400MPaクラスで耐衝撃性も優れています。"},
+  {id:22, name:"六角穴付きボルト −ステンレス（SUS316L）M4電解研磨−",maker:"ミスミ",material:"ステンレス",detail:"SUS316L",              thread:"M4", tnum:4,  len:12,  surface:"電解研磨",      str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:72,rating:4.6,rev:29, desc:"SUS316L製のM4ボルトに電解研磨を施しています。薬液・半導体製造装置・医療機器などの高清浄環境向けです。"},
+  {id:23, name:"六角穴付きボルト −スチール（SCM435）長尺M8×100−",   maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M8", tnum:8,  len:100, surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:76,rating:4.5,rev:33, desc:"SCM435高強度材のM8×100mm長尺ボルトです。厚板・長スパンの締結に対応します。"},
+  {id:24, name:"六角穴付きボルト −ポリカーボネート 透明−",           maker:"ミスミ",material:"樹脂",       detail:"ポリカーボネート（PC）",thread:"M3", tnum:3,  len:10,  surface:"−",            str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:3,pop:55,rating:4.0,rev:18, desc:"ポリカーボネート樹脂製の透明ボルトです。締結状態の目視確認が必要な用途・光学装置・アクリルケース組み立てに最適です。"},
+  {id:25, name:"六角穴付きボルト −スチール（S45C）短尺M5×6−",       maker:"ミスミ",material:"スチール",  detail:"S45C",                 thread:"M5", tnum:5,  len:6,   surface:"ユニクロ",      str_s:"8.8", str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:93,rating:4.1,rev:145,desc:"S45C標準鋼の極短M5×6mmボルトです。薄板・小型部品の締結に使用されます。コストパフォーマンスに優れた汎用品です。"},
+  {id:26, name:"六角穴付きボルト −ステンレス（SUS304）細目ねじ−",    maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M6", tnum:6,  len:20,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:70,rating:4.4,rev:37, desc:"SUS304製の細目ねじピッチボルトです。振動緩みに強く、精密調整が必要な光学機器・計測機器に使用されます。"},
+  {id:27, name:"六角穴付きボルト −防錆鋼（YKS200）ミスミ独自材−",    maker:"ミスミ",material:"スチール",  detail:"YKS200（防錆鋼）",     thread:"M8", tnum:8,  len:25,  surface:"生地",          str_s:"8.8", str_ss:"−",   chem:"ok", rohs:true, delivery:1,pop:83,rating:4.7,rev:41, desc:"ミスミ独自の防錆鋼YKS200使用ボルト。ステンレスに近い耐食性をスチール価格で実現します。"},
+  {id:28, name:"六角穴付きボルト −チタン（Grade5）航空宇宙−",        maker:"ミスミ",material:"チタン",     detail:"Ti-6Al-4V（Grade5）",  thread:"M6", tnum:6,  len:25,  surface:"生地",          str_s:"−",   str_ss:"A4-80",chem:"ok", rohs:true, delivery:7,pop:65,rating:4.9,rev:12, desc:"Ti-6Al-4V（Grade5）チタン合金製ボルトです。航空宇宙・レース用途での実績があり、最高水準の強度重量比を持ちます。"},
+  {id:29, name:"六角穴付きボルト −ステンレス（SUS304）全ねじM5−",    maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M5", tnum:5,  len:30,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:74,rating:4.3,rev:55, desc:"SUS304製の全ねじボルトです。スペーサ・間隔調整・薄板重ね合わせなど多目的に使用できます。"},
+  {id:30, name:"六角穴付きボルト −スチール（SCM435）フランジ付き−",  maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M10",tnum:10, len:35,  surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:86,rating:4.6,rev:48, desc:"頭部にフランジ（座面）が付いたキャップボルトです。ワッシャが不要で座面圧力を分散できます。"},
+];
+
+const REVIEWS = {
+  high:[
+    {name:"山田 T.様",date:"2026年3月",rating:5,body:"品質・寸法精度ともに申し分なし。指定ロットで毎回安定した品質が届きます。リピート購入中です。"},
+    {name:"鈴木 K.様",date:"2026年2月",rating:4,body:"使用環境が厳しい箇所ですが問題なく使用できています。梱包も丁寧で安心感があります。"},
+    {name:"佐藤 製造 E.様",date:"2026年1月",rating:5,body:"寸法公差が厳しい箇所に使用。全数確認しましたが精度にバラつきなし。今後も継続します。"},
+  ],
+  std:[
+    {name:"田中 A.様",date:"2026年3月",rating:4,body:"標準品として問題なく使用できています。コストパフォーマンスが良く満足です。"},
+    {name:"伊藤 設備 B.様",date:"2026年2月",rating:4,body:"納期が早くて助かります。品質も安定しています。"},
+  ]
+};
+
+let view='list',page=1,filtered=[...PRODUCTS],currentCat=CATEGORIES[0];
+let _piCnt=0;
+
+// ── Photorealistic product image ──
+function photoImg(mat, sz=56){
+  const uid='pi'+(++_piCnt);
+  const M={
+    'ステンレス':{h:['#6e8090','#9cb0c0','#d5e3ec','#8a9cac','#607080'],s:['#7a8c9c','#a8b8c4','#ccd8e0','#8898a8','#6a7888'],t:'#c0d0de',k:'#0c1820',b1:'#f5f7f9',b2:'#dfe4ea'},
+    'スチール':  {h:['#18202a','#303840','#505860','#282e38','#141820'],s:['#202830','#38404a','#525a62','#303840','#181e28'],t:'#404850',k:'#030508',b1:'#f2f2f4',b2:'#dddde2'},
+    'チタン':    {h:['#606870','#848c98','#b0b8c0','#70787e','#585e68'],s:['#606870','#808890','#9ea4ac','#686e7a','#585e68'],t:'#909aa0',k:'#1c2028',b1:'#f3f4f6',b2:'#e1e4e8'},
+    'アルミ':    {h:['#7888a0','#9ca8b8','#c0cbd4','#8898a8','#6878a0'],s:['#7888a0','#9aa4b4','#bac0cc','#8898a4','#6878a0'],t:'#b0bcc8',k:'#202838',b1:'#f4f5f7',b2:'#e3e6ec'},
+    '黄銅':      {h:['#8a6515','#b88828','#daa834','#a07820','#805c10'],s:['#906818','#b88828','#d2a232','#a07018','#806015'],t:'#c89e2e',k:'#200c05',b1:'#faf4e0',b2:'#ede3bc'},
+    '樹脂':      {h:['#4a7048','#6a9865','#86b87c','#5a8255','#40603d'],s:['#4a7048','#6a9865','#7eb07a','#58805a','#3e5c3a'],t:'#7ab075',k:'#1a3015',b1:'#eef5ec',b2:'#d6ecd2'}
+  };
+  const d=M[mat]||M['ステンレス'];
+  const p=v=>+(v*sz/100).toFixed(2);
+  const threads=[49,54,59,64,69,74,79].map(y=>
+    `<ellipse cx="${p(50)}" cy="${p(y)}" rx="${p(11.5)}" ry="${p(0.85)}" stroke="${d.h[0]}" stroke-width="${p(0.65)}" opacity=".38"/>`
+  ).join('');
+  return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
+    <radialGradient id="${uid}bg" cx="50%" cy="40%" r="65%"><stop offset="0%" stop-color="${d.b1}"/><stop offset="100%" stop-color="${d.b2}"/></radialGradient>
+    <linearGradient id="${uid}h" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${d.h[0]}"/><stop offset="22%" stop-color="${d.h[1]}"/><stop offset="50%" stop-color="${d.h[2]}"/><stop offset="78%" stop-color="${d.h[3]}"/><stop offset="100%" stop-color="${d.h[4]}"/></linearGradient>
+    <linearGradient id="${uid}s" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${d.s[0]}"/><stop offset="20%" stop-color="${d.s[1]}"/><stop offset="50%" stop-color="${d.s[2]}"/><stop offset="80%" stop-color="${d.s[3]}"/><stop offset="100%" stop-color="${d.s[4]}"/></linearGradient>
+    <linearGradient id="${uid}t" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${d.t}" stop-opacity=".95"/><stop offset="100%" stop-color="${d.h[0]}" stop-opacity=".75"/></linearGradient>
+    <filter id="${uid}sf" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="${p(3)}"/></filter>
+    <clipPath id="${uid}cp"><rect width="${sz}" height="${sz}" rx="${p(8)}"/></clipPath>
+  </defs>
+  <g clip-path="url(#${uid}cp)">
+    <rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>
+    <ellipse cx="${p(50)}" cy="${p(90)}" rx="${p(20)}" ry="${p(6)}" fill="rgba(0,0,0,.12)" filter="url(#${uid}sf)"/>
+    <ellipse cx="${p(50)}" cy="${p(20)}" rx="${p(23)}" ry="${p(6)}" fill="url(#${uid}t)"/>
+    <ellipse cx="${p(50)}" cy="${p(20)}" rx="${p(8.5)}" ry="${p(2.8)}" fill="${d.k}"/>
+    <ellipse cx="${p(47.5)}" cy="${p(19.5)}" rx="${p(2.8)}" ry="${p(0.9)}" fill="rgba(255,255,255,.09)"/>
+    <rect x="${p(27)}" y="${p(20)}" width="${p(46)}" height="${p(21)}" fill="url(#${uid}h)"/>
+    <line x1="${p(37)}" y1="${p(20.5)}" x2="${p(35)}" y2="${p(40)}" stroke="rgba(0,0,0,.06)" stroke-width="${p(0.7)}"/>
+    <line x1="${p(63)}" y1="${p(20.5)}" x2="${p(65)}" y2="${p(40)}" stroke="rgba(0,0,0,.06)" stroke-width="${p(0.7)}"/>
+    <rect x="${p(27)}" y="${p(39)}" width="${p(46)}" height="${p(2)}" fill="rgba(0,0,0,.18)"/>
+    <polygon points="${p(27)},${p(41)} ${p(73)},${p(41)} ${p(70)},${p(45)} ${p(30)},${p(45)}" fill="${d.h[0]}" opacity=".85"/>
+    <rect x="${p(38)}" y="${p(45)}" width="${p(24)}" height="${p(42)}" fill="url(#${uid}s)"/>
+    ${threads}
+    <ellipse cx="${p(50)}" cy="${p(87)}" rx="${p(12)}" ry="${p(2.5)}" fill="${d.s[0]}"/>
+    <rect x="${p(29)}" y="${p(21)}" width="${p(4)}" height="${p(16)}" fill="rgba(255,255,255,.20)" rx="${p(1.5)}"/>
+    <rect x="${p(69)}" y="${p(21)}" width="${p(3)}" height="${p(16)}" fill="rgba(0,0,0,.09)" rx="${p(1)}"/>
+    <rect x="${p(39.5)}" y="${p(46)}" width="${p(3)}" height="${p(40)}" fill="rgba(255,255,255,.13)" rx="${p(1)}"/>
+    <rect x="${p(59)}" y="${p(46)}" width="${p(2.5)}" height="${p(40)}" fill="rgba(0,0,0,.07)" rx="${p(1)}"/>
+  </g></svg>`;
+}
+
+// ── Category illustration ──
+function catIconSvg(type){
+  const sz=110;
+  const p=v=>+(v*sz/100).toFixed(2);
+  const uid='ci'+type;
+  const cfg={
+    bolt:{a:'#0050d8',b1:'#eaefff',b2:'#d5e0ff'},
+    nut: {a:'#1a7f37',b1:'#e5f5ea',b2:'#c8e8d0'},
+    washer:{a:'#b45309',b1:'#fef3c7',b2:'#fde3a0'},
+    collar:{a:'#6b21a8',b1:'#f5f0ff',b2:'#e8dfff'}
+  };
+  const c=cfg[type]||cfg.bolt;
+  const a=c.a;
+
+  if(type==='bolt'){
+    // Rendered bolt, blue-tinted
+    const ht=[p(27),p(20),p(73),p(20),p(73),p(41),p(27),p(41)];
+    const ts=[49,54,59,64,69,74,79].map(y=>
+      `<ellipse cx="${p(50)}" cy="${p(y)}" rx="${p(11)}" ry="${p(0.85)}" stroke="${a}" stroke-width="${p(0.7)}" opacity=".35"/>`
+    ).join('');
+    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
+      <radialGradient id="${uid}bg" cx="50%" cy="40%" r="65%"><stop offset="0%" stop-color="${c.b1}"/><stop offset="100%" stop-color="${c.b2}"/></radialGradient>
+      <linearGradient id="${uid}h" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${a}" stop-opacity=".45"/><stop offset="50%" stop-color="${a}" stop-opacity=".75"/><stop offset="100%" stop-color="${a}" stop-opacity=".4"/></linearGradient>
+      <linearGradient id="${uid}s" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${a}" stop-opacity=".4"/><stop offset="45%" stop-color="${a}" stop-opacity=".7"/><stop offset="100%" stop-color="${a}" stop-opacity=".35"/></linearGradient>
+      <linearGradient id="${uid}t" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="${a}" stop-opacity=".5"/><stop offset="100%" stop-color="${a}" stop-opacity=".35"/></linearGradient>
+      <filter id="${uid}sf" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="${p(3)}"/></filter>
+      <clipPath id="${uid}cp"><rect width="${sz}" height="${sz}" rx="${p(12)}"/></clipPath>
+    </defs>
+    <g clip-path="url(#${uid}cp)">
+      <rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>
+      <ellipse cx="${p(50)}" cy="${p(90)}" rx="${p(20)}" ry="${p(5.5)}" fill="${a}" opacity=".15" filter="url(#${uid}sf)"/>
+      <ellipse cx="${p(50)}" cy="${p(20)}" rx="${p(23)}" ry="${p(6)}" fill="url(#${uid}t)"/>
+      <ellipse cx="${p(50)}" cy="${p(20)}" rx="${p(8.5)}" ry="${p(2.8)}" fill="${a}" opacity=".7"/>
+      <rect x="${p(27)}" y="${p(20)}" width="${p(46)}" height="${p(21)}" fill="url(#${uid}h)"/>
+      <rect x="${p(27)}" y="${p(39)}" width="${p(46)}" height="${p(2)}" fill="${a}" opacity=".4"/>
+      <polygon points="${p(27)},${p(41)} ${p(73)},${p(41)} ${p(70)},${p(45)} ${p(30)},${p(45)}" fill="${a}" opacity=".3"/>
+      <rect x="${p(38)}" y="${p(45)}" width="${p(24)}" height="${p(42)}" fill="url(#${uid}s)"/>
+      ${ts}
+      <ellipse cx="${p(50)}" cy="${p(87)}" rx="${p(12)}" ry="${p(2.5)}" fill="${a}" opacity=".4"/>
+      <rect x="${p(29)}" y="${p(21)}" width="${p(4)}" height="${p(16)}" fill="rgba(255,255,255,.35)" rx="${p(1.5)}"/>
+      <rect x="${p(40)}" y="${p(46)}" width="${p(3)}" height="${p(40)}" fill="rgba(255,255,255,.2)" rx="${p(1)}"/>
+    </g></svg>`;
+  }
+
+  if(type==='nut'){
+    // Hex nut — top + side view
+    const hex=(cx,cy,r,ry2)=>[...Array(6)].map((_,i)=>{const a2=(i*60-30)*Math.PI/180;return`${(cx+r*Math.cos(a2)).toFixed(2)},${(cy+ry2*Math.sin(a2)).toFixed(2)}`}).join(' ');
+    const top=hex(p(50),p(42),p(32),p(10));
+    const mid=hex(p(50),p(42),p(25),p(8));
+    const side=hex(p(50),p(58),p(32),p(10));
+    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
+      <radialGradient id="${uid}bg" cx="50%" cy="42%" r="65%"><stop offset="0%" stop-color="${c.b1}"/><stop offset="100%" stop-color="${c.b2}"/></radialGradient>
+      <linearGradient id="${uid}g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${a}" stop-opacity=".38"/><stop offset="50%" stop-color="${a}" stop-opacity=".72"/><stop offset="100%" stop-color="${a}" stop-opacity=".33"/></linearGradient>
+      <clipPath id="${uid}cp"><rect width="${sz}" height="${sz}" rx="${p(12)}"/></clipPath>
+    </defs>
+    <g clip-path="url(#${uid}cp)">
+      <rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>
+      <!-- side walls -->
+      <polygon points="${side}" fill="${a}" opacity=".5"/>
+      <polygon points="${top}" fill="${a}" opacity=".1"/>
+      <!-- top face -->
+      <polygon points="${top}" fill="url(#${uid}g)"/>
+      <!-- ring mask for hollow -->
+      <polygon points="${mid}" fill="url(#${uid}bg)"/>
+      <!-- bore hole -->
+      <ellipse cx="${p(50)}" cy="${p(42)}" rx="${p(12)}" ry="${p(3.8)}" fill="${a}" opacity=".75"/>
+      <ellipse cx="${p(50)}" cy="${p(42)}" rx="${p(8)}" ry="${p(2.6)}" fill="rgba(0,0,0,.5)"/>
+      <!-- highlight -->
+      <line x1="${p(20)}" y1="${p(35)}" x2="${p(18)}" y2="${p(50)}" stroke="rgba(255,255,255,.35)" stroke-width="${p(2.5)}" stroke-linecap="round"/>
+    </g></svg>`;
+  }
+
+  if(type==='washer'){
+    // Flat washer, slight top angle
+    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
+      <radialGradient id="${uid}bg" cx="50%" cy="42%" r="65%"><stop offset="0%" stop-color="${c.b1}"/><stop offset="100%" stop-color="${c.b2}"/></radialGradient>
+      <linearGradient id="${uid}g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${a}" stop-opacity=".35"/><stop offset="50%" stop-color="${a}" stop-opacity=".7"/><stop offset="100%" stop-color="${a}" stop-opacity=".32"/></linearGradient>
+      <clipPath id="${uid}cp"><rect width="${sz}" height="${sz}" rx="${p(12)}"/></clipPath>
+    </defs>
+    <g clip-path="url(#${uid}cp)">
+      <rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>
+      <!-- Side thickness ring -->
+      <ellipse cx="${p(50)}" cy="${p(63)}" rx="${p(34)}" ry="${p(9)}" fill="${a}" opacity=".42"/>
+      <!-- Top face (large annulus) -->
+      <ellipse cx="${p(50)}" cy="${p(53)}" rx="${p(34)}" ry="${p(11)}" fill="url(#${uid}g)"/>
+      <!-- Hole mask -->
+      <ellipse cx="${p(50)}" cy="${p(53)}" rx="${p(14)}" ry="${p(4.5)}" fill="url(#${uid}bg)"/>
+      <!-- Bore -->
+      <ellipse cx="${p(50)}" cy="${p(53)}" rx="${p(11)}" ry="${p(3.5)}" fill="${a}" opacity=".7"/>
+      <ellipse cx="${p(50)}" cy="${p(53)}" rx="${p(8)}" ry="${p(2.5)}" fill="rgba(0,0,0,.45)"/>
+      <!-- Specular -->
+      <ellipse cx="${p(28)}" cy="${p(50)}" rx="${p(3.5)}" ry="${p(8)}" fill="rgba(255,255,255,.3)" transform="rotate(-20 ${p(28)} ${p(50)})"/>
+    </g></svg>`;
+  }
+
+  // collar / spacer
+  return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
+    <radialGradient id="${uid}bg" cx="50%" cy="42%" r="65%"><stop offset="0%" stop-color="${c.b1}"/><stop offset="100%" stop-color="${c.b2}"/></radialGradient>
+    <linearGradient id="${uid}g" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${a}" stop-opacity=".35"/><stop offset="42%" stop-color="${a}" stop-opacity=".72"/><stop offset="100%" stop-color="${a}" stop-opacity=".3"/></linearGradient>
+    <clipPath id="${uid}cp"><rect width="${sz}" height="${sz}" rx="${p(12)}"/></clipPath>
+  </defs>
+  <g clip-path="url(#${uid}cp)">
+    <rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>
+    <!-- Bottom cap -->
+    <ellipse cx="${p(50)}" cy="${p(75)}" rx="${p(21)}" ry="${p(6.5)}" fill="${a}" opacity=".48"/>
+    <!-- Body cylinder -->
+    <rect x="${p(29)}" y="${p(29)}" width="${p(42)}" height="${p(46)}" fill="url(#${uid}g)"/>
+    <!-- Top face ring -->
+    <ellipse cx="${p(50)}" cy="${p(29)}" rx="${p(21)}" ry="${p(6.5)}" fill="${a}" opacity=".55"/>
+    <!-- Bore opening -->
+    <ellipse cx="${p(50)}" cy="${p(29)}" rx="${p(12)}" ry="${p(3.8)}" fill="${a}" opacity=".7"/>
+    <ellipse cx="${p(50)}" cy="${p(29)}" rx="${p(8.5)}" ry="${p(2.7)}" fill="rgba(0,0,0,.48)"/>
+    <!-- Highlight streak -->
+    <rect x="${p(31)}" y="${p(30)}" width="${p(5)}" height="${p(44)}" fill="rgba(255,255,255,.28)" rx="${p(2)}"/>
+  </g></svg>`;
+}
+
+function stars(r){
+  const f=Math.floor(r),h=r%1>=.5;
+  return '★'.repeat(f)+(h?'<span style="opacity:.4">★</span>':'')+'☆'.repeat(5-f-(h?1:0));
+}
+
+// ── Navigation ──
+function navTo(pg,data){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('pg-'+pg).classList.add('active');
+  const bc=document.getElementById('bc');
+  if(pg==='cat'){
+    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><strong>ねじ・ボルト・ナット</strong>`;
+  }else if(pg==='list'){
+    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">ねじ・ボルト・ナット</a><span>›</span><strong>${currentCat.name}</strong>`;
+    document.getElementById('list-title').textContent=currentCat.name;
+    document.getElementById('fp-cat-name').textContent=currentCat.name;
+    apply();
+  }else if(pg==='detail'&&data){
+    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">ねじ・ボルト・ナット</a><span>›</span><a href="#" onclick="navTo('list');return false">${currentCat.name}</a><span>›</span><strong>${data.name.slice(0,18)}…</strong>`;
+    renderDetail(data);
+  }
+  window.scrollTo(0,0);
+}
+
+// ── Page 1 ──
+function renderCategories(type='all'){
+  const cats=type==='all'?CATEGORIES:CATEGORIES.filter(c=>c.type===type);
+  document.getElementById('cat-grid').innerHTML=cats.map((c,i)=>`
+    <div class="cat-card${c.featured?' featured':''}" onclick="selectCat('${c.id}')" style="animation-delay:${i*30}ms">
+      <div class="cat-card-top">
+        ${catIconSvg(c.type)}
+      </div>
+      <div class="cat-card-body">
+        <div class="cat-card-name">${c.name}${c.isNew?'<span class="cat-badge-new">NEW</span>':''}</div>
+        <div class="cat-card-sub">${c.desc}</div>
+        <div class="cat-card-footer">
+          <span class="cat-card-count">${c.cnt.toLocaleString()} 件</span>
+          <span class="cat-card-arrow">→</span>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function filterCatTab(el,type){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderCategories(type);
+}
+
+function selectCat(id){
+  currentCat=CATEGORIES.find(c=>c.id===id)||CATEGORIES[0];
+  clearAll();
+  navTo('list');
+}
+
+// ── Page 2: Filters ──
+function buildCb(cid,key,sortKey){
+  const cnts={};
+  PRODUCTS.forEach(p=>{const v=p[key];if(v&&v!=='−')cnts[v]=(cnts[v]||0)+1});
+  let entries=Object.entries(cnts);
+  if(sortKey)entries.sort((a,b)=>(PRODUCTS.find(p=>p[key]===a[0])?.[sortKey]||0)-(PRODUCTS.find(p=>p[key]===b[0])?.[sortKey]||0));
+  else entries.sort((a,b)=>b[1]-a[1]);
+  document.getElementById(cid).innerHTML=entries.map(([v,c])=>`
+    <div class="cbi">
+      <input type="checkbox" id="f-${cid}-${v}" value="${v}" onchange="apply()">
+      <label for="f-${cid}-${v}"><span>${v}</span><span class="fcnt">(${c})</span></label>
+    </div>`).join('');
+}
+
+function initFilters(){
+  buildCb('fb-mat','material');
+  buildCb('fb-surf','surface');
+  const ss=new Set();
+  PRODUCTS.forEach(p=>{if(p.str_s&&p.str_s!=='−')ss.add(p.str_s);if(p.str_ss&&p.str_ss!=='−')ss.add(p.str_ss)});
+  document.getElementById('fb-str').innerHTML=[...ss].sort().map(v=>`
+    <div class="cbi">
+      <input type="checkbox" id="f-str-${v}" value="${v}" onchange="apply()">
+      <label for="f-str-${v}"><span>${v}</span></label>
+    </div>`).join('');
+  updateFill('l');updateFill('t');
+}
+
+function onSlider(axis){
+  const mn=parseInt(document.getElementById(`sl-${axis}min`).value);
+  const mx=parseInt(document.getElementById(`sl-${axis}max`).value);
+  if(mn>mx){if(event.target.id===`sl-${axis}min`)document.getElementById(`sl-${axis}min`).value=mx;else document.getElementById(`sl-${axis}max`).value=mn;}
+  updateFill(axis);apply();
+}
+
+function updateFill(axis){
+  const minEl=document.getElementById(`sl-${axis}min`),maxEl=document.getElementById(`sl-${axis}max`),fill=document.getElementById(`slf-${axis}`);
+  const absMin=parseInt(minEl.min),absMax=parseInt(minEl.max),mn=parseInt(minEl.value),mx=parseInt(maxEl.value),r=absMax-absMin;
+  fill.style.left=((mn-absMin)/r*100)+'%';fill.style.width=((mx-mn)/r*100)+'%';
+  const vl=document.getElementById(`slv-${axis}min`),vh=document.getElementById(`slv-${axis}max`);
+  if(vl)vl.textContent=mn;if(vh)vh.textContent=mx;
+}
+
+function getChecked(id){return[...document.querySelectorAll(`#${id} input:checked`)].map(e=>e.value)}
+
+function apply(){
+  const mats=getChecked('fb-mat'),surfs=getChecked('fb-surf'),strs=getChecked('fb-str');
+  const cOk=document.getElementById('f-cok').checked,cNg=document.getElementById('f-cng').checked,cP=document.getElementById('f-cp').checked;
+  const rY=document.getElementById('f-ry').checked,rN=document.getElementById('f-rn').checked;
+  const tMin=parseInt(document.getElementById('sl-tmin').value)||3,tMax=parseInt(document.getElementById('sl-tmax').value)||16;
+  const lMin=parseInt(document.getElementById('sl-lmin').value)||6,lMax=parseInt(document.getElementById('sl-lmax').value)||100;
+  const deliv=document.getElementById('deliv').value;
+  filtered=PRODUCTS.filter(p=>{
+    if(mats.length&&!mats.includes(p.material))return false;
+    if(surfs.length&&!surfs.includes(p.surface))return false;
+    if(strs.length&&!strs.some(s=>p.str_s===s||p.str_ss===s))return false;
+    const cs=[cOk&&'ok',cNg&&'ng',cP&&'pending'].filter(Boolean);
+    if(cs.length&&!cs.includes(p.chem))return false;
+    if(rY&&rN){}else if(rY&&!p.rohs)return false;else if(rN&&p.rohs)return false;
+    if(p.tnum<tMin||p.tnum>tMax)return false;
+    if(p.len<lMin||p.len>lMax)return false;
+    if(deliv!=='all'&&p.delivery>parseInt(deliv))return false;
+    return true;
+  });
+  const sf=document.getElementById('sort').value;
+  const fns={pop:(a,b)=>b.pop-a.pop,rating:(a,b)=>b.rating-a.rating,ta:(a,b)=>a.tnum-b.tnum,td:(a,b)=>b.tnum-a.tnum,la:(a,b)=>a.len-b.len,ld:(a,b)=>b.len-a.len};
+  filtered.sort(fns[sf]);
+  page=1;updateTags();render();
+}
+
+function updateTags(){
+  const tags=[];
+  const tMin=parseInt(document.getElementById('sl-tmin').value)||3,tMax=parseInt(document.getElementById('sl-tmax').value)||16;
+  const lMin=parseInt(document.getElementById('sl-lmin').value)||6,lMax=parseInt(document.getElementById('sl-lmax').value)||100;
+  if(tMin>3||tMax<16)tags.push({t:`ねじ径 M${tMin}〜M${tMax}`,r:()=>{document.getElementById('sl-tmin').value=3;document.getElementById('sl-tmax').value=16;updateFill('t');apply()}});
+  if(lMin>6||lMax<100)tags.push({t:`長さ ${lMin}〜${lMax}mm`,r:()=>{document.getElementById('sl-lmin').value=6;document.getElementById('sl-lmax').value=100;updateFill('l');apply()}});
+  [['fb-mat','材質'],['fb-surf','表面処理']].forEach(([id,lbl])=>getChecked(id).forEach(v=>tags.push({t:`${lbl}: ${v}`,r:()=>{document.querySelector(`#${id} input[value="${v}"]`).checked=false;apply()}})));
+  [['f-cok','chemSHERPA: 回答可能'],['f-cng','chemSHERPA: 回答不可'],['f-cp','chemSHERPA: 調査中'],['f-ry','EU_RoHS: 対応'],['f-rn','EU_RoHS: 非対応']].forEach(([id,lbl])=>{if(document.getElementById(id).checked)tags.push({t:lbl,r:()=>{document.getElementById(id).checked=false;apply()}})});
+  getChecked('fb-str').forEach(v=>tags.push({t:`強度区分 ${v}`,r:()=>{document.getElementById(`f-str-${v}`).checked=false;apply()}}));
+  window.__tagRemovers=tags.map(t=>t.r);
+  document.getElementById('atags').innerHTML=tags.map((t,i)=>`<div class="atag">${t.t}<button onclick="__tagRemovers[${i}]()">×</button></div>`).join('');
+}
+
+function clearAll(){
+  document.querySelectorAll('.filter-panel input[type=checkbox]').forEach(e=>e.checked=false);
+  document.getElementById('sl-tmin').value=3;document.getElementById('sl-tmax').value=16;updateFill('t');
+  document.getElementById('sl-lmin').value=6;document.getElementById('sl-lmax').value=100;updateFill('l');
+  document.getElementById('deliv').value='all';apply();
+}
+
+function toggleSec(h){h.classList.toggle('closed');h.nextElementSibling.classList.toggle('hidden')}
+function setView(v){view=v;['list','photo','compare'].forEach(k=>document.getElementById('vb-'+k).classList.toggle('active',k===v));render()}
+
+// ── Render ──
+let currentSlice=[];
+function render(){
+  const pp=parseInt(document.getElementById('per-page').value);
+  const total=filtered.length,pages=Math.ceil(total/pp),start=(page-1)*pp;
+  const slice=filtered.slice(start,start+pp);
+  currentSlice=slice;
+  document.getElementById('cnt-num').textContent=total;
+  document.getElementById('exp-all-cnt').textContent=PRODUCTS.length;
+  document.getElementById('exp-cur-cnt').textContent=slice.length;
+  const disp=document.getElementById('prod-disp');
+  if(total===0){
+    disp.innerHTML=`<div class="empty"><div class="empty-ico">🔍</div><h3>該当する商品が見つかりません</h3><p>絞り込み条件を変更してください</p><button onclick="clearAll()">条件をすべて解除</button></div>`;
+    document.getElementById('pgn').innerHTML='';return;
+  }
+  if(view==='list')renderList(slice,disp);
+  else if(view==='photo')renderPhoto(slice,disp);
+  else renderCompare(slice,disp);
+  renderPgn(pages);
+}
+
+function renderList(items,disp){
+  disp.innerHTML=`<div class="plist">${items.map((p,i)=>`
+    <div class="pc" style="animation-delay:${i*25}ms" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">
+      <div class="pimg-wrap">
+        <div class="pimg">${photoImg(p.material,90)}</div>
+        <div class="delivery-badge">最短${p.delivery}日</div>
+      </div>
+      <div class="pinfo">
+        <div class="pbadges">${p.chem==='ok'?'<span class="bdg bdg-c">chemSHERPA対応</span>':''}${p.rohs?'<span class="bdg bdg-r">EU_RoHS対応</span>':''}</div>
+        <div class="pmkr">${p.maker}</div>
+        <div class="pnm">${p.name}</div>
+        <div class="pdsc">${p.desc}</div>
+        <div class="prat"><span class="stars">${stars(p.rating)}</span><span class="rnum">${p.rating}</span><span class="rcnt">(${p.rev}件)</span></div>
+        <div class="spec-pills">
+          <div class="spec-pill"><strong>${p.thread}</strong></div>
+          <div class="spec-pill">L=<strong>${p.len}mm</strong></div>
+          <div class="spec-pill"><strong>${p.material}</strong></div>
+          <div class="spec-pill">${p.surface}</div>
+          ${p.str_s!=='−'?`<div class="spec-pill">強度 <strong>${p.str_s}</strong></div>`:''}
+          ${p.str_ss!=='−'?`<div class="spec-pill">強度 <strong>${p.str_ss}</strong></div>`:''}
+        </div>
+        <div class="sptbl-wrap">
+          <table class="sptbl"><tr>
+            <th>ねじの呼び</th><th>長さL</th><th>材質</th><th>詳細材質</th><th>強度区分(S)</th><th>強度区分(SS)</th><th>表面処理</th>
+          </tr><tr>
+            <td>${p.thread}</td><td>${p.len}mm</td><td>${p.material}</td><td>${p.detail}</td><td>${p.str_s}</td><td>${p.str_ss}</td><td>${p.surface}</td>
+          </tr></table>
+        </div>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+function renderPhoto(items,disp){
+  disp.innerHTML=`<div class="pgrid">${items.map((p,i)=>`
+    <div class="pgc" style="animation-delay:${i*20}ms" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">
+      <div class="gimg">${photoImg(p.material,120)}</div>
+      <div class="gcard-body">
+        <div class="pbadges" style="margin-bottom:6px">${p.chem==='ok'?'<span class="bdg bdg-c" style="font-size:9px">chemSHERPA</span>':''}${p.rohs?'<span class="bdg bdg-r" style="font-size:9px">RoHS</span>':''}</div>
+        <div class="gnm">${p.name}</div>
+        <div class="gsp">${p.thread} × ${p.len}mm | ${p.material}</div>
+        <div class="gsp" style="margin-top:2px;color:#aeaeb2">${p.surface}</div>
+        <div class="prat" style="margin-top:8px"><span class="stars" style="font-size:11px">${stars(p.rating)}</span><span style="font-size:11px;font-weight:700;margin-left:4px">${p.rating}</span></div>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+function renderCompare(items,disp){
+  const hs=['商品名','ねじの呼び','長さL(mm)','材質','詳細材質','強度区分(スチール)','強度区分(ステンレス)','表面処理','chemSHERPA','EU_RoHS','出荷日','評価'];
+  const vs=[p=>p.name,p=>p.thread,p=>p.len+'mm',p=>p.material,p=>p.detail,p=>p.str_s,p=>p.str_ss,p=>p.surface,p=>({ok:'✅ 回答可能',ng:'❌ 回答不可',pending:'🔄 調査中'})[p.chem],p=>p.rohs?'✅ 対応':'❌ 非対応',p=>p.delivery+'日以内',p=>`★${p.rating} (${p.rev}件)`];
+  disp.innerHTML=`<div class="cmpwrap"><table class="cmptbl"><thead><tr><th>仕様</th>${items.map(p=>`<th class="pcol" style="cursor:pointer" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">${p.name.length>18?p.name.slice(0,18)+'…':p.name}</th>`).join('')}</tr></thead><tbody>${hs.map((h,i)=>`<tr><td style="font-weight:700;background:var(--s2);white-space:nowrap;color:var(--ink-60);font-size:11px;letter-spacing:.3px">${h}</td>${items.map(p=>`<td>${vs[i](p)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+
+function renderPgn(pages){
+  const pg=document.getElementById('pgn');
+  if(pages<=1){pg.innerHTML='';return}
+  let h=`<button class="pgb" onclick="goPage(${page-1})" ${page===1?'disabled':''}>‹</button>`;
+  for(let i=1;i<=pages;i++){
+    if(i===1||i===pages||Math.abs(i-page)<=2)h+=`<button class="pgb ${i===page?'active':''}" onclick="goPage(${i})">${i}</button>`;
+    else if(Math.abs(i-page)===3)h+=`<span style="padding:0 4px;font-size:12px;color:var(--ink-20)">…</span>`;
+  }
+  h+=`<button class="pgb" onclick="goPage(${page+1})" ${page===pages?'disabled':''}>›</button>`;
+  pg.innerHTML=h;
+}
+
+function goPage(p){
+  const pp=parseInt(document.getElementById('per-page').value),pages=Math.ceil(filtered.length/pp);
+  if(p<1||p>pages)return;
+  page=p;render();
+  document.querySelector('.product-panel').scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Page 3: Detail ──
+function renderDetail(p){
+  document.getElementById('dt-name').textContent=p.name;
+  document.getElementById('dt-name-sub').textContent=p.name;
+  document.getElementById('dt-main-img').innerHTML=photoImg(p.material,220);
+  document.getElementById('dt-main-img').style.background='transparent';
+  document.getElementById('dt-thumbs').innerHTML=[0,1,2].map(i=>`
+    <div class="dthmb ${i===0?'active':''}" onclick="this.parentElement.querySelectorAll('.dthmb').forEach(t=>t.classList.remove('active'));this.classList.add('active')">
+      ${photoImg(p.material,58)}
+    </div>`).join('');
+  document.getElementById('dt-badges').innerHTML=(p.chem==='ok'?'<span class="badge badge-c">chemSHERPA対応品あり</span>':'')+(p.rohs?'<span class="badge badge-r">EU_RoHS対応</span>':'');
+  document.getElementById('dt-maker').textContent=p.maker;
+  document.getElementById('dt-rat').innerHTML=`<span class="stars" style="font-size:16px">${stars(p.rating)}</span><span style="font-size:16px;font-weight:800;margin-left:4px">${p.rating}</span><span style="font-size:12px;color:var(--ink-20);margin-left:4px">(${p.rev}件のレビュー)</span>`;
+  document.getElementById('dt-spec-mini').innerHTML=[['ねじの呼び',p.thread],['長さL',p.len+' mm'],['材質',p.material],['詳細材質',p.detail],['表面処理',p.surface],['出荷日',p.delivery+'日以内']].map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
+  document.getElementById('dt-desc').textContent=p.desc;
+  document.getElementById('dt-full-spec').innerHTML=[
+    ['商品コード','HCBT'+String(p.id).padStart(4,'0')],['ねじの呼び（M）',p.thread],['長さL（mm）',p.len],['材質区分',p.material],['詳細材質',p.detail],
+    ['強度区分（スチール系）',p.str_s],['強度区分（ステンレス系）',p.str_ss],['表面処理',p.surface],
+    ['chemSHERPA',{ok:'回答可能（特定物質なし）',ng:'回答不可',pending:'調査中'}[p.chem]],['EU_RoHS対応',p.rohs?'対応':'非対応'],
+    ['ねじの種類','並目ねじ（メートル規格）'],['頭部形状','円筒形'],['適合レンチ','六角棒スパナ'],['出荷日',p.delivery+'日以内'],['JIS規格','JIS B 1176準拠']
+  ].map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
+  const rvs=p.rating>=4.5?REVIEWS.high:REVIEWS.std;
+  document.getElementById('dt-reviews').innerHTML=rvs.map(r=>`
+    <div class="rv-item">
+      <div class="rv-head"><span class="rv-name">${r.name}</span><span class="stars" style="font-size:12px">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span><span class="rv-date">${r.date}</span></div>
+      <p class="rv-body">${r.body}</p>
+    </div>`).join('');
+  const related=PRODUCTS.filter(x=>x.id!==p.id&&(x.material===p.material||x.thread===p.thread)).slice(0,4);
+  document.getElementById('dt-related').innerHTML=related.map(r=>`
+    <div class="rel-card" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${r.id}))">
+      <div class="rel-img">${photoImg(r.material,70)}</div>
+      <div class="rel-name">${r.name}</div>
+      <div class="rel-spec">${r.thread} × ${r.len}mm | ${r.material}</div>
+      <div class="prat" style="margin-top:6px"><span class="stars" style="font-size:11px">${stars(r.rating)}</span><span style="font-size:11px;font-weight:700;margin-left:3px">${r.rating}</span></div>
+    </div>`).join('');
+}
+
+// ── CSV ──
+const CSV_HEADERS=['商品コード','商品名','メーカー','材質','詳細材質','ねじの呼び','長さL(mm)','表面処理','強度区分(スチール)','強度区分(ステンレス)','chemSHERPA','EU_RoHS対応','出荷日(日以内)','評価','レビュー件数'];
+
+function toCSVRow(p){
+  const code='HCBT'+String(p.id).padStart(4,'0');
+  const chemLabel={ok:'回答可能',ng:'回答不可',pending:'調査中'}[p.chem];
+  const vals=[code,p.name,p.maker,p.material,p.detail,p.thread,p.len,p.surface,p.str_s,p.str_ss,chemLabel,p.rohs?'対応':'非対応',p.delivery,p.rating,p.rev];
+  return vals.map(v=>{const s=String(v??'');return(s.includes(',')||s.includes('"')||s.includes('\n'))?'"'+s.replace(/"/g,'""')+'"':s}).join(',');
+}
+
+function exportCSV(mode){
+  const data=mode==='all'?PRODUCTS:currentSlice;
+  if(!data.length){showToast('エクスポート対象の商品がありません');return}
+  const now=new Date();
+  const ts=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'_'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0');
+  const label=mode==='all'?'全商品':'表示中';
+  const filename=`商品一覧_${label}_${ts}.csv`;
+  const bom='\uFEFF';
+  const csv=bom+[CSV_HEADERS.join(','),...data.map(toCSVRow)].join('\r\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download=filename;a.click();
+  URL.revokeObjectURL(url);
+  showToast(`${filename} をダウンロードしました（${data.length}件）`);
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// ── Mobile filter drawer ──
+function openFilter(){
+  document.querySelector('.filter-panel').classList.add('open');
+  document.getElementById('filter-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeFilter(){
+  document.querySelector('.filter-panel').classList.remove('open');
+  document.getElementById('filter-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ── Init ──
+renderCategories();
+initFilters();
+</script>
+</body>
+</html>
