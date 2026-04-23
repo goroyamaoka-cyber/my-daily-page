@@ -521,20 +521,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
       </div>
       <div class="fp-hdr"><span>絞り込み</span><button class="clear-btn" onclick="clearAll()">すべて解除</button></div>
 
-      <!-- chemSHERPA -->
-      <div class="fs">
-        <div class="fs-head" onclick="toggleSec(this)">chemSHERPA / RoHS <span class="ti">▲</span></div>
-        <div class="fs-body">
-          <div class="fnote">ℹ ミスミ品のみ対象</div>
-          <div class="sub-lbl">chemSHERPA</div>
-          <div class="cbi"><input type="checkbox" id="f-cok" onchange="apply()"><label for="f-cok"><span>回答可能（特定物質なし）</span><span class="fcnt" id="cnt-cok"></span></label></div>
-          <div class="cbi"><input type="checkbox" id="f-cng" onchange="apply()"><label for="f-cng"><span>回答不可（特定物質あり）</span><span class="fcnt" id="cnt-cng"></span></label></div>
-          <div class="cbi"><input type="checkbox" id="f-cp" onchange="apply()"><label for="f-cp"><span>調査中</span><span class="fcnt" id="cnt-cp"></span></label></div>
-          <div class="sub-lbl">EU_RoHS</div>
-          <div class="cbi"><input type="checkbox" id="f-ry" onchange="apply()"><label for="f-ry"><span>対応</span><span class="fcnt" id="cnt-ry"></span></label></div>
-          <div class="cbi"><input type="checkbox" id="f-rn" onchange="apply()"><label for="f-rn"><span>非対応</span><span class="fcnt" id="cnt-rn"></span></label></div>
-        </div>
-      </div>
 
       <!-- ねじ径スライダー -->
       <div class="fs">
@@ -983,8 +969,6 @@ function getChecked(id){return[...document.querySelectorAll(`#${id} input:checke
 
 function apply(){
   const mats=getChecked('fb-mat'),surfs=getChecked('fb-surf'),strs=getChecked('fb-str');
-  const cOk=document.getElementById('f-cok').checked,cNg=document.getElementById('f-cng').checked,cP=document.getElementById('f-cp').checked;
-  const rY=document.getElementById('f-ry').checked,rN=document.getElementById('f-rn').checked;
   const tMin=parseInt(document.getElementById('sl-tmin').value)||3,tMax=parseInt(document.getElementById('sl-tmax').value)||16;
   const lMin=parseInt(document.getElementById('sl-lmin').value)||6,lMax=parseInt(document.getElementById('sl-lmax').value)||100;
   const deliv=document.getElementById('deliv').value;
@@ -996,9 +980,6 @@ function apply(){
     if(mats.length&&!mats.includes(p.material))return false;
     if(surfs.length&&!surfs.includes(p.surface))return false;
     if(strs.length&&!strs.some(s=>p.str_s===s||p.str_ss===s))return false;
-    const cs=[cOk&&'ok',cNg&&'ng',cP&&'pending'].filter(Boolean);
-    if(cs.length&&!cs.includes(p.chem))return false;
-    if(rY&&rN){}else if(rY&&!p.rohs)return false;else if(rN&&p.rohs)return false;
     if(p.tnum<tMin||p.tnum>tMax)return false;
     if(p.len<lMin||p.len>lMax)return false;
     if(deliv!=='all'&&p.delivery>parseInt(deliv))return false;
@@ -1012,9 +993,6 @@ function apply(){
     let r1=PRODUCTS.filter(p=>{
       if(surfs.length&&!surfs.includes(p.surface))return false;
       if(strs.length&&!strs.some(s=>p.str_s===s||p.str_ss===s))return false;
-      const cs=[cOk&&'ok',cNg&&'ng',cP&&'pending'].filter(Boolean);
-      if(cs.length&&!cs.includes(p.chem))return false;
-      if(rY&&rN){}else if(rY&&!p.rohs)return false;else if(rN&&p.rohs)return false;
       if(p.tnum<tMin||p.tnum>tMax)return false;
       if(p.len<lMin||p.len>lMax)return false;
       if(deliv!=='all'&&p.delivery>parseInt(deliv))return false;
@@ -1026,9 +1004,6 @@ function apply(){
     // ② 表面処理も外す
     let r2=PRODUCTS.filter(p=>{
       if(strs.length&&!strs.some(s=>p.str_s===s||p.str_ss===s))return false;
-      const cs=[cOk&&'ok',cNg&&'ng',cP&&'pending'].filter(Boolean);
-      if(cs.length&&!cs.includes(p.chem))return false;
-      if(rY&&rN){}else if(rY&&!p.rohs)return false;else if(rN&&p.rohs)return false;
       if(p.tnum<tMin||p.tnum>tMax)return false;
       if(p.len<lMin||p.len>lMax)return false;
       if(deliv!=='all'&&p.delivery>parseInt(deliv))return false;
@@ -1064,7 +1039,6 @@ function updateTags(){
   if(tMin>3||tMax<16)tags.push({t:`ねじ径 M${tMin}〜M${tMax}`,r:()=>{document.getElementById('sl-tmin').value=3;document.getElementById('sl-tmax').value=16;updateFill('t');apply()}});
   if(lMin>6||lMax<100)tags.push({t:`長さ ${lMin}〜${lMax}mm`,r:()=>{document.getElementById('sl-lmin').value=6;document.getElementById('sl-lmax').value=100;updateFill('l');apply()}});
   [['fb-mat','材質'],['fb-surf','表面処理']].forEach(([id,lbl])=>getChecked(id).forEach(v=>tags.push({t:`${lbl}: ${v}`,r:()=>{document.querySelector(`#${id} input[value="${v}"]`).checked=false;apply()}})));
-  [['f-cok','chemSHERPA: 回答可能'],['f-cng','chemSHERPA: 回答不可'],['f-cp','chemSHERPA: 調査中'],['f-ry','EU_RoHS: 対応'],['f-rn','EU_RoHS: 非対応']].forEach(([id,lbl])=>{if(document.getElementById(id).checked)tags.push({t:lbl,r:()=>{document.getElementById(id).checked=false;apply()}})});
   getChecked('fb-str').forEach(v=>tags.push({t:`強度区分 ${v}`,r:()=>{document.getElementById(`f-str-${v}`).checked=false;apply()}}));
   window.__tagRemovers=tags.map(t=>t.r);
   document.getElementById('atags').innerHTML=tags.map((t,i)=>`<div class="atag">${t.t}<button onclick="__tagRemovers[${i}]()">×</button></div>`).join('');
