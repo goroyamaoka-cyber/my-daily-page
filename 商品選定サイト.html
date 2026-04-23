@@ -71,13 +71,13 @@ body{font-family:"Noto Sans JP","Hiragino Kaku Gothic Pro","Yu Gothic",sans-seri
 .cat-card:hover .cat-card-top svg{transform:scale(1.08)}
 .cat-card-body{padding:14px 18px 18px}
 .cat-card-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.4}
-.cat-card.featured .cat-card-name{color:var(--blue)}
+.cat-card.featured .cat-card-name{color:var(--ink)}
 .cat-card-sub{font-size:11px;color:var(--ink-40);line-height:1.5;margin-bottom:10px}
 .cat-card-footer{display:flex;justify-content:space-between;align-items:center}
 .cat-card-count{font-size:12px;font-weight:700;color:var(--blue)}
 .cat-card-arrow{font-size:14px;color:var(--ink-20);transition:transform var(--t)}
 .cat-card:hover .cat-card-arrow{transform:translateX(3px);color:var(--blue)}
-.cat-card.featured{border-color:rgba(227,0,32,.28);background:linear-gradient(135deg,#fff 60%,rgba(227,0,32,.03))}
+.cat-card.featured{border-color:var(--ink-10);background:var(--s0)}
 .cat-badge-new{background:#ff3b30;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:middle;letter-spacing:.5px}
 
 /* ══ PAGE 2: FILTER PANEL ══════════════════════ */
@@ -421,7 +421,7 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 
 /* Category card */
 .cat-card-top{height:120px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.cat-card.featured{border-color:rgba(227,0,32,.25);background:linear-gradient(135deg,#fff 60%,rgba(227,0,32,.03))}
+.cat-card.featured{border-color:var(--ink-10);background:var(--s0)}
 
 /* Stars — amber */
 .stars{color:#d4972a}
@@ -448,7 +448,7 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .rel-card:hover{background:var(--blue-bg);border-color:rgba(227,0,32,.18)!important;transform:translateY(-1px)}
 .pc:hover{box-shadow:var(--sh-md);transform:translateY(-1px);border-color:rgba(227,0,32,.18)!important}
 .pgc:hover{box-shadow:var(--sh-md);transform:translateY(-2px);border-color:rgba(227,0,32,.18)!important}
-.cat-card.featured{border-color:rgba(227,0,32,.28)!important;background:linear-gradient(135deg,#fff 60%,rgba(227,0,32,.03))!important}
+.cat-card.featured{border-color:var(--ink-10)!important;background:var(--s0)!important}
 .order-btn{background:var(--blue);color:#fff}
 .order-btn:hover{background:var(--blue-h)}
 </style>
@@ -677,7 +677,7 @@ const CATEGORIES = [
   { id:'col',   name:'スペーサ・カラー',                    type:'collar', cnt:74,  desc:'部品間の間隔を保持するカラー' },
 ];
 
-const CAT_BG={bolt:'#fff3f4',nut:'#f0f8f2',washer:'#fffaee',collar:'#f0f4ff'};
+const CAT_BG={bolt:'#f2f3f5',nut:'#f2f3f5',washer:'#f2f3f5',collar:'#f2f3f5'};
 const CAT_COLOR={bolt:'#e30020',nut:'#009a44',washer:'#b36000',collar:'#0054a0'};
 
 let _iCnt=0;
@@ -946,10 +946,10 @@ let view='list',page=1,filtered=[...PRODUCTS],currentCat=CATEGORIES[0];
 function catIconSvg(id,type){
   const uid='ci'+(++_iCnt);
   const T={
-    bolt:{hi:'#ff9090',lt:'#e04040',md:'#a80018',dk:'#500010',sk:'#180004'},
-    nut: {hi:'#60d880',lt:'#22a840',md:'#007030',dk:'#003018',sk:'#000c06'},
-    washer:{hi:'#f0a040',lt:'#c07010',md:'#885000',dk:'#3c2000',sk:'#100800'},
-    collar:{hi:'#6090e0',lt:'#2458b8',md:'#003880',dk:'#001840',sk:'#000818'},
+    bolt:  {hi:'#dde2e8',lt:'#8a96a4',md:'#3e4a58',dk:'#141c28',sk:'#040810'},
+    nut:   {hi:'#dde2e8',lt:'#8a96a4',md:'#3e4a58',dk:'#141c28',sk:'#040810'},
+    washer:{hi:'#dde2e8',lt:'#8a96a4',md:'#3e4a58',dk:'#141c28',sk:'#040810'},
+    collar:{hi:'#dde2e8',lt:'#8a96a4',md:'#3e4a58',dk:'#141c28',sk:'#040810'},
   };
   const c=T[type]||T.bolt;
   const sz=64,p=v=>+(v*sz/100).toFixed(2),CX=p(50);
