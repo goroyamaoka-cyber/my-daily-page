@@ -786,8 +786,8 @@ const REVIEWS = {
 
 let view='list',page=1,filtered=[...PRODUCTS],currentCat=CATEGORIES[0];
 
-// ── Category icons — 3D icon style ──
-function catIconSvg(type){
+// ── Category icons — per-category 3D shapes ──
+function catIconSvg(id,type){
   const uid='ci'+(++_iCnt);
   const T={
     bolt:{hi:'#ff9090',lt:'#e04040',md:'#a80018',dk:'#500010',sk:'#180004'},
@@ -797,75 +797,223 @@ function catIconSvg(type){
   };
   const c=T[type]||T.bolt;
   const sz=64,p=v=>+(v*sz/100).toFixed(2),CX=p(50);
+  const HG=(n,x1,x2)=>`<linearGradient id="${uid}${n}" x1="${x1}" y1="0" x2="${x2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".1" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>`;
+  const RG=(n,cx2,cy2,r2)=>`<radialGradient id="${uid}${n}" cx="${cx2}" cy="${cy2}" r="${r2}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset=".6" stop-color="${c.md}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>`;
+  const KG=(n,cx2,cy2,r2)=>`<radialGradient id="${uid}${n}" cx="${cx2}" cy="${cy2}" r="${r2}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.md}"/><stop offset="1" stop-color="${c.sk}"/></radialGradient>`;
+  const W=(x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${p(2)}" fill="white" opacity=".28"/>`;
+  const THR=(SW,HBY,SBY,n=4)=>Array.from({length:n},(_,i)=>{const y=HBY+p(6)+i*p(7.5);return y<SBY-p(5)?`<line x1="${CX-SW/2+p(2)}" y1="${y}" x2="${CX+SW/2-p(2)}" y2="${y}" stroke="${c.dk}" stroke-width="${p(1.1)}" opacity=".5"/>`:'';}).join('');
+  const SVG=(defs,body)=>`<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><defs>${defs}</defs>${body}</svg>`;
 
-  if(type==='bolt'){
+  // ── CAP: 六角穴付きボルト（キャップボルト）──
+  if(id==='cap'){
     const HW=p(52),TF=p(7),HH=p(27),SW=p(32),SH=p(36);
     const BT=p(15),HY=BT+TF,HBY=HY+HH,SBY=HBY+SH;
-    const thr=Array.from({length:4},(_,i)=>{const y=HBY+p(6)+i*p(8);return y<SBY-p(5)?`<line x1="${CX-SW/2+p(2)}" y1="${y}" x2="${CX+SW/2-p(2)}" y2="${y}" stroke="${c.dk}" stroke-width="${p(1.1)}" opacity=".5"/>`:'';}).join('');
-    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><defs>
-    <linearGradient id="${uid}H" x1="${CX-HW/2}" y1="0" x2="${CX+HW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".1" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>
-    <linearGradient id="${uid}S" x1="${CX-SW/2}" y1="0" x2="${CX+SW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".1" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>
-    <radialGradient id="${uid}T" cx="${CX-HW*0.1}" cy="${BT}" r="${HW*0.5}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset=".6" stop-color="${c.md}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
-    <radialGradient id="${uid}K" cx="${CX-p(3)}" cy="${BT}" r="${p(12)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.md}"/><stop offset="1" stop-color="${c.sk}"/></radialGradient>
-    </defs>
-    <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(3)}"/>
-    <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
-    <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${TF}" fill="${c.dk}" opacity=".65"/>
-    <ellipse cx="${CX}" cy="${BT}" rx="${p(12)}" ry="${p(4.5)}" fill="url(#${uid}K)"/>
-    <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
-    ${thr}
-    <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(4)}" fill="${c.md}" opacity=".7"/>
-    <rect x="${CX-HW/2+p(3)}" y="${HY+p(2)}" width="${p(4.5)}" height="${HH-p(4)}" rx="${p(2)}" fill="white" opacity=".28"/>
-    <rect x="${CX-SW/2+p(3)}" y="${HBY+p(4)}" width="${p(3)}" height="${SH-p(8)}" rx="${p(1.5)}" fill="white" opacity=".22"/>
-    </svg>`;
+    return SVG(HG('H',CX-HW/2,CX+HW/2)+HG('S',CX-SW/2,CX+SW/2)+RG('T',CX-HW*.1,BT,HW*.5)+KG('K',CX-p(3),BT,p(12)),`
+      <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(3)}"/>
+      <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${TF}" fill="${c.dk}" opacity=".65"/>
+      <ellipse cx="${CX}" cy="${BT}" rx="${p(12)}" ry="${p(4.5)}" fill="url(#${uid}K)"/>
+      <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+      ${THR(SW,HBY,SBY)}
+      <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(4)}" fill="${c.md}" opacity=".7"/>
+      ${W(CX-HW/2+p(3),HY+p(2),p(4.5),HH-p(4))}${W(CX-SW/2+p(3),HBY+p(4),p(3),SH-p(8))}`);
   }
 
-  if(type==='nut'){
+  // ── HEX: 六角ボルト（外六角・ソケットなし）──
+  if(id==='hex'){
+    const HW=p(60),TF=p(5.5),HH=p(14),SW=p(28),SH=p(36);
+    const BT=p(16),HY=BT+TF,HBY=HY+HH,SBY=HBY+SH,ch=p(4);
+    const hPath=`M${CX-HW/2+ch},${HY} L${CX+HW/2-ch},${HY} L${CX+HW/2},${HY+ch} L${CX+HW/2},${HBY-ch} L${CX+HW/2-ch},${HBY} L${CX-HW/2+ch},${HBY} L${CX-HW/2},${HBY-ch} L${CX-HW/2},${HY+ch} Z`;
+    return SVG(HG('H',CX-HW/2,CX+HW/2)+HG('S',CX-SW/2,CX+SW/2)+RG('T',CX-HW*.1,BT,HW*.5),`
+      <path d="${hPath}" fill="url(#${uid}H)"/>
+      <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${TF}" fill="${c.dk}" opacity=".62"/>
+      <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+      ${THR(SW,HBY,SBY)}
+      <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3.5)}" fill="${c.md}" opacity=".7"/>
+      ${W(CX-HW/2+ch+p(2),HY+p(1),p(4),HH-p(2))}${W(CX-SW/2+p(3),HBY+p(4),p(2.5),SH-p(8))}`);
+  }
+
+  // ── FLNG: 六角フランジボルト（フランジ付き）──
+  if(id==='flng'){
+    const HW=p(40),TF=p(5),HH=p(17),SW=p(22),SH=p(28),FW=p(58),FH=p(6);
+    const BT=p(10),HY=BT+TF,HBY=HY+HH,FBY=HBY+FH,SBY=FBY+SH;
+    return SVG(HG('H',CX-HW/2,CX+HW/2)+HG('F',CX-FW/2,CX+FW/2)+HG('S',CX-SW/2,CX+SW/2)+RG('T',CX-HW*.1,BT,HW*.5)+RG('TF',CX-FW*.1,HBY,FW*.5)+KG('K',CX-p(2),BT,p(10)),`
+      <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(2)}"/>
+      <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${TF}" fill="${c.dk}" opacity=".65"/>
+      <ellipse cx="${CX}" cy="${BT}" rx="${p(10)}" ry="${p(3.5)}" fill="url(#${uid}K)"/>
+      <rect x="${CX-FW/2}" y="${HBY}" width="${FW}" height="${FH}" fill="url(#${uid}F)" rx="${p(1)}"/>
+      <ellipse cx="${CX}" cy="${HBY}" rx="${FW/2}" ry="${p(4.5)}" fill="url(#${uid}TF)"/>
+      <ellipse cx="${CX}" cy="${FBY}" rx="${FW/2}" ry="${p(4.5)}" fill="${c.dk}" opacity=".6"/>
+      <rect x="${CX-SW/2}" y="${FBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+      ${THR(SW,FBY,SBY,3)}
+      <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3)}" fill="${c.md}" opacity=".7"/>
+      ${W(CX-HW/2+p(2),HY+p(1.5),p(3.5),HH-p(3))}${W(CX-SW/2+p(2.5),FBY+p(3),p(2.5),SH-p(6))}`);
+  }
+
+  // ── BTN: ボタンボルト（低頭キャップ）──
+  if(id==='btn'){
+    const HW=p(54),TF=p(7),HH=p(10),SW=p(28),SH=p(38);
+    const BT=p(12),HY=BT+TF,HBY=HY+HH,SBY=HBY+SH;
+    return SVG(HG('H',CX-HW/2,CX+HW/2)+HG('S',CX-SW/2,CX+SW/2)+RG('T',CX-HW*.1,BT,HW*.5)+KG('K',CX-p(2),BT,p(11)),`
+      <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(5)}"/>
+      <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${p(5)}" fill="${c.dk}" opacity=".6"/>
+      <ellipse cx="${CX}" cy="${BT}" rx="${p(11)}" ry="${p(3.8)}" fill="url(#${uid}K)"/>
+      <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+      ${THR(SW,HBY,SBY,5)}
+      <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3)}" fill="${c.md}" opacity=".7"/>
+      ${W(CX-HW/2+p(3),HY+p(1),p(4.5),HH-p(2))}${W(CX-SW/2+p(2.5),HBY+p(3),p(2.5),SH-p(7))}`);
+  }
+
+  // ── WING: 蝶ボルト（ウィングボルト）──
+  if(id==='wing'){
+    const HW=p(20),TF=p(4),HH=p(18),SW=p(16),SH=p(30),WW=p(20),WH=p(14);
+    const BT=p(13),HY=BT+TF,HBY=HY+HH,SBY=HBY+SH,wY=BT+p(4);
+    const wL=`M${CX-HW/2},${wY} L${CX-HW/2-WW},${wY+WH*.4} L${CX-HW/2-WW},${wY+WH} L${CX-HW/2},${wY+WH*.8} Z`;
+    const wR=`M${CX+HW/2},${wY} L${CX+HW/2+WW},${wY+WH*.4} L${CX+HW/2+WW},${wY+WH} L${CX+HW/2},${wY+WH*.8} Z`;
+    return SVG(HG('H',CX-HW/2,CX+HW/2)+HG('S',CX-SW/2,CX+SW/2)+RG('T',CX-HW*.1,BT,HW*.5)+
+      `<linearGradient id="${uid}WL" x1="${CX-HW/2-WW}" y1="0" x2="${CX-HW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.md}"/><stop offset="1" stop-color="${c.lt}"/></linearGradient>`+
+      `<linearGradient id="${uid}WR" x1="${CX+HW/2}" y1="0" x2="${CX+HW/2+WW}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.dk}"/></linearGradient>`,`
+      <path d="${wL}" fill="url(#${uid}WL)"/>
+      <path d="${wR}" fill="url(#${uid}WR)"/>
+      <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(2)}"/>
+      <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${TF}" fill="${c.dk}" opacity=".65"/>
+      <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+      ${THR(SW,HBY,SBY,4)}
+      <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3)}" fill="${c.md}" opacity=".7"/>`);
+  }
+
+  // ── CROSS: 十字穴付きボルト（トラス・なべ）──
+  if(id==='cross'){
+    const HW=p(54),TF=p(6),HH=p(15),SW=p(26),SH=p(36),ca=p(5);
+    const BT=p(13),HY=BT+TF,HBY=HY+HH,SBY=HBY+SH;
+    return SVG(HG('H',CX-HW/2,CX+HW/2)+HG('S',CX-SW/2,CX+SW/2)+RG('T',CX-HW*.1,BT,HW*.5),`
+      <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(4)}"/>
+      <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${p(5)}" fill="${c.dk}" opacity=".62"/>
+      <rect x="${CX-ca/2}" y="${BT-p(6)}" width="${ca}" height="${p(12)}" fill="${c.sk}" opacity=".55" rx="${p(1)}"/>
+      <rect x="${CX-p(7)}" y="${BT-ca/2}" width="${p(14)}" height="${ca}" fill="${c.sk}" opacity=".55" rx="${p(1)}"/>
+      <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+      ${THR(SW,HBY,SBY,5)}
+      <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3)}" fill="${c.md}" opacity=".7"/>
+      ${W(CX-HW/2+p(3),HY+p(2),p(4.5),HH-p(4))}${W(CX-SW/2+p(2.5),HBY+p(3),p(2.5),SH-p(7))}`);
+  }
+
+  // ── STUD: スタッドボルト（植込みボルト）── 頭部なし全ねじ
+  if(id==='stud'){
+    const SW=p(22),SH=p(56),BT=p(4),SBY=BT+SH;
+    const thr=Array.from({length:10},(_,i)=>{const y=BT+p(3)+i*p(5.2);return y<SBY-p(3)?`<line x1="${CX-SW/2+p(1.5)}" y1="${y}" x2="${CX+SW/2-p(1.5)}" y2="${y}" stroke="${c.dk}" stroke-width="${p(1)}" opacity=".5"/>`:'';}).join('');
+    return SVG(HG('S',CX-SW/2,CX+SW/2)+RG('T',CX,BT,SW*.5),`
+      <rect x="${CX-SW/2}" y="${BT}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+      ${thr}
+      <ellipse cx="${CX}" cy="${BT}" rx="${SW/2}" ry="${p(3.5)}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3.5)}" fill="${c.md}" opacity=".7"/>
+      ${W(CX-SW/2+p(2.5),BT+p(5),p(2.5),SH-p(10))}`);
+  }
+
+  // ── EYE: アイボルト（リング付き）──
+  if(id==='eye'){
+    const EOR=p(20),ETH=p(5),ECY=p(22),SW=p(16),SH=p(32),SBY=ECY+EOR+p(2)+SH;
+    const thr=Array.from({length:4},(_,i)=>{const y=ECY+EOR+p(4)+i*p(7);return y<SBY-p(4)?`<line x1="${CX-SW/2+p(1.5)}" y1="${y}" x2="${CX+SW/2-p(1.5)}" y2="${y}" stroke="${c.dk}" stroke-width="${p(1)}" opacity=".5"/>`:'';}).join('');
+    return SVG(`<radialGradient id="${uid}E" cx="${CX-EOR*.3}" cy="${ECY-EOR*.3}" r="${EOR*1.2}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset=".6" stop-color="${c.md}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>`+HG('S',CX-SW/2,CX+SW/2),`
+      <circle cx="${CX}" cy="${ECY}" r="${EOR}" fill="none" stroke="url(#${uid}E)" stroke-width="${ETH}"/>
+      <path d="M${CX-EOR},${ECY} A${EOR},${EOR},0,0,1,${CX+EOR},${ECY}" fill="none" stroke="${c.hi}" stroke-width="${p(1.8)}" opacity=".4"/>
+      <rect x="${CX-SW/2+p(1)}" y="${ECY+EOR-p(1)}" width="${SW-p(2)}" height="${p(5)}" fill="url(#${uid}S)"/>
+      <rect x="${CX-SW/2}" y="${ECY+EOR+p(2)}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+      ${thr}
+      <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3)}" fill="${c.md}" opacity=".7"/>
+      ${W(CX-SW/2+p(2),ECY+EOR+p(4),p(2),SH-p(8))}`);
+  }
+
+  // ── HEXN: 六角ナット ──
+  if(id==='hexn'){
     const r=p(36),cy=p(58),th=p(15),ir=p(14);
     const hx=(yy,rr)=>Array.from({length:6},(_,i)=>`${(CX+rr*Math.cos(i*Math.PI/3)).toFixed(1)},${(yy+rr*Math.sin(i*Math.PI/3)).toFixed(1)}`).join(' ');
-    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><defs>
-    <linearGradient id="${uid}N" x1="${CX-r}" y1="0" x2="${CX+r}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".12" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>
-    <radialGradient id="${uid}T" cx="${CX-p(5)}" cy="${cy-th}" r="${r}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset=".7" stop-color="${c.md}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
-    </defs>
-    <polygon points="${hx(cy,r)}" fill="url(#${uid}N)"/>
-    <polygon points="${hx(cy-th,r*0.92)}" fill="url(#${uid}T)"/>
-    <circle cx="${CX}" cy="${cy}" r="${ir}" fill="${c.sk}" opacity=".82"/>
-    <ellipse cx="${CX}" cy="${cy-th}" rx="${ir}" ry="${p(5)}" fill="${c.sk}" opacity=".88"/>
-    <polygon points="${hx(cy-th,r*0.92)}" fill="none" stroke="${c.hi}" stroke-width="${p(0.8)}" opacity=".25"/>
-    <rect x="${CX-r+p(2)}" y="${cy-th}" width="${p(4)}" height="${th}" rx="${p(2)}" fill="white" opacity=".22"/>
-    </svg>`;
+    return SVG(HG('N',CX-r,CX+r)+RG('T',CX-p(5),cy-th,r),`
+      <polygon points="${hx(cy,r)}" fill="url(#${uid}N)"/>
+      <polygon points="${hx(cy-th,r*.92)}" fill="url(#${uid}T)"/>
+      <circle cx="${CX}" cy="${cy}" r="${ir}" fill="${c.sk}" opacity=".82"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${ir}" ry="${p(5)}" fill="${c.sk}" opacity=".88"/>
+      <rect x="${CX-r+p(2)}" y="${cy-th}" width="${p(4)}" height="${th}" rx="${p(2)}" fill="white" opacity=".22"/>`);
   }
 
-  if(type==='washer'){
+  // ── WIGN: 蝶ナット（ウィングナット）──
+  if(id==='wign'){
+    const bR=p(12),cy=p(58),th=p(16),ir=p(6),WW=p(22),WH=p(18),wY=cy-th-WH+p(4);
+    const wL=`M${CX-bR},${cy-th} L${CX-bR-WW},${wY+WH} L${CX-bR-WW},${wY} L${CX-bR},${cy-th-WH*.6} Z`;
+    const wR=`M${CX+bR},${cy-th} L${CX+bR+WW},${wY+WH} L${CX+bR+WW},${wY} L${CX+bR},${cy-th-WH*.6} Z`;
+    return SVG(HG('H',CX-bR,CX+bR)+RG('T',CX,cy-th,bR)+
+      `<linearGradient id="${uid}WL" x1="${CX-bR-WW}" y1="0" x2="${CX-bR}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.hi}"/></linearGradient>`+
+      `<linearGradient id="${uid}WR" x1="${CX+bR}" y1="0" x2="${CX+bR+WW}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset="1" stop-color="${c.dk}"/></linearGradient>`,`
+      <path d="${wL}" fill="url(#${uid}WL)"/>
+      <path d="${wR}" fill="url(#${uid}WR)"/>
+      <rect x="${CX-bR}" y="${cy-th}" width="${bR*2}" height="${th}" fill="url(#${uid}H)" rx="${p(2)}"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${bR}" ry="${p(4)}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${bR}" ry="${p(4)}" fill="${c.dk}" opacity=".6"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${ir}" ry="${p(2.5)}" fill="${c.sk}" opacity=".8"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${ir*.8}" ry="${p(2.2)}" fill="${c.sk}" opacity=".85"/>`);
+  }
+
+  // ── LOCKN: ロックナット（ナイロンインサート色帯付き）──
+  if(id==='lockn'){
+    const r=p(34),cy=p(58),th=p(12),th2=p(9),ir=p(13);
+    const hx=(yy,rr)=>Array.from({length:6},(_,i)=>`${(CX+rr*Math.cos(i*Math.PI/3)).toFixed(1)},${(yy+rr*Math.sin(i*Math.PI/3)).toFixed(1)}`).join(' ');
+    return SVG(HG('N',CX-r,CX+r)+RG('T',CX-p(5),cy-th,r)+
+      `<radialGradient id="${uid}NY" cx="${CX-p(5)}" cy="${cy-th-th2}" r="${r}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e8f060"/><stop offset=".7" stop-color="#787820"/><stop offset="1" stop-color="#383800"/></radialGradient>`,`
+      <polygon points="${hx(cy,r)}" fill="url(#${uid}N)"/>
+      <polygon points="${hx(cy-th,r*.93)}" fill="url(#${uid}T)"/>
+      <polygon points="${hx(cy-th-th2,r*.88)}" fill="url(#${uid}NY)"/>
+      <circle cx="${CX}" cy="${cy}" r="${ir}" fill="${c.sk}" opacity=".82"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${ir}" ry="${p(4.5)}" fill="${c.sk}" opacity=".75"/>
+      <ellipse cx="${CX}" cy="${cy-th-th2}" rx="${ir*.9}" ry="${p(4)}" fill="${c.sk}" opacity=".7"/>
+      <rect x="${CX-r+p(2)}" y="${cy-th-th2}" width="${p(4)}" height="${th+th2}" rx="${p(2)}" fill="white" opacity=".18"/>`);
+  }
+
+  // ── WASH: 平ワッシャ（座金）──
+  if(id==='wash'){
     const OR=p(40),IR=p(16),cy=p(54),th=p(14);
-    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><defs>
-    <radialGradient id="${uid}B" cx="${CX}" cy="${cy}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${c.dk}"/><stop offset="0.55" stop-color="${c.md}"/><stop offset="0.82" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
-    <radialGradient id="${uid}T" cx="${CX-p(8)}" cy="${cy-th}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${c.dk}"/><stop offset="0.5" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
-    </defs>
-    <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(9)}" fill="url(#${uid}B)"/>
-    <ellipse cx="${CX}" cy="${cy}" rx="${IR}" ry="${p(3.5)}" fill="${c.sk}" opacity=".82"/>
-    <ellipse cx="${CX}" cy="${cy-th}" rx="${OR}" ry="${p(9)}" fill="url(#${uid}T)"/>
-    <ellipse cx="${CX}" cy="${cy-th}" rx="${IR}" ry="${p(3.5)}" fill="${c.sk}" opacity=".88"/>
-    <rect x="${CX+OR-p(3.5)}" y="${cy-th}" width="${p(3.5)}" height="${th}" fill="${c.dk}" opacity=".45"/>
-    <rect x="${CX-OR}" y="${cy-th}" width="${p(3.5)}" height="${th}" fill="${c.hi}" opacity=".35"/>
-    </svg>`;
+    return SVG(`<radialGradient id="${uid}B" cx="${CX}" cy="${cy}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${c.dk}"/><stop offset="0.55" stop-color="${c.md}"/><stop offset="0.82" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>`+
+      `<radialGradient id="${uid}T" cx="${CX-p(8)}" cy="${cy-th}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${c.dk}"/><stop offset="0.5" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>`,`
+      <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(9)}" fill="url(#${uid}B)"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${IR}" ry="${p(3.5)}" fill="${c.sk}" opacity=".82"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${OR}" ry="${p(9)}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${IR}" ry="${p(3.5)}" fill="${c.sk}" opacity=".88"/>
+      <rect x="${CX+OR-p(3.5)}" y="${cy-th}" width="${p(3.5)}" height="${th}" fill="${c.dk}" opacity=".45"/>
+      <rect x="${CX-OR}" y="${cy-th}" width="${p(3.5)}" height="${th}" fill="${c.hi}" opacity=".35"/>`);
   }
 
-  if(type==='collar'){
+  // ── SPRING: スプリングワッシャ（ばね座金・切れ目あり）──
+  if(id==='spring'){
+    const OR=p(38),IR=p(16),cy=p(52),th=p(12),tw=p(6);
+    return SVG(`<radialGradient id="${uid}B" cx="${CX}" cy="${cy}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${c.dk}"/><stop offset="0.55" stop-color="${c.md}"/><stop offset="0.82" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>`+
+      `<radialGradient id="${uid}T" cx="${CX-p(5)}" cy="${cy-th+tw}" r="${OR*.7}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${c.dk}"/><stop offset="0.5" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>`,`
+      <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(8.5)}" fill="url(#${uid}B)"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${IR}" ry="${p(3.5)}" fill="${c.sk}" opacity=".82"/>
+      <ellipse cx="${CX}" cy="${cy-th+tw}" rx="${OR*.65}" ry="${p(7)}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${cy-th+tw}" rx="${IR*.75}" ry="${p(3)}" fill="${c.sk}" opacity=".8"/>
+      <ellipse cx="${CX+OR*.75}" cy="${cy-th*.4}" rx="${p(5)}" ry="${p(8.5)}" fill="${c.hi}" opacity=".9"/>
+      <ellipse cx="${CX+OR*.75}" cy="${cy-th*.4}" rx="${p(3)}" ry="${p(5)}" fill="${c.lt}"/>
+      <rect x="${CX+OR-p(3.5)}" y="${cy-th+tw}" width="${p(3.5)}" height="${th-tw}" fill="${c.dk}" opacity=".45"/>
+      <rect x="${CX-OR}" y="${cy-th+tw}" width="${p(3.5)}" height="${th-tw}" fill="${c.hi}" opacity=".35"/>`);
+  }
+
+  // ── COL: スペーサ・カラー ──
+  if(id==='col'||type==='collar'){
     const OR=p(25),cy=p(64),th=p(46);
-    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><defs>
-    <linearGradient id="${uid}W" x1="${CX-OR}" y1="0" x2="${CX+OR}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".12" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>
-    <radialGradient id="${uid}T" cx="${CX-p(5)}" cy="${cy-th}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset=".7" stop-color="${c.md}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
-    </defs>
-    <rect x="${CX-OR}" y="${cy-th}" width="${OR*2}" height="${th}" fill="url(#${uid}W)"/>
-    <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(5)}" fill="${c.md}" opacity=".65"/>
-    <ellipse cx="${CX}" cy="${cy-th}" rx="${OR}" ry="${p(6)}" fill="url(#${uid}T)"/>
-    <ellipse cx="${CX}" cy="${cy-th}" rx="${p(11)}" ry="${p(3)}" fill="${c.sk}" opacity=".8"/>
-    <rect x="${CX-OR+p(2.5)}" y="${cy-th}" width="${p(4)}" height="${th}" rx="${p(2)}" fill="white" opacity=".23"/>
-    </svg>`;
+    return SVG(
+      `<linearGradient id="${uid}W" x1="${CX-OR}" y1="0" x2="${CX+OR}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".12" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>`+
+      `<radialGradient id="${uid}T" cx="${CX-p(5)}" cy="${cy-th}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset=".7" stop-color="${c.md}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>`,
+      `<rect x="${CX-OR}" y="${cy-th}" width="${OR*2}" height="${th}" fill="url(#${uid}W)"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(5)}" fill="${c.md}" opacity=".65"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${OR}" ry="${p(6)}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${p(11)}" ry="${p(3)}" fill="${c.sk}" opacity=".8"/>
+      <rect x="${CX-OR+p(2.5)}" y="${cy-th}" width="${p(4)}" height="${th}" rx="${p(2)}" fill="white" opacity=".23"/>`);
   }
 
-  return `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"></svg>`;
+  return SVG('','');
 }
 
 function stars(r){
@@ -898,7 +1046,7 @@ function renderCategories(type='all'){
   document.getElementById('cat-grid').innerHTML=cats.map((c,i)=>`
     <div class="cat-card${c.featured?' featured':''}" onclick="selectCat('${c.id}')" style="animation-delay:${i*30}ms">
       <div class="cat-card-top" style="background:${CAT_BG[c.type]||CAT_BG.bolt}">
-        ${catIconSvg(c.type)}
+        ${catIconSvg(c.id,c.type)}
       </div>
       <div class="cat-card-body">
         <div class="cat-card-name">${c.name}${c.isNew?'<span class="cat-badge-new">NEW</span>':''}</div>
