@@ -209,13 +209,13 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .cmptbl tr:nth-child(even) td{background:#fafafa}
 .cmptbl .pcol{font-weight:700;color:var(--blue);min-width:160px;font-size:12px}
 
-/* Empty */
-.empty{text-align:center;padding:80px 20px;background:#fff;border-radius:var(--r-md)}
-.empty-ico{font-size:40px;margin-bottom:14px}
-.empty h3{font-size:16px;font-weight:700;margin-bottom:6px}
-.empty p{font-size:12px;color:var(--ink-40)}
-.empty button{margin-top:16px;padding:10px 24px;background:var(--ink);color:#fff;border:none;border-radius:20px;cursor:pointer;font-size:13px;font-weight:600;transition:background var(--t)}
-.empty button:hover{background:var(--ink-80)}
+/* Fallback notice banner */
+.fb-notice{display:flex;align-items:center;gap:10px;padding:10px 16px;background:#fffbf2;border:1px solid #f0d080;border-radius:var(--r-md);margin-bottom:12px;font-size:12px;color:#7a5200}
+.fb-notice svg{flex-shrink:0}
+.fb-notice span{flex:1;line-height:1.5}
+.fb-notice b{font-weight:700}
+.fb-notice button{flex-shrink:0;padding:5px 14px;background:#fff;border:1px solid #d4a000;border-radius:20px;color:#7a5200;font-size:11px;font-weight:600;cursor:pointer;transition:background var(--t)}
+.fb-notice button:hover{background:#fef8e0}
 
 /* Pagination */
 .pgn{display:flex;justify-content:center;align-items:center;gap:4px;margin-top:24px}
@@ -930,7 +930,11 @@ function apply(){
   const tMin=parseInt(document.getElementById('sl-tmin').value)||3,tMax=parseInt(document.getElementById('sl-tmax').value)||16;
   const lMin=parseInt(document.getElementById('sl-lmin').value)||6,lMax=parseInt(document.getElementById('sl-lmax').value)||100;
   const deliv=document.getElementById('deliv').value;
-  filtered=PRODUCTS.filter(p=>{
+  const sf=document.getElementById('sort').value;
+  const fns={pop:(a,b)=>b.pop-a.pop,rating:(a,b)=>b.rating-a.rating,ta:(a,b)=>a.tnum-b.tnum,td:(a,b)=>b.tnum-a.tnum,la:(a,b)=>a.len-b.len,ld:(a,b)=>b.len-a.len};
+
+  // フルフィルター適用
+  let result=PRODUCTS.filter(p=>{
     if(mats.length&&!mats.includes(p.material))return false;
     if(surfs.length&&!surfs.includes(p.surface))return false;
     if(strs.length&&!strs.some(s=>p.str_s===s||p.str_ss===s))return false;
@@ -942,8 +946,55 @@ function apply(){
     if(deliv!=='all'&&p.delivery>parseInt(deliv))return false;
     return true;
   });
-  const sf=document.getElementById('sort').value;
-  const fns={pop:(a,b)=>b.pop-a.pop,rating:(a,b)=>b.rating-a.rating,ta:(a,b)=>a.tnum-b.tnum,td:(a,b)=>b.tnum-a.tnum,la:(a,b)=>a.len-b.len,ld:(a,b)=>b.len-a.len};
+
+  // ゼロヒット時：チェックボックス条件を段階的に緩和してフォールバック
+  window.__filterFallback=null;
+  if(result.length===0){
+    // ① 材質だけ外す
+    let r1=PRODUCTS.filter(p=>{
+      if(surfs.length&&!surfs.includes(p.surface))return false;
+      if(strs.length&&!strs.some(s=>p.str_s===s||p.str_ss===s))return false;
+      const cs=[cOk&&'ok',cNg&&'ng',cP&&'pending'].filter(Boolean);
+      if(cs.length&&!cs.includes(p.chem))return false;
+      if(rY&&rN){}else if(rY&&!p.rohs)return false;else if(rN&&p.rohs)return false;
+      if(p.tnum<tMin||p.tnum>tMax)return false;
+      if(p.len<lMin||p.len>lMax)return false;
+      if(deliv!=='all'&&p.delivery>parseInt(deliv))return false;
+      return true;
+    });
+    if(r1.length>0){result=r1;window.__filterFallback='材質';}
+  }
+  if(result.length===0){
+    // ② 表面処理も外す
+    let r2=PRODUCTS.filter(p=>{
+      if(strs.length&&!strs.some(s=>p.str_s===s||p.str_ss===s))return false;
+      const cs=[cOk&&'ok',cNg&&'ng',cP&&'pending'].filter(Boolean);
+      if(cs.length&&!cs.includes(p.chem))return false;
+      if(rY&&rN){}else if(rY&&!p.rohs)return false;else if(rN&&p.rohs)return false;
+      if(p.tnum<tMin||p.tnum>tMax)return false;
+      if(p.len<lMin||p.len>lMax)return false;
+      if(deliv!=='all'&&p.delivery>parseInt(deliv))return false;
+      return true;
+    });
+    if(r2.length>0){result=r2;window.__filterFallback='材質・表面処理';}
+  }
+  if(result.length===0){
+    // ③ 規格・寸法のみ保持（チェックボックス全解除）
+    let r3=PRODUCTS.filter(p=>{
+      if(p.tnum<tMin||p.tnum>tMax)return false;
+      if(p.len<lMin||p.len>lMax)return false;
+      if(deliv!=='all'&&p.delivery>parseInt(deliv))return false;
+      return true;
+    });
+    if(r3.length>0){result=r3;window.__filterFallback='材質・表面処理・強度・規格区分';}
+  }
+  if(result.length===0){
+    // ④ 全商品表示（完全フォールバック）
+    result=[...PRODUCTS];
+    window.__filterFallback='すべての絞り込み条件';
+  }
+
+  filtered=result;
   filtered.sort(fns[sf]);
   page=1;updateTags();render();
 }
@@ -982,13 +1033,16 @@ function render(){
   document.getElementById('exp-all-cnt').textContent=PRODUCTS.length;
   document.getElementById('exp-cur-cnt').textContent=slice.length;
   const disp=document.getElementById('prod-disp');
-  if(total===0){
-    disp.innerHTML=`<div class="empty"><div class="empty-ico">🔍</div><h3>該当する商品が見つかりません</h3><p>絞り込み条件を変更してください</p><button onclick="clearAll()">条件をすべて解除</button></div>`;
-    document.getElementById('pgn').innerHTML='';return;
-  }
-  if(view==='list')renderList(slice,disp);
-  else if(view==='photo')renderPhoto(slice,disp);
-  else renderCompare(slice,disp);
+  // フォールバックバナーを先頭に挿入
+  const fb=window.__filterFallback;
+  const fbBanner=fb?`<div class="fb-notice">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#b36000" stroke-width="1.4"/><rect x="7.25" y="4" width="1.5" height="5" rx=".75" fill="#b36000"/><rect x="7.25" y="10.5" width="1.5" height="1.5" rx=".75" fill="#b36000"/></svg>
+    <span><b>${fb}</b>の条件に一致する商品がなかったため、近い条件の商品を表示しています。</span>
+    <button onclick="clearAll()">条件をリセット</button>
+  </div>`:'';
+  if(view==='list'){const tmp=document.createElement('div');renderList(slice,tmp);disp.innerHTML=fbBanner+tmp.innerHTML;}
+  else if(view==='photo'){const tmp=document.createElement('div');renderPhoto(slice,tmp);disp.innerHTML=fbBanner+tmp.innerHTML;}
+  else{const tmp=document.createElement('div');renderCompare(slice,tmp);disp.innerHTML=fbBanner+tmp.innerHTML;}
   renderPgn(pages);
 }
 
