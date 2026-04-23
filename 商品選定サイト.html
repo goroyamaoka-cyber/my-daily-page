@@ -686,7 +686,7 @@ const CAT_BG={bolt:'#fff3f4',nut:'#f0f8f2',washer:'#fffaee',collar:'#f0f4ff'};
 const CAT_COLOR={bolt:'#e30020',nut:'#009a44',washer:'#b36000',collar:'#0054a0'};
 
 let _iCnt=0;
-function illustImg(mat,sz=90){
+function illustImg(mat,sz=90,catId=''){
   const uid='il'+(++_iCnt);
   const M={
     'ステンレス':{hi:'#d0e8f8',lt:'#8aa8c0',md:'#445a70',dk:'#1a2a38',sk:'#060e16',bg1:'#f0f4f8',bg2:'#dce8f2'},
@@ -698,34 +698,100 @@ function illustImg(mat,sz=90){
   };
   const d=M[mat]||M['ステンレス'];
   const p=v=>+(v*sz/100).toFixed(2);
+  const CX=p(50);
+  // 共通：背景グラデ・フィルタ・クリップ・SVGラッパー
+  const bgG=`<linearGradient id="${uid}bg" x1="0" y1="0" x2="0" y2="${sz}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.bg1}"/><stop offset="1" stop-color="${d.bg2}"/></linearGradient>`;
+  const flt=`<filter id="${uid}F" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="${p(3)}"/></filter>`;
+  const clp=`<clipPath id="${uid}C"><rect width="${sz}" height="${sz}" rx="${p(22)}" ry="${p(22)}"/></clipPath>`;
+  const wrap=(defs,body)=>`<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"><defs>${bgG}${flt}${clp}${defs}</defs><g clip-path="url(#${uid}C)"><rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>${body}</g></svg>`;
+
+  // ── ロックナット（六角ナット＋ナイロンリング）──
+  if(catId==='lockn'){
+    const r=p(32),cy=p(68),th=p(20),th2=p(8),ir=p(12);
+    const hx=(yy,rr)=>Array.from({length:6},(_,i)=>`${(CX+rr*Math.cos(i*Math.PI/3)).toFixed(1)},${(yy+rr*Math.sin(i*Math.PI/3)).toFixed(1)}`).join(' ');
+    return wrap(
+      `<linearGradient id="${uid}N" x1="${CX-r}" y1="0" x2="${CX+r}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.hi}"/><stop offset=".1" stop-color="${d.lt}"/><stop offset=".5" stop-color="${d.md}"/><stop offset=".88" stop-color="${d.dk}"/><stop offset="1" stop-color="${d.sk}"/></linearGradient>`+
+      `<radialGradient id="${uid}T" cx="${CX-p(5)}" cy="${cy-th}" r="${r}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.lt}"/><stop offset=".7" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`+
+      `<radialGradient id="${uid}NY" cx="${CX-p(5)}" cy="${cy-th-th2}" r="${r}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#e8f060"/><stop offset=".7" stop-color="#787820"/><stop offset="1" stop-color="#383800"/></radialGradient>`,
+      `<ellipse cx="${CX}" cy="${cy+p(4)}" rx="${r*.8}" ry="${p(3)}" fill="${d.sk}" opacity=".25" filter="url(#${uid}F)"/>
+      <polygon points="${hx(cy,r)}" fill="url(#${uid}N)"/>
+      <polygon points="${hx(cy-th,r*.93)}" fill="url(#${uid}T)"/>
+      <polygon points="${hx(cy-th-th2,r*.87)}" fill="url(#${uid}NY)"/>
+      <circle cx="${CX}" cy="${cy}" r="${ir}" fill="${d.sk}" opacity=".82"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${ir}" ry="${p(4.5)}" fill="${d.sk}" opacity=".75"/>
+      <ellipse cx="${CX}" cy="${cy-th-th2}" rx="${ir*.9}" ry="${p(4)}" fill="${d.sk}" opacity=".7"/>
+      <rect x="${CX-r+p(2)}" y="${cy-th-th2}" width="${p(4)}" height="${th+th2}" rx="${p(2)}" fill="white" opacity=".22"/>`);
+  }
+
+  // ── 平ワッシャ（座金）──
+  if(catId==='wash'){
+    const OR=p(38),IR=p(16),cy=p(62),th=p(16);
+    return wrap(
+      `<radialGradient id="${uid}B" cx="${CX}" cy="${cy}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${d.dk}"/><stop offset=".5" stop-color="${d.md}"/><stop offset=".78" stop-color="${d.lt}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`+
+      `<radialGradient id="${uid}T" cx="${CX-p(8)}" cy="${cy-th}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${d.dk}"/><stop offset=".45" stop-color="${d.lt}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`,
+      `<ellipse cx="${CX}" cy="${cy+p(5)}" rx="${OR*.85}" ry="${p(4)}" fill="${d.sk}" opacity=".25" filter="url(#${uid}F)"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(10)}" fill="url(#${uid}B)"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${IR}" ry="${p(4)}" fill="${d.sk}" opacity=".82"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${OR}" ry="${p(10)}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${cy-th}" rx="${IR}" ry="${p(4)}" fill="${d.sk}" opacity=".88"/>
+      <rect x="${CX+OR-p(4)}" y="${cy-th}" width="${p(4)}" height="${th}" fill="${d.dk}" opacity=".45"/>
+      <rect x="${CX-OR}" y="${cy-th}" width="${p(4)}" height="${th}" fill="${d.hi}" opacity=".38"/>`);
+  }
+
+  // ── スプリングワッシャ（ばね座金・切れ目あり）──
+  if(catId==='spring'){
+    const OR=p(36),IR=p(15),cy=p(60),th=p(14),tw=p(7);
+    return wrap(
+      `<radialGradient id="${uid}B" cx="${CX}" cy="${cy}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${d.dk}"/><stop offset=".52" stop-color="${d.md}"/><stop offset=".8" stop-color="${d.lt}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`+
+      `<radialGradient id="${uid}T" cx="${CX-p(5)}" cy="${cy-th+tw}" r="${OR*.7}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${d.dk}"/><stop offset=".48" stop-color="${d.lt}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`,
+      `<ellipse cx="${CX}" cy="${cy+p(5)}" rx="${OR*.85}" ry="${p(4)}" fill="${d.sk}" opacity=".25" filter="url(#${uid}F)"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(9)}" fill="url(#${uid}B)"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${IR}" ry="${p(3.8)}" fill="${d.sk}" opacity=".82"/>
+      <ellipse cx="${CX}" cy="${cy-th+tw}" rx="${OR*.65}" ry="${p(8)}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${cy-th+tw}" rx="${IR*.75}" ry="${p(3.2)}" fill="${d.sk}" opacity=".8"/>
+      <ellipse cx="${CX+OR*.75}" cy="${cy-th*.4}" rx="${p(5)}" ry="${p(9)}" fill="${d.hi}" opacity=".9"/>
+      <ellipse cx="${CX+OR*.75}" cy="${cy-th*.4}" rx="${p(3)}" ry="${p(5.5)}" fill="${d.lt}"/>
+      <rect x="${CX+OR-p(4)}" y="${cy-th+tw}" width="${p(4)}" height="${th-tw}" fill="${d.dk}" opacity=".45"/>
+      <rect x="${CX-OR}" y="${cy-th+tw}" width="${p(4)}" height="${th-tw}" fill="${d.hi}" opacity=".35"/>`);
+  }
+
+  // ── スペーサ・カラー（円筒）──
+  if(catId==='col'){
+    const OR=p(22),cy=p(72),height=p(50),top=p(72)-p(50);
+    return wrap(
+      `<linearGradient id="${uid}W" x1="${CX-OR}" y1="0" x2="${CX+OR}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.hi}"/><stop offset=".12" stop-color="${d.lt}"/><stop offset=".5" stop-color="${d.md}"/><stop offset=".88" stop-color="${d.dk}"/><stop offset="1" stop-color="${d.sk}"/></linearGradient>`+
+      `<radialGradient id="${uid}T" cx="${CX-p(5)}" cy="${top}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.lt}"/><stop offset=".7" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`,
+      `<ellipse cx="${CX}" cy="${cy+p(4)}" rx="${p(8)}" ry="${p(2.8)}" fill="${d.sk}" opacity=".25" filter="url(#${uid}F)"/>
+      <rect x="${CX-OR}" y="${top}" width="${OR*2}" height="${height}" fill="url(#${uid}W)"/>
+      <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(5)}" fill="${d.md}" opacity=".7"/>
+      <ellipse cx="${CX}" cy="${top}" rx="${OR}" ry="${p(6)}" fill="url(#${uid}T)"/>
+      <ellipse cx="${CX}" cy="${top}" rx="${p(10)}" ry="${p(3)}" fill="${d.sk}" opacity=".8"/>
+      <rect x="${CX-OR+p(2.5)}" y="${top}" width="${p(4)}" height="${height}" rx="${p(2)}" fill="white" opacity=".25"/>`);
+  }
+
+  // ── デフォルト：六角穴付きキャップボルト ──
   const HW=p(34),TF=p(5.5),HH=p(18),SW=p(21),SH=p(38);
-  const CX=p(50),BT=p(13),HY=BT+TF,HBY=HY+HH,SBY=HBY+SH;
+  const BT=p(13),HY=BT+TF,HBY=HY+HH,SBY=HBY+SH;
   const threads=Array.from({length:6},(_,i)=>{
     const y=HBY+p(5)+i*p(5.5);
     return y<SBY-p(4)?`<line x1="${CX-SW/2+p(1.5)}" y1="${y}" x2="${CX+SW/2-p(1.5)}" y2="${y}" stroke="${d.dk}" stroke-width="${p(0.8)}" opacity=".45"/>`:'';
   }).join('');
-  return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"><defs>
-  <linearGradient id="${uid}bg" x1="0" y1="0" x2="0" y2="${sz}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.bg1}"/><stop offset="1" stop-color="${d.bg2}"/></linearGradient>
-  <linearGradient id="${uid}H" x1="${CX-HW/2}" y1="0" x2="${CX+HW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.hi}"/><stop offset=".1" stop-color="${d.lt}"/><stop offset=".45" stop-color="${d.md}"/><stop offset=".82" stop-color="${d.dk}"/><stop offset="1" stop-color="${d.sk}"/></linearGradient>
-  <linearGradient id="${uid}S" x1="${CX-SW/2}" y1="0" x2="${CX+SW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.hi}"/><stop offset=".1" stop-color="${d.lt}"/><stop offset=".48" stop-color="${d.md}"/><stop offset=".84" stop-color="${d.dk}"/><stop offset="1" stop-color="${d.sk}"/></linearGradient>
-  <radialGradient id="${uid}T" cx="${CX-HW*0.12}" cy="${BT}" r="${HW*0.55}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.lt}"/><stop offset=".6" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>
-  <radialGradient id="${uid}K" cx="${CX-p(2)}" cy="${BT}" r="${p(9)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.md}"/><stop offset="1" stop-color="${d.sk}"/></radialGradient>
-  <filter id="${uid}F" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="${p(3)}"/></filter>
-  <clipPath id="${uid}C"><rect width="${sz}" height="${sz}" rx="${p(22)}" ry="${p(22)}"/></clipPath></defs>
-<g clip-path="url(#${uid}C)">
-  <rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>
-  <ellipse cx="${CX}" cy="${SBY+p(4)}" rx="${p(9)}" ry="${p(2.8)}" fill="${d.sk}" opacity=".25" filter="url(#${uid}F)"/>
-  <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(2.5)}"/>
-  <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
-  <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${TF}" fill="${d.dk}" opacity=".7"/>
-  <ellipse cx="${CX}" cy="${BT}" rx="${p(9)}" ry="${p(3)}" fill="url(#${uid}K)"/>
-  <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
-  ${threads}
-  <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3)}" fill="${d.md}" opacity=".75"/>
-  <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2-p(2)}" ry="${p(1.8)}" fill="${d.dk}" opacity=".5"/>
-  <rect x="${CX-HW/2+p(2.5)}" y="${HY+p(1.5)}" width="${p(4)}" height="${HH-p(3)}" rx="${p(2)}" fill="white" opacity=".3"/>
-  <rect x="${CX-SW/2+p(2.5)}" y="${HBY+p(4)}" width="${p(2.8)}" height="${SH-p(8)}" rx="${p(1.4)}" fill="white" opacity=".22"/>
-</g></svg>`;
+  return wrap(
+    `<linearGradient id="${uid}H" x1="${CX-HW/2}" y1="0" x2="${CX+HW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.hi}"/><stop offset=".1" stop-color="${d.lt}"/><stop offset=".45" stop-color="${d.md}"/><stop offset=".82" stop-color="${d.dk}"/><stop offset="1" stop-color="${d.sk}"/></linearGradient>`+
+    `<linearGradient id="${uid}S" x1="${CX-SW/2}" y1="0" x2="${CX+SW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.hi}"/><stop offset=".1" stop-color="${d.lt}"/><stop offset=".48" stop-color="${d.md}"/><stop offset=".84" stop-color="${d.dk}"/><stop offset="1" stop-color="${d.sk}"/></linearGradient>`+
+    `<radialGradient id="${uid}T" cx="${CX-HW*0.12}" cy="${BT}" r="${HW*0.55}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.lt}"/><stop offset=".6" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`+
+    `<radialGradient id="${uid}K" cx="${CX-p(2)}" cy="${BT}" r="${p(9)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.md}"/><stop offset="1" stop-color="${d.sk}"/></radialGradient>`,
+    `<ellipse cx="${CX}" cy="${SBY+p(4)}" rx="${p(9)}" ry="${p(2.8)}" fill="${d.sk}" opacity=".25" filter="url(#${uid}F)"/>
+    <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(2.5)}"/>
+    <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
+    <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${TF}" fill="${d.dk}" opacity=".7"/>
+    <ellipse cx="${CX}" cy="${BT}" rx="${p(9)}" ry="${p(3)}" fill="url(#${uid}K)"/>
+    <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+    ${threads}
+    <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3)}" fill="${d.md}" opacity=".75"/>
+    <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2-p(2)}" ry="${p(1.8)}" fill="${d.dk}" opacity=".5"/>
+    <rect x="${CX-HW/2+p(2.5)}" y="${HY+p(1.5)}" width="${p(4)}" height="${HH-p(3)}" rx="${p(2)}" fill="white" opacity=".3"/>
+    <rect x="${CX-SW/2+p(2.5)}" y="${HBY+p(4)}" width="${p(2.8)}" height="${SH-p(8)}" rx="${p(1.4)}" fill="white" opacity=".22"/>`);
 }
 
 // ═══════════════════════════════════════════
@@ -1330,7 +1396,7 @@ function renderList(items,disp){
   disp.innerHTML=`<div class="plist">${items.map((p,i)=>`
     <div class="pc" style="animation-delay:${i*25}ms" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">
       <div class="pimg-wrap">
-        <div class="pimg">${illustImg(p.material,90)}</div>
+        <div class="pimg">${illustImg(p.material,90,p.catId)}</div>
         <div class="delivery-badge">最短${p.delivery}日</div>
       </div>
       <div class="pinfo">
@@ -1361,7 +1427,7 @@ function renderList(items,disp){
 function renderPhoto(items,disp){
   disp.innerHTML=`<div class="pgrid">${items.map((p,i)=>`
     <div class="pgc" style="animation-delay:${i*20}ms" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">
-      <div class="gimg">${illustImg(p.material,120)}</div>
+      <div class="gimg">${illustImg(p.material,120,p.catId)}</div>
       <div class="gcard-body">
         <div class="pbadges" style="margin-bottom:6px">${p.chem==='ok'?'<span class="bdg bdg-c" style="font-size:9px">chemSHERPA</span>':''}${p.rohs?'<span class="bdg bdg-r" style="font-size:9px">RoHS</span>':''}</div>
         <div class="gnm">${p.name}</div>
@@ -1401,11 +1467,11 @@ function goPage(p){
 function renderDetail(p){
   document.getElementById('dt-name').textContent=p.name;
   document.getElementById('dt-name-sub').textContent=p.name;
-  document.getElementById('dt-main-img').innerHTML=illustImg(p.material,240);
+  document.getElementById('dt-main-img').innerHTML=illustImg(p.material,240,p.catId);
   document.getElementById('dt-main-img').style.background='';
   document.getElementById('dt-thumbs').innerHTML=[0,1,2].map(i=>`
     <div class="dthmb ${i===0?'active':''}" onclick="this.parentElement.querySelectorAll('.dthmb').forEach(t=>t.classList.remove('active'));this.classList.add('active')">
-      ${illustImg(p.material,52)}
+      ${illustImg(p.material,52,p.catId)}
     </div>`).join('');
   document.getElementById('dt-badges').innerHTML=(p.chem==='ok'?'<span class="badge badge-c">chemSHERPA対応品あり</span>':'')+(p.rohs?'<span class="badge badge-r">EU_RoHS対応</span>':'');
   document.getElementById('dt-maker').textContent=p.maker;
@@ -1427,7 +1493,7 @@ function renderDetail(p){
   const related=PRODUCTS.filter(x=>x.id!==p.id&&(x.material===p.material||x.thread===p.thread)).slice(0,4);
   document.getElementById('dt-related').innerHTML=related.map(r=>`
     <div class="rel-card" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${r.id}))">
-      <div class="rel-img">${illustImg(r.material,60)}</div>
+      <div class="rel-img">${illustImg(r.material,60,r.catId)}</div>
       <div class="rel-name">${r.name}</div>
       <div class="rel-spec">${r.thread} × ${r.len}mm | ${r.material}</div>
       <div class="prat" style="margin-top:6px"><span class="stars" style="font-size:11px">${stars(r.rating)}</span><span style="font-size:11px;font-weight:700;margin-left:3px">${r.rating}</span></div>
