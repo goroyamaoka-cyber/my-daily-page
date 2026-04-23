@@ -711,38 +711,43 @@ let _iCnt=0;
 function illustImg(mat,sz=90){
   const uid='il'+(++_iCnt);
   const M={
-    'ステンレス':{top:'#ccd8e8',side:'#a4b8cc',shade:'#6888a0',hi:'#eaf2fa',bg1:'#f2f7fc',bg2:'#ddeaf6'},
-    'スチール':  {top:'#808c98',side:'#606c78',shade:'#383e48',hi:'#b8c4d0',bg1:'#eef0f2',bg2:'#d8dce2'},
-    'チタン':    {top:'#b4c4d4',side:'#96a8bc',shade:'#607080',hi:'#d8e8f4',bg1:'#eef4fa',bg2:'#d8e4ee'},
-    'アルミ':    {top:'#c8d8e8',side:'#a8b8cc',shade:'#6878a0',hi:'#e2eef8',bg1:'#f0f4fa',bg2:'#dce8f4'},
-    '黄銅':      {top:'#dab840',side:'#b89428',shade:'#785c00',hi:'#f0d468',bg1:'#faf4e0',bg2:'#ede0b0'},
-    '樹脂':      {top:'#78bc7a',side:'#5a9a60',shade:'#2a6030',hi:'#aad8aa',bg1:'#f0faf0',bg2:'#d4eccc'},
+    'ステンレス':{hi:'#d0e8f8',lt:'#8aa8c0',md:'#445a70',dk:'#1a2a38',sk:'#060e16',bg1:'#f0f4f8',bg2:'#dce8f2'},
+    'スチール':  {hi:'#c8d0dc',lt:'#7a8898',md:'#384048',dk:'#141c24',sk:'#04080c',bg1:'#f0f2f4',bg2:'#dce0e6'},
+    'チタン':    {hi:'#c8d8ec',lt:'#7090b0',md:'#384a62',dk:'#121e2c',sk:'#040c18',bg1:'#eef4fa',bg2:'#d8e8f4'},
+    'アルミ':    {hi:'#d8e4ee',lt:'#98aabb',md:'#505c68',dk:'#1c2430',sk:'#08101a',bg1:'#f2f4f8',bg2:'#e0e6ee'},
+    '黄銅':      {hi:'#f0d460',lt:'#c8981c',md:'#7a5800',dk:'#2c1800',sk:'#0c0600',bg1:'#faf6e0',bg2:'#eee0b0'},
+    '樹脂':      {hi:'#90d898',lt:'#489858',md:'#1a5828',dk:'#062010',sk:'#020a04',bg1:'#eef8f0',bg2:'#d8eede'},
   };
   const d=M[mat]||M['ステンレス'];
-  const p=v=>+(v*sz/100).toFixed(1);
-  const threads=[50,56,62,68,74].map(y=>`<line x1="${p(38)}" y1="${p(y)}" x2="${p(62)}" y2="${p(y)}" stroke="${d.shade}" stroke-width="${p(0.9)}" opacity=".38"/>`).join('');
-  return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg"><defs>
-    <radialGradient id="${uid}bg" cx="38%" cy="28%" r="72%"><stop offset="0%" stop-color="${d.bg1}"/><stop offset="100%" stop-color="${d.bg2}"/></radialGradient>
-    <linearGradient id="${uid}hd" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${d.shade}"/><stop offset="32%" stop-color="${d.side}"/><stop offset="58%" stop-color="${d.hi}"/><stop offset="100%" stop-color="${d.side}"/></linearGradient>
-    <linearGradient id="${uid}sk" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="${d.shade}"/><stop offset="28%" stop-color="${d.side}"/><stop offset="56%" stop-color="${d.hi}"/><stop offset="100%" stop-color="${d.side}"/></linearGradient>
-    <radialGradient id="${uid}tp" cx="38%" cy="38%" r="62%"><stop offset="0%" stop-color="${d.hi}"/><stop offset="100%" stop-color="${d.top}"/></radialGradient>
-    <filter id="${uid}bl"><feGaussianBlur stdDeviation="${p(2.5)}"/></filter>
-    <clipPath id="${uid}cp"><rect width="${sz}" height="${sz}" rx="${p(10)}"/></clipPath>
-  </defs>
-  <g clip-path="url(#${uid}cp)">
-    <rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>
-    <ellipse cx="${p(52)}" cy="${p(89)}" rx="${p(18)}" ry="${p(3.5)}" fill="${d.shade}" opacity=".18" filter="url(#${uid}bl)"/>
-    <rect x="${p(25)}" y="${p(19)}" width="${p(50)}" height="${p(18)}" rx="${p(2)}" fill="url(#${uid}hd)"/>
-    <ellipse cx="${p(50)}" cy="${p(19)}" rx="${p(25)}" ry="${p(5.5)}" fill="url(#${uid}tp)"/>
-    <ellipse cx="${p(50)}" cy="${p(37)}" rx="${p(25)}" ry="${p(5.5)}" fill="${d.shade}" opacity=".72"/>
-    <ellipse cx="${p(50)}" cy="${p(19)}" rx="${p(9)}" ry="${p(2.4)}" fill="${d.shade}" opacity=".65"/>
-    <ellipse cx="${p(48)}" cy="${p(18.5)}" rx="${p(3)}" ry="${p(0.9)}" fill="rgba(255,255,255,.22)"/>
-    <rect x="${p(38)}" y="${p(41)}" width="${p(24)}" height="${p(42)}" rx="${p(2)}" fill="url(#${uid}sk)"/>
-    ${threads}
-    <ellipse cx="${p(50)}" cy="${p(83)}" rx="${p(12)}" ry="${p(2.8)}" fill="${d.shade}" opacity=".58"/>
-    <rect x="${p(58)}" y="${p(42)}" width="${p(3.5)}" height="${p(40)}" rx="${p(1.5)}" fill="rgba(255,255,255,.24)"/>
-    <rect x="${p(68)}" y="${p(20)}" width="${p(3.5)}" height="${p(16)}" rx="${p(1.5)}" fill="rgba(255,255,255,.2)"/>
-  </g></svg>`;
+  const p=v=>+(v*sz/100).toFixed(2);
+  const HW=p(34),TF=p(5.5),HH=p(18),SW=p(21),SH=p(38);
+  const CX=p(50),BT=p(13),HY=BT+TF,HBY=HY+HH,SBY=HBY+SH;
+  const threads=Array.from({length:6},(_,i)=>{
+    const y=HBY+p(5)+i*p(5.5);
+    return y<SBY-p(4)?`<line x1="${CX-SW/2+p(1.5)}" y1="${y}" x2="${CX+SW/2-p(1.5)}" y2="${y}" stroke="${d.dk}" stroke-width="${p(0.8)}" opacity=".45"/>`:'';
+  }).join('');
+  return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"><defs>
+  <linearGradient id="${uid}bg" x1="0" y1="0" x2="0" y2="${sz}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.bg1}"/><stop offset="1" stop-color="${d.bg2}"/></linearGradient>
+  <linearGradient id="${uid}H" x1="${CX-HW/2}" y1="0" x2="${CX+HW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.hi}"/><stop offset=".1" stop-color="${d.lt}"/><stop offset=".45" stop-color="${d.md}"/><stop offset=".82" stop-color="${d.dk}"/><stop offset="1" stop-color="${d.sk}"/></linearGradient>
+  <linearGradient id="${uid}S" x1="${CX-SW/2}" y1="0" x2="${CX+SW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.hi}"/><stop offset=".1" stop-color="${d.lt}"/><stop offset=".48" stop-color="${d.md}"/><stop offset=".84" stop-color="${d.dk}"/><stop offset="1" stop-color="${d.sk}"/></linearGradient>
+  <radialGradient id="${uid}T" cx="${CX-HW*0.12}" cy="${BT}" r="${HW*0.55}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.lt}"/><stop offset=".6" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>
+  <radialGradient id="${uid}K" cx="${CX-p(2)}" cy="${BT}" r="${p(9)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.md}"/><stop offset="1" stop-color="${d.sk}"/></radialGradient>
+  <filter id="${uid}F" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="${p(3)}"/></filter>
+  <clipPath id="${uid}C"><rect width="${sz}" height="${sz}" rx="${p(22)}" ry="${p(22)}"/></clipPath></defs>
+<g clip-path="url(#${uid}C)">
+  <rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>
+  <ellipse cx="${CX}" cy="${SBY+p(4)}" rx="${p(9)}" ry="${p(2.8)}" fill="${d.sk}" opacity=".25" filter="url(#${uid}F)"/>
+  <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(2.5)}"/>
+  <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
+  <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${TF}" fill="${d.dk}" opacity=".7"/>
+  <ellipse cx="${CX}" cy="${BT}" rx="${p(9)}" ry="${p(3)}" fill="url(#${uid}K)"/>
+  <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+  ${threads}
+  <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(3)}" fill="${d.md}" opacity=".75"/>
+  <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2-p(2)}" ry="${p(1.8)}" fill="${d.dk}" opacity=".5"/>
+  <rect x="${CX-HW/2+p(2.5)}" y="${HY+p(1.5)}" width="${p(4)}" height="${HH-p(3)}" rx="${p(2)}" fill="white" opacity=".3"/>
+  <rect x="${CX-SW/2+p(2.5)}" y="${HBY+p(4)}" width="${p(2.8)}" height="${SH-p(8)}" rx="${p(1.4)}" fill="white" opacity=".22"/>
+</g></svg>`;
 }
 
 // ═══════════════════════════════════════════
@@ -795,33 +800,86 @@ const REVIEWS = {
 
 let view='list',page=1,filtered=[...PRODUCTS],currentCat=CATEGORIES[0];
 
-// ── Category colored icons (Sharp style) ──
+// ── Category icons — 3D icon style ──
 function catIconSvg(type){
-  const c=CAT_COLOR[type]||CAT_COLOR.bolt;
-  const icons={
-    bolt:`<svg viewBox="0 0 48 48" fill="none" width="54" height="54">
-      <rect x="12" y="8" width="24" height="10" rx="2.5" fill="${c}" fill-opacity=".12" stroke="${c}" stroke-width="1.8" stroke-linejoin="round"/>
-      <rect x="18" y="18" width="12" height="22" rx="2" fill="${c}" fill-opacity=".12" stroke="${c}" stroke-width="1.8"/>
-      <line x1="18" y1="24" x2="30" y2="24" stroke="${c}" stroke-width="1.4" opacity=".55"/>
-      <line x1="18" y1="29" x2="30" y2="29" stroke="${c}" stroke-width="1.4" opacity=".55"/>
-      <line x1="18" y1="34" x2="30" y2="34" stroke="${c}" stroke-width="1.4" opacity=".55"/>
-    </svg>`,
-    nut:`<svg viewBox="0 0 48 48" fill="none" width="54" height="54">
-      <polygon points="24,7 36,14 36,28 24,35 12,28 12,14" fill="${c}" fill-opacity=".1" stroke="${c}" stroke-width="1.8" stroke-linejoin="round"/>
-      <circle cx="24" cy="21" r="6.5" fill="white" stroke="${c}" stroke-width="1.8"/>
-    </svg>`,
-    washer:`<svg viewBox="0 0 48 48" fill="none" width="54" height="54">
-      <circle cx="24" cy="24" r="15" fill="${c}" fill-opacity=".1" stroke="${c}" stroke-width="1.8"/>
-      <circle cx="24" cy="24" r="6" fill="white" stroke="${c}" stroke-width="1.8"/>
-    </svg>`,
-    collar:`<svg viewBox="0 0 48 48" fill="none" width="54" height="54">
-      <ellipse cx="24" cy="12" rx="12" ry="4.5" fill="${c}" fill-opacity=".1" stroke="${c}" stroke-width="1.8"/>
-      <ellipse cx="24" cy="36" rx="12" ry="4.5" fill="${c}" fill-opacity=".1" stroke="${c}" stroke-width="1.8"/>
-      <line x1="12" y1="12" x2="12" y2="36" stroke="${c}" stroke-width="1.8"/>
-      <line x1="36" y1="12" x2="36" y2="36" stroke="${c}" stroke-width="1.8"/>
-    </svg>`
+  const uid='ci'+(++_iCnt);
+  const T={
+    bolt:{hi:'#ff9090',lt:'#e04040',md:'#a80018',dk:'#500010',sk:'#180004'},
+    nut: {hi:'#60d880',lt:'#22a840',md:'#007030',dk:'#003018',sk:'#000c06'},
+    washer:{hi:'#f0a040',lt:'#c07010',md:'#885000',dk:'#3c2000',sk:'#100800'},
+    collar:{hi:'#6090e0',lt:'#2458b8',md:'#003880',dk:'#001840',sk:'#000818'},
   };
-  return icons[type]||icons.bolt;
+  const c=T[type]||T.bolt;
+  const sz=64,p=v=>+(v*sz/100).toFixed(2),CX=p(50);
+
+  if(type==='bolt'){
+    const HW=p(52),TF=p(7),HH=p(27),SW=p(32),SH=p(36);
+    const BT=p(15),HY=BT+TF,HBY=HY+HH,SBY=HBY+SH;
+    const thr=Array.from({length:4},(_,i)=>{const y=HBY+p(6)+i*p(8);return y<SBY-p(5)?`<line x1="${CX-SW/2+p(2)}" y1="${y}" x2="${CX+SW/2-p(2)}" y2="${y}" stroke="${c.dk}" stroke-width="${p(1.1)}" opacity=".5"/>`:'';}).join('');
+    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><defs>
+    <linearGradient id="${uid}H" x1="${CX-HW/2}" y1="0" x2="${CX+HW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".1" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>
+    <linearGradient id="${uid}S" x1="${CX-SW/2}" y1="0" x2="${CX+SW/2}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".1" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>
+    <radialGradient id="${uid}T" cx="${CX-HW*0.1}" cy="${BT}" r="${HW*0.5}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset=".6" stop-color="${c.md}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
+    <radialGradient id="${uid}K" cx="${CX-p(3)}" cy="${BT}" r="${p(12)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.md}"/><stop offset="1" stop-color="${c.sk}"/></radialGradient>
+    </defs>
+    <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" fill="url(#${uid}H)" rx="${p(3)}"/>
+    <ellipse cx="${CX}" cy="${BT}" rx="${HW/2}" ry="${TF}" fill="url(#${uid}T)"/>
+    <ellipse cx="${CX}" cy="${HBY}" rx="${HW/2}" ry="${TF}" fill="${c.dk}" opacity=".65"/>
+    <ellipse cx="${CX}" cy="${BT}" rx="${p(12)}" ry="${p(4.5)}" fill="url(#${uid}K)"/>
+    <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" fill="url(#${uid}S)" rx="${p(2)}"/>
+    ${thr}
+    <ellipse cx="${CX}" cy="${SBY}" rx="${SW/2}" ry="${p(4)}" fill="${c.md}" opacity=".7"/>
+    <rect x="${CX-HW/2+p(3)}" y="${HY+p(2)}" width="${p(4.5)}" height="${HH-p(4)}" rx="${p(2)}" fill="white" opacity=".28"/>
+    <rect x="${CX-SW/2+p(3)}" y="${HBY+p(4)}" width="${p(3)}" height="${SH-p(8)}" rx="${p(1.5)}" fill="white" opacity=".22"/>
+    </svg>`;
+  }
+
+  if(type==='nut'){
+    const r=p(36),cy=p(58),th=p(15),ir=p(14);
+    const hx=(yy,rr)=>Array.from({length:6},(_,i)=>`${(CX+rr*Math.cos(i*Math.PI/3)).toFixed(1)},${(yy+rr*Math.sin(i*Math.PI/3)).toFixed(1)}`).join(' ');
+    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><defs>
+    <linearGradient id="${uid}N" x1="${CX-r}" y1="0" x2="${CX+r}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".12" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>
+    <radialGradient id="${uid}T" cx="${CX-p(5)}" cy="${cy-th}" r="${r}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset=".7" stop-color="${c.md}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
+    </defs>
+    <polygon points="${hx(cy,r)}" fill="url(#${uid}N)"/>
+    <polygon points="${hx(cy-th,r*0.92)}" fill="url(#${uid}T)"/>
+    <circle cx="${CX}" cy="${cy}" r="${ir}" fill="${c.sk}" opacity=".82"/>
+    <ellipse cx="${CX}" cy="${cy-th}" rx="${ir}" ry="${p(5)}" fill="${c.sk}" opacity=".88"/>
+    <polygon points="${hx(cy-th,r*0.92)}" fill="none" stroke="${c.hi}" stroke-width="${p(0.8)}" opacity=".25"/>
+    <rect x="${CX-r+p(2)}" y="${cy-th}" width="${p(4)}" height="${th}" rx="${p(2)}" fill="white" opacity=".22"/>
+    </svg>`;
+  }
+
+  if(type==='washer'){
+    const OR=p(40),IR=p(16),cy=p(54),th=p(14);
+    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><defs>
+    <radialGradient id="${uid}B" cx="${CX}" cy="${cy}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${c.dk}"/><stop offset="0.55" stop-color="${c.md}"/><stop offset="0.82" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
+    <radialGradient id="${uid}T" cx="${CX-p(8)}" cy="${cy-th}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${c.dk}"/><stop offset="0.5" stop-color="${c.lt}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
+    </defs>
+    <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(9)}" fill="url(#${uid}B)"/>
+    <ellipse cx="${CX}" cy="${cy}" rx="${IR}" ry="${p(3.5)}" fill="${c.sk}" opacity=".82"/>
+    <ellipse cx="${CX}" cy="${cy-th}" rx="${OR}" ry="${p(9)}" fill="url(#${uid}T)"/>
+    <ellipse cx="${CX}" cy="${cy-th}" rx="${IR}" ry="${p(3.5)}" fill="${c.sk}" opacity=".88"/>
+    <rect x="${CX+OR-p(3.5)}" y="${cy-th}" width="${p(3.5)}" height="${th}" fill="${c.dk}" opacity=".45"/>
+    <rect x="${CX-OR}" y="${cy-th}" width="${p(3.5)}" height="${th}" fill="${c.hi}" opacity=".35"/>
+    </svg>`;
+  }
+
+  if(type==='collar'){
+    const OR=p(25),cy=p(64),th=p(46);
+    return `<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"><defs>
+    <linearGradient id="${uid}W" x1="${CX-OR}" y1="0" x2="${CX+OR}" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.hi}"/><stop offset=".12" stop-color="${c.lt}"/><stop offset=".5" stop-color="${c.md}"/><stop offset=".88" stop-color="${c.dk}"/><stop offset="1" stop-color="${c.sk}"/></linearGradient>
+    <radialGradient id="${uid}T" cx="${CX-p(5)}" cy="${cy-th}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${c.lt}"/><stop offset=".7" stop-color="${c.md}"/><stop offset="1" stop-color="${c.dk}"/></radialGradient>
+    </defs>
+    <rect x="${CX-OR}" y="${cy-th}" width="${OR*2}" height="${th}" fill="url(#${uid}W)"/>
+    <ellipse cx="${CX}" cy="${cy}" rx="${OR}" ry="${p(5)}" fill="${c.md}" opacity=".65"/>
+    <ellipse cx="${CX}" cy="${cy-th}" rx="${OR}" ry="${p(6)}" fill="url(#${uid}T)"/>
+    <ellipse cx="${CX}" cy="${cy-th}" rx="${p(11)}" ry="${p(3)}" fill="${c.sk}" opacity=".8"/>
+    <rect x="${CX-OR+p(2.5)}" y="${cy-th}" width="${p(4)}" height="${th}" rx="${p(2)}" fill="white" opacity=".23"/>
+    </svg>`;
+  }
+
+  return `<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64"></svg>`;
 }
 
 function stars(r){
