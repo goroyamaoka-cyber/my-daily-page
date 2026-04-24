@@ -57,17 +57,31 @@ body{font-family:"Noto Sans JP","Hiragino Kaku Gothic Pro","Yu Gothic",sans-seri
 .pg-list-wrap{display:flex;height:calc(100vh - 54px)}
 
 /* ══ PAGE 1: CATEGORY ══════════════════════════ */
-.cat-hero{background:#fff;border-bottom:1px solid var(--ink-10);padding:52px 64px 44px;position:relative;overflow:hidden}
-.cat-hero::before{content:'';position:absolute;right:0;top:0;bottom:0;width:45%;background:linear-gradient(135deg,rgba(227,0,32,.04) 0%,transparent 70%);pointer-events:none}
+.cat-hero{background:#fff;border-bottom:1px solid var(--ink-10);padding:52px 64px 44px;display:flex;align-items:center;gap:56px;position:relative;overflow:hidden}
+.cat-hero::before{content:'';position:absolute;right:0;top:0;bottom:0;width:55%;background:linear-gradient(135deg,rgba(227,0,32,.04) 0%,transparent 70%);pointer-events:none}
 .cat-hero-grid{display:none}
-.cat-hero-inner{position:relative;max-width:640px}
+.cat-hero-inner{position:relative;flex:0 0 auto;max-width:400px}
 .cat-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .cat-eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--blue);flex-shrink:0}
-.cat-hero h1{font-size:36px;font-weight:800;line-height:1.2;letter-spacing:-.5px;color:var(--ink);margin-bottom:14px}
-.cat-hero p{font-size:14px;color:var(--ink-60);line-height:1.8;max-width:480px;margin-bottom:32px}
+.cat-hero h1{font-size:34px;font-weight:800;line-height:1.2;letter-spacing:-.5px;color:var(--ink);margin-bottom:14px}
+.cat-hero p{font-size:13px;color:var(--ink-60);line-height:1.8;margin-bottom:0}
 .cat-hero-stats{display:flex;gap:40px}
 .cat-stat-num{font-size:26px;font-weight:800;color:var(--ink);display:block;letter-spacing:-1px}
 .cat-stat-lbl{font-size:11px;color:var(--ink-40);margin-top:2px}
+
+/* ── ヒーロー検索ボックス ── */
+.cat-hero-search-wrap{flex:1;min-width:0;position:relative;z-index:1}
+.cat-search-box{display:flex;align-items:center;background:#fff;border:1.5px solid var(--ink-10);border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.08);transition:box-shadow var(--t),border-color var(--t)}
+.cat-search-box:focus-within{border-color:var(--blue);box-shadow:0 4px 24px rgba(227,0,32,.12)}
+.cat-search-ico{flex-shrink:0;margin:0 16px;color:var(--ink-20);display:flex}
+.cat-search-inp{flex:1;padding:18px 8px;font-size:15px;border:none;outline:none;background:transparent;color:var(--ink);font-family:inherit;min-width:0}
+.cat-search-inp::placeholder{color:var(--ink-20)}
+.cat-search-btn{padding:18px 28px;background:var(--blue);color:#fff;border:none;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background var(--t);white-space:nowrap;flex-shrink:0;height:100%}
+.cat-search-btn:hover{background:var(--blue-h)}
+.cat-search-hints{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cat-search-hint-lbl{font-size:11px;color:var(--ink-40)}
+.cat-search-tag{background:var(--s2);border:1px solid var(--ink-10);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--ink-60);cursor:pointer;transition:all var(--t)}
+.cat-search-tag:hover{background:var(--blue-bg);border-color:var(--blue);color:var(--blue)}
 
 .cat-body{max-width:1280px;margin:0 auto;padding:40px 32px}
 
@@ -343,10 +357,12 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
   .hdr-search{padding:4px 12px;font-size:11px}
 
   /* Category hero */
-  .cat-hero{padding:36px 20px 28px}
-  .cat-hero h1{font-size:26px;letter-spacing:-.5px}
-  .cat-hero p{font-size:12px;margin-bottom:24px}
+  .cat-hero{flex-direction:column;align-items:stretch;gap:24px;padding:32px 20px 28px}
+  .cat-hero-inner{max-width:100%}
+  .cat-hero h1{font-size:24px;letter-spacing:-.5px}
+  .cat-hero p{font-size:12px;margin-bottom:0}
   .cat-hero-stats{gap:20px}
+  .cat-search-btn{padding:14px 20px}
   .cat-stat-num{font-size:20px}
   .cat-stat-lbl{font-size:10px}
   .cat-body{padding:20px 16px}
@@ -509,6 +525,27 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
       <div class="cat-eyebrow" data-i18n="eyebrow">Product Categories</div>
       <h1 data-i18n-html="heroTitle">ねじ・ボルト・ナット<br>ワッシャ・カラー</h1>
       <p data-i18n="heroDesc">工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。</p>
+    </div>
+    <div class="cat-hero-search-wrap">
+      <div class="cat-search-box">
+        <span class="cat-search-ico"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="13.2" y1="13.2" x2="18" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <input type="text" class="cat-search-inp" id="hero-search-inp"
+          placeholder="商品を検索...（材質・ねじ径・用途など）"
+          data-i18n-placeholder="heroSearchPlaceholder"
+          onkeydown="if(event.key==='Enter')heroSearch()">
+        <button class="cat-search-btn" onclick="heroSearch()">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/><line x1="9.5" y1="9.5" x2="14" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span data-i18n="searchBtn">検索</span>
+        </button>
+      </div>
+      <div class="cat-search-hints">
+        <span class="cat-search-hint-lbl" data-i18n="searchPopular">よく検索される：</span>
+        <span class="cat-search-tag" onclick="heroSearchTerm('M6')">M6</span>
+        <span class="cat-search-tag" onclick="heroSearchTerm('ステンレス')" data-search-ja="ステンレス" data-search-en="Stainless Steel" data-search-zh="不锈钢">ステンレス</span>
+        <span class="cat-search-tag" onclick="heroSearchTerm('スチール')" data-search-ja="スチール" data-search-en="Steel" data-search-zh="钢">スチール</span>
+        <span class="cat-search-tag" onclick="heroSearchTerm('M8')">M8</span>
+        <span class="cat-search-tag" onclick="heroSearchTerm('黒染め')" data-search-ja="黒染め" data-search-en="Black Oxide" data-search-zh="发黑处理">黒染め</span>
+      </div>
     </div>
   </div>
   <div class="cat-body">
@@ -698,7 +735,7 @@ let currentLang='ja';
 
 const T={
   ja:{
-    breadcrumb:'ねじ・ボルト・ナット',search:'商品を検索',
+    breadcrumb:'ねじ・ボルト・ナット',search:'商品を検索',searchBtn:'検索',searchPopular:'よく検索される：',heroSearchPlaceholder:'商品を検索...（材質・ねじ径・用途など）',
     eyebrow:'Product Categories',heroTitle:'ねじ・ボルト・ナット<br>ワッシャ・カラー',
     heroDesc:'工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。',
     tabAll:'すべて',tabBolt:'ボルト',tabNut:'ナット',tabWasher:'ワッシャ',tabCollar:'カラー・スペーサ',
@@ -728,7 +765,7 @@ const T={
     allLabel:'全商品',curLabel:'表示中',
   },
   en:{
-    breadcrumb:'Screws & Fasteners',search:'Search products',
+    breadcrumb:'Screws & Fasteners',search:'Search products',searchBtn:'Search',searchPopular:'Popular searches:',heroSearchPlaceholder:'Search products... (material, thread size, application)',
     eyebrow:'Product Categories',heroTitle:'Screws, Bolts & Nuts<br>Washers & Collars',
     heroDesc:'Comprehensive lineup of industrial fasteners. Select the optimal fastener with high precision from a wide variety of materials, sizes, and strength classes.',
     tabAll:'All',tabBolt:'Bolts',tabNut:'Nuts',tabWasher:'Washers',tabCollar:'Collars & Spacers',
@@ -758,7 +795,7 @@ const T={
     allLabel:'all',curLabel:'filtered',
   },
   zh:{
-    breadcrumb:'螺丝·螺栓·螺母',search:'搜索商品',
+    breadcrumb:'螺丝·螺栓·螺母',search:'搜索商品',searchBtn:'搜索',searchPopular:'热门搜索：',heroSearchPlaceholder:'搜索商品...（材质、螺纹规格、用途等）',
     eyebrow:'产品分类',heroTitle:'螺丝、螺栓和螺母<br>垫圈和间隔柱',
     heroDesc:'工业紧固件综合产品线。从材质、尺寸、强度等级的丰富系列中，高精度地选择最佳紧固件。',
     tabAll:'全部',tabBolt:'螺栓',tabNut:'螺母',tabWasher:'垫圈',tabCollar:'间隔柱',
@@ -862,6 +899,15 @@ function updateUI(){
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{
     const k=el.dataset.i18nHtml; el.innerHTML=L(k);
   });
+  // data-i18n-placeholder: placeholder更新
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    el.placeholder=L(el.dataset.i18nPlaceholder);
+  });
+  // サジェストタグのテキスト切替
+  document.querySelectorAll('.cat-search-tag[data-search-ja]').forEach(tag=>{
+    const val=tag.dataset['search'+currentLang.charAt(0).toUpperCase()+currentLang.slice(1)]||tag.dataset.searchJa;
+    tag.textContent=val;
+  });
   // 言語ドロップダウン更新
   const LANG_LABELS={ja:'日本語',en:'English (US)',zh:'中文（簡体字）'};
   const _lbl=document.getElementById('langLabel');
@@ -894,6 +940,39 @@ function updateUI(){
   document.querySelectorAll('#per-page option').forEach(o=>{
     o.textContent=currentLang==='en'?o.value+' '+_unit:o.value+_unit;
   });
+}
+
+// ヒーロー検索
+function heroSearch(){
+  const q=(document.getElementById('hero-search-inp')?.value||'').trim();
+  if(!q) return;
+  // カテゴリ名に一致するか確認
+  const matched=CATEGORIES.find(c=>
+    catName(c).includes(q)||c.name.includes(q)||c.id===q
+  );
+  const target=matched||CATEGORIES[0];
+  currentCat=target;
+  // 検索語をサイドバー絞り込みに反映するためにグローバルに保持
+  window.__heroSearchQ=q;
+  clearAll();
+  initFilters();
+  navTo('list');
+  // 材質・表面処理マッチをチェック
+  setTimeout(()=>{
+    const qLower=q.toLowerCase();
+    document.querySelectorAll('#fb-mat input[type=checkbox]').forEach(cb=>{
+      if(cb.value.toLowerCase().includes(qLower)||tMat(cb.value).toLowerCase().includes(qLower)) cb.checked=true;
+    });
+    document.querySelectorAll('#fb-surf input[type=checkbox]').forEach(cb=>{
+      if(cb.value.toLowerCase().includes(qLower)||tSurf(cb.value).toLowerCase().includes(qLower)) cb.checked=true;
+    });
+    apply();
+  },50);
+}
+function heroSearchTerm(term){
+  const inp=document.getElementById('hero-search-inp');
+  if(inp) inp.value=tMat(term)!==term?tMat(term):term;
+  heroSearch();
 }
 
 function toggleLangMenu(e){
