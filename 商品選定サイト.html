@@ -36,6 +36,10 @@ body{font-family:"Noto Sans JP","Hiragino Kaku Gothic Pro","Yu Gothic",sans-seri
 .hdr-bc strong{color:var(--ink-80);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hdr-search{display:flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--ink-10);border-radius:4px;padding:5px 14px;color:var(--ink-40);font-size:12px;cursor:pointer;transition:border-color var(--t);flex-shrink:0}
 .hdr-search:hover{border-color:var(--ink-40)}
+.lang-sw{display:flex;gap:3px;flex-shrink:0;margin-left:4px}
+.lang-btn{padding:4px 9px;border-radius:6px;font-size:11px;font-weight:600;color:var(--ink-40);cursor:pointer;border:1px solid var(--ink-10);background:none;transition:all var(--t);line-height:1}
+.lang-btn:hover{background:var(--s2);color:var(--ink)}
+.lang-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 
 /* ══ PAGES ══════════════════════════════════════ */
 .page{display:none}.page.active{display:block}
@@ -470,11 +474,16 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
   <nav class="hdr-bc" id="bc">
     <a href="#" onclick="navTo('cat');return false">TOP</a>
     <span>›</span>
-    <strong>ねじ・ボルト・ナット</strong>
+    <strong data-i18n="breadcrumb">ねじ・ボルト・ナット</strong>
   </nav>
   <div class="hdr-search">
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1.3"/><line x1="8.7" y1="8.7" x2="12" y2="12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-    商品を検索
+    <span data-i18n="search">商品を検索</span>
+  </div>
+  <div class="lang-sw">
+    <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
+    <button class="lang-btn"        onclick="setLang('en')">EN</button>
+    <button class="lang-btn"        onclick="setLang('zh')">中文</button>
   </div>
 </header>
 
@@ -483,18 +492,18 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
   <div class="cat-hero">
     <div class="cat-hero-grid"></div>
     <div class="cat-hero-inner">
-      <div class="cat-eyebrow">Product Categories</div>
-      <h1>ねじ・ボルト・ナット<br>ワッシャ・カラー</h1>
-      <p>工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。</p>
+      <div class="cat-eyebrow" data-i18n="eyebrow">Product Categories</div>
+      <h1 data-i18n-html="heroTitle">ねじ・ボルト・ナット<br>ワッシャ・カラー</h1>
+      <p data-i18n="heroDesc">工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。</p>
     </div>
   </div>
   <div class="cat-body">
     <div class="cat-tabs">
-      <button class="cat-tab active" onclick="filterCatTab(this,'all')">すべて</button>
-      <button class="cat-tab" onclick="filterCatTab(this,'bolt')">ボルト</button>
-      <button class="cat-tab" onclick="filterCatTab(this,'nut')">ナット</button>
-      <button class="cat-tab" onclick="filterCatTab(this,'washer')">ワッシャ</button>
-      <button class="cat-tab" onclick="filterCatTab(this,'collar')">カラー・スペーサ</button>
+      <button class="cat-tab active" onclick="filterCatTab(this,'all')" data-i18n="tabAll">すべて</button>
+      <button class="cat-tab" onclick="filterCatTab(this,'bolt')" data-i18n="tabBolt">ボルト</button>
+      <button class="cat-tab" onclick="filterCatTab(this,'nut')" data-i18n="tabNut">ナット</button>
+      <button class="cat-tab" onclick="filterCatTab(this,'washer')" data-i18n="tabWasher">ワッシャ</button>
+      <button class="cat-tab" onclick="filterCatTab(this,'collar')" data-i18n="tabCollar">カラー・スペーサ</button>
     </div>
     <div class="cat-grid" id="cat-grid"></div>
   </div>
@@ -511,18 +520,18 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
         <button onclick="closeFilter()">×</button>
       </div>
       <div class="fp-nav">
-        <div class="fp-nav-item" onclick="navTo('cat')"><span>‹</span> ねじ・ボルト・ナット</div>
+        <div class="fp-nav-item" onclick="navTo('cat')"><span>‹</span> <span data-i18n="breadcrumb">ねじ・ボルト・ナット</span></div>
         <div class="fp-nav-item current"><span style="color:var(--ink-20)">‹</span> <span id="fp-cat-name">六角穴付きボルト</span></div>
       </div>
-      <div class="fp-hdr"><span>絞り込み</span><button class="clear-btn" onclick="clearAll()">すべて解除</button></div>
+      <div class="fp-hdr"><span data-i18n="filterTitle">絞り込み</span><button class="clear-btn" onclick="clearAll()" data-i18n="clearAll">すべて解除</button></div>
 
 
       <!-- ねじ径スライダー -->
       <div class="fs">
-        <div class="fs-head" onclick="toggleSec(this)">ねじの呼び（M） <span class="ti">▲</span></div>
+        <div class="fs-head" onclick="toggleSec(this)"><span data-i18n="threadLabel">ねじの呼び（M）</span> <span class="ti">▲</span></div>
         <div class="fs-body">
           <div class="sl-sec">
-            <div class="sl-lbl"><span>M径範囲</span><span class="sl-val">M<span id="slv-tmin">3</span> 〜 M<span id="slv-tmax">16</span></span></div>
+            <div class="sl-lbl"><span data-i18n="threadRange">M径範囲</span><span class="sl-val">M<span id="slv-tmin">3</span> 〜 M<span id="slv-tmax">16</span></span></div>
             <div class="sl-wrap">
               <div class="sl-track"></div>
               <div class="sl-fill" id="slf-t"></div>
@@ -536,10 +545,10 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 
       <!-- 長さスライダー -->
       <div class="fs">
-        <div class="fs-head" onclick="toggleSec(this)">長さL（mm） <span class="ti">▲</span></div>
+        <div class="fs-head" onclick="toggleSec(this)"><span data-i18n="lengthLabel">長さL（mm）</span> <span class="ti">▲</span></div>
         <div class="fs-body">
           <div class="sl-sec">
-            <div class="sl-lbl"><span>長さ範囲</span><span class="sl-val"><span id="slv-lmin">6</span>〜<span id="slv-lmax">100</span>mm</span></div>
+            <div class="sl-lbl"><span data-i18n="lengthRange">長さ範囲</span><span class="sl-val"><span id="slv-lmin">6</span>〜<span id="slv-lmax">100</span>mm</span></div>
             <div class="sl-wrap">
               <div class="sl-track"></div>
               <div class="sl-fill" id="slf-l"></div>
@@ -553,19 +562,19 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 
       <!-- 材質 -->
       <div class="fs">
-        <div class="fs-head" onclick="toggleSec(this)">材質 <span class="ti">▲</span></div>
+        <div class="fs-head" onclick="toggleSec(this)"><span data-i18n="material">材質</span> <span class="ti">▲</span></div>
         <div class="fs-body" id="fb-mat"></div>
       </div>
 
       <!-- 表面処理 -->
       <div class="fs">
-        <div class="fs-head" onclick="toggleSec(this)">表面処理 <span class="ti">▲</span></div>
+        <div class="fs-head" onclick="toggleSec(this)"><span data-i18n="surface">表面処理</span> <span class="ti">▲</span></div>
         <div class="fs-body" id="fb-surf"></div>
       </div>
 
       <!-- 強度区分 -->
       <div class="fs">
-        <div class="fs-head" onclick="toggleSec(this)">強度区分 <span class="ti">▲</span></div>
+        <div class="fs-head" onclick="toggleSec(this)"><span data-i18n="strength">強度区分</span> <span class="ti">▲</span></div>
         <div class="fs-body" id="fb-str"></div>
       </div>
     </aside>
@@ -577,23 +586,35 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
       <div class="atags" id="atags"></div>
 
       <div class="toolbar">
-        <div class="pcnt"><em>件数：</em><span id="cnt-num">0</span> 件</div>
+        <div class="pcnt"><em data-i18n="countLabel">件数：</em><span id="cnt-num">0</span> <span data-i18n="count">件</span></div>
         <div class="tbr">
           <button class="filter-btn-mb" onclick="openFilter()">
             <svg viewBox="0 0 13 13" fill="none"><path d="M1 3h11M3 6.5h7M5 10h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            絞り込み
+            <span data-i18n="filterTitle">絞り込み</span>
           </button>
           <div class="vtgl">
-            <button class="vbtn active" id="vb-list"    onclick="setView('list')">≡ 一覧</button>
-            <button class="vbtn"        id="vb-photo"   onclick="setView('photo')">⊞ 写真</button>
-            <button class="vbtn"        id="vb-compare" onclick="setView('compare')">⊟ 仕様比較</button>
+            <button class="vbtn active" id="vb-list"    onclick="setView('list')" data-i18n="viewList">≡ 一覧</button>
+            <button class="vbtn"        id="vb-photo"   onclick="setView('photo')" data-i18n="viewPhoto">⊞ 写真</button>
+            <button class="vbtn"        id="vb-compare" onclick="setView('compare')" data-i18n="viewCompare">⊟ 仕様比較</button>
           </div>
-          <div class="sel"><label>表示件数：</label>
+          <div class="sel"><label data-i18n="perPage">表示件数：</label>
             <select id="per-page" onchange="apply()"><option value="15">15件</option><option value="30" selected>30件</option><option value="45">45件</option></select></div>
-          <div class="sel"><label>並び替え：</label>
-            <select id="sort" onchange="apply()"><option value="pop">人気順</option><option value="rating">評価順</option><option value="ta">ねじ径 小→大</option><option value="td">ねじ径 大→小</option><option value="la">長さ 短→長</option><option value="ld">長さ 長→短</option></select></div>
-          <div class="sel"><label>出荷日：</label>
-            <select id="deliv" onchange="apply()"><option value="all">すべて</option><option value="1">1日以内</option><option value="3">3日以内</option><option value="7">1週間以内</option></select></div>
+          <div class="sel"><label data-i18n="sort">並び替え：</label>
+            <select id="sort" onchange="apply()">
+              <option value="pop"    data-i18n="sortPop">人気順</option>
+              <option value="rating" data-i18n="sortRating">評価順</option>
+              <option value="ta"     data-i18n="sortTa">ねじ径 小→大</option>
+              <option value="td"     data-i18n="sortTd">ねじ径 大→小</option>
+              <option value="la"     data-i18n="sortLa">長さ 短→長</option>
+              <option value="ld"     data-i18n="sortLd">長さ 長→短</option>
+            </select></div>
+          <div class="sel"><label data-i18n="delivery">出荷日：</label>
+            <select id="deliv" onchange="apply()">
+              <option value="all" data-i18n="delivAll">すべて</option>
+              <option value="1"   data-i18n="deliv1">1日以内</option>
+              <option value="3"   data-i18n="deliv3">3日以内</option>
+              <option value="7"   data-i18n="deliv7">1週間以内</option>
+            </select></div>
         </div>
       </div>
 
@@ -601,11 +622,11 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
         <span class="export-bar-lbl">CSV EXPORT</span>
         <button class="exp-btn exp-all" onclick="exportCSV('all')">
           <svg viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3.5 6l2.5 2.5L8.5 6M1.5 10h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          全商品（<span id="exp-all-cnt">0</span>件）
+          <span data-i18n="csvAll">全商品</span>（<span id="exp-all-cnt">0</span><span data-i18n="count">件</span>）
         </button>
         <button class="exp-btn exp-cur" onclick="exportCSV('current')">
           <svg viewBox="0 0 12 12" fill="none"><path d="M6 1v7M3.5 6l2.5 2.5L8.5 6M1.5 10h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          表示中（<span id="exp-cur-cnt">0</span>件）
+          <span data-i18n="csvCur">表示中</span>（<span id="exp-cur-cnt">0</span><span data-i18n="count">件</span>）
         </button>
       </div>
 
@@ -627,7 +648,7 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
     <div class="detail-hero-inner">
       <button class="back-btn" onclick="navTo('list')">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        商品一覧に戻る
+        <span data-i18n="backToList">商品一覧に戻る</span>
       </button>
       <div class="detail-hero-name" id="dt-name"></div>
     </div>
@@ -646,25 +667,195 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
         <hr class="detail-div">
         <table class="spec-mini" id="dt-spec-mini"></table>
         <div class="order-box">
-          <h4>注文・見積もり</h4>
+          <h4 data-i18n="orderTitle">注文・見積もり</h4>
           <div class="qty-row">
-            <label>数量</label>
+            <label data-i18n="qtyLabel">数量</label>
             <input type="number" class="qty-inp" value="10" min="1">
-            <span class="qty-unit">個</span>
+            <span class="qty-unit" data-i18n="qtyUnit">個</span>
           </div>
-          <button class="order-btn">カートに追加</button>
+          <button class="order-btn" data-i18n="addCart">カートに追加</button>
         </div>
       </div>
     </div>
 
-    <div class="detail-sec"><h3>商品説明</h3><p class="detail-desc-text" id="dt-desc"></p></div>
-    <div class="detail-sec"><h3>詳細仕様</h3><table class="full-spec" id="dt-full-spec"></table></div>
-    <div class="detail-sec"><h3>カスタマーレビュー</h3><div id="dt-reviews"></div></div>
-    <div class="detail-sec"><h3>関連商品</h3><div class="related-grid" id="dt-related"></div></div>
+    <div class="detail-sec"><h3 data-i18n="descTitle">商品説明</h3><p class="detail-desc-text" id="dt-desc"></p></div>
+    <div class="detail-sec"><h3 data-i18n="specTitle">詳細仕様</h3><table class="full-spec" id="dt-full-spec"></table></div>
+    <div class="detail-sec"><h3 data-i18n="reviewTitle">カスタマーレビュー</h3><div id="dt-reviews"></div></div>
+    <div class="detail-sec"><h3 data-i18n="relatedTitle">関連商品</h3><div class="related-grid" id="dt-related"></div></div>
   </div>
 </div>
 
 <script>
+// ═══════════════════════════════════════════
+// 多言語翻訳システム
+// ═══════════════════════════════════════════
+let currentLang='ja';
+
+const T={
+  ja:{
+    breadcrumb:'ねじ・ボルト・ナット',search:'商品を検索',
+    eyebrow:'Product Categories',heroTitle:'ねじ・ボルト・ナット<br>ワッシャ・カラー',
+    heroDesc:'工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。',
+    tabAll:'すべて',tabBolt:'ボルト',tabNut:'ナット',tabWasher:'ワッシャ',tabCollar:'カラー・スペーサ',
+    filterTitle:'絞り込み',clearAll:'すべて解除',
+    threadLabel:'ねじの呼び（M）',threadRange:'M径範囲',
+    lengthLabel:'長さL（mm）',lengthRange:'長さ範囲',
+    material:'材質',surface:'表面処理',strength:'強度区分',
+    countLabel:'件数：',count:'件',filterBtn:'絞り込み',
+    viewList:'≡ 一覧',viewPhoto:'⊞ 写真',viewCompare:'⊟ 仕様比較',
+    perPage:'表示件数：',sort:'並び替え：',delivery:'出荷日：',
+    sortPop:'人気順',sortRating:'評価順',sortTa:'ねじ径 小→大',sortTd:'ねじ径 大→小',sortLa:'長さ 短→長',sortLd:'長さ 長→短',
+    delivAll:'すべて',deliv1:'1日以内',deliv3:'3日以内',deliv7:'1週間以内',
+    csvAll:'全商品',csvCur:'表示中',
+    backToList:'商品一覧に戻る',orderTitle:'注文・見積もり',qtyLabel:'数量',qtyUnit:'個',addCart:'カートに追加',
+    descTitle:'商品説明',specTitle:'詳細仕様',reviewTitle:'カスタマーレビュー',relatedTitle:'関連商品',
+    cmpSpec:'仕様',cmpImage:'画像',
+    cmpHeaders:['商品名','ねじの呼び','長さL(mm)','材質','詳細材質','強度区分(スチール)','強度区分(ステンレス)','表面処理','chemSHERPA','EU_RoHS','出荷日','評価'],
+    delivBadge:'最短',days:'日',daysUnit:'日以内',reviews:'件のレビュー',rev:'件',
+    threadSpec:'ねじの呼び',lengthSpec:'長さL',matSpec:'材質',detailSpec:'詳細材質',surfSpec:'表面処理',delivSpec:'出荷日',
+    chemOk:'回答可能（特定物質なし）',chemNg:'回答不可',chemPending:'調査中',rohsOk:'対応',rohsNg:'非対応',
+    threadType:'ねじの種類',headShape:'頭部形状',wrenchType:'適合レンチ',delivLabel:'出荷日',jisLabel:'JIS規格',
+    threadType_v:'並目ねじ（メートル規格）',headShape_v:'円筒形',wrenchType_v:'六角棒スパナ',jis_v:'JIS B 1176準拠',
+    productCode:'商品コード',threadM:'ねじの呼び（M）',lengthMm:'長さL（mm）',matClass:'材質区分',
+    strSteel:'強度区分（スチール系）',strSUS:'強度区分（ステンレス系）',rohsLabel:'EU_RoHS対応',
+    chemBadge:'chemSHERPA対応品あり',rohsBadge:'EU_RoHS対応',
+    noExport:'エクスポート対象の商品がありません',downloaded:'をダウンロードしました',
+    allLabel:'全商品',curLabel:'表示中',
+  },
+  en:{
+    breadcrumb:'Screws & Fasteners',search:'Search products',
+    eyebrow:'Product Categories',heroTitle:'Screws, Bolts & Nuts<br>Washers & Collars',
+    heroDesc:'Comprehensive lineup of industrial fasteners. Select the optimal fastener with high precision from a wide variety of materials, sizes, and strength classes.',
+    tabAll:'All',tabBolt:'Bolts',tabNut:'Nuts',tabWasher:'Washers',tabCollar:'Collars & Spacers',
+    filterTitle:'Filter',clearAll:'Clear All',
+    threadLabel:'Thread Diameter (M)',threadRange:'M Range',
+    lengthLabel:'Length L (mm)',lengthRange:'Length Range',
+    material:'Material',surface:'Surface Treatment',strength:'Strength Class',
+    countLabel:'Count:',count:'items',filterBtn:'Filter',
+    viewList:'≡ List',viewPhoto:'⊞ Grid',viewCompare:'⊟ Compare',
+    perPage:'Per page:',sort:'Sort:',delivery:'Delivery:',
+    sortPop:'Popularity',sortRating:'Rating',sortTa:'Thread ↑',sortTd:'Thread ↓',sortLa:'Length ↑',sortLd:'Length ↓',
+    delivAll:'All',deliv1:'Within 1 day',deliv3:'Within 3 days',deliv7:'Within 1 week',
+    csvAll:'All Products',csvCur:'Filtered',
+    backToList:'Back to List',orderTitle:'Order / Quote',qtyLabel:'Qty',qtyUnit:'pcs',addCart:'Add to Cart',
+    descTitle:'Description',specTitle:'Specifications',reviewTitle:'Customer Reviews',relatedTitle:'Related Products',
+    cmpSpec:'Spec',cmpImage:'Image',
+    cmpHeaders:['Product Name','Thread','Length(mm)','Material','Detail','Strength(S)','Strength(SS)','Surface','chemSHERPA','EU_RoHS','Lead Time','Rating'],
+    delivBadge:'Min.',days:' day(s)',daysUnit:' day(s)',reviews:' reviews',rev:'rev.',
+    threadSpec:'Thread',lengthSpec:'Length',matSpec:'Material',detailSpec:'Detail',surfSpec:'Surface',delivSpec:'Lead Time',
+    chemOk:'Declarable (No hazardous substances)',chemNg:'Non-declarable',chemPending:'Under investigation',rohsOk:'Compliant',rohsNg:'Non-compliant',
+    threadType:'Thread Type',headShape:'Head Shape',wrenchType:'Wrench Type',delivLabel:'Lead Time',jisLabel:'Standard',
+    threadType_v:'Coarse thread (Metric)',headShape_v:'Cylindrical',wrenchType_v:'Hex Key',jis_v:'JIS B 1176 compliant',
+    productCode:'Part No.',threadM:'Thread (M)',lengthMm:'Length L (mm)',matClass:'Material',
+    strSteel:'Strength Class (Steel)',strSUS:'Strength Class (SUS)',rohsLabel:'EU RoHS',
+    chemBadge:'chemSHERPA Declarable',rohsBadge:'EU RoHS Compliant',
+    noExport:'No products to export',downloaded:'downloaded',
+    allLabel:'all',curLabel:'filtered',
+  },
+  zh:{
+    breadcrumb:'螺丝·螺栓·螺母',search:'搜索商品',
+    eyebrow:'产品分类',heroTitle:'螺丝、螺栓和螺母<br>垫圈和间隔柱',
+    heroDesc:'工业紧固件综合产品线。从材质、尺寸、强度等级的丰富系列中，高精度地选择最佳紧固件。',
+    tabAll:'全部',tabBolt:'螺栓',tabNut:'螺母',tabWasher:'垫圈',tabCollar:'间隔柱',
+    filterTitle:'筛选',clearAll:'清除全部',
+    threadLabel:'螺纹直径（M）',threadRange:'M径范围',
+    lengthLabel:'长度L（mm）',lengthRange:'长度范围',
+    material:'材质',surface:'表面处理',strength:'强度等级',
+    countLabel:'数量：',count:'件',filterBtn:'筛选',
+    viewList:'≡ 列表',viewPhoto:'⊞ 图片',viewCompare:'⊟ 规格比较',
+    perPage:'每页：',sort:'排序：',delivery:'发货：',
+    sortPop:'人气',sortRating:'评分',sortTa:'螺纹径↑',sortTd:'螺纹径↓',sortLa:'长度↑',sortLd:'长度↓',
+    delivAll:'全部',deliv1:'1天以内',deliv3:'3天以内',deliv7:'1周以内',
+    csvAll:'全部商品',csvCur:'当前显示',
+    backToList:'返回列表',orderTitle:'订购·报价',qtyLabel:'数量',qtyUnit:'个',addCart:'加入购物车',
+    descTitle:'商品说明',specTitle:'详细规格',reviewTitle:'用户评价',relatedTitle:'相关商品',
+    cmpSpec:'规格',cmpImage:'图片',
+    cmpHeaders:['商品名','螺纹','长度(mm)','材质','材质详情','强度(钢)','强度(不锈钢)','表面处理','chemSHERPA','EU_RoHS','发货日','评分'],
+    delivBadge:'最短',days:'天',daysUnit:'天以内',reviews:'条评价',rev:'评',
+    threadSpec:'螺纹规格',lengthSpec:'长度',matSpec:'材质',detailSpec:'材质详情',surfSpec:'表面处理',delivSpec:'发货日',
+    chemOk:'可申报（无有害物质）',chemNg:'不可申报',chemPending:'调查中',rohsOk:'符合',rohsNg:'不符合',
+    threadType:'螺纹类型',headShape:'头部形状',wrenchType:'适用扳手',delivLabel:'发货日期',jisLabel:'JIS规格',
+    threadType_v:'粗牙螺纹（公制）',headShape_v:'圆柱形',wrenchType_v:'六角扳手',jis_v:'符合JIS B 1176',
+    productCode:'商品编号',threadM:'螺纹（M）',lengthMm:'长度L（mm）',matClass:'材质分类',
+    strSteel:'强度等级（钢）',strSUS:'强度等级（不锈钢）',rohsLabel:'EU RoHS认证',
+    chemBadge:'chemSHERPA可申报',rohsBadge:'EU RoHS符合',
+    noExport:'没有可导出的商品',downloaded:'已下载',
+    allLabel:'全商品',curLabel:'当前显示',
+  }
+};
+
+// カテゴリ翻訳
+const CAT_T={
+  cap:{name:{ja:'六角穴付きボルト（キャップボルト）',en:'Hex Socket Cap Screw',zh:'内六角螺栓'},desc:{ja:'六角レンチで締結。最も汎用的な高強度ボルト',en:'Fastened with hex key. The most versatile high-strength bolt.',zh:'使用六角扳手紧固，最通用的高强度螺栓。'}},
+  hex:{name:{ja:'六角ボルト',en:'Hex Bolt',zh:'六角螺栓'},desc:{ja:'スパナ・レンチで締結する標準的なボルト',en:'Standard bolt fastened with a spanner or wrench.',zh:'用扳手紧固的标准螺栓。'}},
+  lockn:{name:{ja:'ロックナット（緩み止め）',en:'Lock Nut',zh:'防松螺母'},desc:{ja:'振動による緩みを防ぐナット',en:'Nut that prevents loosening caused by vibration.',zh:'防止因振动而松动的螺母。'}},
+  wash:{name:{ja:'平ワッシャ（座金）',en:'Flat Washer',zh:'平垫圈'},desc:{ja:'座面圧力を分散する汎用ワッシャ',en:'General-purpose washer for distributing bearing surface pressure.',zh:'用于分散支撑面压力的通用垫圈。'}},
+  spring:{name:{ja:'スプリングワッシャ（ばね座金）',en:'Spring Washer',zh:'弹簧垫圈'},desc:{ja:'緩み止め機能付きワッシャ',en:'Washer with anti-loosening function.',zh:'具有防松功能的垫圈。'}},
+  col:{name:{ja:'スペーサ・カラー',en:'Spacer / Collar',zh:'垫片/间隔柱'},desc:{ja:'部品間の間隔を保持するカラー',en:'Collar that maintains spacing between components.',zh:'保持部件间距的间隔柱。'}},
+};
+
+// 材質・表面処理翻訳
+const MAT_T={
+  'ステンレス':{en:'Stainless Steel',zh:'不锈钢'},
+  'スチール':  {en:'Steel',          zh:'钢'},
+  'チタン':    {en:'Titanium',       zh:'钛'},
+  'アルミ':    {en:'Aluminum',       zh:'铝'},
+  '黄銅':      {en:'Brass',          zh:'黄铜'},
+  '樹脂':      {en:'Resin',          zh:'树脂'},
+};
+const SURF_T={
+  '生地':         {en:'As-machined',    zh:'本色'},
+  '黒染め':       {en:'Black Oxide',    zh:'发黑处理'},
+  'ユニクロ':     {en:'Zinc Plating',   zh:'镀锌'},
+  'クロメート':   {en:'Chromate',       zh:'铬酸盐'},
+  'ニッケルめっき':{en:'Ni Plating',    zh:'镀镍'},
+  'アルマイト':   {en:'Anodized',       zh:'阳极氧化'},
+  '電解研磨':     {en:'Electropolished',zh:'电解抛光'},
+};
+
+function L(k){return T[currentLang]?.[k]??T.ja[k]??k;}
+function catName(c){return CAT_T[c.id]?.name[currentLang]||c.name;}
+function catDesc(c){return CAT_T[c.id]?.desc[currentLang]||c.desc;}
+function tMat(m){return currentLang==='ja'?m:(MAT_T[m]?.[currentLang]||m);}
+function tSurf(s){return currentLang==='ja'?s:(SURF_T[s]?.[currentLang]||s);}
+function pName(p){
+  if(currentLang==='ja') return p.name;
+  const catId=p.catId||'cap';
+  const prefix=CAT_T[catId]?.name[currentLang]||p.name;
+  const mat=MAT_T[p.material]?.[currentLang]||p.material;
+  const surf=p.surface!=='−'?(SURF_T[p.surface]?.[currentLang]||''):'';
+  return `${prefix} − ${mat}${surf?' ('+surf+')':''} ${p.thread}`.trim();
+}
+
+function updateUI(){
+  // data-i18n: textContent更新
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.dataset.i18n; el.textContent=L(k);
+  });
+  // data-i18n-html: innerHTML更新（<br>等を含む要素）
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k=el.dataset.i18nHtml; el.innerHTML=L(k);
+  });
+  // 言語ボタンのアクティブ状態
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.textContent.trim()==={ja:'日本語',en:'EN',zh:'中文'}[currentLang]);
+  });
+  // カテゴリ名を再描画
+  if(document.getElementById('fp-cat-name') && currentCat){
+    document.getElementById('fp-cat-name').textContent=catName(currentCat);
+  }
+}
+
+function setLang(lang){
+  currentLang=lang;
+  updateUI();
+  // 現在のビューを再描画
+  const activePage=document.querySelector('.page.active')?.id;
+  if(activePage==='pg-cat') renderCategories();
+  else if(activePage==='pg-list') { render(); }
+  else if(activePage==='pg-detail' && window.__currentDetailProduct) renderDetail(window.__currentDetailProduct);
+}
+
 // ═══════════════════════════════════════════
 // カテゴリデータ
 // ═══════════════════════════════════════════
@@ -698,7 +889,7 @@ function illustImg(mat,sz=90,catId=''){
   const bgG=`<linearGradient id="${uid}bg" x1="0" y1="0" x2="0" y2="${sz}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.bg1}"/><stop offset="1" stop-color="${d.bg2}"/></linearGradient>`;
   const flt=`<filter id="${uid}F" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="${p(3)}"/></filter>`;
   const clp=`<clipPath id="${uid}C"><rect width="${sz}" height="${sz}" rx="${p(22)}" ry="${p(22)}"/></clipPath>`;
-  const wrap=(defs,body)=>`<svg viewBox="0 0 ${sz} ${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"><defs>${bgG}${flt}${clp}${defs}</defs><g clip-path="url(#${uid}C)"><rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>${body}</g></svg>`;
+  const wrap=(defs,body)=>`<svg viewBox="0 0 ${sz} ${sz}" width="${sz}" height="${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"><defs>${bgG}${flt}${clp}${defs}</defs><g clip-path="url(#${uid}C)"><rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>${body}</g></svg>`;
 
   // ── ロックナット（六角ナット＋ナイロンリング）──
   if(catId==='lockn'){
@@ -1183,14 +1374,14 @@ function navTo(pg,data){
   document.getElementById('pg-'+pg).classList.add('active');
   const bc=document.getElementById('bc');
   if(pg==='cat'){
-    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><strong>ねじ・ボルト・ナット</strong>`;
+    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><strong>${L('breadcrumb')}</strong>`;
   }else if(pg==='list'){
-    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">ねじ・ボルト・ナット</a><span>›</span><strong>${currentCat.name}</strong>`;
-    document.getElementById('list-title').textContent=currentCat.name;
-    document.getElementById('fp-cat-name').textContent=currentCat.name;
+    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">${L('breadcrumb')}</a><span>›</span><strong>${catName(currentCat)}</strong>`;
+    document.getElementById('list-title').textContent=catName(currentCat);
+    document.getElementById('fp-cat-name').textContent=catName(currentCat);
     apply();
   }else if(pg==='detail'&&data){
-    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">ねじ・ボルト・ナット</a><span>›</span><a href="#" onclick="navTo('list');return false">${currentCat.name}</a><span>›</span><strong>${data.name.slice(0,18)}…</strong>`;
+    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">${L('breadcrumb')}</a><span>›</span><a href="#" onclick="navTo('list');return false">${catName(currentCat)}</a><span>›</span><strong>${pName(data).slice(0,20)}…</strong>`;
     renderDetail(data);
   }
   window.scrollTo(0,0);
@@ -1205,10 +1396,10 @@ function renderCategories(type='all'){
         ${catIconSvg(c.id,c.type)}
       </div>
       <div class="cat-card-body">
-        <div class="cat-card-name">${c.name}${c.isNew?'<span class="cat-badge-new">NEW</span>':''}</div>
-        <div class="cat-card-sub">${c.desc}</div>
+        <div class="cat-card-name">${catName(c)}${c.isNew?'<span class="cat-badge-new">NEW</span>':''}</div>
+        <div class="cat-card-sub">${catDesc(c)}</div>
         <div class="cat-card-footer">
-          <span class="cat-card-count">${c.cnt.toLocaleString()} 件</span>
+          <span class="cat-card-count">${c.cnt.toLocaleString()} ${L('count')}</span>
           <span class="cat-card-arrow">→</span>
         </div>
       </div>
@@ -1392,27 +1583,27 @@ function renderList(items,disp){
     <div class="pc" style="animation-delay:${i*25}ms" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">
       <div class="pimg-wrap">
         <div class="pimg">${illustImg(p.material,90,p.catId)}</div>
-        <div class="delivery-badge">最短${p.delivery}日</div>
+        <div class="delivery-badge">${L('delivBadge')}${p.delivery}${L('days')}</div>
       </div>
       <div class="pinfo">
-        <div class="pbadges">${p.chem==='ok'?'<span class="bdg bdg-c">chemSHERPA対応</span>':''}${p.rohs?'<span class="bdg bdg-r">EU_RoHS対応</span>':''}</div>
+        <div class="pbadges">${p.chem==='ok'?`<span class="bdg bdg-c">${L('chemBadge')}</span>`:''}${p.rohs?`<span class="bdg bdg-r">${L('rohsBadge')}</span>`:''}</div>
         <div class="pmkr">${p.maker}</div>
-        <div class="pnm">${p.name}</div>
+        <div class="pnm">${pName(p)}</div>
         <div class="pdsc">${p.desc}</div>
-        <div class="prat"><span class="stars">${stars(p.rating)}</span><span class="rnum">${p.rating}</span><span class="rcnt">(${p.rev}件)</span></div>
+        <div class="prat"><span class="stars">${stars(p.rating)}</span><span class="rnum">${p.rating}</span><span class="rcnt">(${p.rev}${L('rev')})</span></div>
         <div class="spec-pills">
           <div class="spec-pill"><strong>${p.thread}</strong></div>
           <div class="spec-pill">L=<strong>${p.len}mm</strong></div>
-          <div class="spec-pill"><strong>${p.material}</strong></div>
-          <div class="spec-pill">${p.surface}</div>
-          ${p.str_s!=='−'?`<div class="spec-pill">強度 <strong>${p.str_s}</strong></div>`:''}
-          ${p.str_ss!=='−'?`<div class="spec-pill">強度 <strong>${p.str_ss}</strong></div>`:''}
+          <div class="spec-pill"><strong>${tMat(p.material)}</strong></div>
+          <div class="spec-pill">${tSurf(p.surface)}</div>
+          ${p.str_s!=='−'?`<div class="spec-pill">${L('strength')} <strong>${p.str_s}</strong></div>`:''}
+          ${p.str_ss!=='−'?`<div class="spec-pill">${L('strength')} <strong>${p.str_ss}</strong></div>`:''}
         </div>
         <div class="sptbl-wrap">
           <table class="sptbl"><tr>
-            <th>ねじの呼び</th><th>長さL</th><th>材質</th><th>詳細材質</th><th>強度区分(S)</th><th>強度区分(SS)</th><th>表面処理</th>
+            <th>${L('threadSpec')}</th><th>${L('lengthSpec')}</th><th>${L('matSpec')}</th><th>${L('detailSpec')}</th><th>${L('strength')}(S)</th><th>${L('strength')}(SS)</th><th>${L('surfSpec')}</th>
           </tr><tr>
-            <td>${p.thread}</td><td>${p.len}mm</td><td>${p.material}</td><td>${p.detail}</td><td>${p.str_s}</td><td>${p.str_ss}</td><td>${p.surface}</td>
+            <td>${p.thread}</td><td>${p.len}mm</td><td>${tMat(p.material)}</td><td>${p.detail}</td><td>${p.str_s}</td><td>${p.str_ss}</td><td>${tSurf(p.surface)}</td>
           </tr></table>
         </div>
       </div>
@@ -1425,19 +1616,22 @@ function renderPhoto(items,disp){
       <div class="gimg">${illustImg(p.material,120,p.catId)}</div>
       <div class="gcard-body">
         <div class="pbadges" style="margin-bottom:6px">${p.chem==='ok'?'<span class="bdg bdg-c" style="font-size:9px">chemSHERPA</span>':''}${p.rohs?'<span class="bdg bdg-r" style="font-size:9px">RoHS</span>':''}</div>
-        <div class="gnm">${p.name}</div>
-        <div class="gsp">${p.thread} × ${p.len}mm | ${p.material}</div>
-        <div class="gsp" style="margin-top:2px;color:#aeaeb2">${p.surface}</div>
+        <div class="gnm">${pName(p)}</div>
+        <div class="gsp">${p.thread} × ${p.len}mm | ${tMat(p.material)}</div>
+        <div class="gsp" style="margin-top:2px;color:#aeaeb2">${tSurf(p.surface)}</div>
         <div class="prat" style="margin-top:8px"><span class="stars" style="font-size:11px">${stars(p.rating)}</span><span style="font-size:11px;font-weight:700;margin-left:4px">${p.rating}</span></div>
       </div>
     </div>`).join('')}</div>`;
 }
 
 function renderCompare(items,disp){
-  const hs=['商品名','ねじの呼び','長さL(mm)','材質','詳細材質','強度区分(スチール)','強度区分(ステンレス)','表面処理','chemSHERPA','EU_RoHS','出荷日','評価'];
-  const vs=[p=>p.name,p=>p.thread,p=>p.len+'mm',p=>p.material,p=>p.detail,p=>p.str_s,p=>p.str_ss,p=>p.surface,p=>({ok:'✅ 回答可能',ng:'❌ 回答不可',pending:'🔄 調査中'})[p.chem],p=>p.rohs?'✅ 対応':'❌ 非対応',p=>p.delivery+'日以内',p=>`★${p.rating} (${p.rev}件)`];
-  const imgRow=`<tr><td style="font-weight:700;background:var(--s2);white-space:nowrap;color:var(--ink-60);font-size:11px;letter-spacing:.3px">画像</td>${items.map(p=>`<td style="text-align:center;padding:16px 14px;background:#f8f9fa"><div style="display:inline-block;cursor:pointer" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">${illustImg(p.material,80,p.catId)}</div></td>`).join('')}</tr>`;
-  disp.innerHTML=`<div class="cmpwrap"><table class="cmptbl"><thead><tr><th>仕様</th>${items.map(p=>`<th class="pcol" style="cursor:pointer" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">${p.name.length>18?p.name.slice(0,18)+'…':p.name}</th>`).join('')}</tr></thead><tbody>${imgRow}${hs.map((h,i)=>`<tr><td style="font-weight:700;background:var(--s2);white-space:nowrap;color:var(--ink-60);font-size:11px;letter-spacing:.3px">${h}</td>${items.map(p=>`<td>${vs[i](p)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const hs=L('cmpHeaders');
+  const chemL={ok:`✅ ${L('chemOk')}`,ng:`❌ ${L('chemNg')}`,pending:`🔄 ${L('chemPending')}`};
+  const vs=[p=>pName(p),p=>p.thread,p=>p.len+'mm',p=>tMat(p.material),p=>p.detail,p=>p.str_s,p=>p.str_ss,p=>tSurf(p.surface),p=>chemL[p.chem]||'',p=>p.rohs?`✅ ${L('rohsOk')}`:`❌ ${L('rohsNg')}`,p=>p.delivery+L('daysUnit'),p=>`★${p.rating} (${p.rev}${L('rev')})`];
+  const lblStyle='font-weight:700;background:var(--s2);white-space:nowrap;color:var(--ink-60);font-size:11px;letter-spacing:.3px';
+  const imgRow=`<tr><td style="${lblStyle}">${L('cmpImage')}</td>${items.map(p=>`<td style="text-align:center;padding:16px 14px;background:#f8f9fa"><div style="display:inline-block;cursor:pointer" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">${illustImg(p.material,80,p.catId)}</div></td>`).join('')}</tr>`;
+  const nm=p=>{const n=pName(p);return n.length>18?n.slice(0,18)+'…':n;};
+  disp.innerHTML=`<div class="cmpwrap"><table class="cmptbl"><thead><tr><th>${L('cmpSpec')}</th>${items.map(p=>`<th class="pcol" style="cursor:pointer" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">${nm(p)}</th>`).join('')}</tr></thead><tbody>${imgRow}${hs.map((h,i)=>`<tr><td style="${lblStyle}">${h}</td>${items.map(p=>`<td>${vs[i](p)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 
 function renderPgn(pages){
@@ -1461,24 +1655,25 @@ function goPage(p){
 
 // ── Page 3: Detail ──
 function renderDetail(p){
-  document.getElementById('dt-name').textContent=p.name;
-  document.getElementById('dt-name-sub').textContent=p.name;
+  window.__currentDetailProduct=p;
+  document.getElementById('dt-name').textContent=pName(p);
+  document.getElementById('dt-name-sub').textContent=pName(p);
   document.getElementById('dt-main-img').innerHTML=illustImg(p.material,240,p.catId);
   document.getElementById('dt-main-img').style.background='';
   document.getElementById('dt-thumbs').innerHTML=[0,1,2].map(i=>`
     <div class="dthmb ${i===0?'active':''}" onclick="this.parentElement.querySelectorAll('.dthmb').forEach(t=>t.classList.remove('active'));this.classList.add('active')">
       ${illustImg(p.material,52,p.catId)}
     </div>`).join('');
-  document.getElementById('dt-badges').innerHTML=(p.chem==='ok'?'<span class="badge badge-c">chemSHERPA対応品あり</span>':'')+(p.rohs?'<span class="badge badge-r">EU_RoHS対応</span>':'');
+  document.getElementById('dt-badges').innerHTML=(p.chem==='ok'?`<span class="badge badge-c">${L('chemBadge')}</span>`:'')+(p.rohs?`<span class="badge badge-r">${L('rohsBadge')}</span>`:'');
   document.getElementById('dt-maker').textContent=p.maker;
-  document.getElementById('dt-rat').innerHTML=`<span class="stars" style="font-size:16px">${stars(p.rating)}</span><span style="font-size:16px;font-weight:800;margin-left:4px">${p.rating}</span><span style="font-size:12px;color:var(--ink-20);margin-left:4px">(${p.rev}件のレビュー)</span>`;
-  document.getElementById('dt-spec-mini').innerHTML=[['ねじの呼び',p.thread],['長さL',p.len+' mm'],['材質',p.material],['詳細材質',p.detail],['表面処理',p.surface],['出荷日',p.delivery+'日以内']].map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
+  document.getElementById('dt-rat').innerHTML=`<span class="stars" style="font-size:16px">${stars(p.rating)}</span><span style="font-size:16px;font-weight:800;margin-left:4px">${p.rating}</span><span style="font-size:12px;color:var(--ink-20);margin-left:4px">(${p.rev}${L('reviews')})</span>`;
+  document.getElementById('dt-spec-mini').innerHTML=[[L('threadSpec'),p.thread],[L('lengthSpec'),p.len+' mm'],[L('matSpec'),tMat(p.material)],[L('detailSpec'),p.detail],[L('surfSpec'),tSurf(p.surface)],[L('delivSpec'),p.delivery+L('daysUnit')]].map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
   document.getElementById('dt-desc').textContent=p.desc;
   document.getElementById('dt-full-spec').innerHTML=[
-    ['商品コード','HCBT'+String(p.id).padStart(4,'0')],['ねじの呼び（M）',p.thread],['長さL（mm）',p.len],['材質区分',p.material],['詳細材質',p.detail],
-    ['強度区分（スチール系）',p.str_s],['強度区分（ステンレス系）',p.str_ss],['表面処理',p.surface],
-    ['chemSHERPA',{ok:'回答可能（特定物質なし）',ng:'回答不可',pending:'調査中'}[p.chem]],['EU_RoHS対応',p.rohs?'対応':'非対応'],
-    ['ねじの種類','並目ねじ（メートル規格）'],['頭部形状','円筒形'],['適合レンチ','六角棒スパナ'],['出荷日',p.delivery+'日以内'],['JIS規格','JIS B 1176準拠']
+    [L('productCode'),'HCBT'+String(p.id).padStart(4,'0')],[L('threadM'),p.thread],[L('lengthMm'),p.len],[L('matClass'),tMat(p.material)],[L('detailSpec'),p.detail],
+    [L('strSteel'),p.str_s],[L('strSUS'),p.str_ss],[L('surfSpec'),tSurf(p.surface)],
+    ['chemSHERPA',{ok:L('chemOk'),ng:L('chemNg'),pending:L('chemPending')}[p.chem]],[L('rohsLabel'),p.rohs?L('rohsOk'):L('rohsNg')],
+    [L('threadType'),L('threadType_v')],[L('headShape'),L('headShape_v')],[L('wrenchType'),L('wrenchType_v')],[L('delivLabel'),p.delivery+L('daysUnit')],[L('jisLabel'),L('jis_v')]
   ].map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
   const rvs=p.rating>=4.5?REVIEWS.high:REVIEWS.std;
   document.getElementById('dt-reviews').innerHTML=rvs.map(r=>`
@@ -1490,10 +1685,11 @@ function renderDetail(p){
   document.getElementById('dt-related').innerHTML=related.map(r=>`
     <div class="rel-card" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${r.id}))">
       <div class="rel-img">${illustImg(r.material,60,r.catId)}</div>
-      <div class="rel-name">${r.name}</div>
-      <div class="rel-spec">${r.thread} × ${r.len}mm | ${r.material}</div>
+      <div class="rel-name">${pName(r)}</div>
+      <div class="rel-spec">${r.thread} × ${r.len}mm | ${tMat(r.material)}</div>
       <div class="prat" style="margin-top:6px"><span class="stars" style="font-size:11px">${stars(r.rating)}</span><span style="font-size:11px;font-weight:700;margin-left:3px">${r.rating}</span></div>
     </div>`).join('');
+  updateUI();
 }
 
 // ── CSV ──
@@ -1509,11 +1705,11 @@ function toCSVRow(p){
 function exportCSV(mode){
   const catPool=PRODUCTS.filter(p=>(p.catId||'cap')===currentCat.id);
   const data=mode==='all'?catPool:filtered;
-  if(!data.length){showToast('エクスポート対象の商品がありません');return}
+  if(!data.length){showToast(L('noExport'));return}
   const now=new Date();
   const ts=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'_'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0');
-  const label=mode==='all'?'全商品':'表示中';
-  const filename=`商品一覧_${label}_${ts}.csv`;
+  const label=mode==='all'?L('allLabel'):L('curLabel');
+  const filename=`${L('breadcrumb')}_${label}_${ts}.csv`;
   const bom='\uFEFF';
   const csv=bom+[CSV_HEADERS.join(','),...data.map(toCSVRow)].join('\r\n');
   const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
@@ -1521,7 +1717,7 @@ function exportCSV(mode){
   const a=document.createElement('a');
   a.href=url;a.download=filename;a.click();
   URL.revokeObjectURL(url);
-  showToast(`${filename} をダウンロードしました（${data.length}件）`);
+  showToast(`${filename} ${L('downloaded')}（${data.length}${L('count')}）`);
 }
 
 function showToast(msg){
