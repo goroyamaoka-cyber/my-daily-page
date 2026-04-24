@@ -267,14 +267,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .spec-mini th{padding:8px 0;font-weight:500;color:var(--ink-40);border-bottom:1px solid var(--ink-05);width:40%;font-size:12px}
 .spec-mini td{padding:8px 0;font-weight:700;border-bottom:1px solid var(--ink-05);color:var(--ink)}
 
-.order-box{background:var(--s2);border-radius:var(--r-md);padding:18px;margin-top:18px}
-.order-box h4{font-size:12px;font-weight:700;margin-bottom:12px;color:var(--ink-60);text-transform:uppercase;letter-spacing:.8px}
-.qty-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.qty-row label{font-size:12px;color:var(--ink-40)}
-.qty-inp{width:72px;padding:7px 10px;border:1px solid var(--ink-10);border-radius:var(--r-sm);font-size:14px;font-weight:700;text-align:center;background:#fff}
-.qty-unit{font-size:12px;color:var(--ink-40)}
-.order-btn{width:100%;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:var(--r-sm);font-size:14px;font-weight:700;cursor:pointer;transition:background var(--t);letter-spacing:.2px}
-.order-btn:hover{background:var(--blue-h)}
 
 .detail-sec{background:#fff;border-radius:var(--r-md);padding:24px;margin-bottom:16px;border:1px solid var(--ink-05)}
 .detail-sec h3{font-size:14px;font-weight:700;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--ink-05);letter-spacing:.2px;text-transform:uppercase;color:var(--ink-60)}
@@ -464,8 +456,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .pc:hover{box-shadow:var(--sh-md);transform:translateY(-1px);border-color:rgba(227,0,32,.18)!important}
 .pgc:hover{box-shadow:var(--sh-md);transform:translateY(-2px);border-color:rgba(227,0,32,.18)!important}
 .cat-card.featured{border-color:var(--ink-10)!important;background:var(--s0)!important}
-.order-btn{background:var(--blue);color:#fff}
-.order-btn:hover{background:var(--blue-h)}
 </style>
 </head>
 <body>
@@ -690,15 +680,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
         <div class="detail-rat" id="dt-rat"></div>
         <hr class="detail-div">
         <table class="spec-mini" id="dt-spec-mini"></table>
-        <div class="order-box">
-          <h4 data-i18n="orderTitle">注文・見積もり</h4>
-          <div class="qty-row">
-            <label data-i18n="qtyLabel">数量</label>
-            <input type="number" class="qty-inp" value="10" min="1">
-            <span class="qty-unit" data-i18n="qtyUnit">個</span>
-          </div>
-          <button class="order-btn" data-i18n="addCart">カートに追加</button>
-        </div>
       </div>
     </div>
 
@@ -731,7 +712,7 @@ const T={
     sortPop:'人気順',sortRating:'評価順',sortTa:'ねじ径 小→大',sortTd:'ねじ径 大→小',sortLa:'長さ 短→長',sortLd:'長さ 長→短',
     delivAll:'すべて',deliv1:'1日以内',deliv3:'3日以内',deliv7:'1週間以内',
     csvAll:'全商品',csvCur:'表示中',
-    backToList:'商品一覧に戻る',orderTitle:'注文・見積もり',qtyLabel:'数量',qtyUnit:'個',addCart:'カートに追加',
+    backToList:'商品一覧に戻る',
     descTitle:'商品説明',specTitle:'詳細仕様',reviewTitle:'カスタマーレビュー',relatedTitle:'関連商品',
     cmpSpec:'仕様',cmpImage:'画像',
     cmpHeaders:['商品名','ねじの呼び','長さL(mm)','材質','詳細材質','強度区分(スチール)','強度区分(ステンレス)','表面処理','chemSHERPA','EU_RoHS','出荷日','評価'],
@@ -761,7 +742,7 @@ const T={
     sortPop:'Popularity',sortRating:'Rating',sortTa:'Thread ↑',sortTd:'Thread ↓',sortLa:'Length ↑',sortLd:'Length ↓',
     delivAll:'All',deliv1:'Within 1 day',deliv3:'Within 3 days',deliv7:'Within 1 week',
     csvAll:'All Products',csvCur:'Filtered',
-    backToList:'Back to List',orderTitle:'Order / Quote',qtyLabel:'Qty',qtyUnit:'pcs',addCart:'Add to Cart',
+    backToList:'Back to List',
     descTitle:'Description',specTitle:'Specifications',reviewTitle:'Customer Reviews',relatedTitle:'Related Products',
     cmpSpec:'Spec',cmpImage:'Image',
     cmpHeaders:['Product Name','Thread','Length(mm)','Material','Detail','Strength(S)','Strength(SS)','Surface','chemSHERPA','EU_RoHS','Lead Time','Rating'],
@@ -791,7 +772,7 @@ const T={
     sortPop:'人气',sortRating:'评分',sortTa:'螺纹径↑',sortTd:'螺纹径↓',sortLa:'长度↑',sortLd:'长度↓',
     delivAll:'全部',deliv1:'1天以内',deliv3:'3天以内',deliv7:'1周以内',
     csvAll:'全部商品',csvCur:'当前显示',
-    backToList:'返回列表',orderTitle:'订购·报价',qtyLabel:'数量',qtyUnit:'个',addCart:'加入购物车',
+    backToList:'返回列表',
     descTitle:'商品说明',specTitle:'详细规格',reviewTitle:'用户评价',relatedTitle:'相关商品',
     cmpSpec:'规格',cmpImage:'图片',
     cmpHeaders:['商品名','螺纹','长度(mm)','材质','材质详情','强度(钢)','强度(不锈钢)','表面处理','chemSHERPA','EU_RoHS','发货日','评分'],
