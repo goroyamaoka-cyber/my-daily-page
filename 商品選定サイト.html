@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TechParts | 産業用締結部品</title>
+<title>製品選定システム</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -992,6 +992,8 @@ document.addEventListener('click',function(){
 
 function setLang(lang){
   currentLang=lang;
+  const titleMap={ja:'製品選定システム',en:'Product Selection System',zh:'产品选型系统'};
+  document.title=titleMap[lang]||titleMap.ja;
   updateUI();
   // カテゴリカードは常に再描画（非表示でも翻訳を更新）
   const _activeTabType=document.querySelector('.cat-tab.active')?.dataset?.type||'all';
