@@ -473,6 +473,63 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .pc:hover{box-shadow:var(--sh-md);transform:translateY(-1px);border-color:rgba(227,0,32,.18)!important}
 .pgc:hover{box-shadow:var(--sh-md);transform:translateY(-2px);border-color:rgba(227,0,32,.18)!important}
 .cat-card.featured{border-color:var(--ink-10)!important;background:var(--s0)!important}
+
+/* ── Admin Page ─────────────────────────────────────── */
+.admin-wrap{min-height:calc(100vh - 56px);background:#f4f5f7}
+.admin-hdr{background:#1a2236;color:#fff;padding:14px 32px;display:flex;align-items:center;gap:14px}
+.admin-hdr-title{font-size:16px;font-weight:700;letter-spacing:.3px;display:flex;align-items:center;gap:8px}
+.admin-hdr-back{margin-left:auto;padding:6px 14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:6px;color:#fff;font-size:12px;cursor:pointer;transition:background .15s;font-weight:500}
+.admin-hdr-back:hover{background:rgba(255,255,255,.22)}
+.admin-body{padding:24px 32px}
+.admin-stats{display:flex;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.admin-stat{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 22px;flex:1;min-width:130px}
+.admin-stat-num{font-size:26px;font-weight:800;color:#1a2236}
+.admin-stat-label{font-size:11px;color:#6b7280;margin-top:2px;font-weight:500}
+.admin-actions{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.admin-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .15s;font-family:inherit}
+.admin-btn-export{background:#0054a0;color:#fff}
+.admin-btn-export:hover{background:#003d7a}
+.admin-btn-import{background:#009a44;color:#fff}
+.admin-btn-import:hover{background:#007a35}
+.admin-btn-save{background:#1a2236;color:#fff}
+.admin-btn-save:hover{background:#0f1520}
+.admin-btn-danger{background:#e30020;color:#fff}
+.admin-btn-danger:hover{background:#b5001a}
+.admin-btn-ghost{background:#f3f4f6;color:#374151;border:1px solid #d1d5db}
+.admin-btn-ghost:hover{background:#e5e7eb}
+.admin-notice{background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:10px 14px;margin-bottom:18px;font-size:12px;color:#92400e;display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.admin-filter{display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap}
+.admin-search{flex:1;min-width:200px;padding:8px 12px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;outline:none;font-family:inherit}
+.admin-search:focus{border-color:#0054a0;box-shadow:0 0 0 3px rgba(0,84,160,.1)}
+.admin-cat-sel{padding:8px 12px;border:1px solid #d1d5db;border-radius:6px;font-size:13px;outline:none;background:#fff;font-family:inherit}
+.admin-count{font-size:12px;color:#6b7280;white-space:nowrap}
+.admin-tbl-wrap{overflow-x:auto;background:#fff;border:1px solid #e5e7eb;border-radius:10px}
+.admin-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.admin-tbl th{background:#f8f9fa;padding:9px 11px;text-align:left;font-weight:600;color:#374151;border-bottom:2px solid #e5e7eb;white-space:nowrap}
+.admin-tbl td{padding:8px 11px;border-bottom:1px solid #f3f4f6;color:#1a2236;vertical-align:middle;max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.admin-tbl tr:last-child td{border-bottom:none}
+.admin-tbl tr:hover td{background:#f8f9fa}
+.adm-chem-ok{color:#009a44;font-weight:600}
+.adm-chem-ng{color:#e30020;font-weight:600}
+.adm-chem-pend{color:#b36000;font-weight:600}
+.adm-rohs-y{display:inline-block;background:rgba(0,84,160,.1);color:#0054a0;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700}
+.adm-rohs-n{display:inline-block;background:#f3f4f6;color:#9ca3af;padding:2px 7px;border-radius:3px;font-size:10px}
+.adm-code{font-family:'Courier New',monospace;font-size:11px;color:#6b7280}
+/* Admin access button in header */
+.admin-access-btn{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:6px;border:1px solid var(--ink-10);background:#fff;cursor:pointer;color:var(--ink-40);margin-left:6px;transition:all var(--t);flex-shrink:0}
+.admin-access-btn:hover{background:var(--s2);color:var(--ink)}
+/* Import preview modal */
+.adm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:900;display:flex;align-items:center;justify-content:center;padding:20px}
+.adm-modal{background:#fff;border-radius:12px;max-width:860px;width:100%;max-height:82vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.adm-modal-hdr{padding:18px 22px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:10px}
+.adm-modal-title{font-size:15px;font-weight:700;flex:1}
+.adm-modal-body{padding:18px 22px;overflow-y:auto;flex:1}
+.adm-modal-foot{padding:14px 22px;border-top:1px solid #e5e7eb;display:flex;gap:8px;justify-content:flex-end;background:#f8f9fa}
+.adm-sum{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.adm-sum-item{padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600}
+.adm-sum-new{background:rgba(0,154,68,.08);color:#009a44;border:1px solid rgba(0,154,68,.22)}
+.adm-sum-mod{background:rgba(0,84,160,.08);color:#0054a0;border:1px solid rgba(0,84,160,.22)}
+.adm-sum-err{background:rgba(227,0,32,.08);color:#e30020;border:1px solid rgba(227,0,32,.22)}
 </style>
 </head>
 <body>
@@ -503,6 +560,9 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1.3"/><line x1="8.7" y1="8.7" x2="12" y2="12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
     <span data-i18n="search">商品を検索</span>
   </div>
+  <button class="admin-access-btn" onclick="navTo('admin')" title="管理者ページ">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  </button>
   <div class="lang-drop" id="langDrop">
     <button class="lang-drop-btn" onclick="toggleLangMenu(event)">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -699,6 +759,131 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 
 <!-- Mobile filter overlay -->
 <div class="filter-overlay" id="filter-overlay" onclick="closeFilter()"></div>
+
+<!-- ══ PAGE 4: ADMIN ═══════════════════════════════════ -->
+<div class="page" id="pg-admin">
+  <div class="admin-wrap">
+    <div class="admin-hdr">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <div class="admin-hdr-title">製品データベース管理</div>
+      <button class="admin-hdr-back" onclick="navTo('cat')">← サイトに戻る</button>
+    </div>
+    <div class="admin-body">
+
+      <!-- Stats -->
+      <div class="admin-stats">
+        <div class="admin-stat">
+          <div class="admin-stat-num" id="adm-prod-cnt">—</div>
+          <div class="admin-stat-label">登録商品数</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-num" id="adm-cat-cnt">—</div>
+          <div class="admin-stat-label">カテゴリ数</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-num" id="adm-maker-cnt">—</div>
+          <div class="admin-stat-label">メーカー数</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-num" id="adm-modified" style="font-size:14px;color:#6b7280">未更新</div>
+          <div class="admin-stat-label">最終インポート</div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="admin-actions">
+        <button class="admin-btn admin-btn-export" onclick="adminExportCSV()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          CSVエクスポート（全商品）
+        </button>
+        <label class="admin-btn admin-btn-import" style="cursor:pointer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          CSVインポート
+          <input type="file" accept=".csv" style="display:none" id="admin-csv-input" onchange="adminImportCSV(this)">
+        </label>
+        <button class="admin-btn admin-btn-save" id="adm-dl-btn" onclick="adminDownloadHTML()" style="display:none">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          更新済みHTMLをダウンロード
+        </button>
+        <button class="admin-btn admin-btn-ghost" onclick="adminResetData()">リセット</button>
+      </div>
+
+      <!-- Notice -->
+      <div class="admin-notice">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>CSVインポートはブラウザ内での一時的な変更です。変更を永続化するには「更新済みHTMLをダウンロード」で保存し、元ファイルを置き換えてください。</span>
+      </div>
+
+      <!-- CSV構成の説明 -->
+      <details style="margin-bottom:16px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:12px 16px">
+        <summary style="font-size:13px;font-weight:600;cursor:pointer;color:#374151;user-select:none">📋 CSVフォーマット仕様（クリックで展開）</summary>
+        <div style="margin-top:12px;overflow-x:auto">
+          <table style="width:100%;font-size:12px;border-collapse:collapse">
+            <thead><tr style="background:#f3f4f6"><th style="padding:6px 10px;text-align:left;font-weight:600;border-bottom:1px solid #e5e7eb">列名</th><th style="padding:6px 10px;text-align:left;font-weight:600;border-bottom:1px solid #e5e7eb">型</th><th style="padding:6px 10px;text-align:left;font-weight:600;border-bottom:1px solid #e5e7eb">説明・使用可能な値</th></tr></thead>
+            <tbody id="adm-schema-tbody"></tbody>
+          </table>
+        </div>
+      </details>
+
+      <!-- Filter -->
+      <div class="admin-filter">
+        <input class="admin-search" type="text" placeholder="商品名・材質・ねじで検索…" id="adm-search" oninput="adminRender()">
+        <select class="admin-cat-sel" id="adm-cat-filter" onchange="adminRender()">
+          <option value="">全カテゴリ</option>
+        </select>
+        <span class="admin-count" id="adm-table-count"></span>
+      </div>
+
+      <!-- Table -->
+      <div class="admin-tbl-wrap">
+        <table class="admin-tbl">
+          <thead>
+            <tr>
+              <th>商品コード</th>
+              <th>商品名</th>
+              <th>カテゴリID</th>
+              <th>メーカー</th>
+              <th>材質</th>
+              <th>詳細材質</th>
+              <th>ねじの呼び</th>
+              <th>長さ(mm)</th>
+              <th>表面処理</th>
+              <th>強度(S)</th>
+              <th>強度(SS)</th>
+              <th>chem</th>
+              <th>RoHS</th>
+              <th>出荷日</th>
+              <th>評価</th>
+              <th>レビュー</th>
+            </tr>
+          </thead>
+          <tbody id="adm-tbody"></tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Admin Import Preview Modal -->
+<div class="adm-overlay" id="adm-modal" style="display:none" onclick="if(event.target===this)closeAdminModal()">
+  <div class="adm-modal">
+    <div class="adm-modal-hdr">
+      <div class="adm-modal-title">📋 インポートプレビュー</div>
+      <button class="admin-btn admin-btn-ghost" onclick="closeAdminModal()" style="padding:5px 12px;font-size:12px">✕ 閉じる</button>
+    </div>
+    <div class="adm-modal-body">
+      <div class="adm-sum" id="adm-import-summary"></div>
+      <div id="adm-import-preview"></div>
+    </div>
+    <div class="adm-modal-foot">
+      <button class="admin-btn admin-btn-ghost" onclick="closeAdminModal()">キャンセル</button>
+      <button class="admin-btn admin-btn-import" id="adm-apply-btn" onclick="adminApplyImport()">
+        ✓ この内容でインポートを実行
+      </button>
+    </div>
+  </div>
+</div>
 
 <!-- ══ PAGE 3: DETAIL ════════════════════════════ -->
 <div class="page" id="pg-detail">
@@ -1533,6 +1718,9 @@ function navTo(pg,data){
   }else if(pg==='detail'&&data){
     bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">${L('breadcrumb')}</a><span>›</span><a href="#" onclick="navTo('list');return false">${catName(currentCat)}</a><span>›</span><strong>${pName(data).slice(0,20)}…</strong>`;
     renderDetail(data);
+  }else if(pg==='admin'){
+    bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><strong>管理者パネル</strong>`;
+    initAdminPage();
   }
   window.scrollTo(0,0);
 }
@@ -1887,6 +2075,263 @@ function closeFilter(){
   document.querySelector('.filter-panel').classList.remove('open');
   document.getElementById('filter-overlay').classList.remove('open');
   document.body.style.overflow='';
+}
+
+// ── Admin ────────────────────────────────────────────
+const ADMIN_CSV_HEADERS=[
+  '商品コード','商品名','カテゴリID','メーカー','材質','詳細材質',
+  'ねじの呼び','ねじ径(数値)','長さL(mm)','表面処理',
+  '強度区分(スチール)','強度区分(ステンレス)',
+  'chemSHERPA','EU_RoHS対応','出荷日(日以内)','人気度','評価','レビュー件数','商品説明'
+];
+const ADMIN_SCHEMA=[
+  {col:'商品コード',    type:'文字列',desc:'HCBT0001形式（4桁）。インポート時の商品識別キー。'},
+  {col:'商品名',        type:'文字列',desc:'商品の正式名称。'},
+  {col:'カテゴリID',    type:'文字列',desc:'cap / hex / lockn / wash / spring / col のいずれか。'},
+  {col:'メーカー',      type:'文字列',desc:'例：ミスミ、モノタロウ'},
+  {col:'材質',          type:'文字列',desc:'ステンレス / スチール / チタン / アルミ / 黄銅 / 樹脂'},
+  {col:'詳細材質',      type:'文字列',desc:'例：SUS304、βチタン合金、A2017（ジュラルミン）'},
+  {col:'ねじの呼び',    type:'文字列',desc:'M3 / M4 / M5 / M6 / M8 / M10 / M12 / M16 / M20'},
+  {col:'ねじ径(数値)',  type:'数値',  desc:'ねじの呼びの数字部分（例：M6なら6）'},
+  {col:'長さL(mm)',     type:'数値',  desc:'締結部品の長さ（ミリメートル）'},
+  {col:'表面処理',      type:'文字列',desc:'生地 / 黒染め / ユニクロ / クロメート / ニッケルめっき / アルマイト / 電解研磨 / −'},
+  {col:'強度区分(スチール)',    type:'文字列',desc:'8.8 / 10.9 / 12.9 / 14.9 / − （スチール材のみ）'},
+  {col:'強度区分(ステンレス)', type:'文字列',desc:'A2-50 / A2-70 / A4-80 / − （ステンレス材のみ）'},
+  {col:'chemSHERPA',    type:'文字列',desc:'ok（回答可） / ng（回答不可） / pending（調査中）'},
+  {col:'EU_RoHS対応',   type:'文字列',desc:'true または false'},
+  {col:'出荷日(日以内)',type:'数値',  desc:'出荷までの日数（例：1 / 3 / 7）'},
+  {col:'人気度',        type:'数値',  desc:'1〜99（内部ソート用スコア）'},
+  {col:'評価',          type:'数値',  desc:'3.0〜5.0（例：4.5）'},
+  {col:'レビュー件数',  type:'数値',  desc:'整数値'},
+  {col:'商品説明',      type:'文字列',desc:'日本語の商品説明文。カンマを含む場合は " で囲む。'},
+];
+
+let _adminImportData=null;
+
+function adminToCSVRow(p){
+  const code='HCBT'+String(p.id).padStart(4,'0');
+  const vals=[
+    code,p.name,p.catId||'cap',p.maker,p.material,p.detail,
+    p.thread,p.tnum,p.len,p.surface,p.str_s,p.str_ss,
+    p.chem,p.rohs,p.delivery,p.pop,p.rating,p.rev,p.desc
+  ];
+  return vals.map(v=>{
+    const s=String(v??'');
+    return(s.includes(',')||s.includes('"')||s.includes('\n'))?'"'+s.replace(/"/g,'""')+'"':s;
+  }).join(',');
+}
+
+function adminExportCSV(){
+  const now=new Date();
+  const ts=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0')+'_'+String(now.getHours()).padStart(2,'0')+String(now.getMinutes()).padStart(2,'0');
+  const filename=`製品データベース_全商品_${ts}.csv`;
+  const bom='\uFEFF';
+  const csv=bom+[ADMIN_CSV_HEADERS.join(','),...PRODUCTS.map(adminToCSVRow)].join('\r\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=filename;a.click();
+  URL.revokeObjectURL(url);
+  showToast(`${filename} をエクスポートしました（${PRODUCTS.length}件）`);
+}
+
+function _parseCSVLine(line){
+  const res=[];let cur='';let inQ=false;
+  for(let i=0;i<line.length;i++){
+    const c=line[i];
+    if(c==='"'){if(inQ&&line[i+1]==='"'){cur+='"';i++;}else{inQ=!inQ;}}
+    else if(c===','&&!inQ){res.push(cur);cur='';}
+    else{cur+=c;}
+  }
+  res.push(cur);return res;
+}
+
+function adminImportCSV(input){
+  const file=input.files[0];if(!file)return;
+  input.value='';
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const text=e.target.result;
+    const lines=text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(l=>l.trim());
+    if(!lines.length){showToast('空のCSVファイルです');return;}
+    const headers=_parseCSVLine(lines[0]).map(h=>h.trim());
+    const rows=lines.slice(1).map(l=>{
+      const vals=_parseCSVLine(l);
+      const obj={};headers.forEach((h,i)=>obj[h]=(vals[i]||'').trim());
+      return obj;
+    });
+
+    // Validate each row
+    const results=rows.map((row,idx)=>{
+      const errors=[];const p={};
+      const code=(row['商品コード']||'');
+      const m=code.match(/^HCBT(\d{4})$/);
+      if(!m)errors.push('商品コード形式エラー（HCBT0001形式）');else p.id=parseInt(m[1]);
+      if(!row['商品名'])errors.push('商品名が空');else p.name=row['商品名'];
+      const catId=row['カテゴリID']||'cap';
+      if(!CATEGORIES.find(c=>c.id===catId))errors.push(`カテゴリID「${catId}」不明`);else p.catId=catId;
+      p.maker=row['メーカー']||'';
+      p.material=row['材質']||'';
+      p.detail=row['詳細材質']||'';
+      p.thread=row['ねじの呼び']||'';
+      p.tnum=parseInt(row['ねじ径(数値)'])||0;
+      p.len=parseFloat(row['長さL(mm)'])||0;
+      p.surface=row['表面処理']||'生地';
+      p.str_s=row['強度区分(スチール)']||'−';
+      p.str_ss=row['強度区分(ステンレス)']||'−';
+      const chem=row['chemSHERPA']||'pending';
+      if(!['ok','ng','pending'].includes(chem))errors.push(`chemSHERPA値「${chem}」エラー`);else p.chem=chem;
+      const rv=row['EU_RoHS対応'];
+      p.rohs=(rv==='true'||rv==='TRUE'||rv==='対応');
+      p.delivery=parseInt(row['出荷日(日以内)'])||3;
+      p.pop=parseInt(row['人気度'])||70;
+      p.rating=parseFloat(row['評価'])||4.0;
+      p.rev=parseInt(row['レビュー件数'])||0;
+      p.desc=row['商品説明']||'';
+      return{p,errors,raw:row};
+    });
+
+    const valid=results.filter(r=>!r.errors.length);
+    const invalid=results.filter(r=>r.errors.length);
+    const added=valid.filter(r=>!PRODUCTS.find(p=>p.id===r.p.id));
+    const modified=valid.filter(r=>!!PRODUCTS.find(p=>p.id===r.p.id));
+    _adminImportData=valid.map(r=>r.p);
+
+    // Summary
+    document.getElementById('adm-import-summary').innerHTML=`
+      <div class="adm-sum-item adm-sum-new">新規追加: ${added.length}件</div>
+      <div class="adm-sum-item adm-sum-mod">更新: ${modified.length}件</div>
+      ${invalid.length?`<div class="adm-sum-item adm-sum-err">スキップ(エラー): ${invalid.length}件</div>`:''}
+    `;
+
+    // Preview
+    const prev=document.getElementById('adm-import-preview');
+    let html='';
+    if(invalid.length){
+      html+=`<div style="margin-bottom:10px;font-size:13px;font-weight:600;color:#e30020">⚠️ エラー行（スキップされます）</div>
+      <table class="admin-tbl" style="margin-bottom:20px">
+        <thead><tr><th>行</th><th>商品コード</th><th>エラー</th></tr></thead>
+        <tbody>${results.map((r,i)=>r.errors.length?`<tr><td>${i+2}</td><td>${r.raw['商品コード']||'—'}</td><td style="color:#e30020">${r.errors.join(' / ')}</td></tr>`:'').join('')}</tbody>
+      </table>`;
+    }
+    const sample=valid.slice(0,15);
+    html+=`<div style="margin-bottom:10px;font-size:13px;font-weight:600">✓ インポート対象 ${valid.length}件（先頭${Math.min(valid.length,15)}件表示）</div>
+    <table class="admin-tbl">
+      <thead><tr><th>商品コード</th><th>商品名</th><th>材質</th><th>ねじ</th><th>長さ</th><th>状態</th></tr></thead>
+      <tbody>${sample.map(r=>{
+        const isNew=!PRODUCTS.find(p=>p.id===r.p.id);
+        const code='HCBT'+String(r.p.id).padStart(4,'0');
+        return`<tr><td class="adm-code">${code}</td><td style="max-width:180px;overflow:hidden;text-overflow:ellipsis">${r.p.name}</td><td>${r.p.material}</td><td>${r.p.thread}</td><td>${r.p.len}mm</td><td style="font-weight:600;color:${isNew?'#009a44':'#0054a0'}">${isNew?'新規':'更新'}</td></tr>`;
+      }).join('')}</tbody>
+    </table>`;
+    prev.innerHTML=html;
+    document.getElementById('adm-apply-btn').disabled=valid.length===0;
+    document.getElementById('adm-modal').style.display='flex';
+  };
+  reader.readAsText(file,'UTF-8');
+}
+
+function closeAdminModal(){document.getElementById('adm-modal').style.display='none';}
+
+function adminApplyImport(){
+  if(!_adminImportData||!_adminImportData.length)return;
+  const cnt=_adminImportData.length;
+  _adminImportData.forEach(imp=>{
+    const idx=PRODUCTS.findIndex(p=>p.id===imp.id);
+    if(idx>=0)PRODUCTS[idx]=imp;else PRODUCTS.push(imp);
+  });
+  PRODUCTS.sort((a,b)=>a.id-b.id);
+  closeAdminModal();
+  const now=new Date();
+  document.getElementById('adm-modified').textContent=`${now.getMonth()+1}/${now.getDate()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+  document.getElementById('adm-modified').style.color='#009a44';
+  document.getElementById('adm-modified').style.fontSize='16px';
+  document.getElementById('adm-dl-btn').style.display='';
+  _adminImportData=null;
+  adminRenderStats();
+  adminRender();
+  initFilters();
+  showToast(`インポート完了（${cnt}件を適用しました）`);
+}
+
+function adminDownloadHTML(){
+  const src=document.documentElement.outerHTML;
+  const prStr='const PRODUCTS='+JSON.stringify(PRODUCTS)+';';
+  const updated=src.replace(/const PRODUCTS=\[[\s\S]*?\];(?=\s*\/\/ ── REVIEWS)/, prStr);
+  const blob=new Blob([updated],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const now=new Date();
+  const ts=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0');
+  a.href=url;a.download=`商品選定サイト_${ts}.html`;a.click();
+  URL.revokeObjectURL(url);
+  showToast('更新済みHTMLをダウンロードしました');
+}
+
+function adminResetData(){
+  if(!confirm('ページをリロードして商品データを初期状態に戻しますか？'))return;
+  location.reload();
+}
+
+function adminRenderStats(){
+  document.getElementById('adm-prod-cnt').textContent=PRODUCTS.length.toLocaleString();
+  document.getElementById('adm-cat-cnt').textContent=CATEGORIES.length;
+  const makers=new Set(PRODUCTS.map(p=>p.maker));
+  document.getElementById('adm-maker-cnt').textContent=makers.size;
+}
+
+function adminRender(){
+  const q=(document.getElementById('adm-search')?.value||'').toLowerCase();
+  const catF=document.getElementById('adm-cat-filter')?.value||'';
+  const rows=PRODUCTS.filter(p=>{
+    if(catF&&(p.catId||'cap')!==catF)return false;
+    if(q&&![p.name,p.material,p.thread,p.detail,p.maker].some(v=>(v||'').toLowerCase().includes(q)))return false;
+    return true;
+  });
+  document.getElementById('adm-table-count').textContent=rows.length+'件';
+  const chemMap={
+    ok:'<span class="adm-chem-ok">◎回答可</span>',
+    ng:'<span class="adm-chem-ng">✗回答不可</span>',
+    pending:'<span class="adm-chem-pend">△調査中</span>'
+  };
+  document.getElementById('adm-tbody').innerHTML=rows.map(p=>{
+    const code='HCBT'+String(p.id).padStart(4,'0');
+    const catLabel=CATEGORIES.find(c=>c.id===(p.catId||'cap'))?.name.slice(0,8)||'—';
+    return`<tr>
+      <td class="adm-code">${code}</td>
+      <td title="${p.name}">${p.name}</td>
+      <td title="${catLabel}" style="font-size:11px">${p.catId||'cap'}</td>
+      <td>${p.maker}</td>
+      <td>${p.material}</td>
+      <td title="${p.detail}">${p.detail}</td>
+      <td>${p.thread}</td>
+      <td>${p.len}</td>
+      <td title="${p.surface}">${p.surface.length>6?p.surface.slice(0,6)+'…':p.surface}</td>
+      <td>${p.str_s}</td><td>${p.str_ss}</td>
+      <td>${chemMap[p.chem]||p.chem}</td>
+      <td>${p.rohs?'<span class="adm-rohs-y">対応</span>':'<span class="adm-rohs-n">非対応</span>'}</td>
+      <td>${p.delivery}日</td>
+      <td>${p.rating}</td>
+      <td>${p.rev}</td>
+    </tr>`;
+  }).join('');
+}
+
+function initAdminPage(){
+  adminRenderStats();
+  // カテゴリセレクト初期化
+  const sel=document.getElementById('adm-cat-filter');
+  if(sel){
+    while(sel.options.length>1)sel.remove(1);
+    CATEGORIES.forEach(c=>{
+      const o=document.createElement('option');
+      o.value=c.id;o.textContent=c.name.slice(0,16)+(c.name.length>16?'…':'');
+      sel.appendChild(o);
+    });
+  }
+  // スキーマテーブル初期化
+  const sb=document.getElementById('adm-schema-tbody');
+  if(sb)sb.innerHTML=ADMIN_SCHEMA.map(s=>`<tr><td style="padding:5px 10px;font-family:monospace;font-size:11px;white-space:nowrap;border-bottom:1px solid #f3f4f6">${s.col}</td><td style="padding:5px 10px;border-bottom:1px solid #f3f4f6;color:#0054a0;font-weight:600;white-space:nowrap">${s.type}</td><td style="padding:5px 10px;border-bottom:1px solid #f3f4f6;color:#6b7280">${s.desc}</td></tr>`).join('');
+  adminRender();
 }
 
 // ── Init ──
