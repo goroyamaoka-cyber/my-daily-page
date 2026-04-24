@@ -63,7 +63,8 @@ body{font-family:"Noto Sans JP","Hiragino Kaku Gothic Pro","Yu Gothic",sans-seri
 .cat-hero-inner{position:relative;flex:0 0 auto;max-width:400px}
 .cat-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .cat-eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--blue);flex-shrink:0}
-.cat-site-title{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.3px;margin-bottom:10px;line-height:1.3}
+.cat-site-title{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#e30020 0%,#b5001a 100%);color:#fff;font-size:12px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;padding:7px 16px 7px 12px;border-radius:5px;margin-bottom:18px;box-shadow:0 4px 16px rgba(227,0,32,.28),0 1px 4px rgba(227,0,32,.12);position:relative;overflow:hidden}
+.cat-site-title::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(to bottom,rgba(255,255,255,.18),transparent);pointer-events:none}
 .cat-hero h1{font-size:34px;font-weight:800;line-height:1.2;letter-spacing:-.5px;color:var(--ink);margin-bottom:14px}
 .cat-hero p{font-size:13px;color:var(--ink-60);line-height:1.8;margin-bottom:0}
 .cat-hero-stats{display:flex;gap:40px}
@@ -589,7 +590,15 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
     <div class="cat-hero-grid"></div>
     <div class="cat-hero-inner">
       <div class="cat-eyebrow" data-i18n="eyebrow">Product Categories</div>
-      <div class="cat-site-title" data-i18n="siteTitle">製品選定システム</div>
+      <div class="cat-site-title">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0">
+          <rect x="1" y="1" width="5.5" height="5.5" rx="1" fill="white"/>
+          <rect x="9.5" y="1" width="5.5" height="5.5" rx="1" fill="white"/>
+          <rect x="1" y="9.5" width="5.5" height="5.5" rx="1" fill="white"/>
+          <rect x="9.5" y="9.5" width="5.5" height="5.5" rx="1" fill="white"/>
+        </svg>
+        <span data-i18n="siteTitle">製品選定システム</span>
+      </div>
       <h1 data-i18n-html="heroTitle">ねじ・ボルト・ナット<br>ワッシャ・カラー</h1>
       <p data-i18n="heroDesc">工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。</p>
     </div>
