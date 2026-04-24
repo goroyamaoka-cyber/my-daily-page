@@ -63,6 +63,7 @@ body{font-family:"Noto Sans JP","Hiragino Kaku Gothic Pro","Yu Gothic",sans-seri
 .cat-hero-inner{position:relative;flex:0 0 auto;max-width:400px}
 .cat-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--blue);text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .cat-eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--blue);flex-shrink:0}
+.cat-site-title{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.3px;margin-bottom:10px;line-height:1.3}
 .cat-hero h1{font-size:34px;font-weight:800;line-height:1.2;letter-spacing:-.5px;color:var(--ink);margin-bottom:14px}
 .cat-hero p{font-size:13px;color:var(--ink-60);line-height:1.8;margin-bottom:0}
 .cat-hero-stats{display:flex;gap:40px}
@@ -528,6 +529,7 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
     <div class="cat-hero-grid"></div>
     <div class="cat-hero-inner">
       <div class="cat-eyebrow" data-i18n="eyebrow">Product Categories</div>
+      <div class="cat-site-title" data-i18n="siteTitle">製品選定システム</div>
       <h1 data-i18n-html="heroTitle">ねじ・ボルト・ナット<br>ワッシャ・カラー</h1>
       <p data-i18n="heroDesc">工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。</p>
     </div>
@@ -741,7 +743,7 @@ let currentLang='ja';
 const T={
   ja:{
     breadcrumb:'ねじ・ボルト・ナット',search:'商品を検索',searchBtn:'検索',searchPopular:'よく検索される：',heroSearchPlaceholder:'商品を検索...（材質・ねじ径・用途など）',
-    eyebrow:'Product Categories',heroTitle:'ねじ・ボルト・ナット<br>ワッシャ・カラー',
+    eyebrow:'Product Categories',siteTitle:'製品選定システム',heroTitle:'ねじ・ボルト・ナット<br>ワッシャ・カラー',
     heroDesc:'工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。',
     tabAll:'すべて',tabBolt:'ボルト',tabNut:'ナット',tabWasher:'ワッシャ',tabCollar:'カラー・スペーサ',
     filterTitle:'絞り込み',clearAll:'すべて解除',
@@ -771,7 +773,7 @@ const T={
   },
   en:{
     breadcrumb:'Screws & Fasteners',search:'Search products',searchBtn:'Search',searchPopular:'Popular searches:',heroSearchPlaceholder:'Search products... (material, thread size, application)',
-    eyebrow:'Product Categories',heroTitle:'Screws, Bolts & Nuts<br>Washers & Collars',
+    eyebrow:'Product Categories',siteTitle:'Product Selection System',heroTitle:'Screws, Bolts & Nuts<br>Washers & Collars',
     heroDesc:'Comprehensive lineup of industrial fasteners. Select the optimal fastener with high precision from a wide variety of materials, sizes, and strength classes.',
     tabAll:'All',tabBolt:'Bolts',tabNut:'Nuts',tabWasher:'Washers',tabCollar:'Collars & Spacers',
     filterTitle:'Filter',clearAll:'Clear All',
@@ -801,7 +803,7 @@ const T={
   },
   zh:{
     breadcrumb:'螺丝·螺栓·螺母',search:'搜索商品',searchBtn:'搜索',searchPopular:'热门搜索：',heroSearchPlaceholder:'搜索商品...（材质、螺纹规格、用途等）',
-    eyebrow:'产品分类',heroTitle:'螺丝、螺栓和螺母<br>垫圈和间隔柱',
+    eyebrow:'产品分类',siteTitle:'产品选型系统',heroTitle:'螺丝、螺栓和螺母<br>垫圈和间隔柱',
     heroDesc:'工业紧固件综合产品线。从材质、尺寸、强度等级的丰富系列中，高精度地选择最佳紧固件。',
     tabAll:'全部',tabBolt:'螺栓',tabNut:'螺母',tabWasher:'垫圈',tabCollar:'间隔柱',
     filterTitle:'筛选',clearAll:'清除全部',
