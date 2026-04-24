@@ -540,7 +540,7 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
     <!-- 左フィルター -->
     <aside class="filter-panel">
       <div class="fp-close-mb">
-        <span>絞り込み</span>
+        <span data-i18n="filterTitle">絞り込み</span>
         <button onclick="closeFilter()">×</button>
       </div>
       <div class="fp-nav">
@@ -606,7 +606,7 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
     <!-- 右商品パネル -->
     <main class="product-panel">
       <h1 class="panel-title" id="list-title">六角穴付きボルト（キャップボルト）</h1>
-      <p class="panel-desc">円筒形の頭部に六角形の穴が開いているボルトで、六角レンチにて締結します。</p>
+      <p class="panel-desc" id="list-desc">六角レンチで締結。最も汎用的な高強度ボルト</p>
       <div class="atags" id="atags"></div>
 
       <div class="toolbar">
@@ -837,11 +837,32 @@ const SURF_T={
   '電解研磨':     {en:'Electropolished',zh:'电解抛光'},
 };
 
+// 詳細材質翻訳（日本語固有名のみ）
+const DETAIL_T={
+  '純チタン':               {en:'Pure Titanium (JIS Gr.1)',zh:'纯钛（JIS 1级）'},
+  'βチタン合金':            {en:'β-Titanium Alloy',       zh:'β钛合金'},
+  '黄銅C3604':              {en:'Brass C3604',              zh:'黄铜 C3604'},
+  'A2017（ジュラルミン）':        {en:'A2017 Duralumin',         zh:'A2017硬铝'},
+  'A7075（超超ジュラルミン）':    {en:'A7075 Super Duralumin',   zh:'A7075超高强铝'},
+  'ポリカーボネート（PC）':  {en:'Polycarbonate (PC)',      zh:'聚碳酸酯（PC）'},
+  'YKS200（防錆鋼）':       {en:'YKS200 Rust-resist Steel',zh:'YKS200防锈钢'},
+};
+
 function L(k){return T[currentLang]?.[k]??T.ja[k]??k;}
 function catName(c){return CAT_T[c.id]?.name[currentLang]||c.name;}
 function catDesc(c){return CAT_T[c.id]?.desc[currentLang]||c.desc;}
 function tMat(m){return currentLang==='ja'?m:(MAT_T[m]?.[currentLang]||m);}
 function tSurf(s){return currentLang==='ja'?s:(SURF_T[s]?.[currentLang]||s);}
+function tDetail(d){return currentLang==='ja'?d:(DETAIL_T[d]?.[currentLang]||d);}
+function pDesc(p){
+  if(currentLang==='ja') return p.desc;
+  const mat=tMat(p.material), surf=p.surface!=='−'?', '+tSurf(p.surface):'';
+  const str=p.str_s!=='−'?p.str_s:p.str_ss!=='−'?p.str_ss:'—';
+  const deli=p.delivery+L('daysUnit');
+  if(currentLang==='en')
+    return `${mat}${surf} fastener. ${p.thread} × ${p.len}mm. Strength class: ${str}. Lead time: ${deli}.`;
+  return `${mat}${surf}紧固件。${p.thread} × ${p.len}mm，强度等级：${str}，发货：${deli}。`;
+}
 function pName(p){
   if(currentLang==='ja') return p.name;
   const catId=p.catId||'cap';
@@ -868,10 +889,30 @@ function updateUI(){
     it.classList.toggle('active', it.dataset.lang===currentLang);
   });
   document.getElementById('langDrop')?.classList.remove('open');
-  // カテゴリ名を再描画
+  // カテゴリ名・説明を再描画
   if(document.getElementById('fp-cat-name') && currentCat){
     document.getElementById('fp-cat-name').textContent=catName(currentCat);
   }
+  const _listTitle=document.getElementById('list-title');
+  if(_listTitle && currentCat) _listTitle.textContent=catName(currentCat);
+  const _listDesc=document.getElementById('list-desc');
+  if(_listDesc && currentCat) _listDesc.textContent=catDesc(currentCat);
+  // パンくずを現在のページに応じて再描画
+  const _activePg=document.querySelector('.page.active')?.id;
+  const _bc=document.getElementById('bc');
+  if(_bc && _activePg==='pg-list' && currentCat){
+    _bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">${L('breadcrumb')}</a><span>›</span><strong>${catName(currentCat)}</strong>`;
+  }
+  // チェックボックスラベル翻訳
+  document.querySelectorAll('span[data-val][data-key]').forEach(s=>{
+    const fn=s.dataset.key==='material'?tMat:s.dataset.key==='surface'?tSurf:v=>v;
+    s.textContent=fn(s.dataset.val);
+  });
+  // 件数セレクトのラベル更新
+  const _unit=L('count');
+  document.querySelectorAll('#per-page option').forEach(o=>{
+    o.textContent=currentLang==='en'?o.value+' '+_unit:o.value+_unit;
+  });
 }
 
 function toggleLangMenu(e){
@@ -885,10 +926,12 @@ document.addEventListener('click',function(){
 function setLang(lang){
   currentLang=lang;
   updateUI();
+  // カテゴリカードは常に再描画（非表示でも翻訳を更新）
+  const _activeTabType=document.querySelector('.cat-tab.active')?.dataset?.type||'all';
+  renderCategories(_activeTabType);
   // 現在のビューを再描画
   const activePage=document.querySelector('.page.active')?.id;
-  if(activePage==='pg-cat') renderCategories();
-  else if(activePage==='pg-list') { render(); }
+  if(activePage==='pg-list') { render(); updateTags(); }
   else if(activePage==='pg-detail' && window.__currentDetailProduct) renderDetail(window.__currentDetailProduct);
 }
 
@@ -1415,6 +1458,8 @@ function navTo(pg,data){
     bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">${L('breadcrumb')}</a><span>›</span><strong>${catName(currentCat)}</strong>`;
     document.getElementById('list-title').textContent=catName(currentCat);
     document.getElementById('fp-cat-name').textContent=catName(currentCat);
+    const _ld=document.getElementById('list-desc');
+    if(_ld) _ld.textContent=catDesc(currentCat);
     apply();
   }else if(pg==='detail'&&data){
     bc.innerHTML=`<a href="#" onclick="navTo('cat');return false">TOP</a><span>›</span><a href="#" onclick="navTo('cat');return false">${L('breadcrumb')}</a><span>›</span><a href="#" onclick="navTo('list');return false">${catName(currentCat)}</a><span>›</span><strong>${pName(data).slice(0,20)}…</strong>`;
@@ -1462,10 +1507,11 @@ function buildCb(cid,key,pool,sortKey){
   let entries=Object.entries(cnts);
   if(sortKey)entries.sort((a,b)=>(pool.find(p=>p[key]===a[0])?.[sortKey]||0)-(pool.find(p=>p[key]===b[0])?.[sortKey]||0));
   else entries.sort((a,b)=>b[1]-a[1]);
+  const labelFn=key==='material'?v=>tMat(v):key==='surface'?v=>tSurf(v):v=>v;
   document.getElementById(cid).innerHTML=entries.map(([v,c])=>`
     <div class="cbi">
       <input type="checkbox" id="f-${cid}-${v}" value="${v}" onchange="apply()">
-      <label for="f-${cid}-${v}"><span>${v}</span><span class="fcnt">(${c})</span></label>
+      <label for="f-${cid}-${v}"><span data-val="${v}" data-key="${key}">${labelFn(v)}</span><span class="fcnt">(${c})</span></label>
     </div>`).join('');
 }
 
@@ -1572,10 +1618,10 @@ function updateTags(){
   const tags=[];
   const tMin=parseInt(document.getElementById('sl-tmin').value)||3,tMax=parseInt(document.getElementById('sl-tmax').value)||16;
   const lMin=parseInt(document.getElementById('sl-lmin').value)||6,lMax=parseInt(document.getElementById('sl-lmax').value)||100;
-  if(tMin>3||tMax<16)tags.push({t:`ねじ径 M${tMin}〜M${tMax}`,r:()=>{document.getElementById('sl-tmin').value=3;document.getElementById('sl-tmax').value=16;updateFill('t');apply()}});
-  if(lMin>6||lMax<100)tags.push({t:`長さ ${lMin}〜${lMax}mm`,r:()=>{document.getElementById('sl-lmin').value=6;document.getElementById('sl-lmax').value=100;updateFill('l');apply()}});
-  [['fb-mat','材質'],['fb-surf','表面処理']].forEach(([id,lbl])=>getChecked(id).forEach(v=>tags.push({t:`${lbl}: ${v}`,r:()=>{document.querySelector(`#${id} input[value="${v}"]`).checked=false;apply()}})));
-  getChecked('fb-str').forEach(v=>tags.push({t:`強度区分 ${v}`,r:()=>{document.getElementById(`f-str-${v}`).checked=false;apply()}}));
+  if(tMin>3||tMax<16)tags.push({t:`${L('threadM')} M${tMin}〜M${tMax}`,r:()=>{document.getElementById('sl-tmin').value=3;document.getElementById('sl-tmax').value=16;updateFill('t');apply()}});
+  if(lMin>6||lMax<100)tags.push({t:`${L('lengthSpec')} ${lMin}〜${lMax}mm`,r:()=>{document.getElementById('sl-lmin').value=6;document.getElementById('sl-lmax').value=100;updateFill('l');apply()}});
+  [['fb-mat',L('material'),'mat'],['fb-surf',L('surface'),'surf']].forEach(([id,lbl,tp])=>getChecked(id).forEach(v=>tags.push({t:`${lbl}: ${tp==='mat'?tMat(v):tSurf(v)}`,r:()=>{document.querySelector(`#${id} input[value="${v}"]`).checked=false;apply()}})));
+  getChecked('fb-str').forEach(v=>tags.push({t:`${L('strength')} ${v}`,r:()=>{document.getElementById(`f-str-${v}`).checked=false;apply()}}));
   window.__tagRemovers=tags.map(t=>t.r);
   document.getElementById('atags').innerHTML=tags.map((t,i)=>`<div class="atag">${t.t}<button onclick="__tagRemovers[${i}]()">×</button></div>`).join('');
 }
@@ -1625,7 +1671,7 @@ function renderList(items,disp){
         <div class="pbadges">${p.chem==='ok'?`<span class="bdg bdg-c">${L('chemBadge')}</span>`:''}${p.rohs?`<span class="bdg bdg-r">${L('rohsBadge')}</span>`:''}</div>
         <div class="pmkr">${p.maker}</div>
         <div class="pnm">${pName(p)}</div>
-        <div class="pdsc">${p.desc}</div>
+        <div class="pdsc">${pDesc(p)}</div>
         <div class="prat"><span class="stars">${stars(p.rating)}</span><span class="rnum">${p.rating}</span><span class="rcnt">(${p.rev}${L('rev')})</span></div>
         <div class="spec-pills">
           <div class="spec-pill"><strong>${p.thread}</strong></div>
@@ -1639,7 +1685,7 @@ function renderList(items,disp){
           <table class="sptbl"><tr>
             <th>${L('threadSpec')}</th><th>${L('lengthSpec')}</th><th>${L('matSpec')}</th><th>${L('detailSpec')}</th><th>${L('strength')}(S)</th><th>${L('strength')}(SS)</th><th>${L('surfSpec')}</th>
           </tr><tr>
-            <td>${p.thread}</td><td>${p.len}mm</td><td>${tMat(p.material)}</td><td>${p.detail}</td><td>${p.str_s}</td><td>${p.str_ss}</td><td>${tSurf(p.surface)}</td>
+            <td>${p.thread}</td><td>${p.len}mm</td><td>${tMat(p.material)}</td><td>${tDetail(p.detail)}</td><td>${p.str_s}</td><td>${p.str_ss}</td><td>${tSurf(p.surface)}</td>
           </tr></table>
         </div>
       </div>
@@ -1663,7 +1709,7 @@ function renderPhoto(items,disp){
 function renderCompare(items,disp){
   const hs=L('cmpHeaders');
   const chemL={ok:`✅ ${L('chemOk')}`,ng:`❌ ${L('chemNg')}`,pending:`🔄 ${L('chemPending')}`};
-  const vs=[p=>pName(p),p=>p.thread,p=>p.len+'mm',p=>tMat(p.material),p=>p.detail,p=>p.str_s,p=>p.str_ss,p=>tSurf(p.surface),p=>chemL[p.chem]||'',p=>p.rohs?`✅ ${L('rohsOk')}`:`❌ ${L('rohsNg')}`,p=>p.delivery+L('daysUnit'),p=>`★${p.rating} (${p.rev}${L('rev')})`];
+  const vs=[p=>pName(p),p=>p.thread,p=>p.len+'mm',p=>tMat(p.material),p=>tDetail(p.detail),p=>p.str_s,p=>p.str_ss,p=>tSurf(p.surface),p=>chemL[p.chem]||'',p=>p.rohs?`✅ ${L('rohsOk')}`:`❌ ${L('rohsNg')}`,p=>p.delivery+L('daysUnit'),p=>`★${p.rating} (${p.rev}${L('rev')})`];
   const lblStyle='font-weight:700;background:var(--s2);white-space:nowrap;color:var(--ink-60);font-size:11px;letter-spacing:.3px';
   const imgRow=`<tr><td style="${lblStyle}">${L('cmpImage')}</td>${items.map(p=>`<td style="text-align:center;padding:16px 14px;background:#f8f9fa"><div style="display:inline-block;cursor:pointer" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">${illustImg(p.material,80,p.catId)}</div></td>`).join('')}</tr>`;
   const nm=p=>{const n=pName(p);return n.length>18?n.slice(0,18)+'…':n;};
@@ -1703,10 +1749,10 @@ function renderDetail(p){
   document.getElementById('dt-badges').innerHTML=(p.chem==='ok'?`<span class="badge badge-c">${L('chemBadge')}</span>`:'')+(p.rohs?`<span class="badge badge-r">${L('rohsBadge')}</span>`:'');
   document.getElementById('dt-maker').textContent=p.maker;
   document.getElementById('dt-rat').innerHTML=`<span class="stars" style="font-size:16px">${stars(p.rating)}</span><span style="font-size:16px;font-weight:800;margin-left:4px">${p.rating}</span><span style="font-size:12px;color:var(--ink-20);margin-left:4px">(${p.rev}${L('reviews')})</span>`;
-  document.getElementById('dt-spec-mini').innerHTML=[[L('threadSpec'),p.thread],[L('lengthSpec'),p.len+' mm'],[L('matSpec'),tMat(p.material)],[L('detailSpec'),p.detail],[L('surfSpec'),tSurf(p.surface)],[L('delivSpec'),p.delivery+L('daysUnit')]].map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
-  document.getElementById('dt-desc').textContent=p.desc;
+  document.getElementById('dt-spec-mini').innerHTML=[[L('threadSpec'),p.thread],[L('lengthSpec'),p.len+' mm'],[L('matSpec'),tMat(p.material)],[L('detailSpec'),tDetail(p.detail)],[L('surfSpec'),tSurf(p.surface)],[L('delivSpec'),p.delivery+L('daysUnit')]].map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
+  document.getElementById('dt-desc').textContent=pDesc(p);
   document.getElementById('dt-full-spec').innerHTML=[
-    [L('productCode'),'HCBT'+String(p.id).padStart(4,'0')],[L('threadM'),p.thread],[L('lengthMm'),p.len],[L('matClass'),tMat(p.material)],[L('detailSpec'),p.detail],
+    [L('productCode'),'HCBT'+String(p.id).padStart(4,'0')],[L('threadM'),p.thread],[L('lengthMm'),p.len],[L('matClass'),tMat(p.material)],[L('detailSpec'),tDetail(p.detail)],
     [L('strSteel'),p.str_s],[L('strSUS'),p.str_ss],[L('surfSpec'),tSurf(p.surface)],
     ['chemSHERPA',{ok:L('chemOk'),ng:L('chemNg'),pending:L('chemPending')}[p.chem]],[L('rohsLabel'),p.rohs?L('rohsOk'):L('rohsNg')],
     [L('threadType'),L('threadType_v')],[L('headShape'),L('headShape_v')],[L('wrenchType'),L('wrenchType_v')],[L('delivLabel'),p.delivery+L('daysUnit')],[L('jisLabel'),L('jis_v')]
