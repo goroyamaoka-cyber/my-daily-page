@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>製品選定システム</title>
+<title>製品選定システム（Sample）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Noto+Sans+JP:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -208,10 +208,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .pmkr{font-size:11px;color:var(--ink-20);margin-bottom:3px;font-weight:500}
 .pnm{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.4;letter-spacing:-.2px}
 .pdsc{font-size:12px;color:var(--ink-40);margin-bottom:10px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.prat{display:flex;align-items:center;gap:6px;margin-bottom:10px}
-.stars{color:#f59e0b;font-size:12px;letter-spacing:.5px}
-.rnum{font-size:13px;font-weight:700;color:var(--ink)}
-.rcnt{font-size:11px;color:var(--ink-20)}
 .spec-pills{display:flex;flex-wrap:wrap;gap:5px}
 .spec-pill{font-size:11px;background:var(--s2);color:var(--ink-60);padding:3px 9px;border-radius:6px;font-weight:500}
 .spec-pill strong{color:var(--ink);font-weight:700}
@@ -448,8 +444,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .cat-card-top{height:120px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .cat-card.featured{border-color:var(--ink-10);background:var(--s0)}
 
-/* Stars — amber */
-.stars{color:#d4972a}
 
 /* Detail main image — SVG centered */
 .detail-main-img{background:var(--s2)!important;display:flex;align-items:center;justify-content:center}
@@ -729,7 +723,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
           <div class="sel"><label data-i18n="sort">並び替え：</label>
             <select id="sort" onchange="apply()">
               <option value="pop"    data-i18n="sortPop">人気順</option>
-              <option value="rating" data-i18n="sortRating">評価順</option>
               <option value="ta"     data-i18n="sortTa">ねじ径 小→大</option>
               <option value="td"     data-i18n="sortTd">ねじ径 大→小</option>
               <option value="la"     data-i18n="sortLa">長さ 短→長</option>
@@ -862,8 +855,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
               <th>chem</th>
               <th>RoHS</th>
               <th>出荷日</th>
-              <th>評価</th>
-              <th>レビュー</th>
             </tr>
           </thead>
           <tbody id="adm-tbody"></tbody>
@@ -915,7 +906,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
         <div class="detail-badges" id="dt-badges"></div>
         <div class="detail-mkr" id="dt-maker"></div>
         <div class="detail-name-sub" id="dt-name-sub"></div>
-        <div class="detail-rat" id="dt-rat"></div>
         <hr class="detail-div">
         <table class="spec-mini" id="dt-spec-mini"></table>
       </div>
@@ -923,7 +913,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 
     <div class="detail-sec"><h3 data-i18n="descTitle">商品説明</h3><p class="detail-desc-text" id="dt-desc"></p></div>
     <div class="detail-sec"><h3 data-i18n="specTitle">詳細仕様</h3><table class="full-spec" id="dt-full-spec"></table></div>
-    <div class="detail-sec"><h3 data-i18n="reviewTitle">カスタマーレビュー</h3><div id="dt-reviews"></div></div>
     <div class="detail-sec"><h3 data-i18n="relatedTitle">関連商品</h3><div class="related-grid" id="dt-related"></div></div>
   </div>
 </div>
@@ -937,7 +926,7 @@ let currentLang='ja';
 const T={
   ja:{
     breadcrumb:'ねじ・ボルト・ナット',search:'商品を検索',searchBtn:'検索',searchPopular:'よく検索される：',heroSearchPlaceholder:'商品を検索...（材質・ねじ径・用途など）',
-    eyebrow:'Product Categories',siteTitle:'製品選定システム',heroTitle:'ねじ・ボルト・ナット<br>ワッシャ・カラー',
+    eyebrow:'Product Categories',siteTitle:'製品選定システム（Sample）',heroTitle:'ねじ・ボルト・ナット<br>ワッシャ・カラー',
     heroDesc:'工業用締結部品の総合ラインアップ。材質・サイズ・強度区分の豊富なバリエーションから、最適な締結部品を高精度に選定できます。',
     tabAll:'すべて',tabBolt:'ボルト',tabNut:'ナット',tabWasher:'ワッシャ',tabCollar:'カラー・スペーサ',
     filterTitle:'絞り込み',clearAll:'すべて解除',
@@ -947,14 +936,14 @@ const T={
     countLabel:'件数：',count:'件',filterBtn:'絞り込み',
     viewList:'≡ 一覧',viewPhoto:'⊞ 写真',viewCompare:'⊟ 仕様比較',
     perPage:'表示件数：',sort:'並び替え：',delivery:'出荷日：',
-    sortPop:'人気順',sortRating:'評価順',sortTa:'ねじ径 小→大',sortTd:'ねじ径 大→小',sortLa:'長さ 短→長',sortLd:'長さ 長→短',
+    sortPop:'人気順',sortTa:'ねじ径 小→大',sortTd:'ねじ径 大→小',sortLa:'長さ 短→長',sortLd:'長さ 長→短',
     delivAll:'すべて',deliv1:'1日以内',deliv3:'3日以内',deliv7:'1週間以内',
     csvAll:'全商品',csvCur:'表示中',
     backToList:'商品一覧に戻る',
-    descTitle:'商品説明',specTitle:'詳細仕様',reviewTitle:'カスタマーレビュー',relatedTitle:'関連商品',
+    descTitle:'商品説明',specTitle:'詳細仕様',relatedTitle:'関連商品',
     cmpSpec:'仕様',cmpImage:'画像',
-    cmpHeaders:['商品名','ねじの呼び','長さL(mm)','材質','詳細材質','強度区分(スチール)','強度区分(ステンレス)','表面処理','chemSHERPA','EU_RoHS','出荷日','評価'],
-    delivBadge:'最短',days:'日',daysUnit:'日以内',reviews:'件のレビュー',rev:'件',
+    cmpHeaders:['商品名','ねじの呼び','長さL(mm)','材質','詳細材質','強度区分(スチール)','強度区分(ステンレス)','表面処理','chemSHERPA','EU_RoHS','出荷日'],
+    delivBadge:'最短',days:'日',daysUnit:'日以内',
     threadSpec:'ねじの呼び',lengthSpec:'長さL',matSpec:'材質',detailSpec:'詳細材質',surfSpec:'表面処理',delivSpec:'出荷日',
     chemOk:'回答可能（特定物質なし）',chemNg:'回答不可',chemPending:'調査中',rohsOk:'対応',rohsNg:'非対応',
     threadType:'ねじの種類',headShape:'頭部形状',wrenchType:'適合レンチ',delivLabel:'出荷日',jisLabel:'JIS規格',
@@ -967,7 +956,7 @@ const T={
   },
   en:{
     breadcrumb:'Screws & Fasteners',search:'Search products',searchBtn:'Search',searchPopular:'Popular searches:',heroSearchPlaceholder:'Search products... (material, thread size, application)',
-    eyebrow:'Product Categories',siteTitle:'Product Selection System',heroTitle:'Screws, Bolts & Nuts<br>Washers & Collars',
+    eyebrow:'Product Categories',siteTitle:'Product Selection System (Sample)',heroTitle:'Screws, Bolts & Nuts<br>Washers & Collars',
     heroDesc:'Comprehensive lineup of industrial fasteners. Select the optimal fastener with high precision from a wide variety of materials, sizes, and strength classes.',
     tabAll:'All',tabBolt:'Bolts',tabNut:'Nuts',tabWasher:'Washers',tabCollar:'Collars & Spacers',
     filterTitle:'Filter',clearAll:'Clear All',
@@ -977,14 +966,14 @@ const T={
     countLabel:'Count:',count:'items',filterBtn:'Filter',
     viewList:'≡ List',viewPhoto:'⊞ Grid',viewCompare:'⊟ Compare',
     perPage:'Per page:',sort:'Sort:',delivery:'Delivery:',
-    sortPop:'Popularity',sortRating:'Rating',sortTa:'Thread ↑',sortTd:'Thread ↓',sortLa:'Length ↑',sortLd:'Length ↓',
+    sortPop:'Popularity',sortTa:'Thread ↑',sortTd:'Thread ↓',sortLa:'Length ↑',sortLd:'Length ↓',
     delivAll:'All',deliv1:'Within 1 day',deliv3:'Within 3 days',deliv7:'Within 1 week',
     csvAll:'All Products',csvCur:'Filtered',
     backToList:'Back to List',
-    descTitle:'Description',specTitle:'Specifications',reviewTitle:'Customer Reviews',relatedTitle:'Related Products',
+    descTitle:'Description',specTitle:'Specifications',relatedTitle:'Related Products',
     cmpSpec:'Spec',cmpImage:'Image',
-    cmpHeaders:['Product Name','Thread','Length(mm)','Material','Detail','Strength(S)','Strength(SS)','Surface','chemSHERPA','EU_RoHS','Lead Time','Rating'],
-    delivBadge:'Min.',days:' day(s)',daysUnit:' day(s)',reviews:' reviews',rev:'rev.',
+    cmpHeaders:['Product Name','Thread','Length(mm)','Material','Detail','Strength(S)','Strength(SS)','Surface','chemSHERPA','EU_RoHS','Lead Time'],
+    delivBadge:'Min.',days:' day(s)',daysUnit:' day(s)',
     threadSpec:'Thread',lengthSpec:'Length',matSpec:'Material',detailSpec:'Detail',surfSpec:'Surface',delivSpec:'Lead Time',
     chemOk:'Declarable (No hazardous substances)',chemNg:'Non-declarable',chemPending:'Under investigation',rohsOk:'Compliant',rohsNg:'Non-compliant',
     threadType:'Thread Type',headShape:'Head Shape',wrenchType:'Wrench Type',delivLabel:'Lead Time',jisLabel:'Standard',
@@ -997,7 +986,7 @@ const T={
   },
   zh:{
     breadcrumb:'螺丝·螺栓·螺母',search:'搜索商品',searchBtn:'搜索',searchPopular:'热门搜索：',heroSearchPlaceholder:'搜索商品...（材质、螺纹规格、用途等）',
-    eyebrow:'产品分类',siteTitle:'产品选型系统',heroTitle:'螺丝、螺栓和螺母<br>垫圈和间隔柱',
+    eyebrow:'产品分类',siteTitle:'产品选型系统（Sample）',heroTitle:'螺丝、螺栓和螺母<br>垫圈和间隔柱',
     heroDesc:'工业紧固件综合产品线。从材质、尺寸、强度等级的丰富系列中，高精度地选择最佳紧固件。',
     tabAll:'全部',tabBolt:'螺栓',tabNut:'螺母',tabWasher:'垫圈',tabCollar:'间隔柱',
     filterTitle:'筛选',clearAll:'清除全部',
@@ -1007,14 +996,14 @@ const T={
     countLabel:'数量：',count:'件',filterBtn:'筛选',
     viewList:'≡ 列表',viewPhoto:'⊞ 图片',viewCompare:'⊟ 规格比较',
     perPage:'每页：',sort:'排序：',delivery:'发货：',
-    sortPop:'人气',sortRating:'评分',sortTa:'螺纹径↑',sortTd:'螺纹径↓',sortLa:'长度↑',sortLd:'长度↓',
+    sortPop:'人气',sortTa:'螺纹径↑',sortTd:'螺纹径↓',sortLa:'长度↑',sortLd:'长度↓',
     delivAll:'全部',deliv1:'1天以内',deliv3:'3天以内',deliv7:'1周以内',
     csvAll:'全部商品',csvCur:'当前显示',
     backToList:'返回列表',
-    descTitle:'商品说明',specTitle:'详细规格',reviewTitle:'用户评价',relatedTitle:'相关商品',
+    descTitle:'商品说明',specTitle:'详细规格',relatedTitle:'相关商品',
     cmpSpec:'规格',cmpImage:'图片',
-    cmpHeaders:['商品名','螺纹','长度(mm)','材质','材质详情','强度(钢)','强度(不锈钢)','表面处理','chemSHERPA','EU_RoHS','发货日','评分'],
-    delivBadge:'最短',days:'天',daysUnit:'天以内',reviews:'条评价',rev:'评',
+    cmpHeaders:['商品名','螺纹','长度(mm)','材质','材质详情','强度(钢)','强度(不锈钢)','表面处理','chemSHERPA','EU_RoHS','发货日'],
+    delivBadge:'最短',days:'天',daysUnit:'天以内',
     threadSpec:'螺纹规格',lengthSpec:'长度',matSpec:'材质',detailSpec:'材质详情',surfSpec:'表面处理',delivSpec:'发货日',
     chemOk:'可申报（无有害物质）',chemNg:'不可申报',chemPending:'调查中',rohsOk:'符合',rohsNg:'不符合',
     threadType:'螺纹类型',headShape:'头部形状',wrenchType:'适用扳手',delivLabel:'发货日期',jisLabel:'JIS规格',
@@ -1186,7 +1175,7 @@ document.addEventListener('click',function(){
 
 function setLang(lang){
   currentLang=lang;
-  const titleMap={ja:'製品選定システム',en:'Product Selection System',zh:'产品选型系统'};
+  const titleMap={ja:'製品選定システム（Sample）',en:'Product Selection System (Sample)',zh:'产品选型系统（Sample）'};
   document.title=titleMap[lang]||titleMap.ja;
   updateUI();
   // カテゴリカードは常に再描画（非表示でも翻訳を更新）
@@ -1326,152 +1315,143 @@ function illustImg(mat,sz=90,catId=''){
 // 商品データ（30件）
 // ═══════════════════════════════════════════
 const PRODUCTS = [
-  {id:1,  name:"六角穴付きボルト −高強度βチタン合金−",              maker:"ミスミ",material:"チタン",     detail:"βチタン合金",          thread:"M4", tnum:4,  len:10,  surface:"生地",          str_s:"−",   str_ss:"A4-80",chem:"ok", rohs:true, delivery:3,pop:92,rating:4.6,rev:23, desc:"βチタン合金は純チタンに比べ強度が高く、軽量・高強度・耐食性を兼ね備えます。航空宇宙・医療機器・精密機械に最適な高性能ボルトです。"},
-  {id:2,  name:"六角穴付きボルト −ステンレス（SUS304）標準−",        maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M6", tnum:6,  len:20,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:1,pop:98,rating:4.5,rev:156,desc:"耐食性に優れたSUS304製の標準的なキャップボルトです。食品機械・化学装置・屋外設備など幅広い用途に使用されます。"},
-  {id:3,  name:"六角穴付きボルト −スチール 高強度（SCM435）−",       maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M8", tnum:8,  len:30,  surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:95,rating:4.8,rev:89, desc:"クロムモリブデン鋼SCM435を使用した高強度ボルトです。引張強度1200MPaクラスで、機械構造・産業機械の締結に最適です。"},
-  {id:4,  name:"六角穴付きボルト −ステンレス（SUS316L）耐食強化−",   maker:"ミスミ",material:"ステンレス",detail:"SUS316L",              thread:"M5", tnum:5,  len:16,  surface:"生地",          str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:88,rating:4.7,rev:67, desc:"モリブデン添加の低炭素ステンレスSUS316L。塩水・酸・アルカリに対する耐食性が特に優れ、半導体・薬品工場に最適です。"},
-  {id:5,  name:"六角穴付きボルト −スチール（S45C）汎用−",            maker:"ミスミ",material:"スチール",  detail:"S45C",                 thread:"M10",tnum:10, len:40,  surface:"ユニクロ",      str_s:"8.8", str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:97,rating:4.3,rev:201,desc:"機械構造用炭素鋼S45Cを使用した汎用ボルトです。コストパフォーマンスに優れ、一般機械・設備・治具の組み立てに幅広く使用されます。"},
-  {id:6,  name:"六角穴付きボルト −純チタン（JIS2種）軽量−",         maker:"ミスミ",material:"チタン",     detail:"純チタン",              thread:"M3", tnum:3,  len:8,   surface:"生地",          str_s:"−",   str_ss:"A2-50",chem:"ok", rohs:true, delivery:3,pop:75,rating:4.4,rev:34, desc:"純チタンJIS2種使用。スチールの約60%という軽さで、自転車・カメラ・IT機器などの軽量化に貢献します。"},
-  {id:7,  name:"六角穴付きボルト −黄銅（真鍮）電気絶縁−",           maker:"ミスミ",material:"黄銅",       detail:"黄銅C3604",             thread:"M3", tnum:3,  len:10,  surface:"ニッケルめっき",str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:1,pop:82,rating:4.2,rev:45, desc:"非磁性・電気絶縁性に優れた黄銅（真鍮）製ボルトです。電気機器・精密機器・通信機器・装飾用途などで使用されます。"},
-  {id:8,  name:"六角穴付きボルト −アルミ合金（A2017）超軽量−",      maker:"ミスミ",material:"アルミ",     detail:"A2017（ジュラルミン）", thread:"M5", tnum:5,  len:20,  surface:"アルマイト",    str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:3,pop:79,rating:4.5,rev:28, desc:"アルミ合金A2017（ジュラルミン）使用の超軽量ボルト。スチールの約1/3の重量で、航空機・ロボット・ドローンの軽量化に最適です。"},
-  {id:9,  name:"六角穴付きボルト −スチール（SCM440）高強度−",        maker:"ミスミ",material:"スチール",  detail:"SCM440",               thread:"M12",tnum:12, len:50,  surface:"黒染め",        str_s:"10.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:91,rating:4.6,rev:112,desc:"SCM440焼入れ焼戻し材使用。引張強度1100MPaクラスで、プレス機・建設機械など高負荷環境向けです。"},
-  {id:10, name:"六角穴付きボルト −ステンレス（SUS630）析出硬化−",    maker:"ミスミ",material:"ステンレス",detail:"SUS630（17-4PH）",     thread:"M6", tnum:6,  len:25,  surface:"生地",          str_s:"−",   str_ss:"A4-80",chem:"ok", rohs:true, delivery:7,pop:71,rating:4.7,rev:19, desc:"析出硬化系ステンレスSUS630（17-4PH）使用。高強度と耐食性を両立させたい場面に最適です。"},
-  {id:11, name:"六角穴付きボルト −スチール クロメートめっき−",       maker:"ミスミ",material:"スチール",  detail:"S45C",                 thread:"M4", tnum:4,  len:12,  surface:"クロメート",    str_s:"8.8", str_ss:"−",   chem:"ok", rohs:true, delivery:1,pop:87,rating:4.4,rev:88, desc:"スチール製で三価クロメートめっきを施した耐食ボルトです。RoHS指令対応の三価クロメートを使用しています。"},
-  {id:12, name:"六角穴付きボルト −ステンレス（SUS304）長尺80mm−",    maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M10",tnum:10, len:80,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:68,rating:4.3,rev:22, desc:"SUS304製の長尺キャップボルトです。深ボスや長スパン締結に対応する80mmサイズです。"},
-  {id:13, name:"六角穴付きボルト −PEEK樹脂 絶縁・耐薬品−",          maker:"ミスミ",material:"樹脂",       detail:"PEEK",                  thread:"M4", tnum:4,  len:15,  surface:"−",            str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:3,pop:73,rating:4.5,rev:31, desc:"超高耐熱エンジニアリングプラスチックPEEK樹脂製ボルトです。絶縁性・耐薬品性・耐熱性（200°C連続使用）が必要な箇所に最適。"},
-  {id:14, name:"六角穴付きボルト −スチール（SCM435）極小M3−",        maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M3", tnum:3,  len:6,   surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:84,rating:4.6,rev:58, desc:"高強度SCM435のM3小径ボルトです。精密機器・小型ロボット・光学機器など、小スペースでの高強度締結が必要な箇所に使用。"},
-  {id:15, name:"六角穴付きボルト −ステンレス（SUS304）ニッケルめっき−",maker:"ミスミ",material:"ステンレス",detail:"SUS304",             thread:"M6", tnum:6,  len:16,  surface:"ニッケルめっき",str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:76,rating:4.4,rev:43, desc:"SUS304にニッケルめっきを施した高光沢ボルトです。装飾性と耐食性を兼ね備え、医療機器・食品機械・装飾設備に最適です。"},
-  {id:16, name:"六角穴付きボルト −スチール大径（M16）重機向け−",     maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M16",tnum:16, len:60,  surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:89,rating:4.7,rev:77, desc:"大型建設機械・重機・産業装置向けのM16大径ボルトです。ISO規格準拠で高い締結信頼性を提供します。"},
-  {id:17, name:"六角穴付きボルト −アルミ（A7075）超超ジュラルミン−", maker:"ミスミ",material:"アルミ",     detail:"A7075（超超ジュラルミン）",thread:"M6",tnum:6, len:20,  surface:"アルマイト",    str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:7,pop:67,rating:4.8,rev:15, desc:"A7075（超超ジュラルミン）使用の最高強度アルミボルト。アルミ最高クラスの強度と軽さを両立します。"},
-  {id:18, name:"六角穴付きボルト −ステンレス（SUS316）M8−",          maker:"ミスミ",material:"ステンレス",detail:"SUS316",               thread:"M8", tnum:8,  len:35,  surface:"生地",          str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:81,rating:4.6,rev:52, desc:"SUS316製ボルトです。SUS304に比べモリブデンを多く含み、塩素環境での耐食性に優れます。"},
-  {id:19, name:"六角穴付きボルト −スチール（S45C）ユニクロ 経済品−", maker:"ミスミ",material:"スチール",  detail:"S45C",                 thread:"M6", tnum:6,  len:25,  surface:"ユニクロ",      str_s:"8.8", str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:99,rating:4.2,rev:312,desc:"S45Cにユニクロめっきを施した経済的なボルトです。一般機械・設備・治具等の組み立てに最も多く使われる汎用品です。"},
-  {id:20, name:"六角穴付きボルト −ステンレス（SUS304）M12大径−",     maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M12",tnum:12, len:45,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:78,rating:4.5,rev:61, desc:"SUS304製のM12大径ボルトです。重量物・大型部品の締結に使用されます。食品機械・化学設備でも使用可能。"},
-  {id:21, name:"六角穴付きボルト −スチール（SNCM439）超高強度−",     maker:"ミスミ",material:"スチール",  detail:"SNCM439",              thread:"M10",tnum:10, len:50,  surface:"黒染め",        str_s:"14.9",str_ss:"−",   chem:"pending",rohs:false,delivery:7,pop:60,rating:4.9,rev:8,  desc:"ニッケルクロムモリブデン鋼SNCM439使用の超高強度ボルト。引張強度1400MPaクラスで耐衝撃性も優れています。"},
-  {id:22, name:"六角穴付きボルト −ステンレス（SUS316L）M4電解研磨−",maker:"ミスミ",material:"ステンレス",detail:"SUS316L",              thread:"M4", tnum:4,  len:12,  surface:"電解研磨",      str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:72,rating:4.6,rev:29, desc:"SUS316L製のM4ボルトに電解研磨を施しています。薬液・半導体製造装置・医療機器などの高清浄環境向けです。"},
-  {id:23, name:"六角穴付きボルト −スチール（SCM435）長尺M8×100−",   maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M8", tnum:8,  len:100, surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:76,rating:4.5,rev:33, desc:"SCM435高強度材のM8×100mm長尺ボルトです。厚板・長スパンの締結に対応します。"},
-  {id:24, name:"六角穴付きボルト −ポリカーボネート 透明−",           maker:"ミスミ",material:"樹脂",       detail:"ポリカーボネート（PC）",thread:"M3", tnum:3,  len:10,  surface:"−",            str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:3,pop:55,rating:4.0,rev:18, desc:"ポリカーボネート樹脂製の透明ボルトです。締結状態の目視確認が必要な用途・光学装置・アクリルケース組み立てに最適です。"},
-  {id:25, name:"六角穴付きボルト −スチール（S45C）短尺M5×6−",       maker:"ミスミ",material:"スチール",  detail:"S45C",                 thread:"M5", tnum:5,  len:6,   surface:"ユニクロ",      str_s:"8.8", str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:93,rating:4.1,rev:145,desc:"S45C標準鋼の極短M5×6mmボルトです。薄板・小型部品の締結に使用されます。コストパフォーマンスに優れた汎用品です。"},
-  {id:26, name:"六角穴付きボルト −ステンレス（SUS304）細目ねじ−",    maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M6", tnum:6,  len:20,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:70,rating:4.4,rev:37, desc:"SUS304製の細目ねじピッチボルトです。振動緩みに強く、精密調整が必要な光学機器・計測機器に使用されます。"},
-  {id:27, name:"六角穴付きボルト −防錆鋼（YKS200）ミスミ独自材−",    maker:"ミスミ",material:"スチール",  detail:"YKS200（防錆鋼）",     thread:"M8", tnum:8,  len:25,  surface:"生地",          str_s:"8.8", str_ss:"−",   chem:"ok", rohs:true, delivery:1,pop:83,rating:4.7,rev:41, desc:"ミスミ独自の防錆鋼YKS200使用ボルト。ステンレスに近い耐食性をスチール価格で実現します。"},
-  {id:28, name:"六角穴付きボルト −チタン（Grade5）航空宇宙−",        maker:"ミスミ",material:"チタン",     detail:"Ti-6Al-4V（Grade5）",  thread:"M6", tnum:6,  len:25,  surface:"生地",          str_s:"−",   str_ss:"A4-80",chem:"ok", rohs:true, delivery:7,pop:65,rating:4.9,rev:12, desc:"Ti-6Al-4V（Grade5）チタン合金製ボルトです。航空宇宙・レース用途での実績があり、最高水準の強度重量比を持ちます。"},
-  {id:29, name:"六角穴付きボルト −ステンレス（SUS304）全ねじM5−",    maker:"ミスミ",material:"ステンレス",detail:"SUS304",               thread:"M5", tnum:5,  len:30,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:74,rating:4.3,rev:55, desc:"SUS304製の全ねじボルトです。スペーサ・間隔調整・薄板重ね合わせなど多目的に使用できます。"},
-  {id:30, name:"六角穴付きボルト −スチール（SCM435）フランジ付き−",  maker:"ミスミ",material:"スチール",  detail:"SCM435",               thread:"M10",tnum:10, len:35,  surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:86,rating:4.6,rev:48, desc:"頭部にフランジ（座面）が付いたキャップボルトです。ワッシャが不要で座面圧力を分散できます。"},
+  {id:1,  name:"六角穴付きボルト −高強度βチタン合金−",              maker:"",material:"チタン",     detail:"βチタン合金",          thread:"M4", tnum:4,  len:10,  surface:"生地",          str_s:"−",   str_ss:"A4-80",chem:"ok", rohs:true, delivery:3,pop:92,rating:4.6,rev:23, desc:"βチタン合金は純チタンに比べ強度が高く、軽量・高強度・耐食性を兼ね備えます。航空宇宙・医療機器・精密機械に最適な高性能ボルトです。"},
+  {id:2,  name:"六角穴付きボルト −ステンレス（SUS304）標準−",        maker:"",material:"ステンレス",detail:"SUS304",               thread:"M6", tnum:6,  len:20,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:1,pop:98,rating:4.5,rev:156,desc:"耐食性に優れたSUS304製の標準的なキャップボルトです。食品機械・化学装置・屋外設備など幅広い用途に使用されます。"},
+  {id:3,  name:"六角穴付きボルト −スチール 高強度（SCM435）−",       maker:"",material:"スチール",  detail:"SCM435",               thread:"M8", tnum:8,  len:30,  surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:95,rating:4.8,rev:89, desc:"クロムモリブデン鋼SCM435を使用した高強度ボルトです。引張強度1200MPaクラスで、機械構造・産業機械の締結に最適です。"},
+  {id:4,  name:"六角穴付きボルト −ステンレス（SUS316L）耐食強化−",   maker:"",material:"ステンレス",detail:"SUS316L",              thread:"M5", tnum:5,  len:16,  surface:"生地",          str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:88,rating:4.7,rev:67, desc:"モリブデン添加の低炭素ステンレスSUS316L。塩水・酸・アルカリに対する耐食性が特に優れ、半導体・薬品工場に最適です。"},
+  {id:5,  name:"六角穴付きボルト −スチール（S45C）汎用−",            maker:"",material:"スチール",  detail:"S45C",                 thread:"M10",tnum:10, len:40,  surface:"ユニクロ",      str_s:"8.8", str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:97,rating:4.3,rev:201,desc:"機械構造用炭素鋼S45Cを使用した汎用ボルトです。コストパフォーマンスに優れ、一般機械・設備・治具の組み立てに幅広く使用されます。"},
+  {id:6,  name:"六角穴付きボルト −純チタン（JIS2種）軽量−",         maker:"",material:"チタン",     detail:"純チタン",              thread:"M3", tnum:3,  len:8,   surface:"生地",          str_s:"−",   str_ss:"A2-50",chem:"ok", rohs:true, delivery:3,pop:75,rating:4.4,rev:34, desc:"純チタンJIS2種使用。スチールの約60%という軽さで、自転車・カメラ・IT機器などの軽量化に貢献します。"},
+  {id:7,  name:"六角穴付きボルト −黄銅（真鍮）電気絶縁−",           maker:"",material:"黄銅",       detail:"黄銅C3604",             thread:"M3", tnum:3,  len:10,  surface:"ニッケルめっき",str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:1,pop:82,rating:4.2,rev:45, desc:"非磁性・電気絶縁性に優れた黄銅（真鍮）製ボルトです。電気機器・精密機器・通信機器・装飾用途などで使用されます。"},
+  {id:8,  name:"六角穴付きボルト −アルミ合金（A2017）超軽量−",      maker:"",material:"アルミ",     detail:"A2017（ジュラルミン）", thread:"M5", tnum:5,  len:20,  surface:"アルマイト",    str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:3,pop:79,rating:4.5,rev:28, desc:"アルミ合金A2017（ジュラルミン）使用の超軽量ボルト。スチールの約1/3の重量で、航空機・ロボット・ドローンの軽量化に最適です。"},
+  {id:9,  name:"六角穴付きボルト −スチール（SCM440）高強度−",        maker:"",material:"スチール",  detail:"SCM440",               thread:"M12",tnum:12, len:50,  surface:"黒染め",        str_s:"10.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:91,rating:4.6,rev:112,desc:"SCM440焼入れ焼戻し材使用。引張強度1100MPaクラスで、プレス機・建設機械など高負荷環境向けです。"},
+  {id:10, name:"六角穴付きボルト −ステンレス（SUS630）析出硬化−",    maker:"",material:"ステンレス",detail:"SUS630（17-4PH）",     thread:"M6", tnum:6,  len:25,  surface:"生地",          str_s:"−",   str_ss:"A4-80",chem:"ok", rohs:true, delivery:7,pop:71,rating:4.7,rev:19, desc:"析出硬化系ステンレスSUS630（17-4PH）使用。高強度と耐食性を両立させたい場面に最適です。"},
+  {id:11, name:"六角穴付きボルト −スチール クロメートめっき−",       maker:"",material:"スチール",  detail:"S45C",                 thread:"M4", tnum:4,  len:12,  surface:"クロメート",    str_s:"8.8", str_ss:"−",   chem:"ok", rohs:true, delivery:1,pop:87,rating:4.4,rev:88, desc:"スチール製で三価クロメートめっきを施した耐食ボルトです。RoHS指令対応の三価クロメートを使用しています。"},
+  {id:12, name:"六角穴付きボルト −ステンレス（SUS304）長尺80mm−",    maker:"",material:"ステンレス",detail:"SUS304",               thread:"M10",tnum:10, len:80,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:68,rating:4.3,rev:22, desc:"SUS304製の長尺キャップボルトです。深ボスや長スパン締結に対応する80mmサイズです。"},
+  {id:13, name:"六角穴付きボルト −PEEK樹脂 絶縁・耐薬品−",          maker:"",material:"樹脂",       detail:"PEEK",                  thread:"M4", tnum:4,  len:15,  surface:"−",            str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:3,pop:73,rating:4.5,rev:31, desc:"超高耐熱エンジニアリングプラスチックPEEK樹脂製ボルトです。絶縁性・耐薬品性・耐熱性（200°C連続使用）が必要な箇所に最適。"},
+  {id:14, name:"六角穴付きボルト −スチール（SCM435）極小M3−",        maker:"",material:"スチール",  detail:"SCM435",               thread:"M3", tnum:3,  len:6,   surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:84,rating:4.6,rev:58, desc:"高強度SCM435のM3小径ボルトです。精密機器・小型ロボット・光学機器など、小スペースでの高強度締結が必要な箇所に使用。"},
+  {id:15, name:"六角穴付きボルト −ステンレス（SUS304）ニッケルめっき−",maker:"",material:"ステンレス",detail:"SUS304",             thread:"M6", tnum:6,  len:16,  surface:"ニッケルめっき",str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:76,rating:4.4,rev:43, desc:"SUS304にニッケルめっきを施した高光沢ボルトです。装飾性と耐食性を兼ね備え、医療機器・食品機械・装飾設備に最適です。"},
+  {id:16, name:"六角穴付きボルト −スチール大径（M16）重機向け−",     maker:"",material:"スチール",  detail:"SCM435",               thread:"M16",tnum:16, len:60,  surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:89,rating:4.7,rev:77, desc:"大型建設機械・重機・産業装置向けのM16大径ボルトです。ISO規格準拠で高い締結信頼性を提供します。"},
+  {id:17, name:"六角穴付きボルト −アルミ（A7075）超超ジュラルミン−", maker:"",material:"アルミ",     detail:"A7075（超超ジュラルミン）",thread:"M6",tnum:6, len:20,  surface:"アルマイト",    str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:7,pop:67,rating:4.8,rev:15, desc:"A7075（超超ジュラルミン）使用の最高強度アルミボルト。アルミ最高クラスの強度と軽さを両立します。"},
+  {id:18, name:"六角穴付きボルト −ステンレス（SUS316）M8−",          maker:"",material:"ステンレス",detail:"SUS316",               thread:"M8", tnum:8,  len:35,  surface:"生地",          str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:81,rating:4.6,rev:52, desc:"SUS316製ボルトです。SUS304に比べモリブデンを多く含み、塩素環境での耐食性に優れます。"},
+  {id:19, name:"六角穴付きボルト −スチール（S45C）−", maker:"",material:"スチール",  detail:"S45C",                 thread:"M6", tnum:6,  len:25,  surface:"ユニクロ",      str_s:"8.8", str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:99,rating:4.2,rev:312,desc:"S45Cにユニクロめっきを施した経済的なボルトです。一般機械・設備・治具等の組み立てに最も多く使われる汎用品です。"},
+  {id:20, name:"六角穴付きボルト −ステンレス（SUS304）M12大径−",     maker:"",material:"ステンレス",detail:"SUS304",               thread:"M12",tnum:12, len:45,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:78,rating:4.5,rev:61, desc:"SUS304製のM12大径ボルトです。重量物・大型部品の締結に使用されます。食品機械・化学設備でも使用可能。"},
+  {id:21, name:"六角穴付きボルト −スチール（SNCM439）超高強度−",     maker:"",material:"スチール",  detail:"SNCM439",              thread:"M10",tnum:10, len:50,  surface:"黒染め",        str_s:"14.9",str_ss:"−",   chem:"pending",rohs:false,delivery:7,pop:60,rating:4.9,rev:8,  desc:"ニッケルクロムモリブデン鋼SNCM439使用の超高強度ボルト。引張強度1400MPaクラスで耐衝撃性も優れています。"},
+  {id:22, name:"六角穴付きボルト −ステンレス（SUS316L）M4電解研磨−",maker:"",material:"ステンレス",detail:"SUS316L",              thread:"M4", tnum:4,  len:12,  surface:"電解研磨",      str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:72,rating:4.6,rev:29, desc:"SUS316L製のM4ボルトに電解研磨を施しています。薬液・半導体製造装置・医療機器などの高清浄環境向けです。"},
+  {id:23, name:"六角穴付きボルト −スチール（SCM435）長尺M8×100−",   maker:"",material:"スチール",  detail:"SCM435",               thread:"M8", tnum:8,  len:100, surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:76,rating:4.5,rev:33, desc:"SCM435高強度材のM8×100mm長尺ボルトです。厚板・長スパンの締結に対応します。"},
+  {id:24, name:"六角穴付きボルト −ポリカーボネート 透明−",           maker:"",material:"樹脂",       detail:"ポリカーボネート（PC）",thread:"M3", tnum:3,  len:10,  surface:"−",            str_s:"−",   str_ss:"−",   chem:"ok", rohs:true, delivery:3,pop:55,rating:4.0,rev:18, desc:"ポリカーボネート樹脂製の透明ボルトです。締結状態の目視確認が必要な用途・光学装置・アクリルケース組み立てに最適です。"},
+  {id:25, name:"六角穴付きボルト −スチール（S45C）短尺M5×6−",       maker:"",material:"スチール",  detail:"S45C",                 thread:"M5", tnum:5,  len:6,   surface:"ユニクロ",      str_s:"8.8", str_ss:"−",   chem:"ng",  rohs:false,delivery:1,pop:93,rating:4.1,rev:145,desc:"S45C標準鋼の極短M5×6mmボルトです。薄板・小型部品の締結に使用されます。コストパフォーマンスに優れた汎用品です。"},
+  {id:26, name:"六角穴付きボルト −ステンレス（SUS304）細目ねじ−",    maker:"",material:"ステンレス",detail:"SUS304",               thread:"M6", tnum:6,  len:20,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:70,rating:4.4,rev:37, desc:"SUS304製の細目ねじピッチボルトです。振動緩みに強く、精密調整が必要な光学機器・計測機器に使用されます。"},
+  {id:27, name:"六角穴付きボルト −防錆鋼（YKS200）独自材−",    maker:"",material:"スチール",  detail:"YKS200（防錆鋼）",     thread:"M8", tnum:8,  len:25,  surface:"生地",          str_s:"8.8", str_ss:"−",   chem:"ok", rohs:true, delivery:1,pop:83,rating:4.7,rev:41, desc:"独自の防錆鋼YKS200使用ボルト。ステンレスに近い耐食性をスチール価格で実現します。"},
+  {id:28, name:"六角穴付きボルト −チタン（Grade5）航空宇宙−",        maker:"",material:"チタン",     detail:"Ti-6Al-4V（Grade5）",  thread:"M6", tnum:6,  len:25,  surface:"生地",          str_s:"−",   str_ss:"A4-80",chem:"ok", rohs:true, delivery:7,pop:65,rating:4.9,rev:12, desc:"Ti-6Al-4V（Grade5）チタン合金製ボルトです。航空宇宙・レース用途での実績があり、最高水準の強度重量比を持ちます。"},
+  {id:29, name:"六角穴付きボルト −ステンレス（SUS304）全ねじM5−",    maker:"",material:"ステンレス",detail:"SUS304",               thread:"M5", tnum:5,  len:30,  surface:"生地",          str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:74,rating:4.3,rev:55, desc:"SUS304製の全ねじボルトです。スペーサ・間隔調整・薄板重ね合わせなど多目的に使用できます。"},
+  {id:30, name:"六角穴付きボルト −スチール（SCM435）フランジ付き−",  maker:"",material:"スチール",  detail:"SCM435",               thread:"M10",tnum:10, len:35,  surface:"黒染め",        str_s:"12.9",str_ss:"−",   chem:"pending",rohs:false,delivery:1,pop:86,rating:4.6,rev:48, desc:"頭部にフランジ（座面）が付いたキャップボルトです。ワッシャが不要で座面圧力を分散できます。"},
   // ── 六角ボルト ──
-  {id:31,catId:'hex',name:"六角ボルト −スチール（S45C）汎用 M8−",               maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:25,  surface:"ユニクロ",       str_s:"8.8", str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:97,rating:4.2,rev:312,desc:"スパナ・レンチで締付可能な外六角ボルトの標準品。一般機械・設備・建築金物に最も広く使われる汎用品です。"},
-  {id:32,catId:'hex',name:"六角ボルト −ステンレス（SUS304）M6−",                maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:20,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:91,rating:4.4,rev:187,desc:"SUS304製汎用六角ボルト。耐食性に優れ食品機械・化学装置・屋外設備に広く使用されます。"},
-  {id:33,catId:'hex',name:"六角ボルト −スチール（SCM435）高強度 M12−",          maker:"ミスミ",   material:"スチール",  detail:"SCM435",          thread:"M12",tnum:12, len:40,  surface:"黒染め",         str_s:"10.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:84,rating:4.6,rev:95, desc:"SCM435製高強度六角ボルト。建設機械・産業装置・プレス金型の高負荷締結に使用されます。"},
-  {id:34,catId:'hex',name:"六角ボルト −ステンレス（SUS316L）M10 耐食−",         maker:"ミスミ",   material:"ステンレス",detail:"SUS316L",          thread:"M10",tnum:10, len:35,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:78,rating:4.5,rev:67, desc:"SUS316L製耐食六角ボルト。塩水・酸・アルカリに強く海洋設備・薬品工場に最適です。"},
+  {id:31,catId:'hex',name:"六角ボルト −スチール（S45C）汎用 M8−",               maker:"",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:25,  surface:"ユニクロ",       str_s:"8.8", str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:97,rating:4.2,rev:312,desc:"スパナ・レンチで締付可能な外六角ボルトの標準品。一般機械・設備・建築金物に最も広く使われる汎用品です。"},
+  {id:32,catId:'hex',name:"六角ボルト −ステンレス（SUS304）M6−",                maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:20,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:91,rating:4.4,rev:187,desc:"SUS304製汎用六角ボルト。耐食性に優れ食品機械・化学装置・屋外設備に広く使用されます。"},
+  {id:33,catId:'hex',name:"六角ボルト −スチール（SCM435）高強度 M12−",          maker:"",   material:"スチール",  detail:"SCM435",          thread:"M12",tnum:12, len:40,  surface:"黒染め",         str_s:"10.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:84,rating:4.6,rev:95, desc:"SCM435製高強度六角ボルト。建設機械・産業装置・プレス金型の高負荷締結に使用されます。"},
+  {id:34,catId:'hex',name:"六角ボルト −ステンレス（SUS316L）M10 耐食−",         maker:"",   material:"ステンレス",detail:"SUS316L",          thread:"M10",tnum:10, len:35,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:78,rating:4.5,rev:67, desc:"SUS316L製耐食六角ボルト。塩水・酸・アルカリに強く海洋設備・薬品工場に最適です。"},
   {id:35,catId:'hex',name:"六角ボルト −スチール クロメート M5−",                maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M5", tnum:5,  len:16,  surface:"クロメート",     str_s:"8.8", str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:93,rating:4.1,rev:256,desc:"三価クロメートめっき仕上げのM5六角ボルト。RoHS対応で屋内外を問わず使用可能な経済品です。"},
-  {id:36,catId:'hex',name:"六角ボルト −スチール（SCM435）大径 M20−",            maker:"ミスミ",   material:"スチール",  detail:"SCM435",          thread:"M20",tnum:20, len:60,  surface:"黒染め",         str_s:"12.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:72,rating:4.7,rev:48, desc:"M20大径六角ボルト。橋梁・鉄骨構造・重機フレームなど大型構造物の高強度締結に使用されます。"},
-  {id:37,catId:'hex',name:"六角ボルト −黄銅（真鍮）M4−",                        maker:"ミスミ",   material:"黄銅",      detail:"黄銅C3604",        thread:"M4", tnum:4,  len:12,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:68,rating:4.3,rev:42, desc:"黄銅製非磁性六角ボルト。電気機器・精密機器・装飾用途に使用されます。"},
-  {id:38,catId:'hex',name:"六角ボルト −アルミ（A2017）軽量 M6−",                maker:"ミスミ",   material:"アルミ",    detail:"A2017",            thread:"M6", tnum:6,  len:20,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:65,rating:4.4,rev:31, desc:"アルミA2017製軽量六角ボルト。スチールの1/3の軽さで航空・ロボット分野の軽量化に貢献します。"},
-  {id:39,catId:'flng',name:"六角フランジボルト −スチール汎用 M8−",               maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:25,  surface:"ユニクロ",       str_s:"8.8", str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:89,rating:4.3,rev:124,desc:"フランジ一体型でワッシャ不要。自動車部品・家電・産業機器の量産組み立てに最適です。"},
-  {id:40,catId:'flng',name:"六角フランジボルト −ステンレス M6−",                 maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:20,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:82,rating:4.4,rev:78, desc:"SUS304製フランジ付き六角ボルト。フランジが座面圧力を分散し食品機械・化学設備に適しています。"},
-  {id:41,catId:'flng',name:"六角フランジボルト −スチール セレート付 M10−",       maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M10",tnum:10, len:30,  surface:"クロメート",     str_s:"8.8", str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:85,rating:4.5,rev:86, desc:"フランジ裏面にセレーション（緩み止め刻み目）付き。振動環境での緩み防止に効果的で自動車エンジン周りに多用。"},
-  {id:42,catId:'flng',name:"六角フランジボルト −高強度スチール M12−",             maker:"ミスミ",   material:"スチール",  detail:"SCM435",          thread:"M12",tnum:12, len:40,  surface:"黒染め",         str_s:"10.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:76,rating:4.6,rev:55, desc:"SCM435製高強度フランジボルト。大型プレス機・建設機械の高負荷締結箇所に使用されます。"},
+  {id:36,catId:'hex',name:"六角ボルト −スチール（SCM435）大径 M20−",            maker:"",   material:"スチール",  detail:"SCM435",          thread:"M20",tnum:20, len:60,  surface:"黒染め",         str_s:"12.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:72,rating:4.7,rev:48, desc:"M20大径六角ボルト。橋梁・鉄骨構造・重機フレームなど大型構造物の高強度締結に使用されます。"},
+  {id:37,catId:'hex',name:"六角ボルト −黄銅（真鍮）M4−",                        maker:"",   material:"黄銅",      detail:"黄銅C3604",        thread:"M4", tnum:4,  len:12,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:68,rating:4.3,rev:42, desc:"黄銅製非磁性六角ボルト。電気機器・精密機器・装飾用途に使用されます。"},
+  {id:38,catId:'hex',name:"六角ボルト −アルミ（A2017）軽量 M6−",                maker:"",   material:"アルミ",    detail:"A2017",            thread:"M6", tnum:6,  len:20,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:65,rating:4.4,rev:31, desc:"アルミA2017製軽量六角ボルト。スチールの1/3の軽さで航空・ロボット分野の軽量化に貢献します。"},
+  {id:39,catId:'flng',name:"六角フランジボルト −スチール汎用 M8−",               maker:"",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:25,  surface:"ユニクロ",       str_s:"8.8", str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:89,rating:4.3,rev:124,desc:"フランジ一体型でワッシャ不要。自動車部品・家電・産業機器の量産組み立てに最適です。"},
+  {id:40,catId:'flng',name:"六角フランジボルト −ステンレス M6−",                 maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:20,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:82,rating:4.4,rev:78, desc:"SUS304製フランジ付き六角ボルト。フランジが座面圧力を分散し食品機械・化学設備に適しています。"},
+  {id:41,catId:'flng',name:"六角フランジボルト −スチール セレート付 M10−",       maker:"",   material:"スチール",  detail:"S45C",            thread:"M10",tnum:10, len:30,  surface:"クロメート",     str_s:"8.8", str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:85,rating:4.5,rev:86, desc:"フランジ裏面にセレーション（緩み止め刻み目）付き。振動環境での緩み防止に効果的で自動車エンジン周りに多用。"},
+  {id:42,catId:'flng',name:"六角フランジボルト −高強度スチール M12−",             maker:"",   material:"スチール",  detail:"SCM435",          thread:"M12",tnum:12, len:40,  surface:"黒染め",         str_s:"10.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:76,rating:4.6,rev:55, desc:"SCM435製高強度フランジボルト。大型プレス機・建設機械の高負荷締結箇所に使用されます。"},
   {id:43,catId:'flng',name:"六角フランジボルト −スチール 小径 M5−",               maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M5", tnum:5,  len:16,  surface:"ユニクロ",       str_s:"8.8", str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:81,rating:4.2,rev:137,desc:"M5小径フランジボルト。家電・OA機器・小型機械の組み立てにワッシャ省略で工程を簡略化します。"},
-  {id:44,catId:'flng',name:"六角フランジボルト −ステンレス 大径 M16−",            maker:"ミスミ",   material:"ステンレス",detail:"SUS316",           thread:"M16",tnum:16, len:50,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:7,pop:63,rating:4.5,rev:34, desc:"SUS316製M16大径フランジボルト。海洋・化学プラントの大型設備締結に耐食性と座面安定性を両立。"},
+  {id:44,catId:'flng',name:"六角フランジボルト −ステンレス 大径 M16−",            maker:"",   material:"ステンレス",detail:"SUS316",           thread:"M16",tnum:16, len:50,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:7,pop:63,rating:4.5,rev:34, desc:"SUS316製M16大径フランジボルト。海洋・化学プラントの大型設備締結に耐食性と座面安定性を両立。"},
   {id:45,catId:'flng',name:"六角フランジボルト −スチール クロメート M6−",         maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M6", tnum:6,  len:20,  surface:"クロメート",     str_s:"8.8", str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:84,rating:4.1,rev:198,desc:"三価クロメートめっきM6フランジボルト。RoHS対応・量産向けコストパフォーマンスに優れた汎用品。"},
   // ── ボタンボルト ──
-  {id:46,catId:'btn',name:"ボタンボルト（低頭）−ステンレス（SUS304）M5−",         maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M5", tnum:5,  len:16,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:87,rating:4.5,rev:92, desc:"頭部を低く抑えた六角穴付きボルト。突出しを最小化したい薄型設計の部品締結に最適です。"},
-  {id:47,catId:'btn',name:"ボタンボルト（低頭）−スチール（SCM435）M8−",           maker:"ミスミ",   material:"スチール",  detail:"SCM435",          thread:"M8", tnum:8,  len:20,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:83,rating:4.6,rev:61, desc:"SCM435製高強度ボタンボルト。低頭ながら高強度で工作機械・産業ロボットの可動部に使用されます。"},
-  {id:48,catId:'btn',name:"ボタンボルト（低頭）−チタン（Grade5）軽量 M6−",        maker:"ミスミ",   material:"チタン",    detail:"Ti-6Al-4V",        thread:"M6", tnum:6,  len:20,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:7,pop:74,rating:4.8,rev:24, desc:"Grade5チタン製ボタンボルト。低頭で軽量かつ高強度。自転車・レーシングカー・ドローンの軽量化に最適。"},
-  {id:49,catId:'btn',name:"ボタンボルト（低頭）−アルミ（A7075）超軽量 M5−",       maker:"ミスミ",   material:"アルミ",    detail:"A7075",            thread:"M5", tnum:5,  len:12,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:7,pop:70,rating:4.7,rev:19, desc:"A7075超超ジュラルミン製の極軽量ボタンボルト。最高クラスのアルミ強度と超軽量を両立したレーシング・航空用途向け。"},
+  {id:46,catId:'btn',name:"ボタンボルト（低頭）−ステンレス（SUS304）M5−",         maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M5", tnum:5,  len:16,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:87,rating:4.5,rev:92, desc:"頭部を低く抑えた六角穴付きボルト。突出しを最小化したい薄型設計の部品締結に最適です。"},
+  {id:47,catId:'btn',name:"ボタンボルト（低頭）−スチール（SCM435）M8−",           maker:"",   material:"スチール",  detail:"SCM435",          thread:"M8", tnum:8,  len:20,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:83,rating:4.6,rev:61, desc:"SCM435製高強度ボタンボルト。低頭ながら高強度で工作機械・産業ロボットの可動部に使用されます。"},
+  {id:48,catId:'btn',name:"ボタンボルト（低頭）−チタン（Grade5）軽量 M6−",        maker:"",   material:"チタン",    detail:"Ti-6Al-4V",        thread:"M6", tnum:6,  len:20,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:7,pop:74,rating:4.8,rev:24, desc:"Grade5チタン製ボタンボルト。低頭で軽量かつ高強度。自転車・レーシングカー・ドローンの軽量化に最適。"},
+  {id:49,catId:'btn',name:"ボタンボルト（低頭）−アルミ（A7075）超軽量 M5−",       maker:"",   material:"アルミ",    detail:"A7075",            thread:"M5", tnum:5,  len:12,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:7,pop:70,rating:4.7,rev:19, desc:"A7075超超ジュラルミン製の極軽量ボタンボルト。最高クラスのアルミ強度と超軽量を両立したレーシング・航空用途向け。"},
   {id:50,catId:'btn',name:"ボタンボルト（低頭）−スチール（S45C）汎用 M6−",        maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M6", tnum:6,  len:16,  surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:93,rating:4.2,rev:189,desc:"S45C製汎用ボタンボルト。低頭外観が求められるカバー類・パネル固定に幅広く使用。経済的な標準品です。"},
-  {id:51,catId:'btn',name:"ボタンボルト（低頭）−ステンレス（SUS316）M4−",         maker:"ミスミ",   material:"ステンレス",detail:"SUS316",           thread:"M4", tnum:4,  len:10,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:76,rating:4.4,rev:45, desc:"SUS316製小径ボタンボルト。高耐食性で医療機器・半導体装置の低頭締結に適しています。"},
-  {id:52,catId:'btn',name:"ボタンボルト（低頭）−樹脂（PEEK）M3−",                 maker:"ミスミ",   material:"樹脂",      detail:"PEEK",             thread:"M3", tnum:3,  len:8,   surface:"−",             str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:63,rating:4.5,rev:16, desc:"PEEK樹脂製ボタンボルト。耐熱・絶縁・耐薬品性を持ちながら低頭設計。クリーンルーム・半導体装置向け。"},
+  {id:51,catId:'btn',name:"ボタンボルト（低頭）−ステンレス（SUS316）M4−",         maker:"",   material:"ステンレス",detail:"SUS316",           thread:"M4", tnum:4,  len:10,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:76,rating:4.4,rev:45, desc:"SUS316製小径ボタンボルト。高耐食性で医療機器・半導体装置の低頭締結に適しています。"},
+  {id:52,catId:'btn',name:"ボタンボルト（低頭）−樹脂（PEEK）M3−",                 maker:"",   material:"樹脂",      detail:"PEEK",             thread:"M3", tnum:3,  len:8,   surface:"−",             str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:63,rating:4.5,rev:16, desc:"PEEK樹脂製ボタンボルト。耐熱・絶縁・耐薬品性を持ちながら低頭設計。クリーンルーム・半導体装置向け。"},
   // ── 蝶ボルト ──
   {id:53,catId:'wing',name:"蝶ボルト −スチール 汎用 M6−",                         maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M6", tnum:6,  len:20,  surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:89,rating:4.2,rev:156,desc:"工具不要で手締めできる蝶ボルトの標準品。頻繁に着脱するパネル・カバー・治具の固定に最も多く使用されます。"},
-  {id:54,catId:'wing',name:"蝶ボルト −ステンレス（SUS304）M5−",                   maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M5", tnum:5,  len:16,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:80,rating:4.4,rev:74, desc:"SUS304製蝶ボルト。食品機械・厨房設備のカバー締結に。手締めで頻繁な清掃・メンテに対応します。"},
-  {id:55,catId:'wing',name:"蝶ボルト −スチール 大型ウィング M8−",                  maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:25,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:73,rating:4.3,rev:44, desc:"大型ウィングを持つM8蝶ボルト。指で大きなトルクをかけやすく、重量物の仮固定・治具の固定に使用されます。"},
+  {id:54,catId:'wing',name:"蝶ボルト −ステンレス（SUS304）M5−",                   maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M5", tnum:5,  len:16,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:80,rating:4.4,rev:74, desc:"SUS304製蝶ボルト。食品機械・厨房設備のカバー締結に。手締めで頻繁な清掃・メンテに対応します。"},
+  {id:55,catId:'wing',name:"蝶ボルト −スチール 大型ウィング M8−",                  maker:"",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:25,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:73,rating:4.3,rev:44, desc:"大型ウィングを持つM8蝶ボルト。指で大きなトルクをかけやすく、重量物の仮固定・治具の固定に使用されます。"},
   {id:56,catId:'wing',name:"蝶ボルト −スチール クロメート M4−",                    maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M4", tnum:4,  len:12,  surface:"クロメート",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:82,rating:4.1,rev:97, desc:"三価クロメートめっきのM4蝶ボルト。RoHS対応で小型機器のカバー・パネル固定にコスト優先で使用。"},
-  {id:57,catId:'wing',name:"蝶ボルト −黄銅（真鍮）M5−",                            maker:"ミスミ",   material:"黄銅",      detail:"黄銅C3604",        thread:"M5", tnum:5,  len:15,  surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:67,rating:4.3,rev:31, desc:"黄銅製蝶ボルト。電気的絶縁性と装飾性を兼備。電気機器カバー締結・アンテナ固定・装飾用途に使用。"},
-  {id:58,catId:'wing',name:"蝶ボルト −アルミ（A2017）軽量 M5−",                    maker:"ミスミ",   material:"アルミ",    detail:"A2017",            thread:"M5", tnum:5,  len:16,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:61,rating:4.4,rev:17, desc:"アルミ製軽量蝶ボルト。カメラ・光学機器・計測機器など重量が重要な機器のカバー締結に最適です。"},
+  {id:57,catId:'wing',name:"蝶ボルト −黄銅（真鍮）M5−",                            maker:"",   material:"黄銅",      detail:"黄銅C3604",        thread:"M5", tnum:5,  len:15,  surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:67,rating:4.3,rev:31, desc:"黄銅製蝶ボルト。電気的絶縁性と装飾性を兼備。電気機器カバー締結・アンテナ固定・装飾用途に使用。"},
+  {id:58,catId:'wing',name:"蝶ボルト −アルミ（A2017）軽量 M5−",                    maker:"",   material:"アルミ",    detail:"A2017",            thread:"M5", tnum:5,  len:16,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:61,rating:4.4,rev:17, desc:"アルミ製軽量蝶ボルト。カメラ・光学機器・計測機器など重量が重要な機器のカバー締結に最適です。"},
   // ── 十字穴付きボルト ──
-  {id:59,catId:'cross',name:"十字穴付きなべ小ねじ −ステンレス（SUS304）M4−",      maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M4", tnum:4,  len:8,   surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:1,pop:97,rating:4.3,rev:289,desc:"SUS304製十字穴付きなべ頭小ねじ。プラスドライバー1本で締結でき家電・電子機器の量産組み立てに最適です。"},
+  {id:59,catId:'cross',name:"十字穴付きなべ小ねじ −ステンレス（SUS304）M4−",      maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M4", tnum:4,  len:8,   surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:1,pop:97,rating:4.3,rev:289,desc:"SUS304製十字穴付きなべ頭小ねじ。プラスドライバー1本で締結でき家電・電子機器の量産組み立てに最適です。"},
   {id:60,catId:'cross',name:"十字穴付きなべ小ねじ −スチール ユニクロ M3−",        maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M3", tnum:3,  len:6,   surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:99,rating:4.1,rev:612,desc:"最も一般的なプラスねじの標準品。家電・プラスチック筐体に最多使用される汎用ねじです。"},
   {id:61,catId:'cross',name:"十字穴付きトラス小ねじ −スチール M4−",               maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M4", tnum:4,  len:10,  surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:94,rating:4.2,rev:345,desc:"頭部が広く低いトラス頭タイプ。広い座面で軟質材・薄板をしっかり締結するパネル・カバー固定に最適。"},
   {id:62,catId:'cross',name:"十字穴付きなべ小ねじ −スチール クロメート M5−",      maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M5", tnum:5,  len:15,  surface:"クロメート",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:92,rating:4.0,rev:501,desc:"三価クロメートめっきM5なべ小ねじ。RoHS対応で産業機械・設備機器の組み立てに大量使用される汎用品。"},
-  {id:63,catId:'cross',name:"十字穴付きなべ小ねじ −黄銅 M3−",                     maker:"ミスミ",   material:"黄銅",      detail:"黄銅C3604",        thread:"M3", tnum:3,  len:8,   surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:75,rating:4.3,rev:72, desc:"黄銅製ニッケルめっきM3なべ小ねじ。非磁性・電気絶縁性で電気・電子基板・通信機器の小型ねじに。"},
-  {id:64,catId:'cross',name:"十字穴付きなべ小ねじ −ステンレス（SUS316）M5−",      maker:"ミスミ",   material:"ステンレス",detail:"SUS316",           thread:"M5", tnum:5,  len:12,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:79,rating:4.4,rev:91, desc:"SUS316製M5なべ小ねじ。塩水・薬液環境に強く食品機械・化学装置・医療機器の使用に最適です。"},
-  {id:65,catId:'cross',name:"十字穴付きなべ小ねじ −樹脂（POM）M4−",               maker:"ミスミ",   material:"樹脂",      detail:"POM（ポリアセタール）",thread:"M4",tnum:4,len:10, surface:"−",             str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:64,rating:4.2,rev:41, desc:"POM樹脂製なべ小ねじ。非金属・絶縁・軽量で電子機器・水中機器・精密測定器のねじ締結に使用します。"},
-  {id:66,catId:'cross',name:"十字穴付きなべ小ねじ −スチール 黒染め M6−",          maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M6", tnum:6,  len:20,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:86,rating:4.2,rev:167,desc:"黒染め仕上げM6なべ小ねじ。黒色外観が求められる機械・設備のカバー・パネル固定に使用されます。"},
+  {id:63,catId:'cross',name:"十字穴付きなべ小ねじ −黄銅 M3−",                     maker:"",   material:"黄銅",      detail:"黄銅C3604",        thread:"M3", tnum:3,  len:8,   surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:75,rating:4.3,rev:72, desc:"黄銅製ニッケルめっきM3なべ小ねじ。非磁性・電気絶縁性で電気・電子基板・通信機器の小型ねじに。"},
+  {id:64,catId:'cross',name:"十字穴付きなべ小ねじ −ステンレス（SUS316）M5−",      maker:"",   material:"ステンレス",detail:"SUS316",           thread:"M5", tnum:5,  len:12,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:79,rating:4.4,rev:91, desc:"SUS316製M5なべ小ねじ。塩水・薬液環境に強く食品機械・化学装置・医療機器の使用に最適です。"},
+  {id:65,catId:'cross',name:"十字穴付きなべ小ねじ −樹脂（POM）M4−",               maker:"",   material:"樹脂",      detail:"POM（ポリアセタール）",thread:"M4",tnum:4,len:10, surface:"−",             str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:64,rating:4.2,rev:41, desc:"POM樹脂製なべ小ねじ。非金属・絶縁・軽量で電子機器・水中機器・精密測定器のねじ締結に使用します。"},
+  {id:66,catId:'cross',name:"十字穴付きなべ小ねじ −スチール 黒染め M6−",          maker:"",   material:"スチール",  detail:"S45C",            thread:"M6", tnum:6,  len:20,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:86,rating:4.2,rev:167,desc:"黒染め仕上げM6なべ小ねじ。黒色外観が求められる機械・設備のカバー・パネル固定に使用されます。"},
   // ── スタッドボルト ──
-  {id:67,catId:'stud',name:"スタッドボルト −スチール（S45C）M8×50−",              maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:50,  surface:"ユニクロ",       str_s:"8.8", str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:87,rating:4.3,rev:82, desc:"両端ねじ込み型スタッドボルト。エンジン・ポンプ・バルブの植込みボルトとして使用する標準品です。"},
-  {id:68,catId:'stud',name:"スタッドボルト −ステンレス（SUS304）M10×80−",        maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M10",tnum:10, len:80,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:79,rating:4.5,rev:58, desc:"SUS304製スタッドボルト80mm。化学プラント・食品機械のフランジ締結に使用。全ねじで取扱いやすい。"},
-  {id:69,catId:'stud',name:"スタッドボルト −高強度スチール M12×100−",             maker:"ミスミ",   material:"スチール",  detail:"SCM435",          thread:"M12",tnum:12, len:100, surface:"黒染め",         str_s:"10.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:73,rating:4.6,rev:44, desc:"SCM435製M12高強度スタッドボルト100mm。大型機械・フランジ締結に引張強度1000MPa以上。"},
+  {id:67,catId:'stud',name:"スタッドボルト −スチール（S45C）M8×50−",              maker:"",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:50,  surface:"ユニクロ",       str_s:"8.8", str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:87,rating:4.3,rev:82, desc:"両端ねじ込み型スタッドボルト。エンジン・ポンプ・バルブの植込みボルトとして使用する標準品です。"},
+  {id:68,catId:'stud',name:"スタッドボルト −ステンレス（SUS304）M10×80−",        maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M10",tnum:10, len:80,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:79,rating:4.5,rev:58, desc:"SUS304製スタッドボルト80mm。化学プラント・食品機械のフランジ締結に使用。全ねじで取扱いやすい。"},
+  {id:69,catId:'stud',name:"スタッドボルト −高強度スチール M12×100−",             maker:"",   material:"スチール",  detail:"SCM435",          thread:"M12",tnum:12, len:100, surface:"黒染め",         str_s:"10.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:73,rating:4.6,rev:44, desc:"SCM435製M12高強度スタッドボルト100mm。大型機械・フランジ締結に引張強度1000MPa以上。"},
   {id:70,catId:'stud',name:"スタッドボルト −スチール（S45C）M6×40−",              maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M6", tnum:6,  len:40,  surface:"ユニクロ",       str_s:"8.8", str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:91,rating:4.1,rev:134,desc:"M6×40mm汎用スタッドボルト。センサー取付・間隔調整ピンとして幅広く使用される経済品です。"},
-  {id:71,catId:'stud',name:"スタッドボルト −ステンレス（SUS316L）M16×200−",      maker:"ミスミ",   material:"ステンレス",detail:"SUS316L",          thread:"M16",tnum:16, len:200, surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:7,pop:62,rating:4.7,rev:26, desc:"SUS316L製M16×200mm長尺スタッドボルト。化学装置の大型フランジ・圧力容器の締結に使用されます。"},
-  {id:72,catId:'stud',name:"スタッドボルト −チタン（Grade5）M8×60−",              maker:"ミスミ",   material:"チタン",    detail:"Ti-6Al-4V",        thread:"M8", tnum:8,  len:60,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:7,pop:58,rating:4.9,rev:12, desc:"Grade5チタン製スタッドボルト。航空・宇宙・高性能レース用途の軽量高強度スタッドとして使用されます。"},
-  {id:73,catId:'stud',name:"スタッドボルト −スチール（SCM435）M8×30−",            maker:"ミスミ",   material:"スチール",  detail:"SCM435",          thread:"M8", tnum:8,  len:30,  surface:"黒染め",         str_s:"12.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:74,rating:4.5,rev:38, desc:"SCM435製M8×30mm短尺高強度スタッドボルト。エンジンシリンダーヘッドの植込みボルトとして使用。"},
+  {id:71,catId:'stud',name:"スタッドボルト −ステンレス（SUS316L）M16×200−",      maker:"",   material:"ステンレス",detail:"SUS316L",          thread:"M16",tnum:16, len:200, surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:7,pop:62,rating:4.7,rev:26, desc:"SUS316L製M16×200mm長尺スタッドボルト。化学装置の大型フランジ・圧力容器の締結に使用されます。"},
+  {id:72,catId:'stud',name:"スタッドボルト −チタン（Grade5）M8×60−",              maker:"",   material:"チタン",    detail:"Ti-6Al-4V",        thread:"M8", tnum:8,  len:60,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:7,pop:58,rating:4.9,rev:12, desc:"Grade5チタン製スタッドボルト。航空・宇宙・高性能レース用途の軽量高強度スタッドとして使用されます。"},
+  {id:73,catId:'stud',name:"スタッドボルト −スチール（SCM435）M8×30−",            maker:"",   material:"スチール",  detail:"SCM435",          thread:"M8", tnum:8,  len:30,  surface:"黒染め",         str_s:"12.9",str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:74,rating:4.5,rev:38, desc:"SCM435製M8×30mm短尺高強度スタッドボルト。エンジンシリンダーヘッドの植込みボルトとして使用。"},
   // ── アイボルト ──
-  {id:74,catId:'eye',name:"アイボルト −スチール M10−",                             maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M10",tnum:10, len:20,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:89,rating:4.4,rev:85, desc:"吊り上げ・牽引・ロープ固定に使用するアイボルトの標準品。リング径が大きくロープやシャックルを通しやすい。"},
-  {id:75,catId:'eye',name:"アイボルト −ステンレス（SUS304）M8−",                   maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M8", tnum:8,  len:16,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:82,rating:4.5,rev:53, desc:"SUS304製M8アイボルト。屋外・海洋・食品設備での荷役・吊り作業に。錆による強度低下を防ぎます。"},
-  {id:76,catId:'eye',name:"アイボルト −スチール 大型 M16−",                        maker:"ミスミ",   material:"スチール",  detail:"SCM435",          thread:"M16",tnum:16, len:30,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:75,rating:4.6,rev:38, desc:"M16大型アイボルト。大型機械・重量物の吊り上げ・搬送に使用。高強度SCM435鋼で安全率が高い。"},
-  {id:77,catId:'eye',name:"アイボルト −ステンレス（SUS316）M12 耐食−",             maker:"ミスミ",   material:"ステンレス",detail:"SUS316",           thread:"M12",tnum:12, len:25,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:71,rating:4.6,rev:30, desc:"SUS316製高耐食アイボルトM12。海洋クレーン・船舶設備の吊り金具として塩水環境での腐食に強い。"},
+  {id:74,catId:'eye',name:"アイボルト −スチール M10−",                             maker:"",   material:"スチール",  detail:"S45C",            thread:"M10",tnum:10, len:20,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:89,rating:4.4,rev:85, desc:"吊り上げ・牽引・ロープ固定に使用するアイボルトの標準品。リング径が大きくロープやシャックルを通しやすい。"},
+  {id:75,catId:'eye',name:"アイボルト −ステンレス（SUS304）M8−",                   maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M8", tnum:8,  len:16,  surface:"生地",           str_s:"−",   str_ss:"A2-70",chem:"ok", rohs:true, delivery:3,pop:82,rating:4.5,rev:53, desc:"SUS304製M8アイボルト。屋外・海洋・食品設備での荷役・吊り作業に。錆による強度低下を防ぎます。"},
+  {id:76,catId:'eye',name:"アイボルト −スチール 大型 M16−",                        maker:"",   material:"スチール",  detail:"SCM435",          thread:"M16",tnum:16, len:30,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:75,rating:4.6,rev:38, desc:"M16大型アイボルト。大型機械・重量物の吊り上げ・搬送に使用。高強度SCM435鋼で安全率が高い。"},
+  {id:77,catId:'eye',name:"アイボルト −ステンレス（SUS316）M12 耐食−",             maker:"",   material:"ステンレス",detail:"SUS316",           thread:"M12",tnum:12, len:25,  surface:"生地",           str_s:"−",   str_ss:"A4-70",chem:"ok", rohs:true, delivery:3,pop:71,rating:4.6,rev:30, desc:"SUS316製高耐食アイボルトM12。海洋クレーン・船舶設備の吊り金具として塩水環境での腐食に強い。"},
   {id:78,catId:'eye',name:"アイボルト −スチール ユニクロ M6−",                     maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M6", tnum:6,  len:12,  surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:84,rating:4.2,rev:102,desc:"ユニクロめっきM6アイボルト。軽量物の吊り・牽引・配線固定など汎用用途にコスト優先で使用できます。"},
-  {id:79,catId:'eye',name:"アイボルト −スチール M20 重量物−",                       maker:"ミスミ",   material:"スチール",  detail:"SCM435",          thread:"M20",tnum:20, len:40,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:3,pop:65,rating:4.7,rev:22, desc:"M20超大型アイボルト。プレス機・変圧器・工作機械など超重量物の吊り上げ。最大吊り荷重2500kgクラス対応。"},
+  {id:79,catId:'eye',name:"アイボルト −スチール M20 重量物−",                       maker:"",   material:"スチール",  detail:"SCM435",          thread:"M20",tnum:20, len:40,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:3,pop:65,rating:4.7,rev:22, desc:"M20超大型アイボルト。プレス機・変圧器・工作機械など超重量物の吊り上げ。最大吊り荷重2500kgクラス対応。"},
   // ── 六角ナット ──
   {id:80,catId:'hexn',name:"六角ナット −スチール（S45C）M8 汎用−",                 maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:7,   surface:"ユニクロ",       str_s:"8",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:99,rating:4.2,rev:456,desc:"最も広く使用される汎用六角ナット。スパナ・レンチで締結し一般機械・設備・建築の組み立てに欠かせない標準品です。"},
-  {id:81,catId:'hexn',name:"六角ナット −ステンレス（SUS304）M6−",                  maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:5,   surface:"生地",           str_s:"A2",  str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:96,rating:4.4,rev:267,desc:"SUS304製六角ナット。耐食性に優れ食品機械・化学装置・屋外設備に。ボルトと組み合わせて確実な締結を実現。"},
-  {id:82,catId:'hexn',name:"六角ナット −スチール（S45C）M12 高強度−",              maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M12",tnum:12, len:10,  surface:"黒染め",         str_s:"10",  str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:88,rating:4.5,rev:125,desc:"M12高強度六角ナット。大型産業機械・建設機械の高負荷締結に。強度区分10。"},
-  {id:83,catId:'hexn',name:"六角ナット −チタン（Grade5）M8 軽量−",                 maker:"ミスミ",   material:"チタン",    detail:"Ti-6Al-4V",        thread:"M8", tnum:8,  len:7,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:7,pop:72,rating:4.8,rev:28, desc:"Grade5チタン製六角ナット。軽量・高強度・耐食性を兼備。航空・宇宙・レース用途の軽量化締結に最適です。"},
+  {id:81,catId:'hexn',name:"六角ナット −ステンレス（SUS304）M6−",                  maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:5,   surface:"生地",           str_s:"A2",  str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:96,rating:4.4,rev:267,desc:"SUS304製六角ナット。耐食性に優れ食品機械・化学装置・屋外設備に。ボルトと組み合わせて確実な締結を実現。"},
+  {id:82,catId:'hexn',name:"六角ナット −スチール（S45C）M12 高強度−",              maker:"",   material:"スチール",  detail:"S45C",            thread:"M12",tnum:12, len:10,  surface:"黒染め",         str_s:"10",  str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:88,rating:4.5,rev:125,desc:"M12高強度六角ナット。大型産業機械・建設機械の高負荷締結に。強度区分10。"},
+  {id:83,catId:'hexn',name:"六角ナット −チタン（Grade5）M8 軽量−",                 maker:"",   material:"チタン",    detail:"Ti-6Al-4V",        thread:"M8", tnum:8,  len:7,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:7,pop:72,rating:4.8,rev:28, desc:"Grade5チタン製六角ナット。軽量・高強度・耐食性を兼備。航空・宇宙・レース用途の軽量化締結に最適です。"},
   {id:84,catId:'hexn',name:"六角ナット −スチール クロメート M4−",                  maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M4", tnum:4,  len:3,   surface:"クロメート",     str_s:"8",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:98,rating:4.1,rev:523,desc:"三価クロメートめっきM4ナット。RoHS対応の小径標準品。電子機器・精密機器・家電の組み立てに最多使用。"},
-  {id:85,catId:'hexn',name:"六角ナット −黄銅（真鍮）M5−",                          maker:"ミスミ",   material:"黄銅",      detail:"黄銅C3604",        thread:"M5", tnum:5,  len:4,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:77,rating:4.3,rev:62, desc:"黄銅製六角ナットM5。非磁性・電気絶縁性で電気機器・通信機器・計測機器に使用できます。"},
-  {id:86,catId:'hexn',name:"六角ナット −ステンレス（SUS316）M10 高耐食−",          maker:"ミスミ",   material:"ステンレス",detail:"SUS316",           thread:"M10",tnum:10, len:8,   surface:"生地",           str_s:"A4",  str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:80,rating:4.5,rev:81, desc:"SUS316製M10高耐食六角ナット。海洋設備・化学プラントでの締結にSUS316ボルトと組み合わせて最大の耐食効果。"},
-  {id:87,catId:'hexn',name:"六角ナット −スチール（S45C）大径 M20−",                maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M20",tnum:20, len:16,  surface:"黒染め",         str_s:"10",  str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:73,rating:4.4,rev:49, desc:"M20大径六角ナット。橋梁・鉄骨構造・重機フレームの大型ボルトと組み合わせ使用。強度区分10対応。"},
+  {id:85,catId:'hexn',name:"六角ナット −黄銅（真鍮）M5−",                          maker:"",   material:"黄銅",      detail:"黄銅C3604",        thread:"M5", tnum:5,  len:4,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:77,rating:4.3,rev:62, desc:"黄銅製六角ナットM5。非磁性・電気絶縁性で電気機器・通信機器・計測機器に使用できます。"},
+  {id:86,catId:'hexn',name:"六角ナット −ステンレス（SUS316）M10 高耐食−",          maker:"",   material:"ステンレス",detail:"SUS316",           thread:"M10",tnum:10, len:8,   surface:"生地",           str_s:"A4",  str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:80,rating:4.5,rev:81, desc:"SUS316製M10高耐食六角ナット。海洋設備・化学プラントでの締結にSUS316ボルトと組み合わせて最大の耐食効果。"},
+  {id:87,catId:'hexn',name:"六角ナット −スチール（S45C）大径 M20−",                maker:"",   material:"スチール",  detail:"S45C",            thread:"M20",tnum:20, len:16,  surface:"黒染め",         str_s:"10",  str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:73,rating:4.4,rev:49, desc:"M20大径六角ナット。橋梁・鉄骨構造・重機フレームの大型ボルトと組み合わせ使用。強度区分10対応。"},
   // ── 蝶ナット ──
   {id:88,catId:'wign',name:"蝶ナット −スチール汎用 M6−",                            maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M6", tnum:6,  len:8,   surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:91,rating:4.2,rev:212,desc:"工具不要で手締めできる蝶ナット（ウィングナット）の標準品。頻繁に着脱する箇所のナットとして最も多く使われます。"},
-  {id:89,catId:'wign',name:"蝶ナット −ステンレス（SUS304）M5−",                    maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M5", tnum:5,  len:7,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:83,rating:4.4,rev:106,desc:"SUS304製蝶ナット。食品機械・厨房設備のカバー固定・メンテナンス頻度が高い箇所に。耐食性で衛生環境に対応。"},
+  {id:89,catId:'wign',name:"蝶ナット −ステンレス（SUS304）M5−",                    maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M5", tnum:5,  len:7,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:83,rating:4.4,rev:106,desc:"SUS304製蝶ナット。食品機械・厨房設備のカバー固定・メンテナンス頻度が高い箇所に。耐食性で衛生環境に対応。"},
   {id:90,catId:'wign',name:"蝶ナット −スチール M4 小型−",                           maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M4", tnum:4,  len:6,   surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:87,rating:4.1,rev:145,desc:"M4小型蝶ナット。電子機器・計測器・小型装置のパネル固定にコンパクトサイズで手締め操作しやすい。"},
-  {id:91,catId:'wign',name:"蝶ナット −スチール M8 大型ウィング−",                   maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:12,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:74,rating:4.3,rev:61, desc:"M8大型ウィングナット。指で大きなトルクをかけやすく、治具・工具フレーム・搬送台車の締結に使用されます。"},
-  {id:92,catId:'wign',name:"蝶ナット −黄銅（真鍮）M5−",                             maker:"ミスミ",   material:"黄銅",      detail:"黄銅C3604",        thread:"M5", tnum:5,  len:7,   surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:69,rating:4.3,rev:35, desc:"黄銅製蝶ナット。電気機器のカバー固定・アース接続・装飾用途に。非磁性で電子機器へも安心して使用できます。"},
-  {id:93,catId:'wign',name:"蝶ナット −アルミ（A2017）軽量 M6−",                    maker:"ミスミ",   material:"アルミ",    detail:"A2017",            thread:"M6", tnum:6,  len:8,   surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:61,rating:4.4,rev:19, desc:"アルミ製軽量蝶ナット。重量が重要な計測機器・航空機器のカバー締結に。手締め操作でメンテナンス性も向上。"},
+  {id:91,catId:'wign',name:"蝶ナット −スチール M8 大型ウィング−",                   maker:"",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:12,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:74,rating:4.3,rev:61, desc:"M8大型ウィングナット。指で大きなトルクをかけやすく、治具・工具フレーム・搬送台車の締結に使用されます。"},
+  {id:92,catId:'wign',name:"蝶ナット −黄銅（真鍮）M5−",                             maker:"",   material:"黄銅",      detail:"黄銅C3604",        thread:"M5", tnum:5,  len:7,   surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:69,rating:4.3,rev:35, desc:"黄銅製蝶ナット。電気機器のカバー固定・アース接続・装飾用途に。非磁性で電子機器へも安心して使用できます。"},
+  {id:93,catId:'wign',name:"蝶ナット −アルミ（A2017）軽量 M6−",                    maker:"",   material:"アルミ",    detail:"A2017",            thread:"M6", tnum:6,  len:8,   surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:61,rating:4.4,rev:19, desc:"アルミ製軽量蝶ナット。重量が重要な計測機器・航空機器のカバー締結に。手締め操作でメンテナンス性も向上。"},
   // ── ロックナット ──
-  {id:94,catId:'lockn',name:"ロックナット（ナイロンインサート）−ステンレス M6−",    maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:7,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:92,rating:4.6,rev:158,desc:"ナイロンリング内蔵による緩み止め機能を持つロックナット。振動・衝撃環境でのナット脱落防止に最も信頼性が高い製品です。"},
+  {id:94,catId:'lockn',name:"ロックナット（ナイロンインサート）−ステンレス M6−",    maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:7,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:92,rating:4.6,rev:158,desc:"ナイロンリング内蔵による緩み止め機能を持つロックナット。振動・衝撃環境でのナット脱落防止に最も信頼性が高い製品です。"},
   {id:95,catId:'lockn',name:"ロックナット（ナイロンインサート）−スチール M8−",      maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:8,   surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:96,rating:4.4,rev:301,desc:"S45C製ナイロンインサートロックナット。自動車・農業機械の振動部位にコスト面に優れた量産向け汎用品です。"},
-  {id:96,catId:'lockn',name:"ロックナット（ナイロンインサート）−スチール M12−",     maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M12",tnum:12, len:10,  surface:"クロメート",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:84,rating:4.5,rev:112,desc:"M12三価クロメートロックナット。RoHS対応で産業機械・建設機械の振動部位の緩み防止に使用されます。"},
-  {id:97,catId:'lockn',name:"ロックナット（ナイロンインサート）−ステンレス M10−",   maker:"ミスミ",   material:"ステンレス",detail:"SUS316",           thread:"M10",tnum:10, len:9,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:76,rating:4.7,rev:63, desc:"SUS316製M10ロックナット。海洋・化学プラント・食品機械の振動環境に高耐食性とナイロン緩み止めを両立。"},
+  {id:96,catId:'lockn',name:"ロックナット（ナイロンインサート）−スチール M12−",     maker:"",   material:"スチール",  detail:"S45C",            thread:"M12",tnum:12, len:10,  surface:"クロメート",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:84,rating:4.5,rev:112,desc:"M12三価クロメートロックナット。RoHS対応で産業機械・建設機械の振動部位の緩み防止に使用されます。"},
+  {id:97,catId:'lockn',name:"ロックナット（ナイロンインサート）−ステンレス M10−",   maker:"",   material:"ステンレス",detail:"SUS316",           thread:"M10",tnum:10, len:9,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:76,rating:4.7,rev:63, desc:"SUS316製M10ロックナット。海洋・化学プラント・食品機械の振動環境に高耐食性とナイロン緩み止めを両立。"},
   {id:98,catId:'lockn',name:"ロックナット（ナイロンインサート）−スチール M4 小型−", maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M4", tnum:4,  len:4,   surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:90,rating:4.3,rev:213,desc:"M4小型ロックナット。家電・電子機器・二輪車の振動部位に。コンパクトサイズで狭い箇所にも対応します。"},
-  {id:99,catId:'lockn',name:"ロックナット（ナイロンインサート）−スチール M16−",     maker:"ミスミ",   material:"スチール",  detail:"SCM435",          thread:"M16",tnum:16, len:13,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:69,rating:4.6,rev:51, desc:"SCM435製M16大径ロックナット。大型建設機械・重機の高負荷振動環境での緩み防止に。強度・耐久性に優れます。"},
-  {id:100,catId:'lockn',name:"ロックナット（ナイロンインサート）−スチール M3−",    maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M3", tnum:3,  len:3,   surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:75,rating:4.4,rev:74, desc:"M3精密用ロックナット。カメラ・光学機器・医療機器の微小部位の緩み止めに。ニッケルめっきで外観良好。"},
+  {id:99,catId:'lockn',name:"ロックナット（ナイロンインサート）−スチール M16−",     maker:"",   material:"スチール",  detail:"SCM435",          thread:"M16",tnum:16, len:13,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:69,rating:4.6,rev:51, desc:"SCM435製M16大径ロックナット。大型建設機械・重機の高負荷振動環境での緩み防止に。強度・耐久性に優れます。"},
+  {id:100,catId:'lockn',name:"ロックナット（ナイロンインサート）−スチール M3−",    maker:"",   material:"スチール",  detail:"S45C",            thread:"M3", tnum:3,  len:3,   surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:75,rating:4.4,rev:74, desc:"M3精密用ロックナット。カメラ・光学機器・医療機器の微小部位の緩み止めに。ニッケルめっきで外観良好。"},
   // ── 平ワッシャ ──
   {id:101,catId:'wash',name:"平ワッシャ（座金）−スチール ユニクロ M8−",             maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:17,  surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:99,rating:4.1,rev:587,desc:"最も広く使用される汎用平ワッシャ。座面の圧力分散・保護に使用しM8ボルトとの組み合わせが標準品です。"},
-  {id:102,catId:'wash',name:"平ワッシャ（座金）−ステンレス（SUS304）M6−",          maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:12,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:97,rating:4.3,rev:389,desc:"SUS304製平ワッシャ。耐食性に優れ食品機械・化学装置・屋外設備に。ボルト/ナットの座面を保護し締結を安定化。"},
-  {id:103,catId:'wash',name:"平ワッシャ（座金）−スチール 大径 M10−",               maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M10",tnum:10, len:21,  surface:"クロメート",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:94,rating:4.2,rev:267,desc:"三価クロメートめっきM10ワッシャ。RoHS対応で屋内外問わず使用可能。広い座面で軟質材・薄板への締結に効果的。"},
-  {id:104,catId:'wash',name:"平ワッシャ（座金）−ステンレス（SUS316）M12 高耐食−",  maker:"ミスミ",   material:"ステンレス",detail:"SUS316",           thread:"M12",tnum:12, len:24,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:83,rating:4.4,rev:119,desc:"SUS316製M12ワッシャ。海洋・化学薬品環境での座金として使用。高耐食性で腐食による締結力低下を防止します。"},
+  {id:102,catId:'wash',name:"平ワッシャ（座金）−ステンレス（SUS304）M6−",          maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:12,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:97,rating:4.3,rev:389,desc:"SUS304製平ワッシャ。耐食性に優れ食品機械・化学装置・屋外設備に。ボルト/ナットの座面を保護し締結を安定化。"},
+  {id:103,catId:'wash',name:"平ワッシャ（座金）−スチール 大径 M10−",               maker:"",   material:"スチール",  detail:"S45C",            thread:"M10",tnum:10, len:21,  surface:"クロメート",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:94,rating:4.2,rev:267,desc:"三価クロメートめっきM10ワッシャ。RoHS対応で屋内外問わず使用可能。広い座面で軟質材・薄板への締結に効果的。"},
+  {id:104,catId:'wash',name:"平ワッシャ（座金）−ステンレス（SUS316）M12 高耐食−",  maker:"",   material:"ステンレス",detail:"SUS316",           thread:"M12",tnum:12, len:24,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:83,rating:4.4,rev:119,desc:"SUS316製M12ワッシャ。海洋・化学薬品環境での座金として使用。高耐食性で腐食による締結力低下を防止します。"},
   {id:105,catId:'wash',name:"平ワッシャ（座金）−スチール M4 小径−",                 maker:"モノタロウ",material:"スチール",  detail:"S45C",            thread:"M4", tnum:4,  len:9,   surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:98,rating:4.0,rev:478,desc:"M4小径汎用ワッシャ。電子機器・精密機器・家電の小型ボルト締結に必須。薄型で省スペース設計の標準品です。"},
-  {id:106,catId:'wash',name:"平ワッシャ（座金）−黄銅 M6−",                          maker:"ミスミ",   material:"黄銅",      detail:"黄銅C3604",        thread:"M6", tnum:6,  len:12,  surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:75,rating:4.3,rev:74, desc:"黄銅製ニッケルめっきワッシャ。非磁性・電気伝導性・耐食性を兼備。アース接触面としても使用できます。"},
-  {id:107,catId:'wash',name:"平ワッシャ（座金）−スチール 大径 M16−",                maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M16",tnum:16, len:30,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:80,rating:4.3,rev:96, desc:"M16大径ワッシャ。建設機械・鉄骨構造・橋梁の大型ボルト締結に。広い座面で被締結材への面圧を均等分散します。"},
+  {id:106,catId:'wash',name:"平ワッシャ（座金）−黄銅 M6−",                          maker:"",   material:"黄銅",      detail:"黄銅C3604",        thread:"M6", tnum:6,  len:12,  surface:"ニッケルめっき", str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:75,rating:4.3,rev:74, desc:"黄銅製ニッケルめっきワッシャ。非磁性・電気伝導性・耐食性を兼備。アース接触面としても使用できます。"},
+  {id:107,catId:'wash',name:"平ワッシャ（座金）−スチール 大径 M16−",                maker:"",   material:"スチール",  detail:"S45C",            thread:"M16",tnum:16, len:30,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:80,rating:4.3,rev:96, desc:"M16大径ワッシャ。建設機械・鉄骨構造・橋梁の大型ボルト締結に。広い座面で被締結材への面圧を均等分散します。"},
   // ── スプリングワッシャ ──
   {id:108,catId:'spring',name:"スプリングワッシャ（ばね座金）−スチール ユニクロ M8−", maker:"モノタロウ",material:"スチール",detail:"S45C",           thread:"M8", tnum:8,  len:16,  surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:97,rating:4.2,rev:356,desc:"最も広く使用されるばね座金の標準品。切れ目の反発力でナットの緩み止め効果を発揮。振動環境での使用に最適です。"},
-  {id:109,catId:'spring',name:"スプリングワッシャ（ばね座金）−ステンレス（SUS304）M6−",maker:"ミスミ",material:"ステンレス",detail:"SUS304",          thread:"M6", tnum:6,  len:12,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:94,rating:4.4,rev:223,desc:"SUS304製スプリングワッシャ。耐食環境でのナット緩み止めに食品機械・化学装置・屋外設備への適用に最適です。"},
+  {id:109,catId:'spring',name:"スプリングワッシャ（ばね座金）−ステンレス（SUS304）M6−",maker:"",material:"ステンレス",detail:"SUS304",          thread:"M6", tnum:6,  len:12,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:94,rating:4.4,rev:223,desc:"SUS304製スプリングワッシャ。耐食環境でのナット緩み止めに食品機械・化学装置・屋外設備への適用に最適です。"},
   {id:110,catId:'spring',name:"スプリングワッシャ（ばね座金）−スチール M4 小径−",   maker:"モノタロウ",material:"スチール",  detail:"S45C",           thread:"M4", tnum:4,  len:8,   surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:96,rating:4.1,rev:434,desc:"M4小径スプリングワッシャ。電子機器・家電・精密機器の小型ネジ緩み止めに必須の薄型汎用品です。"},
-  {id:111,catId:'spring',name:"スプリングワッシャ（ばね座金）−スチール M12 中型−",  maker:"ミスミ",   material:"スチール",  detail:"S45C",           thread:"M12",tnum:12, len:22,  surface:"クロメート",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:86,rating:4.3,rev:147,desc:"M12三価クロメートスプリングワッシャ。RoHS対応。産業機械・建設機械の振動環境での中型ボルト緩み止めに。"},
-  {id:112,catId:'spring',name:"スプリングワッシャ（ばね座金）−ステンレス（SUS316）M10−",maker:"ミスミ",material:"ステンレス",detail:"SUS316",         thread:"M10",tnum:10, len:19,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:78,rating:4.5,rev:98, desc:"SUS316製M10高耐食スプリングワッシャ。海洋・化学薬品環境での振動対策に。長期間緩み防止機能を維持します。"},
+  {id:111,catId:'spring',name:"スプリングワッシャ（ばね座金）−スチール M12 中型−",  maker:"",   material:"スチール",  detail:"S45C",           thread:"M12",tnum:12, len:22,  surface:"クロメート",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:1,pop:86,rating:4.3,rev:147,desc:"M12三価クロメートスプリングワッシャ。RoHS対応。産業機械・建設機械の振動環境での中型ボルト緩み止めに。"},
+  {id:112,catId:'spring',name:"スプリングワッシャ（ばね座金）−ステンレス（SUS316）M10−",maker:"",material:"ステンレス",detail:"SUS316",         thread:"M10",tnum:10, len:19,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:78,rating:4.5,rev:98, desc:"SUS316製M10高耐食スプリングワッシャ。海洋・化学薬品環境での振動対策に。長期間緩み防止機能を維持します。"},
   {id:113,catId:'spring',name:"スプリングワッシャ（ばね座金）−スチール M5 汎用−",   maker:"モノタロウ",material:"スチール",  detail:"S45C",           thread:"M5", tnum:5,  len:10,  surface:"ユニクロ",       str_s:"−",   str_ss:"−",    chem:"ng",  rohs:false,delivery:1,pop:96,rating:4.0,rev:301,desc:"M5汎用スプリングワッシャ。機械・設備組み立てに最も多く使われる小型ばね座金。低コストで大量使用に向きます。"},
-  {id:114,catId:'spring',name:"スプリングワッシャ（ばね座金）−スチール M16 大径−",  maker:"ミスミ",   material:"スチール",  detail:"S45C",           thread:"M16",tnum:16, len:29,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:75,rating:4.3,rev:63, desc:"M16大径ばね座金。建設機械・橋梁・重機フレームの大型ボルト締結に。強い反発力で高い緩み止め効果を発揮します。"},
+  {id:114,catId:'spring',name:"スプリングワッシャ（ばね座金）−スチール M16 大径−",  maker:"",   material:"スチール",  detail:"S45C",           thread:"M16",tnum:16, len:29,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:75,rating:4.3,rev:63, desc:"M16大径ばね座金。建設機械・橋梁・重機フレームの大型ボルト締結に。強い反発力で高い緩み止め効果を発揮します。"},
   // ── スペーサ・カラー ──
-  {id:115,catId:'col',name:"スペーサ −アルミ（A2017）M5×10mm−",                    maker:"ミスミ",   material:"アルミ",    detail:"A2017",            thread:"M5", tnum:5,  len:10,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:88,rating:4.4,rev:84, desc:"アルミA2017製円筒スペーサ。基板・シャシー間の間隔確保・絶縁に使用。軽量で加工しやすく精密機器・電子機器に多用。"},
-  {id:116,catId:'col',name:"スペーサ −ステンレス（SUS304）M6×15mm−",               maker:"ミスミ",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:15,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:82,rating:4.5,rev:59, desc:"SUS304製ステンレスカラー。耐食環境での間隔保持・締結強度確保に使用。食品機械・化学装置に最適です。"},
-  {id:117,catId:'col',name:"スペーサ −黄銅（真鍮）M4×8mm−",                        maker:"ミスミ",   material:"黄銅",      detail:"黄銅C3604",        thread:"M4", tnum:4,  len:8,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:76,rating:4.3,rev:46, desc:"黄銅製スペーサM4×8mm。電子基板・プリント基板の間隔確保に最適。非磁性・導電性で電気機器への使用に適しています。"},
-  {id:118,catId:'col',name:"スペーサ −アルミ（A2017）M8×20mm−",                    maker:"ミスミ",   material:"アルミ",    detail:"A2017",            thread:"M8", tnum:8,  len:20,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:79,rating:4.4,rev:40, desc:"アルミ製M8×20mmスペーサ。ロボットフレーム・産業機械のシャフト間隔確保にアルマイト処理で耐摩耗性を向上。"},
-  {id:119,catId:'col',name:"スペーサ −樹脂（POM）M5×12mm−",                        maker:"ミスミ",   material:"樹脂",      detail:"POM（ポリアセタール）",thread:"M5",tnum:5,len:12, surface:"−",             str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:72,rating:4.3,rev:32, desc:"POM樹脂製絶縁スペーサ。電子機器の絶縁間隔確保・配線保護に使用。電気絶縁性・耐薬品性・軽量性が特長です。"},
-  {id:120,catId:'col',name:"スペーサ −ステンレス（SUS303）M6×30mm−",               maker:"ミスミ",   material:"ステンレス",detail:"SUS303",           thread:"M6", tnum:6,  len:30,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:75,rating:4.5,rev:45, desc:"SUS303製長尺スペーサ30mm。精密機器・光学機器・センサー取付の精密間隔保持に使用。切削加工精度が高い快削ステンレスです。"},
-  {id:121,catId:'col',name:"スペーサ −スチール（S45C）M8×50mm−",                   maker:"ミスミ",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:50,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:74,rating:4.2,rev:36, desc:"スチール製M8×50mm長尺スペーサ。油圧機器・重機・建設機械の間隔確保・荷重受けに使用。剛性が高く重荷重に耐えます。"},
+  {id:115,catId:'col',name:"スペーサ −アルミ（A2017）M5×10mm−",                    maker:"",   material:"アルミ",    detail:"A2017",            thread:"M5", tnum:5,  len:10,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:88,rating:4.4,rev:84, desc:"アルミA2017製円筒スペーサ。基板・シャシー間の間隔確保・絶縁に使用。軽量で加工しやすく精密機器・電子機器に多用。"},
+  {id:116,catId:'col',name:"スペーサ −ステンレス（SUS304）M6×15mm−",               maker:"",   material:"ステンレス",detail:"SUS304",           thread:"M6", tnum:6,  len:15,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:82,rating:4.5,rev:59, desc:"SUS304製ステンレスカラー。耐食環境での間隔保持・締結強度確保に使用。食品機械・化学装置に最適です。"},
+  {id:117,catId:'col',name:"スペーサ −黄銅（真鍮）M4×8mm−",                        maker:"",   material:"黄銅",      detail:"黄銅C3604",        thread:"M4", tnum:4,  len:8,   surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:76,rating:4.3,rev:46, desc:"黄銅製スペーサM4×8mm。電子基板・プリント基板の間隔確保に最適。非磁性・導電性で電気機器への使用に適しています。"},
+  {id:118,catId:'col',name:"スペーサ −アルミ（A2017）M8×20mm−",                    maker:"",   material:"アルミ",    detail:"A2017",            thread:"M8", tnum:8,  len:20,  surface:"アルマイト",     str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:79,rating:4.4,rev:40, desc:"アルミ製M8×20mmスペーサ。ロボットフレーム・産業機械のシャフト間隔確保にアルマイト処理で耐摩耗性を向上。"},
+  {id:119,catId:'col',name:"スペーサ −樹脂（POM）M5×12mm−",                        maker:"",   material:"樹脂",      detail:"POM（ポリアセタール）",thread:"M5",tnum:5,len:12, surface:"−",             str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:72,rating:4.3,rev:32, desc:"POM樹脂製絶縁スペーサ。電子機器の絶縁間隔確保・配線保護に使用。電気絶縁性・耐薬品性・軽量性が特長です。"},
+  {id:120,catId:'col',name:"スペーサ −ステンレス（SUS303）M6×30mm−",               maker:"",   material:"ステンレス",detail:"SUS303",           thread:"M6", tnum:6,  len:30,  surface:"生地",           str_s:"−",   str_ss:"−",    chem:"ok", rohs:true, delivery:3,pop:75,rating:4.5,rev:45, desc:"SUS303製長尺スペーサ30mm。精密機器・光学機器・センサー取付の精密間隔保持に使用。切削加工精度が高い快削ステンレスです。"},
+  {id:121,catId:'col',name:"スペーサ −スチール（S45C）M8×50mm−",                   maker:"",   material:"スチール",  detail:"S45C",            thread:"M8", tnum:8,  len:50,  surface:"黒染め",         str_s:"−",   str_ss:"−",    chem:"pending",rohs:false,delivery:1,pop:74,rating:4.2,rev:36, desc:"スチール製M8×50mm長尺スペーサ。油圧機器・重機・建設機械の間隔確保・荷重受けに使用。剛性が高く重荷重に耐えます。"},
 ];
 
-const REVIEWS = {
-  high:[
-    {name:"山田 T.様",date:"2026年3月",rating:5,body:"品質・寸法精度ともに申し分なし。指定ロットで毎回安定した品質が届きます。リピート購入中です。"},
-    {name:"鈴木 K.様",date:"2026年2月",rating:4,body:"使用環境が厳しい箇所ですが問題なく使用できています。梱包も丁寧で安心感があります。"},
-    {name:"佐藤 製造 E.様",date:"2026年1月",rating:5,body:"寸法公差が厳しい箇所に使用。全数確認しましたが精度にバラつきなし。今後も継続します。"},
-  ],
-  std:[
-    {name:"田中 A.様",date:"2026年3月",rating:4,body:"標準品として問題なく使用できています。コストパフォーマンスが良く満足です。"},
-    {name:"伊藤 設備 B.様",date:"2026年2月",rating:4,body:"納期が早くて助かります。品質も安定しています。"},
-  ]
-};
+const _mkrs=['Lyra','Virgo','Orion'];
+PRODUCTS.forEach((p,i)=>{p.maker=_mkrs[i%3];});
 
 let view='list',page=1,filtered=[...PRODUCTS],currentCat=CATEGORIES[0];
 
@@ -1705,10 +1685,6 @@ function catIconSvg(id,type){
   return SVG('','');
 }
 
-function stars(r){
-  const f=Math.floor(r),h=r%1>=.5;
-  return '★'.repeat(f)+(h?'<span style="opacity:.4">★</span>':'')+'☆'.repeat(5-f-(h?1:0));
-}
 
 // ── Navigation ──
 function navTo(pg,data){
@@ -1818,7 +1794,7 @@ function apply(){
   const lMin=parseInt(document.getElementById('sl-lmin').value)||6,lMax=parseInt(document.getElementById('sl-lmax').value)||100;
   const deliv=document.getElementById('deliv').value;
   const sf=document.getElementById('sort').value;
-  const fns={pop:(a,b)=>b.pop-a.pop,rating:(a,b)=>b.rating-a.rating,ta:(a,b)=>a.tnum-b.tnum,td:(a,b)=>b.tnum-a.tnum,la:(a,b)=>a.len-b.len,ld:(a,b)=>b.len-a.len};
+  const fns={pop:(a,b)=>b.pop-a.pop,ta:(a,b)=>a.tnum-b.tnum,td:(a,b)=>b.tnum-a.tnum,la:(a,b)=>a.len-b.len,ld:(a,b)=>b.len-a.len};
 
   // カテゴリ内の商品プール
   const catPool=PRODUCTS.filter(p=>(p.catId||'cap')===currentCat.id);
@@ -1938,7 +1914,6 @@ function renderList(items,disp){
         <div class="pmkr">${p.maker}</div>
         <div class="pnm">${pName(p)}</div>
         <div class="pdsc">${pDesc(p)}</div>
-        <div class="prat"><span class="stars">${stars(p.rating)}</span><span class="rnum">${p.rating}</span><span class="rcnt">(${p.rev}${L('rev')})</span></div>
         <div class="spec-pills">
           <div class="spec-pill"><strong>${p.thread}</strong></div>
           <div class="spec-pill">L=<strong>${p.len}mm</strong></div>
@@ -1967,7 +1942,6 @@ function renderPhoto(items,disp){
         <div class="gnm">${pName(p)}</div>
         <div class="gsp">${p.thread} × ${p.len}mm | ${tMat(p.material)}</div>
         <div class="gsp" style="margin-top:2px;color:#aeaeb2">${tSurf(p.surface)}</div>
-        <div class="prat" style="margin-top:8px"><span class="stars" style="font-size:11px">${stars(p.rating)}</span><span style="font-size:11px;font-weight:700;margin-left:4px">${p.rating}</span></div>
       </div>
     </div>`).join('')}</div>`;
 }
@@ -1975,7 +1949,7 @@ function renderPhoto(items,disp){
 function renderCompare(items,disp){
   const hs=L('cmpHeaders');
   const chemL={ok:`✅ ${L('chemOk')}`,ng:`❌ ${L('chemNg')}`,pending:`🔄 ${L('chemPending')}`};
-  const vs=[p=>pName(p),p=>p.thread,p=>p.len+'mm',p=>tMat(p.material),p=>tDetail(p.detail),p=>p.str_s,p=>p.str_ss,p=>tSurf(p.surface),p=>chemL[p.chem]||'',p=>p.rohs?`✅ ${L('rohsOk')}`:`❌ ${L('rohsNg')}`,p=>p.delivery+L('daysUnit'),p=>`★${p.rating} (${p.rev}${L('rev')})`];
+  const vs=[p=>pName(p),p=>p.thread,p=>p.len+'mm',p=>tMat(p.material),p=>tDetail(p.detail),p=>p.str_s,p=>p.str_ss,p=>tSurf(p.surface),p=>chemL[p.chem]||'',p=>p.rohs?`✅ ${L('rohsOk')}`:`❌ ${L('rohsNg')}`,p=>p.delivery+L('daysUnit')];
   const lblStyle='font-weight:700;background:var(--s2);white-space:nowrap;color:var(--ink-60);font-size:11px;letter-spacing:.3px';
   const imgRow=`<tr><td style="${lblStyle}">${L('cmpImage')}</td>${items.map(p=>`<td style="text-align:center;padding:16px 14px;background:#f8f9fa"><div style="display:inline-block;cursor:pointer" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${p.id}))">${illustImg(p.material,80,p.catId)}</div></td>`).join('')}</tr>`;
   const nm=p=>{const n=pName(p);return n.length>18?n.slice(0,18)+'…':n;};
@@ -2014,7 +1988,6 @@ function renderDetail(p){
     </div>`).join('');
   document.getElementById('dt-badges').innerHTML=(p.chem==='ok'?`<span class="badge badge-c">${L('chemBadge')}</span>`:'')+(p.rohs?`<span class="badge badge-r">${L('rohsBadge')}</span>`:'');
   document.getElementById('dt-maker').textContent=p.maker;
-  document.getElementById('dt-rat').innerHTML=`<span class="stars" style="font-size:16px">${stars(p.rating)}</span><span style="font-size:16px;font-weight:800;margin-left:4px">${p.rating}</span><span style="font-size:12px;color:var(--ink-20);margin-left:4px">(${p.rev}${L('reviews')})</span>`;
   document.getElementById('dt-spec-mini').innerHTML=[[L('threadSpec'),p.thread],[L('lengthSpec'),p.len+' mm'],[L('matSpec'),tMat(p.material)],[L('detailSpec'),tDetail(p.detail)],[L('surfSpec'),tSurf(p.surface)],[L('delivSpec'),p.delivery+L('daysUnit')]].map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
   document.getElementById('dt-desc').textContent=pDesc(p);
   document.getElementById('dt-full-spec').innerHTML=[
@@ -2023,30 +1996,23 @@ function renderDetail(p){
     ['chemSHERPA',{ok:L('chemOk'),ng:L('chemNg'),pending:L('chemPending')}[p.chem]],[L('rohsLabel'),p.rohs?L('rohsOk'):L('rohsNg')],
     [L('threadType'),L('threadType_v')],[L('headShape'),L('headShape_v')],[L('wrenchType'),L('wrenchType_v')],[L('delivLabel'),p.delivery+L('daysUnit')],[L('jisLabel'),L('jis_v')]
   ].map(([k,v])=>`<tr><th>${k}</th><td>${v}</td></tr>`).join('');
-  const rvs=p.rating>=4.5?REVIEWS.high:REVIEWS.std;
-  document.getElementById('dt-reviews').innerHTML=rvs.map(r=>`
-    <div class="rv-item">
-      <div class="rv-head"><span class="rv-name">${r.name}</span><span class="stars" style="font-size:12px">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span><span class="rv-date">${r.date}</span></div>
-      <p class="rv-body">${r.body}</p>
-    </div>`).join('');
   const related=PRODUCTS.filter(x=>x.id!==p.id&&(x.material===p.material||x.thread===p.thread)).slice(0,4);
   document.getElementById('dt-related').innerHTML=related.map(r=>`
     <div class="rel-card" onclick="navTo('detail',PRODUCTS.find(x=>x.id===${r.id}))">
       <div class="rel-img">${illustImg(r.material,60,r.catId)}</div>
       <div class="rel-name">${pName(r)}</div>
       <div class="rel-spec">${r.thread} × ${r.len}mm | ${tMat(r.material)}</div>
-      <div class="prat" style="margin-top:6px"><span class="stars" style="font-size:11px">${stars(r.rating)}</span><span style="font-size:11px;font-weight:700;margin-left:3px">${r.rating}</span></div>
     </div>`).join('');
   updateUI();
 }
 
 // ── CSV ──
-const CSV_HEADERS=['商品コード','商品名','メーカー','材質','詳細材質','ねじの呼び','長さL(mm)','表面処理','強度区分(スチール)','強度区分(ステンレス)','chemSHERPA','EU_RoHS対応','出荷日(日以内)','評価','レビュー件数'];
+const CSV_HEADERS=['商品コード','商品名','メーカー','材質','詳細材質','ねじの呼び','長さL(mm)','表面処理','強度区分(スチール)','強度区分(ステンレス)','chemSHERPA','EU_RoHS対応','出荷日(日以内)'];
 
 function toCSVRow(p){
   const code='HCBT'+String(p.id).padStart(4,'0');
   const chemLabel={ok:'回答可能',ng:'回答不可',pending:'調査中'}[p.chem];
-  const vals=[code,p.name,p.maker,p.material,p.detail,p.thread,p.len,p.surface,p.str_s,p.str_ss,chemLabel,p.rohs?'対応':'非対応',p.delivery,p.rating,p.rev];
+  const vals=[code,p.name,p.maker,p.material,p.detail,p.thread,p.len,p.surface,p.str_s,p.str_ss,chemLabel,p.rohs?'対応':'非対応',p.delivery];
   return vals.map(v=>{const s=String(v??'');return(s.includes(',')||s.includes('"')||s.includes('\n'))?'"'+s.replace(/"/g,'""')+'"':s}).join(',');
 }
 
@@ -2091,13 +2057,13 @@ const ADMIN_CSV_HEADERS=[
   '商品コード','商品名','カテゴリID','メーカー','材質','詳細材質',
   'ねじの呼び','ねじ径(数値)','長さL(mm)','表面処理',
   '強度区分(スチール)','強度区分(ステンレス)',
-  'chemSHERPA','EU_RoHS対応','出荷日(日以内)','人気度','評価','レビュー件数','商品説明'
+  'chemSHERPA','EU_RoHS対応','出荷日(日以内)','人気度','商品説明'
 ];
 const ADMIN_SCHEMA=[
   {col:'商品コード',    type:'文字列',desc:'HCBT0001形式（4桁）。インポート時の商品識別キー。'},
   {col:'商品名',        type:'文字列',desc:'商品の正式名称。'},
   {col:'カテゴリID',    type:'文字列',desc:'cap / hex / lockn / wash / spring / col のいずれか。'},
-  {col:'メーカー',      type:'文字列',desc:'例：ミスミ、モノタロウ'},
+  {col:'メーカー',      type:'文字列',desc:'例：Lyra、Virgo、Orion'},
   {col:'材質',          type:'文字列',desc:'ステンレス / スチール / チタン / アルミ / 黄銅 / 樹脂'},
   {col:'詳細材質',      type:'文字列',desc:'例：SUS304、βチタン合金、A2017（ジュラルミン）'},
   {col:'ねじの呼び',    type:'文字列',desc:'M3 / M4 / M5 / M6 / M8 / M10 / M12 / M16 / M20'},
@@ -2110,8 +2076,6 @@ const ADMIN_SCHEMA=[
   {col:'EU_RoHS対応',   type:'文字列',desc:'true または false'},
   {col:'出荷日(日以内)',type:'数値',  desc:'出荷までの日数（例：1 / 3 / 7）'},
   {col:'人気度',        type:'数値',  desc:'1〜99（内部ソート用スコア）'},
-  {col:'評価',          type:'数値',  desc:'3.0〜5.0（例：4.5）'},
-  {col:'レビュー件数',  type:'数値',  desc:'整数値'},
   {col:'商品説明',      type:'文字列',desc:'日本語の商品説明文。カンマを含む場合は " で囲む。'},
 ];
 
@@ -2122,7 +2086,7 @@ function adminToCSVRow(p){
   const vals=[
     code,p.name,p.catId||'cap',p.maker,p.material,p.detail,
     p.thread,p.tnum,p.len,p.surface,p.str_s,p.str_ss,
-    p.chem,p.rohs,p.delivery,p.pop,p.rating,p.rev,p.desc
+    p.chem,p.rohs,p.delivery,p.pop,p.desc
   ];
   return vals.map(v=>{
     const s=String(v??'');
@@ -2193,8 +2157,6 @@ function adminImportCSV(input){
       p.rohs=(rv==='true'||rv==='TRUE'||rv==='対応');
       p.delivery=parseInt(row['出荷日(日以内)'])||3;
       p.pop=parseInt(row['人気度'])||70;
-      p.rating=parseFloat(row['評価'])||4.0;
-      p.rev=parseInt(row['レビュー件数'])||0;
       p.desc=row['商品説明']||'';
       return{p,errors,raw:row};
     });
@@ -2319,8 +2281,6 @@ function adminRender(){
       <td>${chemMap[p.chem]||p.chem}</td>
       <td>${p.rohs?'<span class="adm-rohs-y">対応</span>':'<span class="adm-rohs-n">非対応</span>'}</td>
       <td>${p.delivery}日</td>
-      <td>${p.rating}</td>
-      <td>${p.rev}</td>
     </tr>`;
   }).join('');
 }
