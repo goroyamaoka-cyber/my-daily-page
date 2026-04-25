@@ -2529,6 +2529,11 @@ function initAdminPage(){
 }
 
 // ── Init ──
+(()=>{
+  const titleMap={ja:'製品選定システム（Sample）',en:'Product Selection System (Sample)',zh:'产品选型系统（Sample）'};
+  document.title=titleMap[currentLang]||titleMap.ja;
+  updateUI();
+})();
 renderCategories();
 initFilters();
 updatePrintBtn();
