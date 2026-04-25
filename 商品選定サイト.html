@@ -1474,6 +1474,150 @@ function illustImg(mat,sz=90,catId=''){
     <rect x="${CX-SW/2+p(2.5)}" y="${HBY+p(4)}" width="${p(2.8)}" height="${SH-p(8)}" rx="${p(1.4)}" fill="white" opacity=".22"/>`);
 }
 
+// ── 真上ビュー（Top View）──
+function illustImgTop(mat,sz=90,catId=''){
+  const uid='tp'+(++_iCnt);
+  const M={
+    'ステンレス':{hi:'#d0e8f8',lt:'#8aa8c0',md:'#445a70',dk:'#1a2a38',sk:'#060e16',bg1:'#f0f4f8',bg2:'#dce8f2'},
+    'スチール':  {hi:'#c8d0dc',lt:'#7a8898',md:'#384048',dk:'#141c24',sk:'#04080c',bg1:'#f0f2f4',bg2:'#dce0e6'},
+    'チタン':    {hi:'#c8d8ec',lt:'#7090b0',md:'#384a62',dk:'#121e2c',sk:'#040c18',bg1:'#eef4fa',bg2:'#d8e8f4'},
+    'アルミ':    {hi:'#d8e4ee',lt:'#98aabb',md:'#505c68',dk:'#1c2430',sk:'#08101a',bg1:'#f2f4f8',bg2:'#e0e6ee'},
+    '黄銅':      {hi:'#f0d460',lt:'#c8981c',md:'#7a5800',dk:'#2c1800',sk:'#0c0600',bg1:'#faf6e0',bg2:'#eee0b0'},
+    '樹脂':      {hi:'#90d898',lt:'#489858',md:'#1a5828',dk:'#062010',sk:'#020a04',bg1:'#eef8f0',bg2:'#d8eede'},
+  };
+  const d=M[mat]||M['ステンレス'];
+  const s=v=>+(v*sz/100).toFixed(2);
+  const CX=s(50),CY=s(50);
+  const bgG=`<linearGradient id="${uid}bg" x1="0" y1="0" x2="0" y2="${sz}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.bg1}"/><stop offset="1" stop-color="${d.bg2}"/></linearGradient>`;
+  const flt=`<filter id="${uid}F" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="${s(2.5)}"/></filter>`;
+  const clp=`<clipPath id="${uid}C"><rect width="${sz}" height="${sz}" rx="${s(22)}" ry="${s(22)}"/></clipPath>`;
+  const wrap=(defs,body)=>`<svg viewBox="0 0 ${sz} ${sz}" width="${sz}" height="${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"><defs>${bgG}${flt}${clp}${defs}</defs><g clip-path="url(#${uid}C)"><rect width="${sz}" height="${sz}" fill="url(#${uid}bg)"/>${body}</g></svg>`;
+  const hx=(cx,cy,r,rot)=>Array.from({length:6},(_,i)=>`${(cx+r*Math.cos(i*Math.PI/3+rot)).toFixed(1)},${(cy+r*Math.sin(i*Math.PI/3+rot)).toFixed(1)}`).join(' ');
+
+  // ワッシャ：同心円
+  if(catId==='wash'){
+    const OR=s(38),IR=s(14);
+    return wrap(
+      `<radialGradient id="${uid}R" cx="${CX}" cy="${CY}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${d.dk}"/><stop offset=".45" stop-color="${d.lt}"/><stop offset=".75" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`,
+      `<circle cx="${CX}" cy="${CY}" r="${OR}" fill="url(#${uid}R)"/>
+       <circle cx="${CX}" cy="${CY}" r="${IR}" fill="${d.sk}"/>
+       <ellipse cx="${s(38)}" cy="${s(36)}" rx="${s(5)}" ry="${s(2.5)}" fill="white" opacity=".28" transform="rotate(-35,${s(38)},${s(36)})"/>`
+    );
+  }
+  // スプリングワッシャ：切れ目付き環
+  if(catId==='spring'){
+    const OR=s(35),IR=s(14);
+    const gap=0.28;
+    const d1=`M ${(CX+OR*Math.cos(gap)).toFixed(1)},${(CY+OR*Math.sin(gap)).toFixed(1)} A ${OR} ${OR} 0 1 0 ${(CX+IR*Math.cos(-gap)).toFixed(1)},${(CY+IR*Math.sin(-gap)).toFixed(1)} A ${IR} ${IR} 0 1 1 ${(CX+IR*Math.cos(gap+0.01)).toFixed(1)},${(CY+IR*Math.sin(gap+0.01)).toFixed(1)} Z`;
+    return wrap(
+      `<radialGradient id="${uid}R" cx="${CX}" cy="${CY}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${d.dk}"/><stop offset=".5" stop-color="${d.lt}"/><stop offset="1" stop-color="${d.md}"/></radialGradient>`,
+      `<path d="${d1}" fill="url(#${uid}R)"/>
+       <circle cx="${CX}" cy="${CY}" r="${s(4)}" fill="${d.sk}" opacity=".6" filter="url(#${uid}F)"/>`
+    );
+  }
+  // カラー・スペーサ：中空円
+  if(catId==='col'){
+    const OR=s(22),IR=s(11);
+    return wrap(
+      `<radialGradient id="${uid}R" cx="${s(40)}" cy="${s(40)}" r="${OR}" gradientUnits="userSpaceOnUse"><stop offset="${(IR/OR).toFixed(3)}" stop-color="${d.dk}"/><stop offset=".5" stop-color="${d.lt}"/><stop offset="1" stop-color="${d.md}"/></radialGradient>`,
+      `<circle cx="${CX}" cy="${CY}" r="${OR}" fill="url(#${uid}R)"/>
+       <circle cx="${CX}" cy="${CY}" r="${IR}" fill="${d.sk}" opacity=".92"/>
+       <ellipse cx="${s(38)}" cy="${s(39)}" rx="${s(4)}" ry="${s(2)}" fill="white" opacity=".28" transform="rotate(-30,${s(38)},${s(39)})"/>`
+    );
+  }
+  // 蝶ボルト：ウィング形状
+  if(catId==='wing'){
+    return wrap(
+      `<radialGradient id="${uid}H" cx="${CX}" cy="${CY}" r="${s(40)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.lt}"/><stop offset=".5" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`,
+      `<ellipse cx="${CX-s(16)}" cy="${CY}" rx="${s(22)}" ry="${s(14)}" fill="url(#${uid}H)" transform="rotate(-15,${CX-s(16)},${CY})"/>
+       <ellipse cx="${CX+s(16)}" cy="${CY}" rx="${s(22)}" ry="${s(14)}" fill="url(#${uid}H)" transform="rotate(15,${CX+s(16)},${CY})"/>
+       <circle cx="${CX}" cy="${CY}" r="${s(11)}" fill="${d.md}"/>
+       <circle cx="${CX}" cy="${CY}" r="${s(8)}" fill="${d.sk}" opacity=".9"/>
+       <ellipse cx="${s(36)}" cy="${s(37)}" rx="${s(4)}" ry="${s(2)}" fill="white" opacity=".3"/>`
+    );
+  }
+  // 十字穴付き：丸頭に十字溝
+  if(catId==='cross'){
+    return wrap(
+      `<radialGradient id="${uid}H" cx="${s(38)}" cy="${s(36)}" r="${s(32)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.lt}"/><stop offset=".45" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`,
+      `<circle cx="${CX}" cy="${CY}" r="${s(30)}" fill="url(#${uid}H)"/>
+       <rect x="${CX-s(4)}" y="${CY-s(24)}" width="${s(8)}" height="${s(48)}" fill="${d.sk}" opacity=".85" rx="${s(1)}"/>
+       <rect x="${CX-s(24)}" y="${CY-s(4)}" width="${s(48)}" height="${s(8)}" fill="${d.sk}" opacity=".85" rx="${s(1)}"/>
+       <circle cx="${CX}" cy="${CY}" r="${s(4.5)}" fill="${d.dk}" opacity=".7"/>
+       <ellipse cx="${s(37)}" cy="${s(36)}" rx="${s(5)}" ry="${s(2.5)}" fill="white" opacity=".28" transform="rotate(-30,${s(37)},${s(36)})"/>`
+    );
+  }
+  // ロックナット・六角ナット：六角穴なし
+  if(catId==='lockn'||catId==='hexn'){
+    const hexR=s(33),holeR=s(13);
+    return wrap(
+      `<radialGradient id="${uid}H" cx="${s(38)}" cy="${s(36)}" r="${hexR*1.2}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.lt}"/><stop offset=".42" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`,
+      `<polygon points="${hx(CX,CY,hexR,Math.PI/6)}" fill="url(#${uid}H)"/>
+       <circle cx="${CX}" cy="${CY}" r="${holeR+s(2)}" fill="${d.dk}" opacity=".6"/>
+       <circle cx="${CX}" cy="${CY}" r="${holeR}" fill="${d.sk}" opacity=".9"/>
+       <ellipse cx="${s(38)}" cy="${s(37)}" rx="${s(5)}" ry="${s(2.5)}" fill="white" opacity=".25" transform="rotate(-30,${s(38)},${s(37)})"/>`
+    );
+  }
+  // デフォルト（cap/hex/flng/btn/stud/eye）：六角頭＋六角穴ソケット
+  const hexR=s(34),socketR=s(10);
+  return wrap(
+    `<radialGradient id="${uid}H" cx="${s(38)}" cy="${s(36)}" r="${hexR*1.2}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${d.lt}"/><stop offset=".4" stop-color="${d.md}"/><stop offset="1" stop-color="${d.dk}"/></radialGradient>`,
+    `<polygon points="${hx(CX,CY,hexR,Math.PI/6)}" fill="url(#${uid}H)"/>
+     <circle cx="${CX}" cy="${CY}" r="${s(14)}" fill="${d.dk}" opacity=".68"/>
+     <polygon points="${hx(CX,CY,socketR,Math.PI/6)}" fill="${d.sk}" opacity=".92"/>
+     <ellipse cx="${s(38)}" cy="${s(37)}" rx="${s(5)}" ry="${s(2.5)}" fill="white" opacity=".25" transform="rotate(-30,${s(38)},${s(37)})"/>`
+  );
+}
+
+// ── 寸法図（Dimension Drawing）──
+function illustImgDim(prod,sz=90){
+  const uid='dm'+(++_iCnt);
+  const s=v=>+(v*sz/100).toFixed(2);
+  const CX=s(50);
+  const lc='#1e2d42',dc='#c0001a';
+  const thread=prod?prod.thread||'M6':'M6';
+  const len=prod?prod.len||20:20;
+  const tnum=prod?prod.tnum||6:6;
+  const clp=`<clipPath id="${uid}C"><rect width="${sz}" height="${sz}" rx="${s(10)}" ry="${s(10)}"/></clipPath>`;
+  const wrap=body=>`<svg viewBox="0 0 ${sz} ${sz}" width="${sz}" height="${sz}" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block"><defs>${clp}</defs><g clip-path="url(#${uid}C)"><rect width="${sz}" height="${sz}" fill="#f4f5f7"/><line x1="0" y1="${sz}" x2="${sz}" y2="0" stroke="#e8e9ec" stroke-width="${s(18)}" opacity=".5"/>${body}</g></svg>`;
+
+  const HW=s(38),HH=s(16),SW=s(Math.min(26,Math.max(16,tnum*2.6)));
+  const SH=s(38),HY=s(12),HBY=HY+HH,SBY=HBY+SH;
+  const dlw=s(0.55),lw=s(1.05),fs=s(7.5),fsm=s(6.2);
+
+  const arrV=(x,y,dir)=>{const dx=s(1.5),dy=dir*s(3.5);return `<polygon points="${x},${y} ${x-dx},${y-dy} ${x+dx},${y-dy}" fill="${dc}"/>`;};
+  const arrH=(x,y,dir)=>{const dx=dir*s(3.5),dy=s(1.5);return `<polygon points="${x},${y} ${x-dx},${y-dy} ${x-dx},${y+dy}" fill="${dc}"/>`;};
+
+  const threadLines=Array.from({length:5},(_,i)=>{
+    const ty=HBY+s(7)+i*s(6);
+    return ty<SBY-s(4)?`<line x1="${CX-SW/2+s(1)}" y1="${ty}" x2="${CX+SW/2-s(1)}" y2="${ty}" stroke="${lc}" stroke-width="${s(0.4)}" opacity=".3"/>`:'';
+  }).join('');
+
+  const body=`
+    <!-- ボルト輪郭 -->
+    <rect x="${CX-HW/2}" y="${HY}" width="${HW}" height="${HH}" stroke="${lc}" stroke-width="${lw}" fill="rgba(150,168,190,.14)" rx="${s(1)}"/>
+    <rect x="${CX-SW/2}" y="${HBY}" width="${SW}" height="${SH}" stroke="${lc}" stroke-width="${lw}" fill="rgba(150,168,190,.14)" rx="${s(1.5)}"/>
+    ${threadLines}
+    <!-- 中心線 -->
+    <line x1="${CX}" y1="${s(5)}" x2="${CX}" y2="${SBY+s(6)}" stroke="${dc}" stroke-width="${s(0.5)}" stroke-dasharray="${s(3.5)},${s(2)}" opacity=".45"/>
+    <!-- 全長寸法（右側） -->
+    <line x1="${CX+HW/2+s(3)}" y1="${HY}" x2="${CX+HW/2+s(11)}" y2="${HY}" stroke="${dc}" stroke-width="${dlw}"/>
+    <line x1="${CX+SW/2+s(3)}" y1="${SBY}" x2="${CX+HW/2+s(11)}" y2="${SBY}" stroke="${dc}" stroke-width="${dlw}"/>
+    <line x1="${CX+HW/2+s(7)}" y1="${HY+s(0.5)}" x2="${CX+HW/2+s(7)}" y2="${SBY-s(0.5)}" stroke="${dc}" stroke-width="${dlw}"/>
+    ${arrV(CX+HW/2+s(7),HY+s(0.5),1)}
+    ${arrV(CX+HW/2+s(7),SBY-s(0.5),-1)}
+    <text x="${CX+HW/2+s(18)}" y="${HBY+SH/2+s(3)}" font-size="${fsm}" fill="${dc}" text-anchor="middle" font-family="monospace,sans-serif" font-weight="700" transform="rotate(90,${CX+HW/2+s(18)},${HBY+SH/2})">${len}mm</text>
+    <!-- ねじ径寸法（下側） -->
+    <line x1="${CX-SW/2}" y1="${SBY+s(4)}" x2="${CX-SW/2}" y2="${SBY+s(11)}" stroke="${dc}" stroke-width="${dlw}"/>
+    <line x1="${CX+SW/2}" y1="${SBY+s(4)}" x2="${CX+SW/2}" y2="${SBY+s(11)}" stroke="${dc}" stroke-width="${dlw}"/>
+    <line x1="${CX-SW/2+s(0.5)}" y1="${SBY+s(7.5)}" x2="${CX+SW/2-s(0.5)}" y2="${SBY+s(7.5)}" stroke="${dc}" stroke-width="${dlw}"/>
+    ${arrH(CX-SW/2+s(0.5),SBY+s(7.5),-1)}
+    ${arrH(CX+SW/2-s(0.5),SBY+s(7.5),1)}
+    <text x="${CX}" y="${SBY+s(20)}" font-size="${fs}" fill="${dc}" text-anchor="middle" font-family="monospace,sans-serif" font-weight="700">${thread}</text>
+  `;
+  return wrap(body);
+}
+
 // ═══════════════════════════════════════════
 // 商品データ（30件）
 // ═══════════════════════════════════════════
@@ -2143,11 +2287,22 @@ function renderDetail(p){
   window.__currentDetailProduct=p;
   document.getElementById('dt-name').textContent=pName(p);
   document.getElementById('dt-name-sub').textContent=pName(p);
-  document.getElementById('dt-main-img').innerHTML=illustImg(p.material,240,p.catId);
+  // 3つのビュー（側面・俯瞰・寸法図）を生成
+  window.__detailViews=[
+    illustImg(p.material,240,p.catId),
+    illustImgTop(p.material,240,p.catId),
+    illustImgDim(p,240)
+  ];
+  const _thumbSvgs=[
+    illustImg(p.material,52,p.catId),
+    illustImgTop(p.material,52,p.catId),
+    illustImgDim(p,52)
+  ];
+  document.getElementById('dt-main-img').innerHTML=window.__detailViews[0];
   document.getElementById('dt-main-img').style.background='';
-  document.getElementById('dt-thumbs').innerHTML=[0,1,2].map(i=>`
-    <div class="dthmb ${i===0?'active':''}" onclick="this.parentElement.querySelectorAll('.dthmb').forEach(t=>t.classList.remove('active'));this.classList.add('active')">
-      ${illustImg(p.material,52,p.catId)}
+  document.getElementById('dt-thumbs').innerHTML=_thumbSvgs.map((svg,i)=>`
+    <div class="dthmb ${i===0?'active':''}" onclick="(function(el,idx){el.parentElement.querySelectorAll('.dthmb').forEach(t=>t.classList.remove('active'));el.classList.add('active');document.getElementById('dt-main-img').innerHTML=window.__detailViews[idx];})(this,${i})">
+      ${svg}
     </div>`).join('');
   document.getElementById('dt-badges').innerHTML=(p.chem==='ok'?`<span class="badge badge-c">${L('chemBadge')}</span>`:'')+(p.rohs?`<span class="badge badge-r">${L('rohsBadge')}</span>`:'');
   document.getElementById('dt-maker').textContent=p.maker;
