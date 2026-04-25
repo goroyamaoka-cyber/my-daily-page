@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>顧客ニュース収集 2026/04/24</title>
+<title>顧客ニュース収集 2026/04/25</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: "Meiryo UI", "Yu Gothic UI", "Segoe UI", sans-serif; background: #f0f2f5; color: #333; font-size: 14px; }
@@ -228,7 +228,7 @@
 <div class="page-header">
   <div>
     <h1>📰 顧客ニュース収集レポート</h1>
-    <div class="meta">収集日時：2026年04月24日 17:53　／　対象企業：23社　／　収集記事：164件（重複除去後）</div>
+    <div class="meta">収集日時：2026年04月25日 11:53　／　対象企業：23社　／　収集記事：159件（重複除去後）</div>
   </div>
   <div class="view-toggle">
     <button class="view-btn active" id="btnList" onclick="setView('list')" title="リスト表示">
@@ -245,7 +245,7 @@
     <div class="filter-header" onclick="toggleFilter()">
       <div class="filter-header-left">
         <span class="filter-header-title">🔍 絞り込み検索</span>
-        <span class="filter-header-summary" id="filterSummary">164件表示中</span>
+        <span class="filter-header-summary" id="filterSummary">159件表示中</span>
       </div>
       <span class="filter-chevron">&#9660;</span>
     </div>
@@ -256,7 +256,7 @@
         <div class="filter-row">
           <span class="filter-label">🔍 検索</span>
           <input type="text" class="search-input" id="searchInput" placeholder="キーワードで絞り込み..." oninput="applyFilters()">
-          <span class="count-label" id="countLabel">164件表示中</span>
+          <span class="count-label" id="countLabel">159件表示中</span>
         </div>
         <!-- 日付フィルター -->
         <div class="filter-row">
@@ -312,12 +312,33 @@
         </tr>
       </thead>
       <tbody id="tableBody">
-      <tr data-company="旭精工" data-date="2026-04-24">
-        <td class="col-company">旭精工</td>
+      <tr data-company="椿本チエイン" data-date="2026-04-25">
+        <td class="col-company">椿本チエイン</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/25</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFA5c0hVS3RtUWFFNG5RRlZqeXJNYlpPVVRkUnFfODZGbEpSNU12NldaV0M1SzlhUXhpVFVfbHlUNzhRYWQ2Q2p6bDF3ZU0zZVgtdkE?oc=5" target="_blank" rel="noopener">(株)椿本チエイン【6371】：株価・株式情報 - Yahoo!ファイナンス</a></td>
+        <td class="col-summary">Yahoo! JAPAN IDにログインするとご覧になれます。</td>
+      </tr>
+      <tr data-company="守谷商会" data-date="2026-04-25">
+        <td class="col-company">守谷商会</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/25</td>
+        <td class="col-title"><a href="https://sales.moritani.co.jp/dp/hbk/" target="_blank" rel="noopener">[新着商品] マイクロホン、校正器、加速度ピックアップ</a></td>
+        <td class="col-summary">精密騒音計として申し分のない性能と画期的な使いやすさを実現！ 騒音測定をより簡単に、効率的に！</td>
+      </tr>
+      <tr data-company="守谷商会" data-date="2026-04-25">
+        <td class="col-company">守谷商会</td>
+        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
+        <td class="col-date">2026/04/25</td>
+        <td class="col-title"><a href="https://sales.moritani.co.jp/newenergy/battery/" target="_blank" rel="noopener">[新着商品] 混錬/分散/造粒/被膜等粉体関連プロセス装置</a></td>
+        <td class="col-summary">守谷商会では１つの注文に関して複数メーカーを組み合わせてご提案をいたします。</td>
+      </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-24">
+        <td class="col-company">川崎重工業</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/24</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFB1c2dnRzcxU182UWpkVDgwOHkxS2Q3N1Jtd1puZHhJY3N4d3pKQW5SbklyTmgxeEFFRFRMN091ZmpDeVlkUmVvQkhkY3pRd2JBRnc?oc=5" target="_blank" rel="noopener">旭精機工業(株)【6111】：株価・株式情報 - Yahoo!ファイナンス</a></td>
-        <td class="col-summary">Yahoo! JAPAN IDにログインするとご覧になれます。</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHRUxvRVBjbmxTd0ZoaWZLVzdVaTFqT1lNYndQRnhWeXhqZVlIU3FOU3BfRFV1S3ZBbkNuUXdtbDRuNWdBQ0ZCRmNKZWJoVWNWN3hjWFA3THFPLWNvdjV3?oc=5" target="_blank" rel="noopener">川崎重工業(株)【7012】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス</a></td>
+        <td class="col-summary">株価は4/18終値3,070円→4/23終値3,226円へ+5.08％上昇。4/20〜23に材料が断続し、戻り基調の中で値幅も出やすい局面。</td>
       </tr>
       <tr data-company="川崎重工業" data-date="2026-04-24">
         <td class="col-company">川崎重工業</td>
@@ -330,13 +351,6 @@
         <td class="col-company">川崎重工業</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/24</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiS0FVX3lxTE94YmthczRXUVFaTThRbkJuMy1IVDFSZnhyckRCdnZqWkhpNFViOXRObWlMdUVjT1l3LWNWb0lDRm1aWjh0LTFFVG1MYw?oc=5" target="_blank" rel="noopener">川崎重工と損保ジャパン、ソフトバンクが船舶の自動運航促進へ共同で安全支援 - LOGI-BIZ online</a></td>
-        <td class="col-summary">2026.04.24 12:20:31 テクノロジー/製品 自動運転 , 提携/合弁など , プレスリリースなど</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2026-04-24">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/24</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiVEFVX3lxTE9ORUpjazJzNTVpcjhQYWt6RXhnMVdxOHl1TW5PbFNqLUpzM2ppS0xSdG1XZXpobXBGUHZSNE53dU1qTTZ0elh1ektfVXhjNWQ2OE81cg?oc=5" target="_blank" rel="noopener">川崎重工がカナダで水素調達ルートを開拓へ、現地3団体と連携 - スマートグリッドフォーラム</a></td>
         <td class="col-summary">インプレスSmartGridニューズレター編集部</td>
       </tr>
@@ -344,8 +358,8 @@
         <td class="col-company">川崎重工業</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/24</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiR0FVX3lxTE05WmtMc1RuU1VGZWRkUXFDcHFoMTNnaVlKYXNjWGFWakNMb3FMZzcxN3hscUJDbGI1bTJMVjVSSDBQQlZ3aEpv?oc=5" target="_blank" rel="noopener">テクニカルで選ぶ注目銘柄：川崎重工、５日・２５日の両移動平均線を上回る 速報 - kabushiki.jp</a></td>
-        <td class="col-summary">総合重機で２位の川崎重工業&lt;7012.T&gt;の株価が２３日に１７６２万株の出来高を伴って前日比１２５円高と上伸して、終値で５日・２５日の両移動平均線に対するプラスカイ離を回復してきた。２本の移動平均線・・・</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE9FWERKVC1lOXZzbFpVbXZDTV9NRGtjZ0d3QUkxZWlCMWZtRFdWNW5QaW4xeTVhMGpkNWtEM3hHSlBNWlp1T3J5N3hQcnhyVXdHOUhiS2xWUjFKS2lnMXg2TEJaSzFIeDlzVHc?oc=5" target="_blank" rel="noopener">川崎重工業と損害保険ジャパンがソフトバンクとともに船舶の安全運航を | ＳＯＭＰＯホールディングス株式会社のプレスリリース - PR TIMES</a></td>
+        <td class="col-summary">川崎重工業株式会社（本社：東京都港区、代表取締役社長：橋本康彦、以下「川崎重工」）、損害保険ジャパン株式会社（本社：東京都新宿区、代表取締役社長：石川耕治、以下「損保ジャパン」）、ソフトバンク株式会社（以下「ソフトバンク」）は、船舶の安全運航を支援するソリューションの提供に向けた基本合意を締結しまし</td>
       </tr>
       <tr data-company="CCS（シーシーエス）" data-date="2026-04-24">
         <td class="col-company">CCS（シーシーエス）</td>
@@ -389,33 +403,12 @@
         <td class="col-title"><a href="https://www.naiki.co.jp/news_pdf/2026naiki-catalog_errata.pdf" target="_blank" rel="noopener">ナイキオフィス家具総合カタログ2026　カタログ訂正表(3)を掲載しました。</a></td>
         <td class="col-summary"></td>
       </tr>
-      <tr data-company="守谷商会" data-date="2026-04-24">
-        <td class="col-company">守谷商会</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/04/24</td>
-        <td class="col-title"><a href="https://sales.moritani.co.jp/dp/hbk/" target="_blank" rel="noopener">[新着商品] マイクロホン、校正器、加速度ピックアップ</a></td>
-        <td class="col-summary">精密騒音計として申し分のない性能と画期的な使いやすさを実現！ 騒音測定をより簡単に、効率的に！</td>
-      </tr>
-      <tr data-company="守谷商会" data-date="2026-04-24">
-        <td class="col-company">守谷商会</td>
-        <td class="col-source"><span class="badge-corp">コーポレート</span></td>
-        <td class="col-date">2026/04/24</td>
-        <td class="col-title"><a href="https://sales.moritani.co.jp/newenergy/battery/" target="_blank" rel="noopener">[新着商品] 混錬/分散/造粒/被膜等粉体関連プロセス装置</a></td>
-        <td class="col-summary">守谷商会では１つの注文に関して複数メーカーを組み合わせてご提案をいたします。</td>
-      </tr>
       <tr data-company="山善" data-date="2026-04-23">
         <td class="col-company">山善</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/23</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE40RFJ3eVM1U3A0UGVHV1RaUml6TTVzdzJRUGZvOTVocHBEQURLX2UxUkcxRXNkWmRVOWNXTU1sTlhwdFlPZUxjdmI1TE1paWRWWGs1dk5leW1VYlNVYkpNNXVERFBCRWZt?oc=5" target="_blank" rel="noopener">山善、日本の夏に対抗する「本気の猛暑対策グッズ」。ありそうでなかった熱中対策シェルターや新型水冷服を見てきた！ - トラベル Watch</a></td>
         <td class="col-summary">山善は4月23日、東京・有明の本社で「猛暑対策 新商品 プレス向け体験会」を開催した。今年は早くも4月から夏日が観測され、記録的な酷暑が長期化すると予想されている。また、昨年の労働安全衛生法における職場での熱中症対策義務化や、エネルギー価格の高騰を背景に、猛暑対策への関心は社会的に高まっている。</td>
-      </tr>
-      <tr data-company="川崎重工業" data-date="2026-04-23">
-        <td class="col-company">川崎重工業</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/23</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHRUxvRVBjbmxTd0ZoaWZLVzdVaTFqT1lNYndQRnhWeXhqZVlIU3FOU3BfRFV1S3ZBbkNuUXdtbDRuNWdBQ0ZCRmNKZWJoVWNWN3hjWFA3THFPLWNvdjV3?oc=5" target="_blank" rel="noopener">川崎重工業(株)【7012】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス</a></td>
-        <td class="col-summary">株価は4/18終値3,070円→4/23終値3,226円へ+5.08％上昇。4/20〜23に材料が断続し、戻り基調の中で値幅も出やすい局面。</td>
       </tr>
       <tr data-company="住友電工ハードメタル" data-date="2026-04-23">
         <td class="col-company">住友電工ハードメタル</td>
@@ -458,20 +451,6 @@
         <td class="col-date">2026/04/22</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHS3RKTWJWVnNDYmVCMC01b2ZFR3JGNzJhV0IwdHJBYzhZcVpWbERuMGFUUlJXQzZGbURIV2RkSEtvZjl2dUFmcllMVXluN3g3eWtFQWp4UEpSaHY1LTg0?oc=5" target="_blank" rel="noopener">おうちの重い物、山善の薄型キャリーでラクに動かしなよ - ライブドアニュース</a></td>
         <td class="col-summary">この記事は2025年4月6日に公開された記事を編集して再掲載しています。</td>
-      </tr>
-      <tr data-company="椿本チエイン" data-date="2026-04-22">
-        <td class="col-company">椿本チエイン</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/22</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFA5c0hVS3RtUWFFNG5RRlZqeXJNYlpPVVRkUnFfODZGbEpSNU12NldaV0M1SzlhUXhpVFVfbHlUNzhRYWQ2Q2p6bDF3ZU0zZVgtdkE?oc=5" target="_blank" rel="noopener">(株)椿本チエイン【6371】：株価・株式情報 - Yahoo!ファイナンス</a></td>
-        <td class="col-summary">Yahoo! JAPAN IDにログインするとご覧になれます。</td>
-      </tr>
-      <tr data-company="山善" data-date="2026-04-22">
-        <td class="col-company">山善</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/22</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTFA1ODY3TzVQZWhqS2JhMF9TNUg5VUNKWExXLVpQOW14MUNmam1CNWNCRUt4VjdhMldNSmcwVzRTVEtvMnA4ay1ad0c1eXRQMlBqR1FLSElRQTVvSjg?oc=5" target="_blank" rel="noopener">～会員数34万人突破！～ オフィス・店舗向けEC サイト「山善ビズコム」 4周年記念で全商品10％オフ - 共同通信PRワイヤー</a></td>
-        <td class="col-summary">【キャンペーン期間】 5 月 12 日 ( 火 )10:00 ～ 5 月 28 日(木) 9 ： 59</td>
       </tr>
       <tr data-company="山善" data-date="2026-04-22">
         <td class="col-company">山善</td>
@@ -529,19 +508,26 @@
         <td class="col-title"><a href="https://www.khi.co.jp/pressrelease/detail/20260421_1.html" target="_blank" rel="noopener">[プレスリリース] 水素混焼対応可能なDLE燃焼器を搭載した8MW級ガスタービンコージェネレーションシステムが稼働</a></td>
         <td class="col-summary">川崎重工は、帝人株式会社（以下、帝人）松山事業所北地区（愛媛県松山市）に、水素混焼対応可能なDLE※ 1 燃焼器を搭載したガスタービンコージェネレーションシステム「 PUC80D 」（計４基、合計発電出力：約 30,000kW 、以下、本製品）を納入し、本年２月より稼働を開始しました。</td>
       </tr>
+      <tr data-company="川崎重工業" data-date="2026-04-20">
+        <td class="col-company">川崎重工業</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/20</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTFBLek5wRGt2UEFPaWtYTm5BdDBWNGxRX1FVdWdtVDlXM241d0FOX0RwMzV1U1JzYkZtNVpMbkliSDZ3MHl0Y01PZ3FiZllJSlpBQkhiOVc3VjU4RUFzWXZqcFln?oc=5" target="_blank" rel="noopener">“水素”社会実装へ「世界をリード」×“フィジカルAI”開発拠点公開！／川崎重工業 橋本康彦社長【トップを直撃（WBS）】 - テレ東BIZ</a></td>
+        <td class="col-summary">14分 ・ 2026.04.20 21:00 シェア あとで見る</td>
+      </tr>
       <tr data-company="椿本チエイン" data-date="2026-04-20">
         <td class="col-company">椿本チエイン</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/20</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE5ld2tGQ3VpSl9jZU04ZVZfTmU3NlFxOWhrQ3RNeGZrbnhiS0ROdTl2WHRIcVJuTWp0NFFweVRvSHZzQTlCNThJUw?oc=5" target="_blank" rel="noopener">椿本チエイン、V2X充放電装置を7月発売 - LOGISTICS TODAY</a></td>
-        <td class="col-summary">日を選択 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101) 2026年4月14日 (98) </td>
+        <td class="col-summary">日を選択 2026年4月24日 (100) 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101)</td>
       </tr>
       <tr data-company="住友電工ハードメタル" data-date="2026-04-20">
         <td class="col-company">住友電工ハードメタル</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/20</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE9KYlQ3NjZ2VXpsYWFQSjAzVy1SaUlCNmlkcjBMVi1OQ0htd2txQ1hkS3AxX1o2LVhsZkdGb3dqazJNY214bk03SA?oc=5" target="_blank" rel="noopener">住友電工、超硬工具を最大60％超値上げ - LOGISTICS TODAY</a></td>
-        <td class="col-summary">日を選択 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101) 2026年4月14日 (98) </td>
+        <td class="col-summary">日を選択 2026年4月24日 (100) 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101)</td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-04-20">
         <td class="col-company">椿本チエイン</td>
@@ -662,6 +648,13 @@
         <td class="col-title"><a href="https://components.omron.com/jp-ja/news/20260415" target="_blank" rel="noopener">[お知らせ] 【NEW】DMS GREEN PROJECT｜生産プロセスから始まるDMSの脱炭素への挑戦を紹介する記事を公開しました。</a></td>
         <td class="col-summary">DMS（デバイス＆モジュールソリューション）は、企業理念にある「よりよい社会をつくる」に基づき、気候変動や循環経済への移行といった環境対応において持続可能な社会の実現を目指しています。</td>
       </tr>
+      <tr data-company="山善" data-date="2026-04-14">
+        <td class="col-company">山善</td>
+        <td class="col-source"><span class="badge-google">Google News</span></td>
+        <td class="col-date">2026/04/14</td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE9XMmlzTTRlM054M21Wd2ljZUdGMmJkN1NlVkdrOFVFcUR3RHVId2lMYmhPbDFDRjBMQVRrQkNwdkxoclBKWGxFLUZISEh2bm8?oc=5" target="_blank" rel="noopener">卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので - ROOMIE（ルーミー）</a></td>
+        <td class="col-summary">かいサポ（セール情報） 2026/04/14 公開 Buy PR # 楽天 # 買える</td>
+      </tr>
       <tr data-company="オムロン（DMS）" data-date="2026-04-14">
         <td class="col-company">オムロン（DMS）</td>
         <td class="col-source"><span class="badge-corp">コーポレート</span></td>
@@ -758,7 +751,7 @@
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/08</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTFBGU1JRajZ6bTFzLVFtUE1rUFh2bDc4MVNJOGhWaFhYbVV1bnJGYmNna3hubW9lay1LNEZwalk1MEdtMmtCbkpUSW5GMmdpWWRneEFfRDMwQmpfUQ?oc=5" target="_blank" rel="noopener">北陽電機、まんがで分かる制御機器Season4最終話の第23話「番外編 トラブルの収束へ」公開 - オートメーション新聞</a></td>
-        <td class="col-summary">FA業界・企業トピックス 2023年9月3日 ソルトン、製品コラムミニ連載「シュレーゲル社製スイッチの特長について ①」を公開</td>
+        <td class="col-summary">FA業界・企業トピックス 2022年9月28日 北陽電機、死角の見張り番「UST-30LC/LCN」チラシ公開</td>
       </tr>
       <tr data-company="京セラドキュメントソリューションズ" data-date="2026-04-08">
         <td class="col-company">京セラドキュメントソリューションズ</td>
@@ -787,20 +780,6 @@
         <td class="col-date">2026/04/07</td>
         <td class="col-title"><a href="https://www.kawaki-sowa.co.jp/dcms_media/other/%E5%81%A5%E5%BA%B7%E7%B5%8C%E5%96%B6%E8%AA%8D%E5%AE%9A%E8%A8%BC2026%EF%BC%BF%E5%B7%9D%E5%96%9C%E9%87%91%E7%89%A9%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE.pdf" target="_blank" rel="noopener">[お知らせ] ～健康経営優良法人2026認定～</a></td>
         <td class="col-summary"></td>
-      </tr>
-      <tr data-company="オプテックス" data-date="2026-04-06">
-        <td class="col-company">オプテックス</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/06</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE0tZldaLUVuMEJteUVMV1dSelJXZlptM3BXbEstdnNxWGtBNlhZNkdvM1V6dy1JR001eVJPTU5hZW9CekpuYjR1eUdyeW1CMmlCb1h6VTRkRTVzb1pkbmdhMGQxUkNuUnJ5SzNDOEItZ1ZlbTBz?oc=5" target="_blank" rel="noopener">オプテックス系、直進性保証のCMOSセンサー発売 高精度で測定 - 日刊工業新聞</a></td>
-        <td class="col-summary">2026年（令和8年） 4 月 24 日 金曜日（仏滅）</td>
-      </tr>
-      <tr data-company="京セラドキュメントソリューションズ" data-date="2026-04-06">
-        <td class="col-company">京セラドキュメントソリューションズ</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/04/06</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQNzR5T1VudTh4Z1ctVXhncGZYRGFrTDNGdnVsaFl3Q2FkWFZ1MU9iaVlLd01aTVJkZHBFNmlQTzNWN081S1cwU2I1ejU0Vk80NHFxVGU0a0pvRVl6cVliZFhPdldYQWNaaHhhTVdxdEdMOEJuYjQ0OEJ6czRXU2pJaGZWM01aMFB4ZGdz?oc=5" target="_blank" rel="noopener">【京セラ協賛セミナー】デジタル選挙研修会～タブレット投票でわかる選挙DXのリアル～（模擬投票体験あり） - 自治体通信Online</a></td>
-        <td class="col-summary">最新の選挙DXを学び、体験できるセミナーです。 デジタル選挙を「聞くだけ」にとどまらず、会場では電子投票システムによる模擬投票を実際に体験していただけます。未来の投票所を、ぜひご自身の指で確かめてみてください。</td>
       </tr>
       <tr data-company="杉本商事" data-date="2026-04-06">
         <td class="col-company">杉本商事</td>
@@ -849,7 +828,7 @@
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/04/02</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE1RTUo1Qlg1cDBPVndXdW13LU1LNHJsUUxNNzU3Z0hFajhPaVRUZktwMGRWQzBWcXNhM21UM05hSjBiQTlkOFhPY2FKVVFVOWo1UXp6VHZwTkJNQQ?oc=5" target="_blank" rel="noopener">オプテックス・エフエー、IO-Link対応BGSセンサ「Z4Bシリーズ」に赤外光源タイプを追加 - オートメーション新聞</a></td>
-        <td class="col-summary">FA業界・企業トピックス 2020年9月30日 オプテックス・エフエー「センサの日フォーラム2020」10月6日〜16日 オンラインで開催</td>
+        <td class="col-summary">新製品/サービス 2010年10月27日 IDECコンパクトで狭い場所にも設置可能配線機構の工夫で保守も容易安全リレーモジュール発売</td>
       </tr>
       <tr data-company="椿本チエイン" data-date="2026-04-02">
         <td class="col-company">椿本チエイン</td>
@@ -953,7 +932,7 @@
         <td class="col-company">京セラドキュメントソリューションズ</td>
         <td class="col-source"><span class="badge-google">Google News</span></td>
         <td class="col-date">2026/03/31</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOX3E3ZV9jUmhCTW95WlZmRDh6YkxnZ1VvNjE3SmtSZUhBZ3JVdEdiWk5NN1R3blFoeVhDQWdFSXBfQUJpN2pZSU5KcldWMllDa1ZUV2JoUlB1Mm1TM2haX1VIYXR3cGgwQTRfeVBoNWlwOFhhRVRKUERjZHZxNGhVY05aa0lTaW5o?oc=5" target="_blank" rel="noopener">「AGVの導入は難しい」を変える 京セラドキュメントソリューションズ、導入・運用の負担を抑えたAGVを関西物流展で実機公開 - 北海道新聞デジタル</a></td>
+        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTE9ZaEQ1dFNJS2dnUGxzVnN4ZnA1QW1VSFpaZi01XzFobzBxM3FhRGZuZkk4dk5ZbzlDNk1OMDNYdlUzWFk?oc=5" target="_blank" rel="noopener">「AGVの導入は難しい」を変える 京セラドキュメントソリューションズ、導入・運用の負担を抑えたAGVを関西物流展で実機公開 - Digital PR Platform</a></td>
         <td class="col-summary"></td>
       </tr>
       <tr data-company="オムロン（DMS）" data-date="2026-03-31">
@@ -962,13 +941,6 @@
         <td class="col-date">2026/03/31</td>
         <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE44a3JLYmoyQkpIQ1RRa1dGZ2t2c2RxbEFhMFI3WUlKb0lfNl9FTkNBMnhaazIwYy0wS2ZaODJCaXFvamgxSER4MlkxUDM1Y21VRTRmMWZJZjFXWlhlNE94QmRSbkc1dlNP?oc=5" target="_blank" rel="noopener">オムロン、電子部品事業を米投資会社に売却へ「想定以上に迅速、大規模な投資必要」 | TECH+（テックプラス） - マイナビニュース</a></td>
         <td class="col-summary">掲載日 2026/03/31 17:05</td>
-      </tr>
-      <tr data-company="オムロン（DMS）" data-date="2026-03-31">
-        <td class="col-company">オムロン（DMS）</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/03/31</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTFBRR0hoNElTVktkUG1ndkFkZnN5MVp6d051amNVTUlHTjJyZWoybzVfdi1ET18tRi1zTV9fS1RnN1VFVXBQekJhTg?oc=5" target="_blank" rel="noopener">オムロン、電子部品事業を分社化し売却へ - LOGISTICS TODAY</a></td>
-        <td class="col-summary">日を選択 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101) 2026年4月14日 (98) </td>
       </tr>
       <tr data-company="京セラドキュメントソリューションズ" data-date="2026-03-31">
         <td class="col-company">京セラドキュメントソリューションズ</td>
@@ -1046,13 +1018,6 @@
         <td class="col-date">2026/03/27</td>
         <td class="col-title"><a href="https://www.optex.co.jp/news/2026/0327.html" target="_blank" rel="noopener">経団連推薦社内報審査で「審査委員特別賞」を受賞</a></td>
         <td class="col-summary">このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。 あなたのWebブラウザーでJavaScriptを有効にする方法 を参照してください。</td>
-      </tr>
-      <tr data-company="杉本商事" data-date="2026-03-26">
-        <td class="col-company">杉本商事</td>
-        <td class="col-source"><span class="badge-google">Google News</span></td>
-        <td class="col-date">2026/03/26</td>
-        <td class="col-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5FcFIyR3ZmdGd0bXV2WkxTbF9zNkhnR0RULUN3aFJ3b0NaYS1GeXJkRVFDTG1TSXVaUU9hdVJfeUxiM1l5dmxSMldqWEJOdEU4Q2hVQVdwZ2VmdEVIQXNiMzNETlA1Wkd1?oc=5" target="_blank" rel="noopener">3/26（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></td>
-        <td class="col-summary">当日券販売について ※先着順になります。 当日券販売予定枚数 販売時間・ 販売場所 3/26（木） 150枚程度 11:40 杉本商事BS 券売窓口 ※ 販売予定枚数に達した時点で販売終了となりますので、予めご了承ください。</td>
       </tr>
       <tr data-company="京セラドキュメントソリューションズ" data-date="2026-03-26">
         <td class="col-company">京セラドキュメントソリューションズ</td>
@@ -1696,14 +1661,6 @@
           <div class="card-title"><a href="https://www.optex.co.jp/news/2026/n29uk10000006x5s.html" target="_blank" rel="noopener">技研トラステムが「自治体・公共Week2026」に出展します</a></div>
           <div class='card-summary'>このWebサイトの全ての機能を利用するためにはJavaScriptを有効にする必要があります。 あなたのWebブラウザーでJavaScriptを有効にする方法 を参照してください。</div>
         </div>
-        <div class="news-card" data-company="オプテックス" data-date="2026-04-06">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/06</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMidEFVX3lxTE0tZldaLUVuMEJteUVMV1dSelJXZlptM3BXbEstdnNxWGtBNlhZNkdvM1V6dy1JR001eVJPTU5hZW9CekpuYjR1eUdyeW1CMmlCb1h6VTRkRTVzb1pkbmdhMGQxUkNuUnJ5SzNDOEItZ1ZlbTBz?oc=5" target="_blank" rel="noopener">オプテックス系、直進性保証のCMOSセンサー発売 高精度で測定 - 日刊工業新聞</a></div>
-          <div class='card-summary'>2026年（令和8年） 4 月 24 日 金曜日（仏滅）</div>
-        </div>
         <div class="news-card" data-company="オプテックス" data-date="2026-04-03">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
@@ -1718,7 +1675,7 @@
             <span class="card-date">2026/04/02</span>
           </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE1RTUo1Qlg1cDBPVndXdW13LU1LNHJsUUxNNzU3Z0hFajhPaVRUZktwMGRWQzBWcXNhM21UM05hSjBiQTlkOFhPY2FKVVFVOWo1UXp6VHZwTkJNQQ?oc=5" target="_blank" rel="noopener">オプテックス・エフエー、IO-Link対応BGSセンサ「Z4Bシリーズ」に赤外光源タイプを追加 - オートメーション新聞</a></div>
-          <div class='card-summary'>FA業界・企業トピックス 2020年9月30日 オプテックス・エフエー「センサの日フォーラム2020」10月6日〜16日 オンラインで開催</div>
+          <div class='card-summary'>新製品/サービス 2010年10月27日 IDECコンパクトで狭い場所にも設置可能配線機構の工夫で保守も容易安全リレーモジュール発売</div>
         </div>
         <div class="news-card" data-company="オプテックス" data-date="2026-03-27">
           <div class="card-header">
@@ -1842,14 +1799,6 @@
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE44a3JLYmoyQkpIQ1RRa1dGZ2t2c2RxbEFhMFI3WUlKb0lfNl9FTkNBMnhaazIwYy0wS2ZaODJCaXFvamgxSER4MlkxUDM1Y21VRTRmMWZJZjFXWlhlNE94QmRSbkc1dlNP?oc=5" target="_blank" rel="noopener">オムロン、電子部品事業を米投資会社に売却へ「想定以上に迅速、大規模な投資必要」 | TECH+（テックプラス） - マイナビニュース</a></div>
           <div class='card-summary'>掲載日 2026/03/31 17:05</div>
         </div>
-        <div class="news-card" data-company="オムロン（DMS）" data-date="2026-03-31">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/03/31</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTFBRR0hoNElTVktkUG1ndkFkZnN5MVp6d051amNVTUlHTjJyZWoybzVfdi1ET18tRi1zTV9fS1RnN1VFVXBQekJhTg?oc=5" target="_blank" rel="noopener">オムロン、電子部品事業を分社化し売却へ - LOGISTICS TODAY</a></div>
-          <div class='card-summary'>日を選択 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101) 2026年4月14日 (98) </div>
-        </div>
         <div class="news-card" data-company="オムロン（DMS）" data-date="2026-03-30">
           <div class="card-header">
             <span class="badge-google">Google News</span>
@@ -1879,20 +1828,12 @@
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMib0FVX3lxTE1yaTVscjcwNWJoQl9SZ0cwTUIyWi1Vc0ktM0xyWTNmamw5OU1sTl96RGlXZmNQVmFsWl9ScnU2aHlubnJNTjU1S0FOYmc5SC1NVE5BQXladjJfaEFodFU3MkFTeDRDRHY3QksxSXNtdw?oc=5" target="_blank" rel="noopener">京セラドキュメントソリューションズ、AGVを実機展示へ…関西物流展2026 1枚目の写真・画像 - レスポンス（Response.jp）</a></div>
           <div class='card-summary'>京セラAVX、牽引グレードFFLKシリーズDCフィルタリングコンデンサ発売…EVなどの高耐久・長寿命を実現 2026年4月22日 京セラAVXは、新しい牽引グレードのFFLKシリーズDCフィルタリン… 京セラ、ウシオ電機の半導体レーザーデバイス事業を買収…車載向けロードプロジェクションなどの製品開発</div>
         </div>
-        <div class="news-card" data-company="京セラドキュメントソリューションズ" data-date="2026-04-06">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/06</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxQNzR5T1VudTh4Z1ctVXhncGZYRGFrTDNGdnVsaFl3Q2FkWFZ1MU9iaVlLd01aTVJkZHBFNmlQTzNWN081S1cwU2I1ejU0Vk80NHFxVGU0a0pvRVl6cVliZFhPdldYQWNaaHhhTVdxdEdMOEJuYjQ0OEJ6czRXU2pJaGZWM01aMFB4ZGdz?oc=5" target="_blank" rel="noopener">【京セラ協賛セミナー】デジタル選挙研修会～タブレット投票でわかる選挙DXのリアル～（模擬投票体験あり） - 自治体通信Online</a></div>
-          <div class='card-summary'>最新の選挙DXを学び、体験できるセミナーです。 デジタル選挙を「聞くだけ」にとどまらず、会場では電子投票システムによる模擬投票を実際に体験していただけます。未来の投票所を、ぜひご自身の指で確かめてみてください。</div>
-        </div>
         <div class="news-card" data-company="京セラドキュメントソリューションズ" data-date="2026-03-31">
           <div class="card-header">
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/03/31</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxOX3E3ZV9jUmhCTW95WlZmRDh6YkxnZ1VvNjE3SmtSZUhBZ3JVdEdiWk5NN1R3blFoeVhDQWdFSXBfQUJpN2pZSU5KcldWMllDa1ZUV2JoUlB1Mm1TM2haX1VIYXR3cGgwQTRfeVBoNWlwOFhhRVRKUERjZHZxNGhVY05aa0lTaW5o?oc=5" target="_blank" rel="noopener">「AGVの導入は難しい」を変える 京セラドキュメントソリューションズ、導入・運用の負担を抑えたAGVを関西物流展で実機公開 - 北海道新聞デジタル</a></div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiQ0FVX3lxTE9ZaEQ1dFNJS2dnUGxzVnN4ZnA1QW1VSFpaZi01XzFobzBxM3FhRGZuZkk4dk5ZbzlDNk1OMDNYdlUzWFk?oc=5" target="_blank" rel="noopener">「AGVの導入は難しい」を変える 京セラドキュメントソリューションズ、導入・運用の負担を抑えたAGVを関西物流展で実機公開 - Digital PR Platform</a></div>
           <div class='card-summary card-summary-empty'>— 本文プレビューなし —</div>
         </div>
         <div class="news-card" data-company="京セラドキュメントソリューションズ" data-date="2026-03-31">
@@ -2052,7 +1993,7 @@
             <span class="card-date">2026/04/20</span>
           </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE9KYlQ3NjZ2VXpsYWFQSjAzVy1SaUlCNmlkcjBMVi1OQ0htd2txQ1hkS3AxX1o2LVhsZkdGb3dqazJNY214bk03SA?oc=5" target="_blank" rel="noopener">住友電工、超硬工具を最大60％超値上げ - LOGISTICS TODAY</a></div>
-          <div class='card-summary'>日を選択 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101) 2026年4月14日 (98) </div>
+          <div class='card-summary'>日を選択 2026年4月24日 (100) 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101)</div>
         </div>
         <div class="news-card" data-company="住友電工ハードメタル" data-date="2026-04-20">
           <div class="card-header">
@@ -2129,7 +2070,7 @@
             <span class="card-date">2026/04/08</span>
           </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTFBGU1JRajZ6bTFzLVFtUE1rUFh2bDc4MVNJOGhWaFhYbVV1bnJGYmNna3hubW9lay1LNEZwalk1MEdtMmtCbkpUSW5GMmdpWWRneEFfRDMwQmpfUQ?oc=5" target="_blank" rel="noopener">北陽電機、まんがで分かる制御機器Season4最終話の第23話「番外編 トラブルの収束へ」公開 - オートメーション新聞</a></div>
-          <div class='card-summary'>FA業界・企業トピックス 2023年9月3日 ソルトン、製品コラムミニ連載「シュレーゲル社製スイッチの特長について ①」を公開</div>
+          <div class='card-summary'>FA業界・企業トピックス 2022年9月28日 北陽電機、死角の見張り番「UST-30LC/LCN」チラシ公開</div>
         </div>
       </div>
     </div>
@@ -2197,18 +2138,18 @@
     <div class="company-group" data-company-group="守谷商会">
       <div class="company-group-header">守谷商会</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="守谷商会" data-date="2026-04-24">
+        <div class="news-card" data-company="守谷商会" data-date="2026-04-25">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2026/04/24</span>
+            <span class="card-date">2026/04/25</span>
           </div>
           <div class="card-title"><a href="https://sales.moritani.co.jp/dp/hbk/" target="_blank" rel="noopener">[新着商品] マイクロホン、校正器、加速度ピックアップ</a></div>
           <div class='card-summary'>精密騒音計として申し分のない性能と画期的な使いやすさを実現！ 騒音測定をより簡単に、効率的に！</div>
         </div>
-        <div class="news-card" data-company="守谷商会" data-date="2026-04-24">
+        <div class="news-card" data-company="守谷商会" data-date="2026-04-25">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
-            <span class="card-date">2026/04/24</span>
+            <span class="card-date">2026/04/25</span>
           </div>
           <div class="card-title"><a href="https://sales.moritani.co.jp/newenergy/battery/" target="_blank" rel="noopener">[新着商品] 混錬/分散/造粒/被膜等粉体関連プロセス装置</a></div>
           <div class='card-summary'>守谷商会では１つの注文に関して複数メーカーを組み合わせてご提案をいたします。</div>
@@ -2305,14 +2246,6 @@
         </div>
         <div class="news-card" data-company="山善" data-date="2026-04-22">
           <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/22</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTFA1ODY3TzVQZWhqS2JhMF9TNUg5VUNKWExXLVpQOW14MUNmam1CNWNCRUt4VjdhMldNSmcwVzRTVEtvMnA4ay1ad0c1eXRQMlBqR1FLSElRQTVvSjg?oc=5" target="_blank" rel="noopener">～会員数34万人突破！～ オフィス・店舗向けEC サイト「山善ビズコム」 4周年記念で全商品10％オフ - 共同通信PRワイヤー</a></div>
-          <div class='card-summary'>【キャンペーン期間】 5 月 12 日 ( 火 )10:00 ～ 5 月 28 日(木) 9 ： 59</div>
-        </div>
-        <div class="news-card" data-company="山善" data-date="2026-04-22">
-          <div class="card-header">
             <span class="badge-corp">コーポレート</span>
             <span class="card-date">2026/04/22</span>
           </div>
@@ -2350,6 +2283,14 @@
           </div>
           <div class="card-title"><a href="https://www.yamazen.co.jp/news/entry-2820.html" target="_blank" rel="noopener">[プレスリリース] 水冷服が“面で冷やす”新構造へ進化「DIRECT COOL ProPLUS水路式」を新発売</a></div>
           <div class='card-summary'>水冷服が“面で冷やす”新構造へ進化 「DIRECT COOL ProPLUS水路式」 2026年5月中旬より発売開始 ～水を入れるだけ。より手軽な「Mizu fit」も販売中～ 株式会社山善（本社：大阪市西区／代表取締役社長：岸田貢司）は、水冷服「DIRECT COOL」シリーズの新モデル「DIRE</div>
+        </div>
+        <div class="news-card" data-company="山善" data-date="2026-04-14">
+          <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/14</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiT0FVX3lxTE9XMmlzTTRlM054M21Wd2ljZUdGMmJkN1NlVkdrOFVFcUR3RHVId2lMYmhPbDFDRjBMQVRrQkNwdkxoclBKWGxFLUZISEh2bm8?oc=5" target="_blank" rel="noopener">卓上ひとり焼肉・鍋・餃子、堪能します！ 山善の「万能プレート」が実質3千円台なので - ROOMIE（ルーミー）</a></div>
+          <div class='card-summary'>かいサポ（セール情報） 2026/04/14 公開 Buy PR # 楽天 # 買える</div>
         </div>
         <div class="news-card" data-company="山善" data-date="2026-04-14">
           <div class="card-header">
@@ -2406,16 +2347,16 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/24</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE0ycVQ1MHVjd2ttVVVya2FsdmhfTDA1QVc1Ui1qOHBsY3g1cmplWWpaOG9TbFZFejdBdHd3TFlORDBaRjRRb2drNFVFdEo3WG5BZHJSZUFiNlBJS1dxWmZwSlVOdm1XRU0yRFlGaw?oc=5" target="_blank" rel="noopener">川崎重工、日医大千葉北総病院に搬送ロボット 医療従事者の負担軽減 - 日本経済新聞</a></div>
-          <div class='card-summary'>企業での記事共有や会議資料への転載・複製、注文印刷などをご希望の方は、リンク先をご覧ください。</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHRUxvRVBjbmxTd0ZoaWZLVzdVaTFqT1lNYndQRnhWeXhqZVlIU3FOU3BfRFV1S3ZBbkNuUXdtbDRuNWdBQ0ZCRmNKZWJoVWNWN3hjWFA3THFPLWNvdjV3?oc=5" target="_blank" rel="noopener">川崎重工業(株)【7012】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス</a></div>
+          <div class='card-summary'>株価は4/18終値3,070円→4/23終値3,226円へ+5.08％上昇。4/20〜23に材料が断続し、戻り基調の中で値幅も出やすい局面。</div>
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-24">
           <div class="card-header">
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/24</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiS0FVX3lxTE94YmthczRXUVFaTThRbkJuMy1IVDFSZnhyckRCdnZqWkhpNFViOXRObWlMdUVjT1l3LWNWb0lDRm1aWjh0LTFFVG1MYw?oc=5" target="_blank" rel="noopener">川崎重工と損保ジャパン、ソフトバンクが船舶の自動運航促進へ共同で安全支援 - LOGI-BIZ online</a></div>
-          <div class='card-summary'>2026.04.24 12:20:31 テクノロジー/製品 自動運転 , 提携/合弁など , プレスリリースなど</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTE0ycVQ1MHVjd2ttVVVya2FsdmhfTDA1QVc1Ui1qOHBsY3g1cmplWWpaOG9TbFZFejdBdHd3TFlORDBaRjRRb2drNFVFdEo3WG5BZHJSZUFiNlBJS1dxWmZwSlVOdm1XRU0yRFlGaw?oc=5" target="_blank" rel="noopener">川崎重工、日医大千葉北総病院に搬送ロボット 医療従事者の負担軽減 - 日本経済新聞</a></div>
+          <div class='card-summary'>企業での記事共有や会議資料への転載・複製、注文印刷などをご希望の方は、リンク先をご覧ください。</div>
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-24">
           <div class="card-header">
@@ -2430,16 +2371,8 @@
             <span class="badge-google">Google News</span>
             <span class="card-date">2026/04/24</span>
           </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiR0FVX3lxTE05WmtMc1RuU1VGZWRkUXFDcHFoMTNnaVlKYXNjWGFWakNMb3FMZzcxN3hscUJDbGI1bTJMVjVSSDBQQlZ3aEpv?oc=5" target="_blank" rel="noopener">テクニカルで選ぶ注目銘柄：川崎重工、５日・２５日の両移動平均線を上回る 速報 - kabushiki.jp</a></div>
-          <div class='card-summary'>総合重機で２位の川崎重工業&lt;7012.T&gt;の株価が２３日に１７６２万株の出来高を伴って前日比１２５円高と上伸して、終値で５日・２５日の両移動平均線に対するプラスカイ離を回復してきた。２本の移動平均線・・・</div>
-        </div>
-        <div class="news-card" data-company="川崎重工業" data-date="2026-04-23">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/23</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiX0FVX3lxTFBHRUxvRVBjbmxTd0ZoaWZLVzdVaTFqT1lNYndQRnhWeXhqZVlIU3FOU3BfRFV1S3ZBbkNuUXdtbDRuNWdBQ0ZCRmNKZWJoVWNWN3hjWFA3THFPLWNvdjV3?oc=5" target="_blank" rel="noopener">川崎重工業(株)【7012】：今の株価の理由は？値動きの背景をAIが解説 - Yahoo!ファイナンス</a></div>
-          <div class='card-summary'>株価は4/18終値3,070円→4/23終値3,226円へ+5.08％上昇。4/20〜23に材料が断続し、戻り基調の中で値幅も出やすい局面。</div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiakFVX3lxTE9FWERKVC1lOXZzbFpVbXZDTV9NRGtjZ0d3QUkxZWlCMWZtRFdWNW5QaW4xeTVhMGpkNWtEM3hHSlBNWlp1T3J5N3hQcnhyVXdHOUhiS2xWUjFKS2lnMXg2TEJaSzFIeDlzVHc?oc=5" target="_blank" rel="noopener">川崎重工業と損害保険ジャパンがソフトバンクとともに船舶の安全運航を | ＳＯＭＰＯホールディングス株式会社のプレスリリース - PR TIMES</a></div>
+          <div class='card-summary'>川崎重工業株式会社（本社：東京都港区、代表取締役社長：橋本康彦、以下「川崎重工」）、損害保険ジャパン株式会社（本社：東京都新宿区、代表取締役社長：石川耕治、以下「損保ジャパン」）、ソフトバンク株式会社（以下「ソフトバンク」）は、船舶の安全運航を支援するソリューションの提供に向けた基本合意を締結しまし</div>
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-23">
           <div class="card-header">
@@ -2475,6 +2408,14 @@
         </div>
         <div class="news-card" data-company="川崎重工業" data-date="2026-04-20">
           <div class="card-header">
+            <span class="badge-google">Google News</span>
+            <span class="card-date">2026/04/20</span>
+          </div>
+          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiYkFVX3lxTFBLek5wRGt2UEFPaWtYTm5BdDBWNGxRX1FVdWdtVDlXM241d0FOX0RwMzV1U1JzYkZtNVpMbkliSDZ3MHl0Y01PZ3FiZllJSlpBQkhiOVc3VjU4RUFzWXZqcFln?oc=5" target="_blank" rel="noopener">“水素”社会実装へ「世界をリード」×“フィジカルAI”開発拠点公開！／川崎重工業 橋本康彦社長【トップを直撃（WBS）】 - テレ東BIZ</a></div>
+          <div class='card-summary'>14分 ・ 2026.04.20 21:00 シェア あとで見る</div>
+        </div>
+        <div class="news-card" data-company="川崎重工業" data-date="2026-04-20">
+          <div class="card-header">
             <span class="badge-corp">コーポレート</span>
             <span class="card-date">2026/04/20</span>
           </div>
@@ -2486,14 +2427,6 @@
     <div class="company-group" data-company-group="旭精工">
       <div class="company-group-header">旭精工</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="旭精工" data-date="2026-04-24">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/24</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFB1c2dnRzcxU182UWpkVDgwOHkxS2Q3N1Jtd1puZHhJY3N4d3pKQW5SbklyTmgxeEFFRFRMN091ZmpDeVlkUmVvQkhkY3pRd2JBRnc?oc=5" target="_blank" rel="noopener">旭精機工業(株)【6111】：株価・株式情報 - Yahoo!ファイナンス</a></div>
-          <div class='card-summary'>Yahoo! JAPAN IDにログインするとご覧になれます。</div>
-        </div>
         <div class="news-card" data-company="旭精工" data-date="2026-04-01">
           <div class="card-header">
             <span class="badge-corp">コーポレート</span>
@@ -2570,14 +2503,6 @@
           </div>
           <div class="card-title"><a href="https://www.sugi-net.co.jp/%e7%a4%be%e4%bc%9a%e8%b2%a2%e7%8c%ae%e3%81%ab%e5%90%91%e3%81%91%e3%81%9f%e5%af%84%e4%bb%98%e3%81%ae%e5%ae%9f%e6%96%bd%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6/" target="_blank" rel="noopener">[お知らせ] 社会貢献に向けた寄付の実施について</a></div>
           <div class='card-summary card-summary-empty'>— 本文プレビューなし —</div>
-        </div>
-        <div class="news-card" data-company="杉本商事" data-date="2026-03-26">
-          <div class="card-header">
-            <span class="badge-google">Google News</span>
-            <span class="card-date">2026/03/26</span>
-          </div>
-          <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiaEFVX3lxTE5FcFIyR3ZmdGd0bXV2WkxTbF9zNkhnR0RULUN3aFJ3b0NaYS1GeXJkRVFDTG1TSXVaUU9hdVJfeUxiM1l5dmxSMldqWEJOdEU4Q2hVQVdwZ2VmdEVIQXNiMzNETlA1Wkd1?oc=5" target="_blank" rel="noopener">3/26（木）ファーム・リーグ公式戦 対 阪神タイガース戦（杉本商事BS）当日券販売について - オリックス・バファローズ</a></div>
-          <div class='card-summary'>当日券販売について ※先着順になります。 当日券販売予定枚数 販売時間・ 販売場所 3/26（木） 150枚程度 11:40 杉本商事BS 券売窓口 ※ 販売予定枚数に達した時点で販売終了となりますので、予めご了承ください。</div>
         </div>
         <div class="news-card" data-company="杉本商事" data-date="2026-03-19">
           <div class="card-header">
@@ -2661,10 +2586,10 @@
     <div class="company-group" data-company-group="椿本チエイン">
       <div class="company-group-header">椿本チエイン</div>
       <div class="company-group-cards">
-        <div class="news-card" data-company="椿本チエイン" data-date="2026-04-22">
+        <div class="news-card" data-company="椿本チエイン" data-date="2026-04-25">
           <div class="card-header">
             <span class="badge-google">Google News</span>
-            <span class="card-date">2026/04/22</span>
+            <span class="card-date">2026/04/25</span>
           </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiUkFVX3lxTFA5c0hVS3RtUWFFNG5RRlZqeXJNYlpPVVRkUnFfODZGbEpSNU12NldaV0M1SzlhUXhpVFVfbHlUNzhRYWQ2Q2p6bDF3ZU0zZVgtdkE?oc=5" target="_blank" rel="noopener">(株)椿本チエイン【6371】：株価・株式情報 - Yahoo!ファイナンス</a></div>
           <div class='card-summary'>Yahoo! JAPAN IDにログインするとご覧になれます。</div>
@@ -2683,7 +2608,7 @@
             <span class="card-date">2026/04/20</span>
           </div>
           <div class="card-title"><a href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE5ld2tGQ3VpSl9jZU04ZVZfTmU3NlFxOWhrQ3RNeGZrbnhiS0ROdTl2WHRIcVJuTWp0NFFweVRvSHZzQTlCNThJUw?oc=5" target="_blank" rel="noopener">椿本チエイン、V2X充放電装置を7月発売 - LOGISTICS TODAY</a></div>
-          <div class='card-summary'>日を選択 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101) 2026年4月14日 (98) </div>
+          <div class='card-summary'>日を選択 2026年4月24日 (100) 2026年4月23日 (101) 2026年4月22日 (98) 2026年4月21日 (95) 2026年4月20日 (95) 2026年4月18日 (2) 2026年4月17日 (99) 2026年4月16日 (95) 2026年4月15日 (101)</div>
         </div>
         <div class="news-card" data-company="椿本チエイン" data-date="2026-04-20">
           <div class="card-header">
@@ -2898,7 +2823,7 @@
     </div>
   </div>
 </div>
-<div class="footer">顧客ニュース収集レポート — 2026年04月24日</div>
+<div class="footer">顧客ニュース収集レポート — 2026年04月25日</div>
 <script>
 let sortColIndex = -1;
 let sortAsc = false;
