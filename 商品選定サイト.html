@@ -265,9 +265,11 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .detail-main-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8) 0%,transparent 60%)}
 .detail-main-img svg{width:140px;height:140px;position:relative}
 .detail-thumbs{display:flex;gap:8px}
-.dthmb{width:62px;height:62px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid var(--ink-10);transition:all var(--t);background:var(--s1)}
+.dthmb{width:62px;height:62px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid var(--ink-10);transition:all var(--t);background:var(--s1);overflow:hidden}
 .dthmb.active,.dthmb:hover{border-color:var(--blue)}
 .dthmb svg{width:36px;height:36px}
+.dthmb-3d{background:linear-gradient(135deg,#1a3252 0%,#0a1828 100%)!important;border-color:#2a4a72!important}
+.dthmb-3d:hover,.dthmb-3d.active{border-color:#5090d0!important;box-shadow:0 0 10px rgba(80,144,208,.35)}
 
 .detail-info{flex:1;min-width:280px}
 .detail-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
@@ -1071,6 +1073,7 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script>
 // ═══════════════════════════════════════════
 // 多言語翻訳システム
@@ -1616,6 +1619,234 @@ function illustImgDim(prod,sz=90){
     <text x="${CX}" y="${SBY+s(20)}" font-size="${fs}" fill="${dc}" text-anchor="middle" font-family="monospace,sans-serif" font-weight="700">${thread}</text>
   `;
   return wrap(body);
+}
+
+// ── 3D インタラクティブビュー ──
+function init3DView(container, prod){
+  // 前のシーンをクリーンアップ
+  if(window.__3d){
+    cancelAnimationFrame(window.__3d.raf);
+    try{window.__3d.renderer.dispose();}catch(e){}
+    window.__3d=null;
+  }
+  if(typeof THREE==='undefined'){
+    container.innerHTML='<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:10px;color:#666"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span style="font-size:12px">Three.js 読み込み中...</span></div>';
+    return;
+  }
+
+  const W=container.clientWidth||360, H=container.clientHeight||280;
+
+  // Scene
+  const scene=new THREE.Scene();
+  scene.background=new THREE.Color(0xedf1f7);
+  scene.fog=new THREE.Fog(0xedf1f7, 12, 22);
+
+  // Camera
+  const camera=new THREE.PerspectiveCamera(42, W/H, 0.01, 100);
+  camera.position.set(2.8, 1.6, 4.0);
+  camera.lookAt(0, -0.2, 0);
+
+  // Renderer
+  const renderer=new THREE.WebGLRenderer({antialias:true, alpha:false});
+  renderer.setSize(W, H);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  renderer.domElement.style.cssText='display:block;width:100%;height:100%;cursor:grab;border-radius:8px;touch-action:none';
+  container.appendChild(renderer.domElement);
+
+  // Lights
+  scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+  const sun=new THREE.DirectionalLight(0xffffff, 1.1);
+  sun.position.set(5, 10, 6); sun.castShadow=true;
+  sun.shadow.mapSize.set(1024,1024);
+  scene.add(sun);
+  const fill=new THREE.DirectionalLight(0x88aaff, 0.35);
+  fill.position.set(-5, 3, -3);
+  scene.add(fill);
+  const rim=new THREE.DirectionalLight(0xffeedd, 0.2);
+  rim.position.set(0, -3, -5);
+  scene.add(rim);
+
+  // Material
+  const MC={
+    'ステンレス':{color:0x8a9db8,metalness:0.9,roughness:0.15},
+    'スチール':  {color:0x6a7a8c,metalness:0.88,roughness:0.25},
+    'チタン':    {color:0x7a90ac,metalness:0.88,roughness:0.18},
+    'アルミ':    {color:0xa2b4c8,metalness:0.82,roughness:0.2},
+    '黄銅':      {color:0xc89820,metalness:0.86,roughness:0.18},
+    '樹脂':      {color:0x44aa60,metalness:0.0,roughness:0.72},
+  };
+  const mc=MC[prod.material]||MC['ステンレス'];
+  const mat=new THREE.MeshStandardMaterial({color:mc.color,metalness:mc.metalness,roughness:mc.roughness});
+  const darkMat=new THREE.MeshStandardMaterial({color:0x080e18,metalness:0.55,roughness:0.45});
+
+  // ── ねじ山リング追加ヘルパー ──
+  function addThreads(grp, centerY, shaftLen, m, bothEnds){
+    const sp=0.13, zone=shaftLen*(bothEnds?0.45:0.75);
+    const cnt=Math.max(0,Math.floor(zone/sp)-1);
+    const startY=centerY+shaftLen/2-(bothEnds?zone:0)-sp;
+    for(let i=0;i<cnt;i++){
+      const tg=new THREE.TorusGeometry(0.235,0.022,5,22);
+      const t=new THREE.Mesh(tg,m);
+      t.rotation.x=Math.PI/2; t.position.y=startY-i*sp; grp.add(t);
+    }
+    if(bothEnds){
+      const s2=centerY-shaftLen/2+zone;
+      for(let i=0;i<cnt;i++){
+        const tg=new THREE.TorusGeometry(0.235,0.022,5,22);
+        const t=new THREE.Mesh(tg,m);
+        t.rotation.x=Math.PI/2; t.position.y=s2+i*sp; grp.add(t);
+      }
+    }
+  }
+
+  // ── 部品グループ生成 ──
+  const group=new THREE.Group();
+  const catId=prod.catId||'cap';
+  const sl=Math.min(1.9, 0.5+prod.len/26); // shaft length
+
+  if(catId==='wash'){
+    const g=new THREE.TorusGeometry(0.55,0.14,10,44); g.rotateX(Math.PI/2);
+    group.add(new THREE.Mesh(g,mat));
+  }
+  else if(catId==='spring'){
+    const pts=Array.from({length:70},(_, i)=>{
+      const t=i/69, a=t*Math.PI*1.96;
+      return new THREE.Vector3(0.54*Math.cos(a),(t-0.5)*0.22,0.54*Math.sin(a));
+    });
+    const path=new THREE.CatmullRomCurve3(pts);
+    const g=new THREE.TubeGeometry(path,70,0.13,8,false);
+    group.add(new THREE.Mesh(g,mat));
+  }
+  else if(catId==='col'){
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.34,0.34,0.9,24),mat));
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.19,0.19,0.96,24),darkMat));
+    const rg=new THREE.RingGeometry(0.19,0.34,24);
+    const rt=new THREE.Mesh(rg,mat); rt.rotation.x=-Math.PI/2; rt.position.y=0.45; group.add(rt);
+    const rb=new THREE.Mesh(rg.clone(),mat); rb.rotation.x=Math.PI/2; rb.position.y=-0.45; group.add(rb);
+  }
+  else if(catId==='lockn'||catId==='hexn'){
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.58,0.58,0.45,6),mat));
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.21,0.21,0.5,24),darkMat));
+    if(catId==='lockn'){
+      const nyMat=new THREE.MeshStandardMaterial({color:0xdddd22,roughness:0.75,metalness:0});
+      const ny=new THREE.Mesh(new THREE.CylinderGeometry(0.56,0.56,0.17,6),nyMat);
+      ny.position.y=0.31; group.add(ny);
+    }
+  }
+  else if(catId==='wing'){
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.17,0.17,0.4,16),mat));
+    [[- 0.36,-0.15],[0.36,0.15]].forEach(([ox,rz])=>{
+      const wg=new THREE.BoxGeometry(0.26,0.38,0.1);
+      const w=new THREE.Mesh(wg,mat); w.position.set(ox,0,0); w.rotation.z=rz; group.add(w);
+    });
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.13,0.13,sl,18),mat);
+    shaft.position.y=-(sl/2+0.2); group.add(shaft);
+    addThreads(group,shaft.position.y,sl,mat,false);
+  }
+  else if(catId==='eye'){
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.16,0.16,sl,18),mat);
+    shaft.position.y=-sl/2; group.add(shaft);
+    const eye=new THREE.Mesh(new THREE.TorusGeometry(0.35,0.1,9,28),mat);
+    eye.position.y=0.5; eye.rotation.y=Math.PI/4; group.add(eye);
+    addThreads(group,shaft.position.y,sl,mat,false);
+  }
+  else if(catId==='cross'){
+    const hg=new THREE.SphereGeometry(0.44,18,9,0,Math.PI*2,0,Math.PI*0.48);
+    group.add(new THREE.Mesh(hg,mat));
+    [[0.08,0.15,0.88],[0.88,0.15,0.08]].forEach(([sx,,sz])=>{
+      const sg=new THREE.BoxGeometry(sx,0.14,sz);
+      const s=new THREE.Mesh(sg,darkMat); s.position.y=0.34; group.add(s);
+    });
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.15,0.15,sl,18),mat);
+    shaft.position.y=-sl/2; group.add(shaft);
+    addThreads(group,shaft.position.y,sl,mat,false);
+  }
+  else if(catId==='btn'){
+    group.add(new THREE.Mesh(new THREE.SphereGeometry(0.5,18,9,0,Math.PI*2,0,Math.PI*0.46),mat));
+    const sk=new THREE.Mesh(new THREE.CylinderGeometry(0.18,0.18,0.2,6),darkMat);
+    sk.position.y=0.32; group.add(sk);
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.21,0.21,sl,18),mat);
+    shaft.position.y=-sl/2; group.add(shaft);
+    addThreads(group,shaft.position.y,sl,mat,false);
+  }
+  else if(catId==='flng'){
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.57,0.57,0.32,6),mat));
+    const sk=new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.2,0.2,6),darkMat);
+    sk.position.y=0.26; group.add(sk);
+    const fl=new THREE.Mesh(new THREE.CylinderGeometry(0.76,0.76,0.1,28),mat);
+    fl.position.y=-0.21; group.add(fl);
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.22,sl,18),mat);
+    shaft.position.y=-(sl/2+0.26); group.add(shaft);
+    addThreads(group,shaft.position.y,sl,mat,false);
+  }
+  else if(catId==='stud'){
+    const sl2=Math.min(2.3,0.9+prod.len/28);
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.2,sl2,18),mat));
+    addThreads(group,0,sl2,mat,true);
+  }
+  else if(catId==='hex'){
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.58,0.58,0.34,6),mat));
+    // 頭部に穴なし（外六角）
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.22,sl,18),mat);
+    shaft.position.y=-(sl/2+0.17); group.add(shaft);
+    addThreads(group,shaft.position.y,sl,mat,false);
+  }
+  else{
+    // デフォルト：六角穴付きキャップボルト
+    group.add(new THREE.Mesh(new THREE.CylinderGeometry(0.58,0.58,0.35,6),mat));
+    const sk=new THREE.Mesh(new THREE.CylinderGeometry(0.2,0.2,0.28,6),darkMat);
+    sk.position.y=0.295; group.add(sk);
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.22,sl,20),mat);
+    shaft.position.y=-(sl/2+0.175); group.add(shaft);
+    addThreads(group,shaft.position.y,sl,mat,false);
+  }
+
+  // 影受け床
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(12,12),new THREE.ShadowMaterial({opacity:0.13}));
+  floor.rotation.x=-Math.PI/2; floor.position.y=-2.2; floor.receiveShadow=true;
+  scene.add(floor);
+  group.rotation.x=0.28;
+  scene.add(group);
+
+  // ── マウス／タッチ操作 ──
+  const el=renderer.domElement;
+  let drag=false, px=0, py=0;
+  el.addEventListener('mousedown',e=>{drag=true;px=e.clientX;py=e.clientY;el.style.cursor='grabbing';});
+  window.addEventListener('mouseup',()=>{drag=false;el.style.cursor='grab';});
+  el.addEventListener('mousemove',e=>{
+    if(!drag)return;
+    group.rotation.y+=(e.clientX-px)*0.013;
+    group.rotation.x=Math.max(-1.3,Math.min(1.3,group.rotation.x+(e.clientY-py)*0.013));
+    px=e.clientX;py=e.clientY;
+  });
+  el.addEventListener('touchstart',e=>{drag=true;px=e.touches[0].clientX;py=e.touches[0].clientY;e.preventDefault();},{passive:false});
+  el.addEventListener('touchend',()=>{drag=false;});
+  el.addEventListener('touchmove',e=>{
+    if(!drag)return;
+    group.rotation.y+=(e.touches[0].clientX-px)*0.015;
+    group.rotation.x=Math.max(-1.3,Math.min(1.3,group.rotation.x+(e.touches[0].clientY-py)*0.015));
+    px=e.touches[0].clientX;py=e.touches[0].clientY;e.preventDefault();
+  },{passive:false});
+
+  // 操作ヒントオーバーレイ
+  const hint=document.createElement('div');
+  hint.style.cssText='position:absolute;bottom:8px;left:0;right:0;text-align:center;font-size:10px;color:rgba(0,0,0,.35);pointer-events:none;font-weight:500;letter-spacing:.3px';
+  hint.textContent='ドラッグで回転';
+  container.style.position='relative';
+  container.appendChild(hint);
+  setTimeout(()=>{hint.style.transition='opacity 1.2s';hint.style.opacity='0';},2800);
+
+  // アニメーションループ
+  let raf;
+  function animate(){
+    raf=requestAnimationFrame(animate);
+    if(!drag) group.rotation.y+=0.007;
+    renderer.render(scene,camera);
+  }
+  animate();
+  window.__3d={renderer,raf};
 }
 
 // ═══════════════════════════════════════════
@@ -2287,21 +2518,42 @@ function renderDetail(p){
   window.__currentDetailProduct=p;
   document.getElementById('dt-name').textContent=pName(p);
   document.getElementById('dt-name-sub').textContent=pName(p);
-  // 3つのビュー（側面・俯瞰・寸法図）を生成
+  // 4つのビュー（側面・俯瞰・寸法図・3DCG）
+  window.__detailProduct3D=p;
   window.__detailViews=[
-    illustImg(p.material,240,p.catId),
-    illustImgTop(p.material,240,p.catId),
-    illustImgDim(p,240)
+    {t:'svg',c:illustImg(p.material,240,p.catId)},
+    {t:'svg',c:illustImgTop(p.material,240,p.catId)},
+    {t:'svg',c:illustImgDim(p,240)},
+    {t:'3d'}
   ];
+  // サムネイル（SVG 3枚 + 3D アイコン）
+  const _uid3d='t3d'+Math.random().toString(36).slice(2,7);
   const _thumbSvgs=[
     illustImg(p.material,52,p.catId),
     illustImgTop(p.material,52,p.catId),
-    illustImgDim(p,52)
+    illustImgDim(p,52),
+    `<svg viewBox="0 0 52 52" width="52" height="52" style="display:block;border-radius:4px"><defs><linearGradient id="${_uid3d}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a3252"/><stop offset="1" stop-color="#0a1828"/></linearGradient></defs><rect width="52" height="52" fill="url(#${_uid3d})" rx="4"/><polygon points="26,9 41,18 41,34 26,43 11,34 11,18" fill="none" stroke="#4a80c8" stroke-width="1.3" opacity=".8"/><line x1="26" y1="9" x2="26" y2="26" stroke="#6a9cd8" stroke-width="1.1" opacity=".65"/><line x1="11" y1="18" x2="26" y2="26" stroke="#6a9cd8" stroke-width="1.1" opacity=".65"/><line x1="41" y1="18" x2="26" y2="26" stroke="#6a9cd8" stroke-width="1.1" opacity=".65"/><text x="26" y="32" font-size="9.5" font-weight="800" fill="white" text-anchor="middle" font-family="sans-serif" letter-spacing="1.5">3D</text><path d="M15 43 A13 5 0 0 1 37 43" fill="none" stroke="#60b0ff" stroke-width="1.6" stroke-linecap="round"/><polygon points="37,43 34,40.5 40,41" fill="#60b0ff"/></svg>`
   ];
-  document.getElementById('dt-main-img').innerHTML=window.__detailViews[0];
-  document.getElementById('dt-main-img').style.background='';
+  // メイン画像切替関数
+  window.__switchDetailView=function(el,idx){
+    el.parentElement.querySelectorAll('.dthmb').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active');
+    const mainImg=document.getElementById('dt-main-img');
+    const v=window.__detailViews[idx];
+    if(v.t==='svg'){
+      if(window.__3d){cancelAnimationFrame(window.__3d.raf);try{window.__3d.renderer.dispose();}catch(e){}window.__3d=null;}
+      mainImg.innerHTML=v.c;
+    } else {
+      mainImg.innerHTML='';
+      init3DView(mainImg,window.__detailProduct3D);
+    }
+  };
+  const mainImg=document.getElementById('dt-main-img');
+  if(window.__3d){cancelAnimationFrame(window.__3d.raf);try{window.__3d.renderer.dispose();}catch(e){}window.__3d=null;}
+  mainImg.innerHTML=window.__detailViews[0].c;
+  mainImg.style.background='';
   document.getElementById('dt-thumbs').innerHTML=_thumbSvgs.map((svg,i)=>`
-    <div class="dthmb ${i===0?'active':''}" onclick="(function(el,idx){el.parentElement.querySelectorAll('.dthmb').forEach(t=>t.classList.remove('active'));el.classList.add('active');document.getElementById('dt-main-img').innerHTML=window.__detailViews[idx];})(this,${i})">
+    <div class="dthmb ${i===0?'active':''} ${i===3?'dthmb-3d':''}" onclick="window.__switchDetailView(this,${i})">
       ${svg}
     </div>`).join('');
   document.getElementById('dt-badges').innerHTML=(p.chem==='ok'?`<span class="badge badge-c">${L('chemBadge')}</span>`:'')+(p.rohs?`<span class="badge badge-r">${L('rohsBadge')}</span>`:'');
