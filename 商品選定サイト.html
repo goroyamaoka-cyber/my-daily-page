@@ -29,15 +29,13 @@ body{font-family:"Noto Sans JP","Hiragino Kaku Gothic Pro","Yu Gothic",sans-seri
 /* ══ HEADER ══════════════════════════════════════ */
 .hdr{background:#fff;border-bottom:3px solid var(--blue);padding:0 32px;height:54px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:300;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .hdr-logo{color:var(--blue);font-size:16px;font-weight:800;letter-spacing:1.5px;cursor:pointer;display:flex;align-items:center;gap:10px;flex-shrink:0;text-transform:uppercase}
-.hdr-logo-icon{width:36px;height:26px;background:var(--blue);border-radius:4px;display:flex;align-items:center;justify-content:center;padding:0 4px}
-.hdr-logo-icon svg{width:28px;height:16px}
+.hdr-logo-icon{width:28px;height:28px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hdr-logo-icon svg{width:28px;height:28px}
 .hdr-bc{display:flex;align-items:center;gap:0;font-size:12px;flex:1;margin:0 32px;min-width:0;overflow:hidden}
 .hdr-bc a{color:var(--ink-40);text-decoration:none;white-space:nowrap;transition:color var(--t)}
 .hdr-bc a:hover{color:var(--blue)}
 .hdr-bc span{color:var(--ink-20);margin:0 6px;flex-shrink:0}
 .hdr-bc strong{color:var(--ink-80);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hdr-search{display:flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--ink-10);border-radius:4px;padding:5px 14px;color:var(--ink-40);font-size:12px;cursor:pointer;transition:border-color var(--t);flex-shrink:0}
-.hdr-search:hover{border-color:var(--ink-40)}
 /* ── 言語切替ドロップダウン ── */
 .lang-drop{position:relative;flex-shrink:0;margin-left:10px}
 .lang-drop-btn{display:flex;align-items:center;gap:5px;padding:5px 10px 5px 9px;border-radius:6px;font-size:12px;font-weight:500;color:var(--ink-60);cursor:pointer;border:1px solid var(--ink-10);background:#fff;transition:all var(--t);line-height:1;white-space:nowrap;user-select:none}
@@ -354,7 +352,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
   /* Header */
   .hdr{padding:0 16px;height:48px}
   .hdr-bc{display:none}
-  .hdr-search{padding:4px 12px;font-size:11px}
 
   /* Category hero */
   .cat-hero{flex-direction:column;align-items:stretch;gap:24px;padding:32px 20px 28px}
@@ -534,6 +531,115 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .adm-sum-new{background:rgba(0,154,68,.08);color:#009a44;border:1px solid rgba(0,154,68,.22)}
 .adm-sum-mod{background:rgba(0,84,160,.08);color:#0054a0;border:1px solid rgba(0,84,160,.22)}
 .adm-sum-err{background:rgba(227,0,32,.08);color:#e30020;border:1px solid rgba(227,0,32,.22)}
+
+/* ══ INQUIRY BUTTON / MODAL ════════════════════ */
+.inq-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:background var(--t),transform var(--t),box-shadow var(--t);margin-top:20px;letter-spacing:.3px;box-shadow:0 4px 16px rgba(227,0,32,.25)}
+.inq-btn:hover{background:var(--blue-h);transform:translateY(-1px);box-shadow:0 8px 24px rgba(227,0,32,.32)}
+.inq-btn svg{width:16px;height:16px;flex-shrink:0}
+.inq-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:800;align-items:center;justify-content:center;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.inq-overlay.open{display:flex}
+.inq-modal{background:#fff;border-radius:12px;padding:32px;width:92%;max-width:500px;box-shadow:0 24px 64px rgba(0,0,0,.2);position:relative;max-height:90vh;overflow-y:auto}
+.inq-modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--ink-05)}
+.inq-modal-title{font-size:15px;font-weight:800;color:var(--ink)}
+.inq-close{background:none;border:none;font-size:20px;color:var(--ink-40);cursor:pointer;padding:2px 8px;border-radius:4px;line-height:1;transition:background var(--t)}
+.inq-close:hover{background:var(--s2);color:var(--ink)}
+.inq-product{background:var(--blue-bg);border:1px solid rgba(227,0,32,.18);border-radius:6px;padding:10px 14px;font-size:12px;color:var(--blue);font-weight:600;margin-bottom:20px;line-height:1.5}
+.inq-form label{display:block;font-size:10px;font-weight:700;color:var(--ink-60);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px;margin-top:14px}
+.inq-form label:first-of-type{margin-top:0}
+.inq-form input,.inq-form textarea{width:100%;padding:10px 12px;border:1.5px solid var(--ink-10);border-radius:6px;font-size:13px;font-family:inherit;color:var(--ink);background:#fff;outline:none;transition:border-color var(--t);box-sizing:border-box}
+.inq-form input:focus,.inq-form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(227,0,32,.07)}
+.inq-form textarea{resize:vertical;min-height:88px}
+.inq-submit{width:100%;padding:13px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-top:20px;transition:background var(--t);letter-spacing:.3px;box-shadow:0 4px 12px rgba(227,0,32,.22)}
+.inq-submit:hover{background:var(--blue-h)}
+
+/* ══ PRINT BUTTON ═══════════════════════════════ */
+.print-btn{display:none;align-items:center;gap:6px;padding:6px 14px;background:#fff;color:var(--ink-60);border:1.5px solid var(--ink-10);border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all var(--t)}
+.print-btn:hover{border-color:var(--ink-40);color:var(--ink)}
+.print-btn.visible{display:flex}
+.print-btn svg{width:14px;height:14px}
+
+/* ══ MOBILE IMPROVEMENTS ════════════════════════ */
+/* Compare + spec table scroll */
+.cmpwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cmptbl{min-width:560px}
+.full-spec-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+@media(max-width:768px){
+  /* Selects full-width on mobile */
+  .tbr{gap:5px}
+  .sel{flex:1 1 auto;min-width:0}
+  .sel label{display:none}
+  .sel select{width:100%;font-size:12px;padding:5px 8px}
+  /* View toggle compact */
+  .vtgl{flex:none}
+  /* Compare table */
+  .cmpwrap{border-radius:var(--r-sm)}
+  /* Detail spec wrap */
+  .full-spec-wrap{margin-bottom:0}
+  /* Inquiry button */
+  .inq-modal{padding:22px 18px}
+  /* Footer smaller */
+  .site-footer{padding:24px 12px 20px}
+  .footer-banner{font-size:12px;padding:7px 16px 7px 11px}
+}
+
+@media(max-width:480px){
+  /* Header: search を非表示 */
+  /* Toolbar: selects stack */
+  .tbr{flex-wrap:wrap}
+  .vtgl{width:100%}
+  .vbtn{flex:1;text-align:center;font-size:11px}
+  /* Cards */
+  .pnm{font-size:12px}
+  .pbadges{display:none}
+  /* Spec mini */
+  .spec-mini th,.spec-mini td{font-size:11px;padding:6px 0}
+}
+
+/* ══ PRINT CSS ══════════════════════════════════ */
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  @page{margin:12mm 15mm;size:A4}
+
+  /* 非表示 */
+  .hdr,.filter-panel,.filter-overlay,.toolbar,.export-bar,
+  .back-btn,.site-footer,.atags,.pgn,.lang-drop,
+  #pg-cat,#pg-admin,.inq-btn,.inq-overlay,
+  .detail-imgs,.detail-badges,.detail-div,.detail-thumbs,
+  .vbtn,.sel,.pcnt,.filter-btn-mb,.print-btn{display:none!important}
+
+  body{background:#fff!important}
+
+  /* 印刷ヘッダー */
+  .print-header{display:flex!important;align-items:center;justify-content:space-between;padding:0 0 10px;margin-bottom:16px;border-bottom:2px solid #e30020}
+  .print-header-logo{font-size:11px;font-weight:800;letter-spacing:1.5px;color:#e30020;text-transform:uppercase}
+  .print-header-date{font-size:10px;color:#888}
+
+  /* リスト/比較ページ */
+  .pg-list-wrap{display:block!important;height:auto!important}
+  .product-panel{height:auto!important;overflow:visible!important;padding:0!important}
+  .panel-title{font-size:14px;font-weight:800;margin-bottom:6px;border-bottom:1px solid #eee;padding-bottom:6px}
+  .panel-desc{display:block!important;font-size:11px;color:#888;margin-bottom:12px}
+  .cmpwrap{overflow:visible!important;margin:0}
+  .cmptbl{width:100%!important;font-size:9px;border-collapse:collapse;min-width:0!important}
+  .cmptbl th,.cmptbl td{border:1px solid #ddd!important;padding:5px 7px!important;font-size:9px!important;word-break:break-word}
+  .cmptbl thead th{background:#e30020!important;color:#fff!important;font-size:9px}
+  .cmptbl .pcol{font-size:8px;font-weight:700}
+
+  /* 詳細ページ */
+  #pg-detail{display:block!important}
+  .detail-hero{padding:0 0 10px;border-bottom:2px solid #e30020;margin-bottom:0}
+  .detail-hero-name{font-size:15px;margin-bottom:0;max-width:100%}
+  .detail-body{padding:12px 0;max-width:100%}
+  .detail-top{display:block!important}
+  .detail-info{min-width:0;width:100%}
+  .detail-sec{padding:10px 0;border:none!important;border-bottom:1px solid #eee!important;border-radius:0!important;margin-bottom:6px}
+  .detail-sec h3{font-size:10px;margin-bottom:8px;padding-bottom:5px}
+  .full-spec th,.full-spec td{font-size:10px;padding:5px 10px}
+  .full-spec-wrap{overflow:visible!important}
+  .related-grid,.detail-sec--related{display:none!important}
+}
+.print-header{display:none}
 </style>
 </head>
 <body>
@@ -542,15 +648,11 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 <header class="hdr">
   <div class="hdr-logo" onclick="navTo('cat')">
     <div class="hdr-logo-icon">
-      <!-- AK monogram -->
-      <svg viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- A -->
-        <polyline points="1,14.5 5.5,1.5 10,14.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="2.9" y1="10.2" x2="8.1" y2="10.2" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
-        <!-- K -->
-        <line x1="13" y1="1.5" x2="13" y2="14.5" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
-        <line x1="13" y1="8" x2="20" y2="1.5" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
-        <line x1="13" y1="8" x2="20" y2="14.5" stroke="white" stroke-width="1.7" stroke-linecap="round"/>
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" rx="5" fill="#ffffff"/>
+        <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="#e30020"/>
+        <polygon points="16,2 28,9 22,9 16,5.5" fill="rgba(255,255,255,.13)"/>
+        <polygon points="16,10.2 21.2,13.1 21.2,18.9 16,21.8 10.8,18.9 10.8,13.1" fill="#ffffff"/>
       </svg>
     </div>
     AKAGANE
@@ -560,10 +662,6 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
     <span>›</span>
     <strong data-i18n="breadcrumb">ねじ・ボルト・ナット</strong>
   </nav>
-  <div class="hdr-search">
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1.3"/><line x1="8.7" y1="8.7" x2="12" y2="12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-    <span data-i18n="search">商品を検索</span>
-  </div>
   <button class="admin-access-btn" onclick="navTo('admin')" title="管理者ページ">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
   </button>
@@ -744,6 +842,10 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
               <option value="3"   data-i18n="deliv3">3日以内</option>
               <option value="7"   data-i18n="deliv7">1週間以内</option>
             </select></div>
+          <button class="print-btn" id="print-btn" onclick="window.print()">
+            <svg viewBox="0 0 16 16" fill="none"><rect x="3" y="6" width="10" height="7" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M5 6V3h6v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><rect x="5" y="9" width="6" height="1.2" rx=".6" fill="currentColor"/><rect x="5" y="11" width="4" height="1.2" rx=".6" fill="currentColor"/></svg>
+            印刷 / PDF
+          </button>
         </div>
       </div>
 
@@ -917,12 +1019,20 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
         <div class="detail-name-sub" id="dt-name-sub"></div>
         <hr class="detail-div">
         <table class="spec-mini" id="dt-spec-mini"></table>
+        <button class="inq-btn" onclick="openInquiry()">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M2 3h12v8a1 1 0 01-1 1H3a1 1 0 01-1-1V3z" stroke="white" stroke-width="1.4"/><path d="M2 3l6 5 6-5" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <span data-i18n="inqBtn">お問い合わせ / 見積依頼</span>
+        </button>
       </div>
     </div>
 
+    <div class="print-header">
+      <div class="print-header-logo">製品選定システム（Sample）</div>
+      <div class="print-header-date" id="print-date"></div>
+    </div>
     <div class="detail-sec"><h3 data-i18n="descTitle">商品説明</h3><p class="detail-desc-text" id="dt-desc"></p></div>
-    <div class="detail-sec"><h3 data-i18n="specTitle">詳細仕様</h3><table class="full-spec" id="dt-full-spec"></table></div>
-    <div class="detail-sec"><h3 data-i18n="relatedTitle">関連商品</h3><div class="related-grid" id="dt-related"></div></div>
+    <div class="detail-sec"><h3 data-i18n="specTitle">詳細仕様</h3><div class="full-spec-wrap"><table class="full-spec" id="dt-full-spec"></table></div></div>
+    <div class="detail-sec detail-sec--related"><h3 data-i18n="relatedTitle">関連商品</h3><div class="related-grid" id="dt-related"></div></div>
   </div>
 </div>
 
@@ -961,6 +1071,7 @@ const T={
     strSteel:'強度区分（スチール系）',strSUS:'強度区分（ステンレス系）',rohsLabel:'EU_RoHS対応',
     chemBadge:'chemSHERPA対応品あり',rohsBadge:'EU_RoHS対応',
     noExport:'エクスポート対象の商品がありません',downloaded:'をダウンロードしました',
+    inqBtn:'お問い合わせ / 見積依頼',inqTitle:'お問い合わせ / 見積依頼',inqName:'お名前・会社名',inqEmail:'メールアドレス',inqQty:'数量・仕様のご要望',inqMsg:'お問い合わせ内容',inqSubmit:'送信する（メールで送る）',
     allLabel:'全商品',curLabel:'表示中',
   },
   en:{
@@ -991,6 +1102,7 @@ const T={
     strSteel:'Strength Class (Steel)',strSUS:'Strength Class (SUS)',rohsLabel:'EU RoHS',
     chemBadge:'chemSHERPA Declarable',rohsBadge:'EU RoHS Compliant',
     noExport:'No products to export',downloaded:'downloaded',
+    inqBtn:'Inquiry / Quote Request',inqTitle:'Inquiry / Quote Request',inqName:'Name / Company',inqEmail:'Email Address',inqQty:'Quantity & Specifications',inqMsg:'Message',inqSubmit:'Send (via Email)',
     allLabel:'all',curLabel:'filtered',
   },
   zh:{
@@ -1021,6 +1133,7 @@ const T={
     strSteel:'强度等级（钢）',strSUS:'强度等级（不锈钢）',rohsLabel:'EU RoHS认证',
     chemBadge:'chemSHERPA可申报',rohsBadge:'EU RoHS符合',
     noExport:'没有可导出的商品',downloaded:'已下载',
+    inqBtn:'咨询 / 报价申请',inqTitle:'咨询 / 报价申请',inqName:'姓名・公司名',inqEmail:'电子邮件',inqQty:'数量・规格要求',inqMsg:'咨询内容',inqSubmit:'发送（通过邮件）',
     allLabel:'全商品',curLabel:'当前显示',
   }
 };
@@ -1885,7 +1998,7 @@ function clearAll(){
 }
 
 function toggleSec(h){h.classList.toggle('closed');h.nextElementSibling.classList.toggle('hidden')}
-function setView(v){view=v;['list','photo','compare'].forEach(k=>document.getElementById('vb-'+k).classList.toggle('active',k===v));render()}
+function setView(v){view=v;['list','photo','compare'].forEach(k=>document.getElementById('vb-'+k).classList.toggle('active',k===v));render();updatePrintBtn();}
 
 // ── Render ──
 let currentSlice=[];
@@ -2041,6 +2154,48 @@ function exportCSV(mode){
   a.href=url;a.download=filename;a.click();
   URL.revokeObjectURL(url);
   showToast(`${filename} ${L('downloaded')}（${data.length}${L('count')}）`);
+}
+
+// ── Inquiry Modal ──
+function openInquiry(){
+  const p=window.__currentDetailProduct;
+  const name=p?pName(p):'';
+  const code=p?'HCBT'+String(p.id).padStart(4,'0'):'';
+  document.getElementById('inq-product-name').textContent=code+' '+name;
+  document.getElementById('inq-name').value='';
+  document.getElementById('inq-email').value='';
+  document.getElementById('inq-qty').value='';
+  document.getElementById('inq-msg').value='';
+  document.getElementById('inq-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeInquiry(){
+  document.getElementById('inq-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function submitInquiry(){
+  const nm=document.getElementById('inq-name').value.trim();
+  const em=document.getElementById('inq-email').value.trim();
+  const qt=document.getElementById('inq-qty').value.trim();
+  const ms=document.getElementById('inq-msg').value.trim();
+  const prod=document.getElementById('inq-product-name').textContent;
+  if(!nm||!em){showToast('お名前とメールアドレスを入力してください');return;}
+  const subj=encodeURIComponent('【製品選定システム】お問い合わせ：'+prod);
+  const body=encodeURIComponent(
+    '【対象商品】'+prod+'\n【お名前・会社名】'+nm+'\n【メールアドレス】'+em+
+    '\n【数量・仕様】'+qt+'\n\n【お問い合わせ内容】\n'+ms
+  );
+  window.location.href='mailto:?subject='+subj+'&body='+body;
+  closeInquiry();
+  showToast('メールアプリを起動しました');
+}
+
+// ── Print button visibility ──
+function updatePrintBtn(){
+  const btn=document.getElementById('print-btn');
+  if(!btn)return;
+  const v=document.getElementById('vb-compare');
+  btn.classList.toggle('visible',v&&v.classList.contains('active'));
 }
 
 function showToast(msg){
@@ -2315,7 +2470,32 @@ function initAdminPage(){
 // ── Init ──
 renderCategories();
 initFilters();
+updatePrintBtn();
+const _pd=document.getElementById('print-date');
+if(_pd){const d=new Date();_pd.textContent=d.getFullYear()+'/'+(d.getMonth()+1).toString().padStart(2,'0')+'/'+d.getDate().toString().padStart(2,'0');}
 </script>
+
+<!-- ══ INQUIRY MODAL ════════════════════════════ -->
+<div class="inq-overlay" id="inq-overlay" onclick="if(event.target===this)closeInquiry()">
+  <div class="inq-modal">
+    <div class="inq-modal-hdr">
+      <div class="inq-modal-title" data-i18n="inqTitle">お問い合わせ / 見積依頼</div>
+      <button class="inq-close" onclick="closeInquiry()">×</button>
+    </div>
+    <div class="inq-product" id="inq-product-name"></div>
+    <div class="inq-form">
+      <label data-i18n="inqName">お名前・会社名</label>
+      <input type="text" id="inq-name" placeholder="例：山田 太郎 / 株式会社〇〇">
+      <label data-i18n="inqEmail">メールアドレス</label>
+      <input type="email" id="inq-email" placeholder="example@company.co.jp">
+      <label data-i18n="inqQty">数量・仕様のご要望</label>
+      <input type="text" id="inq-qty" placeholder="例：M6×20mm ステンレス 1000個">
+      <label data-i18n="inqMsg">お問い合わせ内容</label>
+      <textarea id="inq-msg" placeholder="ご質問・ご要望をご記入ください"></textarea>
+    </div>
+    <button class="inq-submit" onclick="submitInquiry()" data-i18n="inqSubmit">送信する（メールで送る）</button>
+  </div>
+</div>
 
 <footer class="site-footer">
   <div class="footer-banner">
