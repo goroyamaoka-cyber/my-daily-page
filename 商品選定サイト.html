@@ -519,7 +519,7 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .adm-rohs-n{display:inline-block;background:#f3f4f6;color:#9ca3af;padding:2px 7px;border-radius:3px;font-size:10px}
 .adm-code{font-family:'Courier New',monospace;font-size:11px;color:#6b7280}
 /* Admin access button in header */
-.admin-access-btn{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:6px;border:1px solid var(--ink-10);background:#fff;cursor:pointer;color:var(--ink-40);margin-left:6px;transition:all var(--t);flex-shrink:0}
+.admin-access-btn{display:flex;align-items:center;gap:5px;padding:0 10px;height:30px;border-radius:6px;border:1px solid var(--ink-10);background:#fff;cursor:pointer;color:var(--ink-40);margin-left:6px;transition:all var(--t);flex-shrink:0;font-size:12px;font-weight:600;letter-spacing:.2px;white-space:nowrap}
 .admin-access-btn:hover{background:var(--s2);color:var(--ink)}
 /* Import preview modal */
 .adm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:900;display:flex;align-items:center;justify-content:center;padding:20px}
@@ -683,6 +683,7 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
   </nav>
   <button class="admin-access-btn" onclick="navTo('admin')" title="管理者ページ">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <span>管理者</span>
   </button>
   <div class="lang-drop" id="langDrop">
     <button class="lang-drop-btn" onclick="toggleLangMenu(event)">
