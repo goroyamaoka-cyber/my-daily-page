@@ -518,6 +518,35 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .adm-rohs-y{display:inline-block;background:rgba(0,84,160,.1);color:#0054a0;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:700}
 .adm-rohs-n{display:inline-block;background:#f3f4f6;color:#9ca3af;padding:2px 7px;border-radius:3px;font-size:10px}
 .adm-code{font-family:'Courier New',monospace;font-size:11px;color:#6b7280}
+/* Admin row action buttons */
+.adm-th-act{width:46px;text-align:center!important;padding:8px 4px!important;font-size:11px!important;white-space:nowrap}
+.adm-act-cell{text-align:center;padding:4px 3px!important}
+.adm-row-btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;border:none;cursor:pointer;transition:all .15s}
+.adm-edit-btn-row{background:#eff6ff;color:#2563eb}.adm-edit-btn-row:hover{background:#2563eb;color:#fff}
+.adm-del-btn-row{background:#fff1f2;color:#e11d48}.adm-del-btn-row:hover{background:#e11d48;color:#fff}
+/* Edit modal */
+.adm-edit-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:950;align-items:flex-start;justify-content:center;padding:24px 16px;overflow-y:auto;backdrop-filter:blur(3px)}
+.adm-edit-overlay.open{display:flex}
+.adm-edit-modal{background:#fff;border-radius:14px;width:100%;max-width:680px;box-shadow:0 24px 64px rgba(0,0,0,.22);display:flex;flex-direction:column;margin:auto}
+.adm-edit-hdr{display:flex;align-items:center;gap:10px;padding:18px 24px;border-bottom:1px solid #f0f1f3}
+.adm-edit-hdr-title{font-size:16px;font-weight:700;color:#111}
+.adm-edit-hdr-code{font-size:12px;color:#9ca3af;font-family:monospace;margin-left:4px}
+.adm-edit-hdr-close{margin-left:auto;width:30px;height:30px;border-radius:6px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;font-size:16px;color:#6b7280;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+.adm-edit-hdr-close:hover{background:#f3f4f6;color:#111}
+.adm-edit-body{padding:20px 24px;overflow-y:auto;max-height:68vh}
+.adm-edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
+.adm-edit-field{display:flex;flex-direction:column;gap:5px}
+.adm-edit-field.full{grid-column:1/-1}
+.adm-edit-label{font-size:11px;font-weight:600;color:#6b7280;letter-spacing:.3px}
+.adm-edit-input{padding:8px 10px;border:1.5px solid #e5e7eb;border-radius:7px;font-size:13px;color:#111;transition:border-color .15s;width:100%;background:#fafafa}
+.adm-edit-input:focus{outline:none;border-color:#2563eb;background:#fff}
+.adm-edit-input[type="checkbox"]{width:16px;height:16px;margin:4px 0;cursor:pointer;accent-color:#2563eb}
+.adm-edit-input textarea{resize:vertical;min-height:72px;line-height:1.6}
+.adm-edit-footer{padding:16px 24px;border-top:1px solid #f0f1f3;display:flex;gap:10px;justify-content:flex-end}
+.adm-edit-cancel{padding:8px 20px;border:1.5px solid #e5e7eb;border-radius:7px;background:#fff;cursor:pointer;font-size:13px;font-weight:600;color:#6b7280;transition:all .15s}
+.adm-edit-cancel:hover{background:#f3f4f6;color:#111}
+.adm-edit-save{padding:8px 24px;border:none;border-radius:7px;background:#2563eb;color:#fff;cursor:pointer;font-size:13px;font-weight:700;transition:all .15s}
+.adm-edit-save:hover{background:#1d4ed8}
 /* Admin access button in header */
 .admin-access-btn{display:flex;align-items:center;gap:5px;padding:0 10px;height:30px;border-radius:6px;border:1px solid var(--ink-10);background:#fff;cursor:pointer;color:var(--ink-40);margin-left:6px;transition:all var(--t);flex-shrink:0;font-size:12px;font-weight:600;letter-spacing:.2px;white-space:nowrap}
 .admin-access-btn:hover{background:var(--s2);color:var(--ink)}
@@ -986,6 +1015,8 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
               <th>chem</th>
               <th>RoHS</th>
               <th>出荷日</th>
+              <th class="adm-th-act">編集</th>
+              <th class="adm-th-act">削除</th>
             </tr>
           </thead>
           <tbody id="adm-tbody"></tbody>
@@ -2914,8 +2945,86 @@ function adminRender(){
       <td>${chemMap[p.chem]||p.chem}</td>
       <td>${p.rohs?'<span class="adm-rohs-y">対応</span>':'<span class="adm-rohs-n">非対応</span>'}</td>
       <td>${p.delivery}日</td>
+      <td class="adm-act-cell"><button class="adm-row-btn adm-edit-btn-row" onclick="adminEditProduct(${p.id})" title="編集"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button></td>
+      <td class="adm-act-cell"><button class="adm-row-btn adm-del-btn-row" onclick="adminDeleteProduct(${p.id})" title="削除"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg></button></td>
     </tr>`;
   }).join('');
+}
+
+// ── 商品編集 ──
+let _adminEditId=null;
+function adminEditProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p)return;
+  _adminEditId=id;
+  document.getElementById('ae-code').textContent='HCBT'+String(id).padStart(4,'0');
+  document.getElementById('ae-name').value=p.name||'';
+  document.getElementById('ae-catId').value=p.catId||'cap';
+  document.getElementById('ae-maker').value=p.maker||'';
+  document.getElementById('ae-material').value=p.material||'ステンレス';
+  document.getElementById('ae-detail').value=p.detail||'';
+  document.getElementById('ae-thread').value=p.thread||'';
+  document.getElementById('ae-tnum').value=p.tnum||6;
+  document.getElementById('ae-len').value=p.len||20;
+  document.getElementById('ae-surface').value=p.surface||'';
+  document.getElementById('ae-str_s').value=p.str_s||'−';
+  document.getElementById('ae-str_ss').value=p.str_ss||'−';
+  document.getElementById('ae-chem').value=p.chem||'ok';
+  document.getElementById('ae-rohs').checked=!!p.rohs;
+  document.getElementById('ae-delivery').value=p.delivery||1;
+  document.getElementById('ae-pop').value=p.pop||80;
+  document.getElementById('ae-desc').value=p.desc||'';
+  document.getElementById('adm-edit-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('ae-name').focus(),80);
+}
+function closeAdminEdit(){
+  document.getElementById('adm-edit-overlay').classList.remove('open');
+  _adminEditId=null;
+}
+function adminSaveEdit(){
+  const p=PRODUCTS.find(x=>x.id===_adminEditId);
+  if(!p)return;
+  const get=id=>document.getElementById(id);
+  const trim=id=>get(id).value.trim();
+  const num=id=>parseFloat(get(id).value)||0;
+  p.name=trim('ae-name');
+  p.catId=get('ae-catId').value;
+  p.maker=trim('ae-maker');
+  p.material=get('ae-material').value;
+  p.detail=trim('ae-detail');
+  p.thread=trim('ae-thread');
+  p.tnum=parseInt(get('ae-tnum').value)||6;
+  p.len=parseFloat(get('ae-len').value)||20;
+  p.surface=trim('ae-surface');
+  p.str_s=trim('ae-str_s')||'−';
+  p.str_ss=trim('ae-str_ss')||'−';
+  p.chem=get('ae-chem').value;
+  p.rohs=get('ae-rohs').checked;
+  p.delivery=parseInt(get('ae-delivery').value)||1;
+  p.pop=parseInt(get('ae-pop').value)||80;
+  p.desc=trim('ae-desc');
+  closeAdminEdit();
+  adminRender();
+  adminRenderStats();
+  initFilters();
+  // HTMLダウンロードボタンを表示して保存を促す
+  document.getElementById('adm-dl-btn').style.display='';
+  showToast(`「${p.name.slice(0,20)}…」を更新しました`);
+}
+
+// ── 商品削除 ──
+function adminDeleteProduct(id){
+  const p=PRODUCTS.find(x=>x.id===id);
+  if(!p)return;
+  if(!confirm(`以下の商品を削除しますか？\n\n「${p.name}」\n\nこの操作はページをリロードすると元に戻ります。`))return;
+  const idx=PRODUCTS.findIndex(x=>x.id===id);
+  if(idx<0)return;
+  PRODUCTS.splice(idx,1);
+  adminRender();
+  adminRenderStats();
+  initFilters();
+  document.getElementById('adm-dl-btn').style.display='';
+  showToast('商品を削除しました（HTMLを再ダウンロードして保存してください）');
 }
 
 function initAdminPage(){
@@ -2948,6 +3057,117 @@ updatePrintBtn();
 const _pd=document.getElementById('print-date');
 if(_pd){const d=new Date();_pd.textContent=d.getFullYear()+'/'+(d.getMonth()+1).toString().padStart(2,'0')+'/'+d.getDate().toString().padStart(2,'0');}
 </script>
+
+<!-- ══ ADMIN EDIT MODAL ═════════════════════════ -->
+<div class="adm-edit-overlay" id="adm-edit-overlay" onclick="if(event.target===this)closeAdminEdit()">
+  <div class="adm-edit-modal">
+    <div class="adm-edit-hdr">
+      <span class="adm-edit-hdr-title">商品編集</span>
+      <span class="adm-edit-hdr-code" id="ae-code"></span>
+      <button class="adm-edit-hdr-close" onclick="closeAdminEdit()">×</button>
+    </div>
+    <div class="adm-edit-body">
+      <div class="adm-edit-grid">
+        <div class="adm-edit-field full">
+          <label class="adm-edit-label">商品名</label>
+          <input class="adm-edit-input" type="text" id="ae-name">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">カテゴリID</label>
+          <select class="adm-edit-input" id="ae-catId">
+            <option value="cap">cap（六角穴付き）</option>
+            <option value="hex">hex（六角ボルト）</option>
+            <option value="flng">flng（フランジ）</option>
+            <option value="btn">btn（ボタン）</option>
+            <option value="wing">wing（蝶ボルト）</option>
+            <option value="cross">cross（十字穴）</option>
+            <option value="stud">stud（スタッド）</option>
+            <option value="eye">eye（アイボルト）</option>
+            <option value="hexn">hexn（六角ナット）</option>
+            <option value="lockn">lockn（ロックナット）</option>
+            <option value="wash">wash（ワッシャ）</option>
+            <option value="spring">spring（スプリングワッシャ）</option>
+            <option value="col">col（カラー・スペーサ）</option>
+          </select>
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">メーカー</label>
+          <input class="adm-edit-input" type="text" id="ae-maker">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">材質</label>
+          <select class="adm-edit-input" id="ae-material">
+            <option>ステンレス</option>
+            <option>スチール</option>
+            <option>チタン</option>
+            <option>アルミ</option>
+            <option>黄銅</option>
+            <option>樹脂</option>
+          </select>
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">詳細材質</label>
+          <input class="adm-edit-input" type="text" id="ae-detail">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">ねじの呼び</label>
+          <input class="adm-edit-input" type="text" id="ae-thread" placeholder="M6">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">ねじ数（tnum）</label>
+          <input class="adm-edit-input" type="number" id="ae-tnum" min="1" max="48">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">長さ L (mm)</label>
+          <input class="adm-edit-input" type="number" id="ae-len" min="1">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">表面処理</label>
+          <input class="adm-edit-input" type="text" id="ae-surface">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">強度区分（スチール系）</label>
+          <input class="adm-edit-input" type="text" id="ae-str_s" placeholder="8.8 / 10.9 / − など">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">強度区分（SUS系）</label>
+          <input class="adm-edit-input" type="text" id="ae-str_ss" placeholder="A2-70 / − など">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">chemSHERPA</label>
+          <select class="adm-edit-input" id="ae-chem">
+            <option value="ok">ok（◎回答可）</option>
+            <option value="ng">ng（✗回答不可）</option>
+            <option value="pending">pending（△調査中）</option>
+          </select>
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">RoHS対応</label>
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 0">
+            <input class="adm-edit-input" type="checkbox" id="ae-rohs" style="width:18px;height:18px;flex-shrink:0">
+            <span style="font-size:13px;color:#374151">RoHS対応品</span>
+          </div>
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">出荷リードタイム（日）</label>
+          <input class="adm-edit-input" type="number" id="ae-delivery" min="1" max="99">
+        </div>
+        <div class="adm-edit-field">
+          <label class="adm-edit-label">人気度 (pop)</label>
+          <input class="adm-edit-input" type="number" id="ae-pop" min="0" max="100">
+        </div>
+        <div class="adm-edit-field full">
+          <label class="adm-edit-label">商品説明文</label>
+          <textarea class="adm-edit-input" id="ae-desc" rows="3" style="resize:vertical"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="adm-edit-footer">
+      <button class="adm-edit-cancel" onclick="closeAdminEdit()">キャンセル</button>
+      <button class="adm-edit-save" onclick="adminSaveEdit()">💾 保存する</button>
+    </div>
+  </div>
+</div>
 
 <!-- ══ INQUIRY MODAL ════════════════════════════ -->
 <div class="inq-overlay" id="inq-overlay" onclick="if(event.target===this)closeInquiry()">
