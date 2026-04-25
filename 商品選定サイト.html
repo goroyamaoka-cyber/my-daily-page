@@ -519,6 +519,9 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .adm-rohs-n{display:inline-block;background:#f3f4f6;color:#9ca3af;padding:2px 7px;border-radius:3px;font-size:10px}
 .adm-code{font-family:'Courier New',monospace;font-size:11px;color:#6b7280}
 /* Admin row action buttons */
+.adm-add-btn{display:inline-flex;align-items:center;gap:5px;padding:0 14px;height:32px;background:#16a34a;color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:background .15s;white-space:nowrap;flex-shrink:0;margin-left:auto}
+.adm-add-btn:hover{background:#15803d}
+.adm-add-btn svg{flex-shrink:0}
 .adm-th-act{width:46px;text-align:center!important;padding:8px 4px!important;font-size:11px!important;white-space:nowrap}
 .adm-act-cell{text-align:center;padding:4px 3px!important}
 .adm-row-btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;border:none;cursor:pointer;transition:all .15s}
@@ -994,6 +997,10 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
           <option value="">全カテゴリ</option>
         </select>
         <span class="admin-count" id="adm-table-count"></span>
+        <button class="adm-add-btn" onclick="adminAddProduct()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          商品追加
+        </button>
       </div>
 
       <!-- Table -->
@@ -2951,12 +2958,39 @@ function adminRender(){
   }).join('');
 }
 
+// ── 商品追加 ──
+function adminAddProduct(){
+  _adminEditId=null; // nullのとき追加モード
+  document.getElementById('ae-modal-title').textContent='商品追加';
+  document.getElementById('ae-code').textContent='（新規）';
+  // デフォルト値をセット
+  document.getElementById('ae-name').value='';
+  document.getElementById('ae-catId').value='cap';
+  document.getElementById('ae-maker').value='';
+  document.getElementById('ae-material').value='ステンレス';
+  document.getElementById('ae-detail').value='SUS304';
+  document.getElementById('ae-thread').value='M6';
+  document.getElementById('ae-tnum').value=6;
+  document.getElementById('ae-len').value=20;
+  document.getElementById('ae-surface').value='生地';
+  document.getElementById('ae-str_s').value='−';
+  document.getElementById('ae-str_ss').value='A2-70';
+  document.getElementById('ae-chem').value='ok';
+  document.getElementById('ae-rohs').checked=true;
+  document.getElementById('ae-delivery').value=3;
+  document.getElementById('ae-pop').value=70;
+  document.getElementById('ae-desc').value='';
+  document.getElementById('adm-edit-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('ae-name').focus(),80);
+}
+
 // ── 商品編集 ──
 let _adminEditId=null;
 function adminEditProduct(id){
   const p=PRODUCTS.find(x=>x.id===id);
   if(!p)return;
   _adminEditId=id;
+  document.getElementById('ae-modal-title').textContent='商品編集';
   document.getElementById('ae-code').textContent='HCBT'+String(id).padStart(4,'0');
   document.getElementById('ae-name').value=p.name||'';
   document.getElementById('ae-catId').value=p.catId||'cap';
@@ -2982,34 +3016,52 @@ function closeAdminEdit(){
   _adminEditId=null;
 }
 function adminSaveEdit(){
-  const p=PRODUCTS.find(x=>x.id===_adminEditId);
-  if(!p)return;
   const get=id=>document.getElementById(id);
   const trim=id=>get(id).value.trim();
-  const num=id=>parseFloat(get(id).value)||0;
-  p.name=trim('ae-name');
-  p.catId=get('ae-catId').value;
-  p.maker=trim('ae-maker');
-  p.material=get('ae-material').value;
-  p.detail=trim('ae-detail');
-  p.thread=trim('ae-thread');
-  p.tnum=parseInt(get('ae-tnum').value)||6;
-  p.len=parseFloat(get('ae-len').value)||20;
-  p.surface=trim('ae-surface');
-  p.str_s=trim('ae-str_s')||'−';
-  p.str_ss=trim('ae-str_ss')||'−';
-  p.chem=get('ae-chem').value;
-  p.rohs=get('ae-rohs').checked;
-  p.delivery=parseInt(get('ae-delivery').value)||1;
-  p.pop=parseInt(get('ae-pop').value)||80;
-  p.desc=trim('ae-desc');
-  closeAdminEdit();
-  adminRender();
-  adminRenderStats();
-  initFilters();
-  // HTMLダウンロードボタンを表示して保存を促す
-  document.getElementById('adm-dl-btn').style.display='';
-  showToast(`「${p.name.slice(0,20)}…」を更新しました`);
+  // 入力値を取り出す
+  const vals={
+    name:trim('ae-name'),
+    catId:get('ae-catId').value,
+    maker:trim('ae-maker'),
+    material:get('ae-material').value,
+    detail:trim('ae-detail'),
+    thread:trim('ae-thread'),
+    tnum:parseInt(get('ae-tnum').value)||6,
+    len:parseFloat(get('ae-len').value)||20,
+    surface:trim('ae-surface'),
+    str_s:trim('ae-str_s')||'−',
+    str_ss:trim('ae-str_ss')||'−',
+    chem:get('ae-chem').value,
+    rohs:get('ae-rohs').checked,
+    delivery:parseInt(get('ae-delivery').value)||1,
+    pop:parseInt(get('ae-pop').value)||80,
+    desc:trim('ae-desc'),
+  };
+  if(!vals.name){alert('商品名を入力してください');get('ae-name').focus();return;}
+
+  if(_adminEditId===null){
+    // ── 追加モード ──
+    const newId=Math.max(0,...PRODUCTS.map(x=>x.id))+1;
+    PRODUCTS.push({id:newId,rating:4.0,rev:0,...vals});
+    PRODUCTS.sort((a,b)=>a.id-b.id);
+    closeAdminEdit();
+    adminRender();
+    adminRenderStats();
+    initFilters();
+    document.getElementById('adm-dl-btn').style.display='';
+    showToast(`「${vals.name}」を追加しました（HCBT${String(newId).padStart(4,'0')}）`);
+  } else {
+    // ── 編集モード ──
+    const p=PRODUCTS.find(x=>x.id===_adminEditId);
+    if(!p)return;
+    Object.assign(p,vals);
+    closeAdminEdit();
+    adminRender();
+    adminRenderStats();
+    initFilters();
+    document.getElementById('adm-dl-btn').style.display='';
+    showToast(`「${p.name.slice(0,20)}」を更新しました`);
+  }
 }
 
 // ── 商品削除 ──
@@ -3062,7 +3114,7 @@ if(_pd){const d=new Date();_pd.textContent=d.getFullYear()+'/'+(d.getMonth()+1).
 <div class="adm-edit-overlay" id="adm-edit-overlay" onclick="if(event.target===this)closeAdminEdit()">
   <div class="adm-edit-modal">
     <div class="adm-edit-hdr">
-      <span class="adm-edit-hdr-title">商品編集</span>
+      <span class="adm-edit-hdr-title" id="ae-modal-title">商品編集</span>
       <span class="adm-edit-hdr-code" id="ae-code"></span>
       <button class="adm-edit-hdr-close" onclick="closeAdminEdit()">×</button>
     </div>
