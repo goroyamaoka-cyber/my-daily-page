@@ -532,6 +532,23 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
 .adm-sum-mod{background:rgba(0,84,160,.08);color:#0054a0;border:1px solid rgba(0,84,160,.22)}
 .adm-sum-err{background:rgba(227,0,32,.08);color:#e30020;border:1px solid rgba(227,0,32,.22)}
 
+/* ══ DETAIL ACTION ICONS ════════════════════════ */
+.dt-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+.dt-act{display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 6px 12px;background:var(--s1);border:1.5px solid var(--ink-10);border-radius:8px;cursor:pointer;transition:all var(--t);font-size:10px;font-weight:700;color:var(--ink-60);text-align:center;line-height:1.4;letter-spacing:.2px;position:relative;user-select:none}
+.dt-act:hover{background:#fff;border-color:var(--blue);color:var(--blue);box-shadow:var(--sh-sm);transform:translateY(-1px)}
+.dt-act svg{width:26px;height:26px;transition:color var(--t)}
+.dt-act-dl{color:var(--ink-60)}
+.dt-act-dl:hover{color:var(--blue)}
+.dt-act-dl::after{content:'↓';position:absolute;top:6px;right:8px;font-size:9px;font-weight:800;color:var(--ink-20);transition:color var(--t)}
+.dt-act-dl:hover::after{color:var(--blue)}
+.dt-act-yt svg{color:#ff0000}
+.dt-act-yt:hover{background:rgba(255,0,0,.05);border-color:#ff0000;color:#cc0000;box-shadow:0 2px 10px rgba(255,0,0,.12)}
+.dt-act-yt:hover svg{color:#cc0000}
+@media(max-width:480px){
+  .dt-actions{grid-template-columns:repeat(2,1fr)}
+  .dt-act{padding:12px 6px 10px;font-size:9px}
+}
+
 /* ══ INQUIRY BUTTON / MODAL ════════════════════ */
 .inq-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;transition:background var(--t),transform var(--t),box-shadow var(--t);margin-top:20px;letter-spacing:.3px;box-shadow:0 4px 16px rgba(227,0,32,.25)}
 .inq-btn:hover{background:var(--blue-h);transform:translateY(-1px);box-shadow:0 8px 24px rgba(227,0,32,.32)}
@@ -1019,6 +1036,24 @@ input.sl::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#
         <div class="detail-name-sub" id="dt-name-sub"></div>
         <hr class="detail-div">
         <table class="spec-mini" id="dt-spec-mini"></table>
+        <div class="dt-actions">
+          <button class="dt-act dt-act-dl" onclick="downloadSpec()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><polyline points="9 14 12 17 15 14"/></svg>
+            <span data-i18n="actSpec">仕様書・図面</span>
+          </button>
+          <button class="dt-act dt-act-dl" onclick="downloadCAD()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8l3 3-3 3m5 0h3"/></svg>
+            <span data-i18n="actCAD">CAD</span>
+          </button>
+          <button class="dt-act dt-act-dl" onclick="downloadPDF()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><text x="6" y="18" font-size="6" fill="currentColor" stroke="none" font-weight="bold">PDF</text></svg>
+            <span data-i18n="actPDF">各種資料PDF</span>
+          </button>
+          <button class="dt-act dt-act-yt" onclick="openYouTube()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.2 2.8 12 2.8 12 2.8s-4.2 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.1.7 11.2v2c0 2.1.3 4.2.3 4.2s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.2 21.6 12 21.6 12 21.6s4.2 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.1.3-4.2v-2C23.3 9.1 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z"/></svg>
+            <span data-i18n="actYT">YouTube動画</span>
+          </button>
+        </div>
         <button class="inq-btn" onclick="openInquiry()">
           <svg viewBox="0 0 16 16" fill="none"><path d="M2 3h12v8a1 1 0 01-1 1H3a1 1 0 01-1-1V3z" stroke="white" stroke-width="1.4"/><path d="M2 3l6 5 6-5" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
           <span data-i18n="inqBtn">お問い合わせ / 見積依頼</span>
@@ -1072,6 +1107,8 @@ const T={
     chemBadge:'chemSHERPA対応品あり',rohsBadge:'EU_RoHS対応',
     noExport:'エクスポート対象の商品がありません',downloaded:'をダウンロードしました',
     inqBtn:'お問い合わせ / 見積依頼',inqTitle:'お問い合わせ / 見積依頼',inqName:'お名前・会社名',inqEmail:'メールアドレス',inqQty:'数量・仕様のご要望',inqMsg:'お問い合わせ内容',inqSubmit:'送信する（メールで送る）',
+    actSpec:'仕様書・図面',actCAD:'CAD',actPDF:'各種資料PDF',actYT:'YouTube動画',
+    dlToast:'（サンプルサイトのため、実際のファイルは準備中です）',
     allLabel:'全商品',curLabel:'表示中',
   },
   en:{
@@ -1103,6 +1140,8 @@ const T={
     chemBadge:'chemSHERPA Declarable',rohsBadge:'EU RoHS Compliant',
     noExport:'No products to export',downloaded:'downloaded',
     inqBtn:'Inquiry / Quote Request',inqTitle:'Inquiry / Quote Request',inqName:'Name / Company',inqEmail:'Email Address',inqQty:'Quantity & Specifications',inqMsg:'Message',inqSubmit:'Send (via Email)',
+    actSpec:'Spec / Drawing',actCAD:'CAD',actPDF:'Documents PDF',actYT:'YouTube',
+    dlToast:'(Sample site — files are coming soon)',
     allLabel:'all',curLabel:'filtered',
   },
   zh:{
@@ -1134,6 +1173,8 @@ const T={
     chemBadge:'chemSHERPA可申报',rohsBadge:'EU RoHS符合',
     noExport:'没有可导出的商品',downloaded:'已下载',
     inqBtn:'咨询 / 报价申请',inqTitle:'咨询 / 报价申请',inqName:'姓名・公司名',inqEmail:'电子邮件',inqQty:'数量・规格要求',inqMsg:'咨询内容',inqSubmit:'发送（通过邮件）',
+    actSpec:'规格书・图纸',actCAD:'CAD',actPDF:'各种资料PDF',actYT:'YouTube视频',
+    dlToast:'（示例网站，实际文件准备中）',
     allLabel:'全商品',curLabel:'当前显示',
   }
 };
@@ -2154,6 +2195,26 @@ function exportCSV(mode){
   a.href=url;a.download=filename;a.click();
   URL.revokeObjectURL(url);
   showToast(`${filename} ${L('downloaded')}（${data.length}${L('count')}）`);
+}
+
+// ── Detail Action Icons ──
+function _dlToast(label){
+  showToast(`【${label}】 ${L('dlToast')}`);
+}
+function downloadSpec(){
+  const p=window.__currentDetailProduct;
+  _dlToast(p?pName(p)+' '+(L('actSpec')||'仕様書・図面'):(L('actSpec')||'仕様書・図面'));
+}
+function downloadCAD(){
+  const p=window.__currentDetailProduct;
+  _dlToast(p?pName(p)+' '+(L('actCAD')||'CAD'):(L('actCAD')||'CAD'));
+}
+function downloadPDF(){
+  const p=window.__currentDetailProduct;
+  _dlToast(p?pName(p)+' '+(L('actPDF')||'各種資料PDF'):(L('actPDF')||'各種資料PDF'));
+}
+function openYouTube(){
+  window.open('https://www.youtube.com/@akagane','_blank','noopener');
 }
 
 // ── Inquiry Modal ──
