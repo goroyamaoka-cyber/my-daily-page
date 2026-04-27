@@ -72,7 +72,11 @@
     box-shadow: 0 4px 16px rgba(227,0,32,.28), 0 1px 4px rgba(227,0,32,.12);
     position: relative; overflow: hidden;
     user-select: none;
+    cursor: pointer; border: none; font-family: var(--font);
+    transition: opacity 0.15s, transform 0.15s;
   }
+  .header-logo-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+  .header-logo-btn:active { opacity: 1; transform: translateY(0); }
   .header-logo-btn::after {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 50%;
@@ -274,7 +278,8 @@
 
   .footer {
     text-align: center; color: var(--ink-40); font-size: 11px;
-    padding: 20px 24px; margin-top: 8px;
+    padding: 20px 24px 32px; margin-top: 8px;
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
   }
 
   /* ===== レスポンシブ ===== */
@@ -309,7 +314,7 @@
   <div class="header-left">
     <div class="header-logo-group">
       <div class="header-eyebrow">Customer News</div>
-      <div class="header-logo-btn">
+      <button class="header-logo-btn" onclick="location.reload()" title="クリックして更新">
         <svg class="header-logo-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x=".5" y=".5" width="14" height="3" rx=".8" fill="white"/>
           <rect x=".5"   y="5.5" width="6"   height="1.5" rx=".75" fill="white"/>
@@ -322,7 +327,7 @@
           <rect x="8.5"  y="13"  width="5"   height="1.5" rx=".75" fill="white" opacity=".55"/>
         </svg>
         <span class="header-logo-text">顧客ニュース収集レポート</span>
-      </div>
+      </button>
     </div>
     <div class="header-meta">
       収集日時：2026年04月27日 16:49<br>
@@ -2978,7 +2983,23 @@
     </div>
   </div>
 </div>
-<div class="footer">顧客ニュース収集レポート — 2026年04月27日 — あかがね営業AI</div>
+<div class="footer">
+  <button class="header-logo-btn" onclick="location.reload()" title="クリックして更新">
+    <svg class="header-logo-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x=".5" y=".5" width="14" height="3" rx=".8" fill="white"/>
+      <rect x=".5"   y="5.5" width="6"   height="1.5" rx=".75" fill="white"/>
+      <rect x=".5"   y="8"   width="6"   height="1.5" rx=".75" fill="white" opacity=".55"/>
+      <rect x=".5"   y="10.5" width="4.5" height="1.5" rx=".75" fill="white" opacity=".55"/>
+      <rect x=".5"   y="13"  width="5.5" height="1.5" rx=".75" fill="white" opacity=".55"/>
+      <rect x="8.5"  y="5.5" width="6"   height="1.5" rx=".75" fill="white"/>
+      <rect x="8.5"  y="8"   width="6"   height="1.5" rx=".75" fill="white" opacity=".55"/>
+      <rect x="8.5"  y="10.5" width="4"  height="1.5" rx=".75" fill="white" opacity=".55"/>
+      <rect x="8.5"  y="13"  width="5"   height="1.5" rx=".75" fill="white" opacity=".55"/>
+    </svg>
+    <span class="header-logo-text">顧客ニュース収集レポート</span>
+  </button>
+  <span>顧客ニュース収集レポート — 2026年04月27日 — あかがね営業AI</span>
+</div>
 <script>
 let sortColIndex = -1;
 let sortAsc = false;
