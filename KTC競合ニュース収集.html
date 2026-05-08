@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>企業情報レポート</title>
+<title>競合メーカー動向レポート</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -93,14 +93,35 @@
     text-align: center;
     min-height: 18px;
   }
+  .login-hint {
+    margin-top: 24px;
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    padding: 12px 14px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: 11px;
+    color: #888;
+    border-radius: 2px;
+  }
+  .login-hint table { width: 100%; border-collapse: collapse; }
+  .login-hint td { padding: 2px 8px 2px 0; }
+  .login-hint code { background: #eee; padding: 1px 5px; border-radius: 2px; font-family: monospace; color: #555; }
+  .login-hint .role-badge {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-weight: 700;
+  }
+  .badge-admin { background: #1a3a5c; color: #fff; }
+  .badge-user  { background: #e0e0e0; color: #555; }
   .login-footer {
-    margin-top: 40px;
+    margin-top: 24px;
     text-align: center;
     font-size: 11px;
     color: #bbb;
     font-family: "Hiragino Kaku Gothic ProN", sans-serif;
     border-top: 1px solid #e0e0e0;
-    padding-top: 20px;
+    padding-top: 16px;
   }
 
   /* ── Main Content ── */
@@ -118,7 +139,7 @@
     margin: 0 auto;
     padding: 0 32px;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
   }
   .site-title {
@@ -132,11 +153,11 @@
     font-size: 12px;
     color: #888;
     display: flex;
-    gap: 20px;
+    gap: 16px;
     align-items: center;
   }
   .site-meta .accent { color: #c0392b; font-weight: 700; }
-  .logout-btn {
+  .header-btn {
     font-size: 11px;
     padding: 4px 10px;
     border: 1px solid #ccc;
@@ -145,8 +166,20 @@
     cursor: pointer;
     border-radius: 2px;
     font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    white-space: nowrap;
   }
-  .logout-btn:hover { border-color: #999; color: #555; }
+  .header-btn:hover { border-color: #999; color: #555; }
+  .header-btn.settings-btn { color: #1a3a5c; border-color: #1a3a5c; }
+  .header-btn.settings-btn:hover { background: #1a3a5c; color: #fff; }
+  .user-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 700;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .user-badge.admin { background: #1a3a5c; color: #fff; }
+  .user-badge.user  { background: #e8e8e8; color: #555; }
 
   /* ── Tabs ── */
   .tab-nav {
@@ -252,54 +285,14 @@
   }
   .result-line strong { color: #111; font-size: 15px; }
 
-  /* ── View toggle ── */
-  .view-toggle { display: flex; gap: 4px; }
-  .vt-btn {
-    display: flex; align-items: center; gap: 5px;
-    padding: 5px 12px; border: 1px solid #ddd; border-radius: 4px;
-    background: #fff; color: #777; font-size: 12px; cursor: pointer;
-    transition: all .15s;
-  }
-  .vt-btn.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
-  .vt-btn svg { flex-shrink: 0; }
-
-  /* ── Article list (list view) ── */
+  /* ── Article list ── */
   .article-list { display: flex; flex-direction: column; }
   .article-item {
     display: flex;
     padding: 20px 0;
     border-bottom: 1px solid #e8e8e8;
-    position: relative;
   }
   .article-item:first-child { border-top: 1px solid #e8e8e8; }
-
-  /* ── Article list (tile view) ── */
-  .article-list.tile-view {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
-  }
-  .article-list.tile-view .article-item {
-    padding: 16px;
-    border: 1px solid #e8e8e8;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 1px 4px rgba(0,0,0,.06);
-    border-bottom: 1px solid #e8e8e8;
-    flex-direction: column;
-    transition: box-shadow .15s;
-  }
-  .article-list.tile-view .article-item:first-child { border-top: 1px solid #e8e8e8; }
-  .article-list.tile-view .article-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,.1); }
-  .article-list.tile-view .article-priority-bar {
-    width: 100%; height: 3px;
-    margin-right: 0; margin-bottom: 12px; align-self: auto;
-  }
-  .article-list.tile-view .article-title { font-size: 14px; }
-  .article-list.tile-view .article-excerpt {
-    font-size: 12px;
-    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-  }
 
   .article-priority-bar {
     width: 3px;
@@ -431,77 +424,205 @@
 
   .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
-  /* ══════════════════════════════
-     レスポンシブ対応（タブレット以下）
-  ══════════════════════════════ */
-  @media (max-width: 768px) {
-    /* ヘッダー */
-    .site-header-inner {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 6px;
-      padding: 0 16px;
-    }
-    .site-title { font-size: 18px; }
-    .site-meta { flex-wrap: wrap; gap: 8px; }
+  /* ── Settings Modal ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-box {
+    background: #fff;
+    width: 720px;
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid #111;
+  }
+  .modal-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .modal-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    letter-spacing: .05em;
+  }
+  .modal-header .modal-subtitle {
+    font-size: 12px;
+    color: #aaa;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    margin-left: 12px;
+  }
+  .modal-close {
+    font-size: 18px;
+    color: #aaa;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+  }
+  .modal-close:hover { color: #111; }
 
-    /* タブ（横スクロール） */
-    .tab-nav {
-      padding: 0 16px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      white-space: nowrap;
-      flex-wrap: nowrap;
-    }
-    .tab-nav::-webkit-scrollbar { display: none; }
-    .tab-btn { padding: 12px 14px; font-size: 12px; }
+  .modal-body { padding: 20px 24px; overflow-y: auto; flex: 1; }
 
-    /* コンテナ余白 */
-    .container { padding: 20px 16px; }
-    .summary-container { padding: 20px 16px; }
+  .settings-user-section { margin-bottom: 24px; }
+  .settings-user-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    margin-bottom: 8px;
+  }
+  .user-tab-row { display: flex; gap: 6px; }
+  .user-tab {
+    font-size: 12px;
+    padding: 6px 14px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #666;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .user-tab.active { background: #1a3a5c; color: #fff; border-color: #1a3a5c; }
+  .user-tab:hover:not(.active) { border-color: #999; color: #333; }
 
-    /* フィルターバー */
-    .filter-bar { gap: 16px; }
-    .company-tags { max-width: 100%; }
+  .settings-section-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .settings-count-badge {
+    font-size: 11px;
+    background: #f0f0f0;
+    color: #555;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .settings-count-badge.changed { background: #1a3a5c; color: #fff; }
 
-    /* KPIグリッド → 2列 */
-    .kpi-row { grid-template-columns: repeat(2, 1fr); }
-
-    /* サマリーグリッド → 1列 */
-    .summary-grid { grid-template-columns: 1fr; gap: 24px; }
-
-    /* タイル表示 → 2列（維持） */
-    .article-list.tile-view {
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    }
-
-    /* ログインボックス */
-    .login-box { padding: 32px 24px; margin: 0 16px; }
+  .company-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 8px;
+  }
+  .company-check-item {
+    background: #faf9f7;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background .1s;
+  }
+  .company-check-item:hover { background: #f0f0f0; }
+  .company-check-item input[type=checkbox] {
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    accent-color: #1a3a5c;
+    flex-shrink: 0;
+  }
+  .company-check-label {
+    font-size: 12px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+  }
+  .company-check-item.checked .company-check-label { color: #111; font-weight: 600; }
+  .company-origin {
+    font-size: 9px;
+    color: #aaa;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
-  @media (max-width: 480px) {
-    /* タイル表示 → 1列 */
-    .article-list.tile-view { grid-template-columns: 1fr; }
-
-    /* KPIグリッド → 2列維持（数字が見やすいため） */
-    .kpi-num { font-size: 30px; }
-
-    /* フィルターボタン小さく */
-    .f-btn { font-size: 11px; padding: 4px 8px; }
-
-    /* ヘッダー詰める */
-    .site-header { padding: 12px 0 10px; }
-    .site-title { font-size: 16px; }
-    .site-meta { font-size: 11px; }
-
-    /* ログイン */
-    .login-box { padding: 28px 18px; margin: 0 12px; }
-    .login-title { font-size: 20px; }
-
-    /* タブ文字 */
-    .tab-btn { font-size: 11px; padding: 10px 12px; }
+  .settings-controls {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
   }
+  .settings-controls button {
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #888;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .settings-controls button:hover { border-color: #999; color: #555; }
+
+  .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
+    background: #faf9f7;
+  }
+  .btn-save {
+    font-size: 13px;
+    padding: 8px 24px;
+    background: #1a3a5c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-weight: 700;
+    border-radius: 2px;
+    letter-spacing: .05em;
+  }
+  .btn-save:hover { background: #243f64; }
+  .btn-cancel {
+    font-size: 13px;
+    padding: 8px 18px;
+    background: #fff;
+    color: #888;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    border-radius: 2px;
+  }
+  .btn-cancel:hover { border-color: #999; color: #555; }
+  .save-msg {
+    font-size: 12px;
+    color: #27ae60;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .save-msg.show { opacity: 1; }
 </style>
 </head>
 <body>
@@ -510,8 +631,8 @@
 <div id="login-screen">
   <div class="login-box">
     <div class="login-header">
-      <div class="login-title">企業情報レポート</div>
-      <div class="login-subtitle">Company Intelligence Dashboard</div>
+      <div class="login-title">競合メーカー動向レポート</div>
+      <div class="login-subtitle">Competitive Intelligence Dashboard</div>
     </div>
     <div class="login-field">
       <label>ユーザーID</label>
@@ -523,7 +644,59 @@
     </div>
     <button class="login-btn" onclick="doLogin()">ログイン</button>
     <div class="login-error" id="login-error"></div>
+    <div class="login-hint">
+      <table>
+        <tr>
+          <td><code>ktc</code> / <code>ktc2026</code></td>
+          <td><span class="role-badge badge-user">担当者A</span></td>
+          <td style="color:#aaa;font-size:10px">国内メーカー担当</td>
+        </tr>
+        <tr>
+          <td><code>ktc2</code> / <code>ktc2026</code></td>
+          <td><span class="role-badge badge-user">担当者B</span></td>
+          <td style="color:#aaa;font-size:10px">海外メーカー担当</td>
+        </tr>
+        <tr>
+          <td><code>admin</code> / <code>admin2026</code></td>
+          <td><span class="role-badge badge-admin">管理者</span></td>
+          <td style="color:#aaa;font-size:10px">全社・設定変更可</td>
+        </tr>
+      </table>
+    </div>
     <div class="login-footer">Powered by Akagane Intelligence &nbsp;|&nbsp; KTC様専用</div>
+  </div>
+</div>
+
+<!-- 設定モーダル -->
+<div class="modal-overlay" id="settings-modal" style="display:none" onclick="handleOverlayClick(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div>
+        <span style="font-size:16px;font-weight:700;font-family:'Hiragino Kaku Gothic ProN',sans-serif">モニタリング企業 設定</span>
+        <span class="modal-subtitle">登録20社のうち表示対象をユーザーごとに設定</span>
+      </div>
+      <button class="modal-close" onclick="closeSettings()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="settings-user-section" id="settings-user-section">
+        <div class="settings-user-label">対象ユーザー</div>
+        <div class="user-tab-row" id="user-tab-row"></div>
+      </div>
+      <div class="settings-section-label">
+        モニタリング対象企業
+        <span class="settings-count-badge" id="settings-count-badge">0 / 20 社</span>
+      </div>
+      <div class="settings-controls">
+        <button onclick="settingsSelectAll()">全選択</button>
+        <button onclick="settingsDeselectAll()">全解除</button>
+      </div>
+      <div class="company-grid" id="settings-company-grid"></div>
+    </div>
+    <div class="modal-footer">
+      <span class="save-msg" id="save-msg">保存しました</span>
+      <button class="btn-cancel" onclick="closeSettings()">キャンセル</button>
+      <button class="btn-save" onclick="saveSettings()">保存する</button>
+    </div>
   </div>
 </div>
 
@@ -532,12 +705,14 @@
 
 <header class="site-header">
   <div class="site-header-inner">
-    <div class="site-title">企業情報レポート</div>
+    <div class="site-title">競合メーカー動向レポート</div>
     <div class="site-meta">
       <span>収集日 <span class="accent">2025年10月28日</span></span>
-      <span>対象 <span class="accent">9</span> 社</span>
-      <span>全 <span class="accent">27</span> 件</span>
-      <button class="logout-btn" onclick="doLogout()">ログアウト</button>
+      <span>対象 <span class="accent" id="header-company-count">—</span> 社</span>
+      <span>全 <span class="accent" id="header-article-count">—</span> 件</span>
+      <span class="user-badge" id="user-badge-el"></span>
+      <button class="header-btn settings-btn" id="settings-btn" onclick="openSettings()" style="display:none">⚙ 企業設定</button>
+      <button class="header-btn" onclick="doLogout()">ログアウト</button>
     </div>
   </div>
 </header>
@@ -593,20 +768,8 @@
       </div>
     </div>
 
-    <div class="result-line" style="display:flex;align-items:center;justify-content:space-between;">
-      <span><strong id="visible-count">0</strong> 件</span>
-      <div class="view-toggle">
-        <button class="vt-btn active" id="btn-tile" onclick="setView('tile')">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="0" y="0" width="6" height="6" rx="1"/><rect x="8" y="0" width="6" height="6" rx="1"/><rect x="0" y="8" width="6" height="6" rx="1"/><rect x="8" y="8" width="6" height="6" rx="1"/></svg>
-          タイル
-        </button>
-        <button class="vt-btn" id="btn-list" onclick="setView('list')">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="0" y="1" width="14" height="2" rx="1"/><rect x="0" y="6" width="14" height="2" rx="1"/><rect x="0" y="11" width="14" height="2" rx="1"/></svg>
-          リスト
-        </button>
-      </div>
-    </div>
-    <div class="article-list tile-view" id="article-list"></div>
+    <div class="result-line"><strong id="visible-count">0</strong> 件</div>
+    <div class="article-list" id="article-list"></div>
 
   </div>
 </div>
@@ -616,7 +779,7 @@
   <div class="summary-container">
     <div class="kpi-row">
       <div class="kpi-item">
-        <div class="kpi-num">27</div>
+        <div class="kpi-num" id="kpi-total">—</div>
         <div class="kpi-label">収集記事数（全期間）</div>
       </div>
       <div class="kpi-item">
@@ -656,222 +819,145 @@
 </div><!-- /main-content -->
 
 <script>
-/* ── ログイン ── */
-function doLogin() {
-  const user = document.getElementById('login-user').value.trim();
-  const pass = document.getElementById('login-pass').value;
-  if (user === 'ktc' && pass === 'ktc2026') {
-    sessionStorage.setItem('ktc_auth', '1');
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('main-content').style.display = 'block';
-  } else {
-    document.getElementById('login-error').textContent = 'ユーザーIDまたはパスワードが正しくありません';
-    document.getElementById('login-pass').value = '';
-  }
-}
-function doLogout() {
-  sessionStorage.removeItem('ktc_auth');
-  document.getElementById('main-content').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('login-user').value = '';
-  document.getElementById('login-pass').value = '';
-  document.getElementById('login-error').textContent = '';
-}
-document.getElementById('login-pass').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') doLogin();
-});
-if (sessionStorage.getItem('ktc_auth') === '1') {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('main-content').style.display = 'block';
-}
+/* ── マスターデータ ── */
 
-/* ── ニュースデータ（実在記事） ── */
-const NEWS = [
-  // TONE
-  {
-    company:"TONE", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
-    url:"https://www.tonetool.co.jp/topics/detail_product.php?s=1235",
-    title:"バイクメンテナンス用ツールセット【TSA3171】新発売",
-    excerpt:"二輪車メンテナンスに最適なツールを厳選した36点セット。ビットラチェットセット（BRS20）を中心に構成し、持ち運びに便利なバッグに収納。コンパクト設計で現場作業にも対応。"
-  },
-  {
-    company:"TONE", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
-    url:"https://www.tonetool.co.jp/topics/?p=2904",
-    title:"ビットラチェットセット 新発売",
-    excerpt:"小型・軽量設計のビットラチェットセットを新発売。狭所作業に対応できる全長設計と、用途を網羅するビットラインナップが特徴。プロの現場での使い勝手を追求した製品。"
-  },
-  {
-    company:"TONE", type:"domestic", source:"公式サイト", date:"2025-10-15", priority:"低", category:"その他",
-    url:"https://www.tonetool.co.jp/topics/?p=3096",
-    title:"総合カタログ2025-26 発刊のご案内",
-    excerpt:"TONE 2025-26年版 総合カタログを発刊。トルク機器・作業工具・電動工具等の全ラインナップを収録した最新版。デジタルカタログも同時公開。"
-  },
-  // Koken
-  {
-    company:"Koken", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
-    url:"https://www.koken-tool.co.jp/z-eal.html",
-    title:"Z-EALシリーズ 新モデル追加・ラインナップ拡充",
-    excerpt:"次世代メカニックスタンダードとして設計されたZ-EALシリーズに新モデルを追加。コンパクト設計と高い耐久性を両立した次世代ソケットレンチとして自動車整備現場での評価が高い。"
-  },
-  {
-    company:"Koken", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"低", category:"その他",
-    url:"https://www.koken-tool.co.jp/news.html",
-    title:"Ko-ken 和文総合カタログ 2025-26 発行のご案内",
-    excerpt:"山下工業研究所の最新総合カタログ2025-26年版を発行。ソケットレンチ・ビットソケットをはじめとする全製品ラインナップを網羅。価格情報も最新版に更新済み。"
-  },
-  {
-    company:"Koken", type:"domestic", source:"公式サイト", date:"2025-10-15", priority:"低", category:"展示会",
-    url:"https://www.koken-tool.co.jp/news202402_GFG.html",
-    title:"「GIGAファクトリーギア」内にKo-ken展示ブースを出展",
-    excerpt:"工具専門店「GIGAファクトリーギア」内に山下工業研究所の展示ブースを常設出展。Z-EALシリーズをはじめとする主力製品を実際に手にとって確認できる体験型ブース。"
-  },
-  // VESSEL
-  {
-    company:"VESSEL", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
-    url:"https://www.vessel.co.jp/news/detail/1790",
-    title:"【新製品】電ドラボールⅡ 220USBCシリーズ 発売のご案内",
-    excerpt:"充電式精密ドライバーの定番「電ドラボール」が進化。USB Type-C充電対応の新シリーズ「220USBC」を発売。充電時間を大幅に短縮しながら、使い勝手と耐久性も向上させた。"
-  },
-  {
-    company:"VESSEL", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"高", category:"新製品",
-    url:"https://www.vessel.co.jp/news/detail/1787",
-    title:"【新製品】充電式インパクトレンチ SP-8141J 発売のご案内",
-    excerpt:"エアツールメーカーとしての技術を活かした充電式インパクトレンチ SP-8141J を発売。コンパクトボディに高トルクを実現し、自動車整備から設備工事まで幅広い用途に対応。"
-  },
-  {
-    company:"VESSEL", type:"domestic", source:"公式サイト", date:"2025-10-01", priority:"中", category:"新製品",
-    url:"https://www.vessel.co.jp/news/detail/1545",
-    title:"新製品「電工アジャストナイフ」発売のご案内",
-    excerpt:"電工作業向けのアジャストナイフ新製品を発売。ダマスカス刃・鎌形刃など複数バリエーションを展開。刃のステップレス調整機構により、様々な作業に対応できる汎用性が特徴。"
-  },
-  // Makita
-  {
-    company:"Makita", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
-    url:"https://www.makita.co.jp/news/",
-    title:"Li-ion 40Vmaxシリーズ コンパクト＆パワフルな充電式ブロワ UB002GZ 発売",
-    excerpt:"40Vmaxバッテリシリーズに充電式ブロワ「UB002GZ/UB002GZL」を追加。コンパクト設計ながら強力な風量を実現。本体質量は約2.5kgと軽量で、現場での長時間作業にも配慮した設計。"
-  },
-  {
-    company:"Makita", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
-    url:"https://www.makita.co.jp/news/",
-    title:"Li-ion 40Vmaxシリーズ 電動回転ブラシ搭載の充電式クリーナ CL004G 発売",
-    excerpt:"電動回転ブラシを搭載した40Vmax充電式クリーナ「CL004G」を発売。床面の汚れを効率よく掻き出しながら吸引。コードレスで取り回しがよく、プロユーザーの現場清掃ニーズに対応。"
-  },
-  {
-    company:"Makita", type:"domestic", source:"公式サイト", date:"2025-10-01", priority:"中", category:"業績",
-    url:"https://www.makita.co.jp/ir/library/library_02.html",
-    title:"2025年3月期 決算発表 売上収益7,531億円（前期比+1.6%）",
-    excerpt:"マキタの2025年3月期連結売上収益は7,531億円（前期比＋1.6%）。欧州市場の回復と40Vmaxシリーズの好調が牽引。中期計画に沿った成長軌道を維持していると説明。"
-  },
-  // HiKOKI
-  {
-    company:"HiKOKI", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
-    url:"https://www.koki-holdings.co.jp/ir/newsrelease/2025/20250228.pdf",
-    title:"HiKOKI コードレスマルチツール CV 36DMA 発売（2025年グッドデザイン賞受賞）",
-    excerpt:"36Vブラシレスモーター搭載のコードレスマルチツール「CV 36DMA」が2025年グッドデザイン賞を受賞。HiKOKI製品として初めて「Star Lock Max Blade」に対応し、多様なアタッチメント使用が可能。"
-  },
-  {
-    company:"HiKOKI", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
-    url:"https://www.koki-holdings.co.jp/ir/newsrelease/2025/20250430.pdf",
-    title:"HiKOKI コードレス真空ポンプ UP18DYA 発売 エアコン据付工事向け",
-    excerpt:"家庭用エアコンから大型業務用5馬力クラスまで対応するコードレス真空ポンプ「UP18DYA」を発売。18Vバッテリ対応で真空引き作業の省配線化・軽量化を実現。設備工事現場での利便性を向上。"
-  },
-  {
-    company:"HiKOKI", type:"domestic", source:"公式サイト", date:"2025-10-16", priority:"高", category:"新製品",
-    url:"https://www.koki-holdings.co.jp/ir/newsrelease/2025/20251016.pdf",
-    title:"HiKOKI 新型釘打機 発売「軽々使えて、一気に打てる」",
-    excerpt:"工機ホールディングスジャパンが新型釘打機を発表。「軽々使えて、一気に打てる」をコンセプトに軽量化と連続打ち込み性能を両立。フレーミング工事から内装工事まで幅広い用途に対応。"
-  },
-  // Snap-on
-  {
-    company:"Snap-on", type:"overseas", source:"公式サイト", date:"2025-10-28", priority:"高", category:"DX・技術",
-    url:"https://www.snapon.com/EN/US/Diagnostics/News-Center/Press-Release-Archive/2025-10-28-News-Release-The-New-Mt2600-From-Snap-on-Puts-Customers-On-The-Path-to-Success",
-    title:"Snap-on、エントリーレベル診断ツール「MT2600」発売",
-    excerpt:"Snap-onが新型診断ツール「MT2600」を発売。50メーカー・1983年以降の車両をカバーするOEM特化型診断に対応。英語・スペイン語切替機能を標準搭載し、$1,895で提供。"
-  },
-  {
-    company:"Snap-on", type:"overseas", source:"公式サイト", date:"2025-10-27", priority:"中", category:"DX・技術",
-    url:"https://www.snapon.com/EN/US/Diagnostics/News-Center/Press-Release-Archive/2025-05-15-News-Release-Snap-ons-Third-Generation-TRITON-Scan-Tool-Takes-Technicians-from-Start-to-Fixed",
-    title:"Snap-on、第3世代スキャンツール「TRITON」発売",
-    excerpt:"ワークフロー効率化と生産性向上を設計思想に据えた第3世代スキャンツール「TRITON」を発売。テクニシャンが診断から修理完了まで一貫して使えるプラットフォームとして設計されている。"
-  },
-  {
-    company:"Snap-on", type:"overseas", source:"Google News", date:"2025-10-01", priority:"中", category:"その他",
-    url:"https://www.snapon.com/EN/US/Diagnostics/News-Center/Press-Release-Archive/2025-09-05-News-Release-Snap-on-PTEN-Innovation-Award-For-APOLLO-Plus-Scan-Tool",
-    title:"Snap-on APOLLO+スキャンツール、PTEN革新賞を受賞",
-    excerpt:"Snap-onの「APOLLO+」スキャンツールが2025年Professional Tool & Equipment News（PTEN）革新賞を自動車スキャンツール部門で受賞。高精度な診断能力と操作性が評価された。"
-  },
-  // KNIPEX
-  {
-    company:"KNIPEX", type:"overseas", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
-    url:"https://blog.knipex.com/en/en/blog/knipex-new-products-summer2025-faq",
-    title:"KNIPEX 夏季新製品：ErgoStrip PV・MultiCrimp PV ほか発売",
-    excerpt:"太陽光発電設備・電気工事向けの新製品を発表。ストリッパー「ErgoStrip PV」、ラチェットロック機構付きクリンプペンチ「MultiCrimp PV」など、専門工具ラインナップを大幅拡充。"
-  },
-  {
-    company:"KNIPEX", type:"overseas", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
-    url:"https://www.knipex.com/jp-jp/%E8%A3%BD%E5%93%81/%E6%96%B0%E5%95%86%E5%93%81",
-    title:"KNIPEX 2025年秋 新商品ラインナップ公開",
-    excerpt:"KNIPEXの日本向け新商品ページを更新。プライヤーレンチ・ペンチ類の新サイズ・新モデルを追加。プロフェッショナル工具として高い評価を受けるドイツ製品の最新情報が確認できる。"
-  },
-  {
-    company:"KNIPEX", type:"overseas", source:"Google News", date:"2025-10-15", priority:"低", category:"展示会",
-    url:"https://www.knipex.com/jp-jp",
-    title:"KNIPEX、国内工具展示会への出展を強化 2025年秋",
-    excerpt:"KNIPEXの日本総代理店が2025年秋の国内工具展示会への出展を積極的に展開。プライヤーレンチ・ニッパー類の新製品を会場で先行展示し、工具フェアなどでの存在感を高めている。"
-  },
-  // Milwaukee
-  {
-    company:"Milwaukee", type:"overseas", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
-    url:"https://www.milwaukeetool.com/news/press-releases/milwaukee-drives-innovation-with-next-generation-of-m18-fuel-1_2in-high-torque-impact-wrenches",
-    title:"Milwaukee、M18 FUEL 1/2インチ ハイトルクインパクトレンチ 次世代モデル発売",
-    excerpt:"M18 FUELシステムの主力製品であるハイトルクインパクトレンチが次世代モデルに刷新。生産性・能力・快適性の3軸で従来モデルを大幅に上回る性能を実現。重工業・自動車整備向けに展開。"
-  },
-  {
-    company:"Milwaukee", type:"overseas", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
-    url:"https://www.milwaukeetool.com/News/Press-Releases/New-M18-FUEL-Multi-Tool-Delivers-the-Fastest-Cuts-Lowest-Vibration-and-Power-for-Demolition",
-    title:"Milwaukee、M18 FUEL マルチツール 新モデル発売 最速切断・最低振動を実現",
-    excerpt:"M18 FUELマルチツールの新モデルを発売。従来比で最速の切断スピードと最低水準の振動値を両立。解体・仕上げ・リフォームなど多目的な用途に対応するパワーも強化されている。"
-  },
-  {
-    company:"Milwaukee", type:"overseas", source:"公式サイト", date:"2025-10-01", priority:"中", category:"DX・技術",
-    url:"https://www.milwaukeetool.com/News/Press-Releases/Quieter-Smoother-Faster-The-Next-Gen-M18-FUEL-SURGE",
-    title:"Milwaukee、M18 FUEL SURGE 次世代油圧ドライバー発売 静音・快適性を大幅向上",
-    excerpt:"次世代M18 FUEL SURGE 1/4インチ 油圧ドライバーを発売。POWERSTATEブラシレスモーターにより従来比3倍の締付スピードを実現しながら、騒音・振動を大幅に低減。住宅・商業工事に最適。"
-  },
-  // BOSCH
-  {
-    company:"BOSCH", type:"overseas", source:"公式サイト", date:"2025-10-28", priority:"中", category:"業績",
-    url:"https://www.bosch.com/company/annual-report/",
-    title:"Bosch アニュアルレポート2025 発行 電動工具部門の業績",
-    excerpt:"ボッシュが2025年度アニュアルレポートを発行。Power Tools部門は新興国市場の拡大と充電式工具への需要増加を背景に安定した成長を維持。プロフェッショナル向け製品ラインの強化が続く。"
-  },
-  {
-    company:"BOSCH", type:"overseas", source:"公式サイト", date:"2025-10-27", priority:"高", category:"新製品",
-    url:"https://www.bosch-professional.com/gb/en/knowledge-innovation/press-releases/contentpage_presse_overview.html",
-    title:"Bosch Professional 最新プレスリリース 新製品・ソリューション情報",
-    excerpt:"Bosch Professionalが最新のプレスリリースを公開。電動工具・測定機器・アクセサリを含む新製品ラインナップと、プロフェッショナル向けデジタルソリューション「Bosch Pro360」の拡充情報を発表。"
-  },
-  {
-    company:"BOSCH", type:"overseas", source:"公式サイト", date:"2025-10-15", priority:"低", category:"新製品",
-    url:"https://bosch-professional.com/gb/en/service/news/latest-innovations",
-    title:"Bosch Professional Latest Innovations 2025年秋の新製品情報",
-    excerpt:"Bosch Professionalが2025年秋の新製品・最新イノベーション情報を公開。EXPERTシリーズのアクセサリ拡充と、GSB・GSRシリーズの性能向上モデルが含まれる。プロ現場向けの製品強化が続く。"
-  },
+const ALL_COMPANIES = [
+  { name:'TONE',          origin:'国内' },
+  { name:'Koken',         origin:'国内' },
+  { name:'VESSEL',        origin:'国内' },
+  { name:'Makita',        origin:'国内' },
+  { name:'HiKOKI',        origin:'国内' },
+  { name:'Engineer',      origin:'国内' },
+  { name:'Hozan',         origin:'国内' },
+  { name:'Tohnichi',      origin:'国内' },
+  { name:'Fujiya',        origin:'国内' },
+  { name:'Nepros',        origin:'国内' },
+  { name:'Snap-on',       origin:'海外' },
+  { name:'KNIPEX',        origin:'海外' },
+  { name:'Milwaukee',     origin:'海外' },
+  { name:'BOSCH',         origin:'海外' },
+  { name:'Wera',          origin:'海外' },
+  { name:'Hazet',         origin:'海外' },
+  { name:'Facom',         origin:'海外' },
+  { name:'PB Swiss',      origin:'海外' },
+  { name:'Stanley',       origin:'海外' },
+  { name:'Bahco',         origin:'海外' },
 ];
 
-const COMPANIES  = [...new Set(NEWS.map(n => n.company))];
+const USERS = {
+  'ktc':   { label:'担当者A', role:'user',  pw:'ktc2026',
+             defaultVisible:['TONE','Koken','VESSEL','Makita','HiKOKI','Snap-on','KNIPEX','Milwaukee','BOSCH'] },
+  'ktc2':  { label:'担当者B', role:'user',  pw:'ktc2026',
+             defaultVisible:['Makita','HiKOKI','Snap-on','Milwaukee','BOSCH','Wera','Hazet','Facom','PB Swiss','Stanley'] },
+  'admin': { label:'管理者',  role:'admin', pw:'admin2026',
+             defaultVisible: ALL_COMPANIES.map(c => c.name) },
+};
+
+const NEWS = [
+  { company:"TONE",     source:"公式サイト",  date:"2025-10-28", priority:"高", category:"新製品",   url:"https://www.tonetool.co.jp/topics/detail_product.php?s=1235",       title:"バイクメンテナンス用ツールセット【TSA3171】新発売",                     excerpt:"二輪車メンテナンスに最適なツールを厳選した36点セット。ビットラチェットセット（BRS20）を中心に構成し、持ち運びに便利なバッグに収納。コンパクト設計で現場作業にも対応。" },
+  { company:"TONE",     source:"公式サイト",  date:"2025-10-27", priority:"中", category:"新製品",   url:"https://www.tonetool.co.jp/topics/?p=2904",                           title:"ビットラチェットセット 新発売",                                         excerpt:"小型・軽量設計のビットラチェットセットを新発売。狭所作業に対応できる全長設計と、用途を網羅するビットラインナップが特徴。プロの現場での使い勝手を追求した製品。" },
+  { company:"TONE",     source:"公式サイト",  date:"2025-10-15", priority:"低", category:"その他",   url:"https://www.tonetool.co.jp/topics/?p=3096",                           title:"総合カタログ2025-26 発刊のご案内",                                      excerpt:"TONE 2025-26年版 総合カタログを発刊。トルク機器・作業工具・電動工具等の全ラインナップを収録した最新版。デジタルカタログも同時公開。" },
+  { company:"Koken",    source:"公式サイト",  date:"2025-10-28", priority:"高", category:"新製品",   url:"https://www.koken-tool.co.jp/z-eal.html",                             title:"Z-EALシリーズ 新モデル追加・ラインナップ拡充",                          excerpt:"次世代メカニックスタンダードとして設計されたZ-EALシリーズに新モデルを追加。コンパクト設計と高い耐久性を両立した次世代ソケットレンチとして自動車整備現場での評価が高い。" },
+  { company:"Koken",    source:"公式サイト",  date:"2025-10-27", priority:"低", category:"その他",   url:"https://www.koken-tool.co.jp/news.html",                              title:"Ko-ken 和文総合カタログ 2025-26 発行のご案内",                          excerpt:"山下工業研究所の最新総合カタログ2025-26年版を発行。ソケットレンチ・ビットソケットをはじめとする全製品ラインナップを網羅。価格情報も最新版に更新済み。" },
+  { company:"Koken",    source:"公式サイト",  date:"2025-10-15", priority:"低", category:"展示会",   url:"https://www.koken-tool.co.jp/news202402_GFG.html",                    title:"「GIGAファクトリーギア」内にKo-ken展示ブースを出展",                    excerpt:"工具専門店「GIGAファクトリーギア」内に山下工業研究所の展示ブースを常設出展。Z-EALシリーズをはじめとする主力製品を実際に手にとって確認できる体験型ブース。" },
+  { company:"VESSEL",   source:"公式サイト",  date:"2025-10-28", priority:"高", category:"新製品",   url:"https://www.vessel.co.jp/news/detail/1790",                           title:"【新製品】電ドラボールⅡ 220USBCシリーズ 発売のご案内",                 excerpt:"充電式精密ドライバーの定番「電ドラボール」が進化。USB Type-C充電対応の新シリーズ「220USBC」を発売。充電時間を大幅に短縮しながら、使い勝手と耐久性も向上させた。" },
+  { company:"VESSEL",   source:"公式サイト",  date:"2025-10-27", priority:"高", category:"新製品",   url:"https://www.vessel.co.jp/news/detail/1787",                           title:"【新製品】充電式インパクトレンチ SP-8141J 発売のご案内",               excerpt:"エアツールメーカーとしての技術を活かした充電式インパクトレンチ SP-8141J を発売。コンパクトボディに高トルクを実現し、自動車整備から設備工事まで幅広い用途に対応。" },
+  { company:"VESSEL",   source:"公式サイト",  date:"2025-10-01", priority:"中", category:"新製品",   url:"https://www.vessel.co.jp/news/detail/1545",                           title:"新製品「電工アジャストナイフ」発売のご案内",                           excerpt:"電工作業向けのアジャストナイフ新製品を発売。ダマスカス刃・鎌形刃など複数バリエーションを展開。刃のステップレス調整機構により、様々な作業に対応できる汎用性が特徴。" },
+  { company:"Makita",   source:"公式サイト",  date:"2025-10-28", priority:"高", category:"新製品",   url:"https://www.makita.co.jp/news/",                                      title:"Li-ion 40Vmaxシリーズ コンパクト＆パワフルな充電式ブロワ UB002GZ 発売", excerpt:"40Vmaxバッテリシリーズに充電式ブロワ「UB002GZ/UB002GZL」を追加。コンパクト設計ながら強力な風量を実現。本体質量は約2.5kgと軽量で、現場での長時間作業にも配慮した設計。" },
+  { company:"Makita",   source:"公式サイト",  date:"2025-10-27", priority:"中", category:"新製品",   url:"https://www.makita.co.jp/news/",                                      title:"Li-ion 40Vmaxシリーズ 電動回転ブラシ搭載の充電式クリーナ CL004G 発売", excerpt:"電動回転ブラシを搭載した40Vmax充電式クリーナ「CL004G」を発売。床面の汚れを効率よく掻き出しながら吸引。コードレスで取り回しがよく、プロユーザーの現場清掃ニーズに対応。" },
+  { company:"Makita",   source:"公式サイト",  date:"2025-10-01", priority:"中", category:"業績",     url:"https://www.makita.co.jp/ir/library/library_02.html",                 title:"2025年3月期 決算発表 売上収益7,531億円（前期比+1.6%）",               excerpt:"マキタの2025年3月期連結売上収益は7,531億円（前期比＋1.6%）。欧州市場の回復と40Vmaxシリーズの好調が牽引。中期計画に沿った成長軌道を維持していると説明。" },
+  { company:"HiKOKI",   source:"公式サイト",  date:"2025-10-28", priority:"高", category:"新製品",   url:"https://www.koki-holdings.co.jp/ir/newsrelease/2025/20250228.pdf",    title:"HiKOKI コードレスマルチツール CV 36DMA 発売（2025年グッドデザイン賞受賞）", excerpt:"36Vブラシレスモーター搭載のコードレスマルチツール「CV 36DMA」が2025年グッドデザイン賞を受賞。HiKOKI製品として初めて「Star Lock Max Blade」に対応し、多様なアタッチメント使用が可能。" },
+  { company:"HiKOKI",   source:"公式サイト",  date:"2025-10-27", priority:"中", category:"新製品",   url:"https://www.koki-holdings.co.jp/ir/newsrelease/2025/20250430.pdf",    title:"HiKOKI コードレス真空ポンプ UP18DYA 発売 エアコン据付工事向け",       excerpt:"家庭用エアコンから大型業務用5馬力クラスまで対応するコードレス真空ポンプ「UP18DYA」を発売。18Vバッテリ対応で真空引き作業の省配線化・軽量化を実現。設備工事現場での利便性を向上。" },
+  { company:"HiKOKI",   source:"公式サイト",  date:"2025-10-16", priority:"高", category:"新製品",   url:"https://www.koki-holdings.co.jp/ir/newsrelease/2025/20251016.pdf",    title:"HiKOKI 新型釘打機 発売「軽々使えて、一気に打てる」",                  excerpt:"工機ホールディングスジャパンが新型釘打機を発表。「軽々使えて、一気に打てる」をコンセプトに軽量化と連続打ち込み性能を両立。フレーミング工事から内装工事まで幅広い用途に対応。" },
+  { company:"Snap-on",  source:"公式サイト",  date:"2025-10-28", priority:"高", category:"DX・技術", url:"https://www.snapon.com/EN/US/Diagnostics/News-Center/Press-Release-Archive/2025-10-28-News-Release-The-New-Mt2600-From-Snap-on-Puts-Customers-On-The-Path-to-Success", title:"Snap-on、エントリーレベル診断ツール「MT2600」発売", excerpt:"Snap-onが新型診断ツール「MT2600」を発売。50メーカー・1983年以降の車両をカバーするOEM特化型診断に対応。英語・スペイン語切替機能を標準搭載し、$1,895で提供。" },
+  { company:"Snap-on",  source:"公式サイト",  date:"2025-10-27", priority:"中", category:"DX・技術", url:"https://www.snapon.com/EN/US/Diagnostics/News-Center/Press-Release-Archive/2025-05-15-News-Release-Snap-ons-Third-Generation-TRITON-Scan-Tool-Takes-Technicians-from-Start-to-Fixed", title:"Snap-on、第3世代スキャンツール「TRITON」発売", excerpt:"ワークフロー効率化と生産性向上を設計思想に据えた第3世代スキャンツール「TRITON」を発売。テクニシャンが診断から修理完了まで一貫して使えるプラットフォームとして設計されている。" },
+  { company:"Snap-on",  source:"Google News", date:"2025-10-01", priority:"中", category:"その他",   url:"https://www.snapon.com/EN/US/Diagnostics/News-Center/Press-Release-Archive/2025-09-05-News-Release-Snap-on-PTEN-Innovation-Award-For-APOLLO-Plus-Scan-Tool", title:"Snap-on APOLLO+スキャンツール、PTEN革新賞を受賞", excerpt:"Snap-onの「APOLLO+」スキャンツールが2025年Professional Tool & Equipment News（PTEN）革新賞を自動車スキャンツール部門で受賞。高精度な診断能力と操作性が評価された。" },
+  { company:"KNIPEX",   source:"公式サイト",  date:"2025-10-28", priority:"高", category:"新製品",   url:"https://blog.knipex.com/en/en/blog/knipex-new-products-summer2025-faq",           title:"KNIPEX 夏季新製品：ErgoStrip PV・MultiCrimp PV ほか発売",            excerpt:"太陽光発電設備・電気工事向けの新製品を発表。ストリッパー「ErgoStrip PV」、ラチェットロック機構付きクリンプペンチ「MultiCrimp PV」など、専門工具ラインナップを大幅拡充。" },
+  { company:"KNIPEX",   source:"公式サイト",  date:"2025-10-27", priority:"中", category:"新製品",   url:"https://www.knipex.com/jp-jp/%E8%A3%BD%E5%93%81/%E6%96%B0%E5%95%86%E5%93%81",   title:"KNIPEX 2025年秋 新商品ラインナップ公開",                              excerpt:"KNIPEXの日本向け新商品ページを更新。プライヤーレンチ・ペンチ類の新サイズ・新モデルを追加。プロフェッショナル工具として高い評価を受けるドイツ製品の最新情報が確認できる。" },
+  { company:"KNIPEX",   source:"Google News", date:"2025-10-15", priority:"低", category:"展示会",   url:"https://www.knipex.com/jp-jp",                                                    title:"KNIPEX、国内工具展示会への出展を強化 2025年秋",                       excerpt:"KNIPEXの日本総代理店が2025年秋の国内工具展示会への出展を積極的に展開。プライヤーレンチ・ニッパー類の新製品を会場で先行展示し、工具フェアなどでの存在感を高めている。" },
+  { company:"Milwaukee", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",   url:"https://www.milwaukeetool.com/news/press-releases/milwaukee-drives-innovation-with-next-generation-of-m18-fuel-1_2in-high-torque-impact-wrenches", title:"Milwaukee、M18 FUEL 1/2インチ ハイトルクインパクトレンチ 次世代モデル発売", excerpt:"M18 FUELシステムの主力製品であるハイトルクインパクトレンチが次世代モデルに刷新。生産性・能力・快適性の3軸で従来モデルを大幅に上回る性能を実現。重工業・自動車整備向けに展開。" },
+  { company:"Milwaukee", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",   url:"https://www.milwaukeetool.com/News/Press-Releases/New-M18-FUEL-Multi-Tool-Delivers-the-Fastest-Cuts-Lowest-Vibration-and-Power-for-Demolition", title:"Milwaukee、M18 FUEL マルチツール 新モデル発売 最速切断・最低振動を実現", excerpt:"M18 FUELマルチツールの新モデルを発売。従来比で最速の切断スピードと最低水準の振動値を両立。解体・仕上げ・リフォームなど多目的な用途に対応するパワーも強化されている。" },
+  { company:"Milwaukee", source:"公式サイト", date:"2025-10-01", priority:"中", category:"DX・技術", url:"https://www.milwaukeetool.com/News/Press-Releases/Quieter-Smoother-Faster-The-Next-Gen-M18-FUEL-SURGE", title:"Milwaukee、M18 FUEL SURGE 次世代油圧ドライバー発売 静音・快適性を大幅向上", excerpt:"次世代M18 FUEL SURGE 1/4インチ 油圧ドライバーを発売。POWERSTATEブラシレスモーターにより従来比3倍の締付スピードを実現しながら、騒音・振動を大幅に低減。住宅・商業工事に最適。" },
+  { company:"BOSCH",    source:"公式サイト",  date:"2025-10-28", priority:"中", category:"業績",     url:"https://www.bosch.com/company/annual-report/",                                    title:"Bosch アニュアルレポート2025 発行 電動工具部門の業績",               excerpt:"ボッシュが2025年度アニュアルレポートを発行。Power Tools部門は新興国市場の拡大と充電式工具への需要増加を背景に安定した成長を維持。プロフェッショナル向け製品ラインの強化が続く。" },
+  { company:"BOSCH",    source:"公式サイト",  date:"2025-10-27", priority:"高", category:"新製品",   url:"https://www.bosch-professional.com/gb/en/knowledge-innovation/press-releases/contentpage_presse_overview.html", title:"Bosch Professional 最新プレスリリース 新製品・ソリューション情報",  excerpt:"Bosch Professionalが最新のプレスリリースを公開。電動工具・測定機器・アクセサリを含む新製品ラインナップと、プロフェッショナル向けデジタルソリューション「Bosch Pro360」の拡充情報を発表。" },
+  { company:"BOSCH",    source:"公式サイト",  date:"2025-10-15", priority:"低", category:"新製品",   url:"https://bosch-professional.com/gb/en/service/news/latest-innovations",              title:"Bosch Professional Latest Innovations 2025年秋の新製品情報",         excerpt:"Bosch Professionalが2025年秋の新製品・最新イノベーション情報を公開。EXPERTシリーズのアクセサリ拡充と、GSB・GSRシリーズの性能向上モデルが含まれる。プロ現場向けの製品強化が続く。" },
+];
+
 const CATEGORIES = ["新製品","DX・技術","業績","海外展開","展示会","その他"];
 const TODAY = '2025-10-28', YESTERDAY = '2025-10-27';
 const PORDER = { '高':0, '中':1, '低':2 };
 const PBAR   = { '高':'bar-high', '中':'bar-mid', '低':'bar-low' };
 const PDOT   = { '高':'dot-high', '中':'dot-mid', '低':'dot-low' };
 
-let activeCompanies      = new Set(COMPANIES);
+let currentUser      = null;
+let userVisibleSet   = new Set();
+let activeCompanies  = new Set();
 let activeDateFilter     = 'today';
 let activePriorityFilter = 'all';
 let activeCategoryFilter = 'all';
 
+/* ── ローカルストレージ ── */
+function getStoredVisible(username) {
+  const stored = localStorage.getItem('ktc_visible_' + username);
+  if (stored) {
+    try { return JSON.parse(stored); } catch(e) {}
+  }
+  return USERS[username].defaultVisible.slice();
+}
+function saveStoredVisible(username, list) {
+  localStorage.setItem('ktc_visible_' + username, JSON.stringify(list));
+}
+
+/* ── ログイン / ログアウト ── */
+function doLogin() {
+  const user = document.getElementById('login-user').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  if (USERS[user] && USERS[user].pw === pass) {
+    currentUser = user;
+    sessionStorage.setItem('ktc_user', user);
+    initSession();
+  } else {
+    document.getElementById('login-error').textContent = 'ユーザーIDまたはパスワードが正しくありません';
+    document.getElementById('login-pass').value = '';
+  }
+}
+function doLogout() {
+  currentUser = null;
+  sessionStorage.removeItem('ktc_user');
+  document.getElementById('main-content').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+  document.getElementById('login-error').textContent = '';
+}
+document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+function initSession() {
+  const u = USERS[currentUser];
+  userVisibleSet = new Set(getStoredVisible(currentUser));
+
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+
+  const badge = document.getElementById('user-badge-el');
+  badge.textContent = u.label;
+  badge.className = 'user-badge ' + (u.role === 'admin' ? 'admin' : 'user');
+
+  document.getElementById('settings-btn').style.display = '';
+
+  updateHeaderCounts();
+  initCompanyFilter();
+  renderSummary();
+  render();
+}
+
+function updateHeaderCounts() {
+  const visibleNews = NEWS.filter(n => userVisibleSet.has(n.company));
+  document.getElementById('header-company-count').textContent = userVisibleSet.size;
+  document.getElementById('header-article-count').textContent = visibleNews.length;
+}
+
+/* ── フィルター ── */
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
@@ -880,11 +966,14 @@ function switchTab(name, btn) {
 }
 
 function initCompanyFilter() {
+  activeCompanies = new Set([...userVisibleSet]);
   const el = document.getElementById('company-filter');
-  COMPANIES.forEach(c => {
+  el.innerHTML = '';
+  [...userVisibleSet].forEach(c => {
     const tag = document.createElement('span');
     tag.className = 'c-tag active';
     tag.textContent = c;
+    tag.dataset.company = c;
     tag.onclick = () => {
       activeCompanies.has(c) ? activeCompanies.delete(c) : activeCompanies.add(c);
       tag.classList.toggle('active', activeCompanies.has(c));
@@ -893,9 +982,8 @@ function initCompanyFilter() {
     el.appendChild(tag);
   });
 }
-
 function selectAll() {
-  activeCompanies = new Set(COMPANIES);
+  activeCompanies = new Set([...userVisibleSet]);
   document.querySelectorAll('.c-tag').forEach(t => t.classList.add('active'));
   render();
 }
@@ -925,20 +1013,14 @@ function filterCategory(val, btn) {
 
 function filteredNews() {
   return NEWS.filter(n => {
+    if (!userVisibleSet.has(n.company))  return false;
     if (!activeCompanies.has(n.company)) return false;
-    if (activeDateFilter === 'today'     && n.date !== TODAY)      return false;
-    if (activeDateFilter === 'yesterday' && n.date !== YESTERDAY)  return false;
+    if (activeDateFilter === 'today'     && n.date !== TODAY)     return false;
+    if (activeDateFilter === 'yesterday' && n.date !== YESTERDAY) return false;
     if (activePriorityFilter !== 'all'   && n.priority !== activePriorityFilter) return false;
     if (activeCategoryFilter !== 'all'   && n.category !== activeCategoryFilter) return false;
     return true;
   }).sort((a, b) => PORDER[a.priority] - PORDER[b.priority]);
-}
-
-function setView(mode) {
-  const list = document.getElementById('article-list');
-  list.classList.toggle('tile-view', mode === 'tile');
-  document.getElementById('btn-tile').classList.toggle('active', mode === 'tile');
-  document.getElementById('btn-list').classList.toggle('active', mode === 'list');
 }
 
 function render() {
@@ -964,24 +1046,26 @@ function render() {
           <span style="font-size:10px;color:#aaa">重要度：${n.priority}</span>
         </div>
         <div class="article-title"><a href="${n.url}" target="_blank" rel="noopener">${n.title}</a></div>
-        <div class="article-excerpt">${n.excerpt}</div>
+        <div class="article-excerpt">${n.excerpt.length > 100 ? n.excerpt.slice(0, 100) + '…' : n.excerpt}</div>
       </div>`;
     list.appendChild(div);
   });
 }
 
 function renderSummary() {
-  document.getElementById('kpi-today').textContent      = NEWS.filter(n => n.date === TODAY).length;
-  document.getElementById('kpi-newproduct').textContent = NEWS.filter(n => n.category === '新製品').length;
-  document.getElementById('kpi-high').textContent       = NEWS.filter(n => n.priority === '高').length;
-  document.getElementById('sum-high').textContent       = NEWS.filter(n => n.priority === '高').length;
-  document.getElementById('sum-mid').textContent        = NEWS.filter(n => n.priority === '中').length;
-  document.getElementById('sum-low').textContent        = NEWS.filter(n => n.priority === '低').length;
+  const visible = NEWS.filter(n => userVisibleSet.has(n.company));
+  document.getElementById('kpi-total').textContent       = visible.length;
+  document.getElementById('kpi-today').textContent       = visible.filter(n => n.date === TODAY).length;
+  document.getElementById('kpi-newproduct').textContent  = visible.filter(n => n.category === '新製品').length;
+  document.getElementById('kpi-high').textContent        = visible.filter(n => n.priority === '高').length;
+  document.getElementById('sum-high').textContent        = visible.filter(n => n.priority === '高').length;
+  document.getElementById('sum-mid').textContent         = visible.filter(n => n.priority === '中').length;
+  document.getElementById('sum-low').textContent         = visible.filter(n => n.priority === '低').length;
 
   const catCount = {};
   CATEGORIES.forEach(c => catCount[c] = 0);
-  NEWS.forEach(n => catCount[n.category]++);
-  const catMax = Math.max(...Object.values(catCount));
+  visible.forEach(n => catCount[n.category]++);
+  const catMax = Math.max(...Object.values(catCount), 1);
   document.getElementById('chart-category').innerHTML = CATEGORIES.map(cat => `
     <div class="bc-row">
       <div class="bc-label">${cat}</div>
@@ -992,11 +1076,12 @@ function renderSummary() {
       </div>
     </div>`).join('');
 
+  const companies = [...new Set(visible.map(n => n.company))];
   const coCount = {};
-  COMPANIES.forEach(c => coCount[c] = 0);
-  NEWS.forEach(n => coCount[n.company]++);
-  const coMax = Math.max(...Object.values(coCount));
-  document.getElementById('chart-company').innerHTML = COMPANIES.map(co => `
+  companies.forEach(c => coCount[c] = 0);
+  visible.forEach(n => coCount[n.company]++);
+  const coMax = Math.max(...Object.values(coCount), 1);
+  document.getElementById('chart-company').innerHTML = companies.map(co => `
     <div class="bc-row">
       <div class="bc-label">${co}</div>
       <div class="bc-track">
@@ -1007,9 +1092,121 @@ function renderSummary() {
     </div>`).join('');
 }
 
-initCompanyFilter();
-renderSummary();
-render();
+/* ── 設定モーダル ── */
+let settingsTargetUser = null;
+let settingsTempChecked = new Set();
+
+function openSettings() {
+  settingsTargetUser = currentUser;
+  buildUserTabs();
+  buildCompanyGrid(settingsTargetUser);
+  document.getElementById('settings-modal').style.display = 'flex';
+  document.getElementById('save-msg').classList.remove('show');
+}
+function closeSettings() {
+  document.getElementById('settings-modal').style.display = 'none';
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('settings-modal')) closeSettings();
+}
+
+function buildUserTabs() {
+  const row = document.getElementById('user-tab-row');
+  row.innerHTML = '';
+  const isAdmin = USERS[currentUser].role === 'admin';
+  const targets = isAdmin ? Object.keys(USERS) : [currentUser];
+
+  targets.forEach(u => {
+    const btn = document.createElement('button');
+    btn.className = 'user-tab' + (u === settingsTargetUser ? ' active' : '');
+    btn.innerHTML = USERS[u].label + (USERS[u].role === 'admin' ? ' <span style="font-size:9px;background:#1a3a5c;color:#fff;padding:1px 5px;border-radius:2px;margin-left:4px">管理者</span>' : '');
+    btn.onclick = () => {
+      settingsTargetUser = u;
+      document.querySelectorAll('.user-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      buildCompanyGrid(u);
+    };
+    row.appendChild(btn);
+  });
+
+  document.getElementById('settings-user-section').style.display = isAdmin ? '' : 'none';
+}
+
+function buildCompanyGrid(username) {
+  settingsTempChecked = new Set(getStoredVisible(username));
+  const grid = document.getElementById('settings-company-grid');
+  grid.innerHTML = '';
+  ALL_COMPANIES.forEach(c => {
+    const checked = settingsTempChecked.has(c.name);
+    const item = document.createElement('label');
+    item.className = 'company-check-item' + (checked ? ' checked' : '');
+    item.innerHTML = `
+      <input type="checkbox" ${checked ? 'checked' : ''} data-company="${c.name}">
+      <span class="company-check-label">${c.name}</span>
+      <span class="company-origin">${c.origin}</span>`;
+    item.querySelector('input').addEventListener('change', function() {
+      if (this.checked) {
+        settingsTempChecked.add(c.name);
+        item.classList.add('checked');
+      } else {
+        settingsTempChecked.delete(c.name);
+        item.classList.remove('checked');
+      }
+      updateSettingsCount();
+    });
+    grid.appendChild(item);
+  });
+  updateSettingsCount();
+}
+
+function updateSettingsCount() {
+  const badge = document.getElementById('settings-count-badge');
+  badge.textContent = settingsTempChecked.size + ' / ' + ALL_COMPANIES.length + ' 社';
+  badge.classList.toggle('changed', settingsTempChecked.size !== getStoredVisible(settingsTargetUser).length);
+}
+
+function settingsSelectAll() {
+  document.querySelectorAll('#settings-company-grid input[type=checkbox]').forEach(cb => {
+    cb.checked = true;
+    settingsTempChecked.add(cb.dataset.company);
+    cb.closest('label').classList.add('checked');
+  });
+  updateSettingsCount();
+}
+function settingsDeselectAll() {
+  document.querySelectorAll('#settings-company-grid input[type=checkbox]').forEach(cb => {
+    cb.checked = false;
+    settingsTempChecked.delete(cb.dataset.company);
+    cb.closest('label').classList.remove('checked');
+  });
+  updateSettingsCount();
+}
+
+function saveSettings() {
+  const list = [...settingsTempChecked];
+  saveStoredVisible(settingsTargetUser, list);
+
+  if (settingsTargetUser === currentUser) {
+    userVisibleSet = new Set(list);
+    updateHeaderCounts();
+    initCompanyFilter();
+    renderSummary();
+    render();
+  }
+
+  const msg = document.getElementById('save-msg');
+  msg.classList.add('show');
+  setTimeout(() => msg.classList.remove('show'), 2000);
+  updateSettingsCount();
+}
+
+/* ── 起動 ── */
+const saved = sessionStorage.getItem('ktc_user');
+if (saved && USERS[saved]) {
+  currentUser = saved;
+  document.getElementById('login-screen').style.display = 'none';
+  initSession();
+}
 </script>
 </body>
 </html>
