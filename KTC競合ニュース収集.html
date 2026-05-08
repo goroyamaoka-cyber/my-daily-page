@@ -430,6 +430,78 @@
   .pb-low  .pb-num { color: #aaa; }
 
   .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  /* ══════════════════════════════
+     レスポンシブ対応（タブレット以下）
+  ══════════════════════════════ */
+  @media (max-width: 768px) {
+    /* ヘッダー */
+    .site-header-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 0 16px;
+    }
+    .site-title { font-size: 18px; }
+    .site-meta { flex-wrap: wrap; gap: 8px; }
+
+    /* タブ（横スクロール） */
+    .tab-nav {
+      padding: 0 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn { padding: 12px 14px; font-size: 12px; }
+
+    /* コンテナ余白 */
+    .container { padding: 20px 16px; }
+    .summary-container { padding: 20px 16px; }
+
+    /* フィルターバー */
+    .filter-bar { gap: 16px; }
+    .company-tags { max-width: 100%; }
+
+    /* KPIグリッド → 2列 */
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+
+    /* サマリーグリッド → 1列 */
+    .summary-grid { grid-template-columns: 1fr; gap: 24px; }
+
+    /* タイル表示 → 2列（維持） */
+    .article-list.tile-view {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    /* ログインボックス */
+    .login-box { padding: 32px 24px; margin: 0 16px; }
+  }
+
+  @media (max-width: 480px) {
+    /* タイル表示 → 1列 */
+    .article-list.tile-view { grid-template-columns: 1fr; }
+
+    /* KPIグリッド → 2列維持（数字が見やすいため） */
+    .kpi-num { font-size: 30px; }
+
+    /* フィルターボタン小さく */
+    .f-btn { font-size: 11px; padding: 4px 8px; }
+
+    /* ヘッダー詰める */
+    .site-header { padding: 12px 0 10px; }
+    .site-title { font-size: 16px; }
+    .site-meta { font-size: 11px; }
+
+    /* ログイン */
+    .login-box { padding: 28px 18px; margin: 0 12px; }
+    .login-title { font-size: 20px; }
+
+    /* タブ文字 */
+    .tab-btn { font-size: 11px; padding: 10px 12px; }
+  }
 </style>
 </head>
 <body>
