@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>競合メーカー動向レポート</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "游明朝", Georgia, serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── Login Screen ── */
+  #login-screen {
+    position: fixed;
+    inset: 0;
+    background: #faf9f7;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .login-box { width: 360px; }
+  .login-header {
+    border-top: 4px solid #111;
+    border-bottom: 1px solid #111;
+    padding: 20px 0 16px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .login-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .login-subtitle {
+    font-size: 11px;
+    color: #999;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    margin-top: 4px;
+    letter-spacing: .05em;
+  }
+  .login-field { margin-bottom: 16px; }
+  .login-field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    margin-bottom: 6px;
+  }
+  .login-field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 14px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    color: #111;
+    outline: none;
+    border-radius: 2px;
+  }
+  .login-field input:focus { border-color: #111; }
+  .login-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    background: #111;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-weight: 700;
+    letter-spacing: .05em;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .login-btn:hover { background: #333; }
+  .login-error {
+    font-size: 12px;
+    color: #c0392b;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    margin-top: 10px;
+    text-align: center;
+    min-height: 18px;
+  }
+  .login-footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 11px;
+    color: #bbb;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+  }
+
+  /* ── Main Content ── */
+  #main-content { display: none; }
+
+  /* ── Header ── */
+  .site-header {
+    border-top: 4px solid #111;
+    border-bottom: 1px solid #111;
+    padding: 18px 0 14px;
+    background: #faf9f7;
+  }
+  .site-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .site-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .site-meta {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: 12px;
+    color: #888;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .site-meta .accent { color: #c0392b; font-weight: 700; }
+  .logout-btn {
+    font-size: 11px;
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #888;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .logout-btn:hover { border-color: #999; color: #555; }
+
+  /* ── Tabs ── */
+  .tab-nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    background: #faf9f7;
+  }
+  .tab-btn {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: 13px;
+    padding: 12px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #999;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    letter-spacing: .05em;
+  }
+  .tab-btn.active { color: #111; border-bottom-color: #111; font-weight: 700; }
+  .tab-btn:hover:not(.active) { color: #555; }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Layout ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 32px; }
+
+  .mock-notice {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: 12px;
+    color: #999;
+    border: 1px solid #e0e0e0;
+    padding: 8px 14px;
+    margin-bottom: 28px;
+    background: #fff;
+  }
+
+  /* ── Filter bar ── */
+  .filter-bar {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 24px;
+  }
+  .filter-section { display: flex; flex-direction: column; gap: 6px; }
+  .filter-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+  }
+  .filter-options { display: flex; gap: 4px; flex-wrap: wrap; }
+  .f-btn {
+    font-size: 12px;
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #555;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .f-btn.active { background: #111; color: #fff; border-color: #111; }
+  .f-btn.p-high.active { background: #c0392b; border-color: #c0392b; }
+  .f-btn.p-mid.active  { background: #e67e22; border-color: #e67e22; }
+  .f-btn.p-low.active  { background: #888; border-color: #888; }
+
+  .company-tags { display: flex; flex-wrap: wrap; gap: 4px; max-width: 700px; }
+  .c-tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #666;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .c-tag.active { background: #f0f0f0; color: #111; border-color: #999; font-weight: 600; }
+  .c-tag-controls { display: flex; gap: 4px; margin-bottom: 4px; }
+  .c-tag-controls button {
+    font-size: 11px;
+    padding: 2px 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #888;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+
+  .result-line {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 20px;
+  }
+  .result-line strong { color: #111; font-size: 15px; }
+
+  /* ── Article list ── */
+  .article-list { display: flex; flex-direction: column; }
+  .article-item {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #e8e8e8;
+    position: relative;
+  }
+  .article-item:first-child { border-top: 1px solid #e8e8e8; }
+
+  .article-priority-bar {
+    width: 3px;
+    flex-shrink: 0;
+    margin-right: 18px;
+    border-radius: 2px;
+    align-self: stretch;
+  }
+  .bar-high { background: #c0392b; }
+  .bar-mid  { background: #e67e22; }
+  .bar-low  { background: #ddd; }
+
+  .article-body { flex: 1; min-width: 0; }
+  .article-meta {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    font-size: 11px;
+    color: #aaa;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 5px;
+    flex-wrap: wrap;
+  }
+  .meta-company { color: #555; font-weight: 700; }
+  .meta-sep { color: #ddd; }
+  .meta-category {
+    color: #c0392b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-size: 10px;
+  }
+  .meta-priority-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-high { background: #c0392b; }
+  .dot-mid  { background: #e67e22; }
+  .dot-low  { background: #ccc; }
+
+  .article-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .article-title a { color: #1a1a1a; text-decoration: none; }
+  .article-title a:hover { text-decoration: underline; color: #c0392b; }
+  .article-excerpt {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+
+  /* ── Summary tab ── */
+  .summary-container { max-width: 1100px; margin: 0 auto; padding: 32px 32px; }
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #ddd;
+    border: 1px solid #ddd;
+    margin-bottom: 40px;
+  }
+  .kpi-item {
+    background: #faf9f7;
+    padding: 24px 20px;
+    text-align: center;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+  }
+  .kpi-num { font-size: 40px; font-weight: 700; color: #111; line-height: 1; }
+  .kpi-label { font-size: 12px; color: #aaa; margin-top: 6px; }
+
+  .summary-section { margin-bottom: 40px; }
+  .summary-section h2 {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    color: #111;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #111;
+    letter-spacing: .05em;
+  }
+
+  .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+  .bc-row { display: flex; align-items: center; gap: 12px; }
+  .bc-label {
+    width: 90px;
+    font-size: 12px;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    color: #444;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .bc-track { flex: 1; background: #efefef; height: 24px; border-radius: 2px; overflow: hidden; }
+  .bc-fill { height: 100%; display: flex; align-items: center; padding-left: 10px; transition: width .6s ease; }
+  .bc-val { font-size: 12px; font-weight: 700; font-family: "Hiragino Kaku Gothic ProN", sans-serif; color: #fff; }
+
+  .bc-新製品    { background: #1a1a1a; }
+  .bc-DX・技術  { background: #555; }
+  .bc-業績      { background: #888; }
+  .bc-海外展開  { background: #c0392b; }
+  .bc-展示会    { background: #aaa; }
+  .bc-その他    { background: #ccc; }
+  .bc-company   { background: #1a1a1a; }
+
+  .priority-breakdown {
+    display: flex;
+    gap: 1px;
+    background: #ddd;
+    border: 1px solid #ddd;
+  }
+  .pb-item {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    background: #faf9f7;
+  }
+  .pb-num { font-size: 32px; font-weight: 700; }
+  .pb-label { font-size: 12px; color: #888; margin-top: 4px; }
+  .pb-high .pb-num { color: #c0392b; }
+  .pb-mid  .pb-num { color: #e67e22; }
+  .pb-low  .pb-num { color: #aaa; }
+
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+</style>
+</head>
+<body>
+
+<!-- ログイン画面 -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-header">
+      <div class="login-title">競合メーカー動向レポート</div>
+      <div class="login-subtitle">Competitive Intelligence Dashboard</div>
+    </div>
+    <div class="login-field">
+      <label>ユーザーID</label>
+      <input type="text" id="login-user" placeholder="ユーザーIDを入力" autocomplete="username">
+    </div>
+    <div class="login-field">
+      <label>パスワード</label>
+      <input type="password" id="login-pass" placeholder="パスワードを入力" autocomplete="current-password">
+    </div>
+    <button class="login-btn" onclick="doLogin()">ログイン</button>
+    <div class="login-error" id="login-error"></div>
+    <div class="login-footer">Powered by Akagane Intelligence &nbsp;|&nbsp; KTC様専用</div>
+  </div>
+</div>
+
+<!-- メインコンテンツ -->
+<div id="main-content">
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-title">競合メーカー動向レポート</div>
+    <div class="site-meta">
+      <span>収集日 <span class="accent">2025年10月28日</span></span>
+      <span>対象 <span class="accent">9</span> 社</span>
+      <span>全 <span class="accent">27</span> 件</span>
+      <button class="logout-btn" onclick="doLogout()">ログアウト</button>
+    </div>
+  </div>
+</header>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('news', this)">ニュース一覧</button>
+  <button class="tab-btn" onclick="switchTab('summary', this)">サマリー</button>
+</div>
+
+<!-- ニュース一覧 -->
+<div id="tab-news" class="tab-panel active">
+  <div class="container">
+
+    <p class="mock-notice">※ サンプルページです。実際の運用では対象メーカー40〜50社・毎日自動収集となります。</p>
+
+    <div class="filter-bar">
+      <div class="filter-section">
+        <div class="filter-label">日付</div>
+        <div class="filter-options">
+          <button class="f-btn active" onclick="filterDate('today',this)">当日</button>
+          <button class="f-btn" onclick="filterDate('yesterday',this)">前日</button>
+          <button class="f-btn" onclick="filterDate('all',this)">すべて</button>
+        </div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-label">重要度</div>
+        <div class="filter-options">
+          <button class="f-btn active" onclick="filterPriority('all',this)">すべて</button>
+          <button class="f-btn p-high" onclick="filterPriority('高',this)">高</button>
+          <button class="f-btn p-mid"  onclick="filterPriority('中',this)">中</button>
+          <button class="f-btn p-low"  onclick="filterPriority('低',this)">低</button>
+        </div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-label">カテゴリ</div>
+        <div class="filter-options">
+          <button class="f-btn active" onclick="filterCategory('all',this)">すべて</button>
+          <button class="f-btn" onclick="filterCategory('新製品',this)">新製品</button>
+          <button class="f-btn" onclick="filterCategory('DX・技術',this)">DX・技術</button>
+          <button class="f-btn" onclick="filterCategory('業績',this)">業績</button>
+          <button class="f-btn" onclick="filterCategory('海外展開',this)">海外展開</button>
+          <button class="f-btn" onclick="filterCategory('展示会',this)">展示会</button>
+          <button class="f-btn" onclick="filterCategory('その他',this)">その他</button>
+        </div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-label">企業</div>
+        <div class="c-tag-controls">
+          <button onclick="selectAll()">全選択</button>
+          <button onclick="deselectAll()">全解除</button>
+        </div>
+        <div class="company-tags" id="company-filter"></div>
+      </div>
+    </div>
+
+    <div class="result-line"><strong id="visible-count">0</strong> 件</div>
+    <div class="article-list" id="article-list"></div>
+
+  </div>
+</div>
+
+<!-- サマリー -->
+<div id="tab-summary" class="tab-panel">
+  <div class="summary-container">
+    <div class="kpi-row">
+      <div class="kpi-item">
+        <div class="kpi-num">27</div>
+        <div class="kpi-label">収集記事数（全期間）</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num" id="kpi-today">—</div>
+        <div class="kpi-label">本日の新着</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num" id="kpi-newproduct">—</div>
+        <div class="kpi-label">新製品ニュース</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-num" id="kpi-high">—</div>
+        <div class="kpi-label">重要度：高</div>
+      </div>
+    </div>
+    <div class="summary-grid">
+      <div class="summary-section">
+        <h2>カテゴリ別件数</h2>
+        <div class="bar-chart" id="chart-category"></div>
+      </div>
+      <div class="summary-section">
+        <h2>重要度の内訳</h2>
+        <div class="priority-breakdown">
+          <div class="pb-item pb-high"><div class="pb-num" id="sum-high">—</div><div class="pb-label">高</div></div>
+          <div class="pb-item pb-mid"><div class="pb-num" id="sum-mid">—</div><div class="pb-label">中</div></div>
+          <div class="pb-item pb-low"><div class="pb-num" id="sum-low">—</div><div class="pb-label">低</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="summary-section">
+      <h2>メーカー別件数</h2>
+      <div class="bar-chart" id="chart-company"></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+/* ── ログイン ── */
+function doLogin() {
+  const user = document.getElementById('login-user').value.trim();
+  const pass = document.getElementById('login-pass').value;
+  if (user === 'ktc' && pass === 'ktc2026') {
+    sessionStorage.setItem('ktc_auth', '1');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+  } else {
+    document.getElementById('login-error').textContent = 'ユーザーIDまたはパスワードが正しくありません';
+    document.getElementById('login-pass').value = '';
+  }
+}
+function doLogout() {
+  sessionStorage.removeItem('ktc_auth');
+  document.getElementById('main-content').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('login-user').value = '';
+  document.getElementById('login-pass').value = '';
+  document.getElementById('login-error').textContent = '';
+}
+document.getElementById('login-pass').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') doLogin();
+});
+if (sessionStorage.getItem('ktc_auth') === '1') {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+}
+
+/* ── ニュースデータ（実在記事） ── */
+const NEWS = [
+  // TONE
+  {
+    company:"TONE", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
+    url:"https://www.tonetool.co.jp/topics/detail_product.php?s=1235",
+    title:"バイクメンテナンス用ツールセット【TSA3171】新発売",
+    excerpt:"二輪車メンテナンスに最適なツールを厳選した36点セット。ビットラチェットセット（BRS20）を中心に構成し、持ち運びに便利なバッグに収納。コンパクト設計で現場作業にも対応。"
+  },
+  {
+    company:"TONE", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
+    url:"https://www.tonetool.co.jp/topics/?p=2904",
+    title:"ビットラチェットセット 新発売",
+    excerpt:"小型・軽量設計のビットラチェットセットを新発売。狭所作業に対応できる全長設計と、用途を網羅するビットラインナップが特徴。プロの現場での使い勝手を追求した製品。"
+  },
+  {
+    company:"TONE", type:"domestic", source:"公式サイト", date:"2025-10-15", priority:"低", category:"その他",
+    url:"https://www.tonetool.co.jp/topics/?p=3096",
+    title:"総合カタログ2025-26 発刊のご案内",
+    excerpt:"TONE 2025-26年版 総合カタログを発刊。トルク機器・作業工具・電動工具等の全ラインナップを収録した最新版。デジタルカタログも同時公開。"
+  },
+  // Koken
+  {
+    company:"Koken", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
+    url:"https://www.koken-tool.co.jp/z-eal.html",
+    title:"Z-EALシリーズ 新モデル追加・ラインナップ拡充",
+    excerpt:"次世代メカニックスタンダードとして設計されたZ-EALシリーズに新モデルを追加。コンパクト設計と高い耐久性を両立した次世代ソケットレンチとして自動車整備現場での評価が高い。"
+  },
+  {
+    company:"Koken", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"低", category:"その他",
+    url:"https://www.koken-tool.co.jp/news.html",
+    title:"Ko-ken 和文総合カタログ 2025-26 発行のご案内",
+    excerpt:"山下工業研究所の最新総合カタログ2025-26年版を発行。ソケットレンチ・ビットソケットをはじめとする全製品ラインナップを網羅。価格情報も最新版に更新済み。"
+  },
+  {
+    company:"Koken", type:"domestic", source:"公式サイト", date:"2025-10-15", priority:"低", category:"展示会",
+    url:"https://www.koken-tool.co.jp/news202402_GFG.html",
+    title:"「GIGAファクトリーギア」内にKo-ken展示ブースを出展",
+    excerpt:"工具専門店「GIGAファクトリーギア」内に山下工業研究所の展示ブースを常設出展。Z-EALシリーズをはじめとする主力製品を実際に手にとって確認できる体験型ブース。"
+  },
+  // VESSEL
+  {
+    company:"VESSEL", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
+    url:"https://www.vessel.co.jp/news/detail/1790",
+    title:"【新製品】電ドラボールⅡ 220USBCシリーズ 発売のご案内",
+    excerpt:"充電式精密ドライバーの定番「電ドラボール」が進化。USB Type-C充電対応の新シリーズ「220USBC」を発売。充電時間を大幅に短縮しながら、使い勝手と耐久性も向上させた。"
+  },
+  {
+    company:"VESSEL", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"高", category:"新製品",
+    url:"https://www.vessel.co.jp/news/detail/1787",
+    title:"【新製品】充電式インパクトレンチ SP-8141J 発売のご案内",
+    excerpt:"エアツールメーカーとしての技術を活かした充電式インパクトレンチ SP-8141J を発売。コンパクトボディに高トルクを実現し、自動車整備から設備工事まで幅広い用途に対応。"
+  },
+  {
+    company:"VESSEL", type:"domestic", source:"公式サイト", date:"2025-10-01", priority:"中", category:"新製品",
+    url:"https://www.vessel.co.jp/news/detail/1545",
+    title:"新製品「電工アジャストナイフ」発売のご案内",
+    excerpt:"電工作業向けのアジャストナイフ新製品を発売。ダマスカス刃・鎌形刃など複数バリエーションを展開。刃のステップレス調整機構により、様々な作業に対応できる汎用性が特徴。"
+  },
+  // Makita
+  {
+    company:"Makita", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
+    url:"https://www.makita.co.jp/news/",
+    title:"Li-ion 40Vmaxシリーズ コンパクト＆パワフルな充電式ブロワ UB002GZ 発売",
+    excerpt:"40Vmaxバッテリシリーズに充電式ブロワ「UB002GZ/UB002GZL」を追加。コンパクト設計ながら強力な風量を実現。本体質量は約2.5kgと軽量で、現場での長時間作業にも配慮した設計。"
+  },
+  {
+    company:"Makita", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
+    url:"https://www.makita.co.jp/news/",
+    title:"Li-ion 40Vmaxシリーズ 電動回転ブラシ搭載の充電式クリーナ CL004G 発売",
+    excerpt:"電動回転ブラシを搭載した40Vmax充電式クリーナ「CL004G」を発売。床面の汚れを効率よく掻き出しながら吸引。コードレスで取り回しがよく、プロユーザーの現場清掃ニーズに対応。"
+  },
+  {
+    company:"Makita", type:"domestic", source:"公式サイト", date:"2025-10-01", priority:"中", category:"業績",
+    url:"https://www.makita.co.jp/ir/library/library_02.html",
+    title:"2025年3月期 決算発表 売上収益7,531億円（前期比+1.6%）",
+    excerpt:"マキタの2025年3月期連結売上収益は7,531億円（前期比＋1.6%）。欧州市場の回復と40Vmaxシリーズの好調が牽引。中期計画に沿った成長軌道を維持していると説明。"
+  },
+  // HiKOKI
+  {
+    company:"HiKOKI", type:"domestic", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
+    url:"https://www.koki-holdings.co.jp/ir/newsrelease/2025/20250228.pdf",
+    title:"HiKOKI コードレスマルチツール CV 36DMA 発売（2025年グッドデザイン賞受賞）",
+    excerpt:"36Vブラシレスモーター搭載のコードレスマルチツール「CV 36DMA」が2025年グッドデザイン賞を受賞。HiKOKI製品として初めて「Star Lock Max Blade」に対応し、多様なアタッチメント使用が可能。"
+  },
+  {
+    company:"HiKOKI", type:"domestic", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
+    url:"https://www.koki-holdings.co.jp/ir/newsrelease/2025/20250430.pdf",
+    title:"HiKOKI コードレス真空ポンプ UP18DYA 発売 エアコン据付工事向け",
+    excerpt:"家庭用エアコンから大型業務用5馬力クラスまで対応するコードレス真空ポンプ「UP18DYA」を発売。18Vバッテリ対応で真空引き作業の省配線化・軽量化を実現。設備工事現場での利便性を向上。"
+  },
+  {
+    company:"HiKOKI", type:"domestic", source:"公式サイト", date:"2025-10-16", priority:"高", category:"新製品",
+    url:"https://www.koki-holdings.co.jp/ir/newsrelease/2025/20251016.pdf",
+    title:"HiKOKI 新型釘打機 発売「軽々使えて、一気に打てる」",
+    excerpt:"工機ホールディングスジャパンが新型釘打機を発表。「軽々使えて、一気に打てる」をコンセプトに軽量化と連続打ち込み性能を両立。フレーミング工事から内装工事まで幅広い用途に対応。"
+  },
+  // Snap-on
+  {
+    company:"Snap-on", type:"overseas", source:"公式サイト", date:"2025-10-28", priority:"高", category:"DX・技術",
+    url:"https://www.snapon.com/EN/US/Diagnostics/News-Center/Press-Release-Archive/2025-10-28-News-Release-The-New-Mt2600-From-Snap-on-Puts-Customers-On-The-Path-to-Success",
+    title:"Snap-on、エントリーレベル診断ツール「MT2600」発売",
+    excerpt:"Snap-onが新型診断ツール「MT2600」を発売。50メーカー・1983年以降の車両をカバーするOEM特化型診断に対応。英語・スペイン語切替機能を標準搭載し、$1,895で提供。"
+  },
+  {
+    company:"Snap-on", type:"overseas", source:"公式サイト", date:"2025-10-27", priority:"中", category:"DX・技術",
+    url:"https://www.snapon.com/EN/US/Diagnostics/News-Center/Press-Release-Archive/2025-05-15-News-Release-Snap-ons-Third-Generation-TRITON-Scan-Tool-Takes-Technicians-from-Start-to-Fixed",
+    title:"Snap-on、第3世代スキャンツール「TRITON」発売",
+    excerpt:"ワークフロー効率化と生産性向上を設計思想に据えた第3世代スキャンツール「TRITON」を発売。テクニシャンが診断から修理完了まで一貫して使えるプラットフォームとして設計されている。"
+  },
+  {
+    company:"Snap-on", type:"overseas", source:"Google News", date:"2025-10-01", priority:"中", category:"その他",
+    url:"https://www.snapon.com/EN/US/Diagnostics/News-Center/Press-Release-Archive/2025-09-05-News-Release-Snap-on-PTEN-Innovation-Award-For-APOLLO-Plus-Scan-Tool",
+    title:"Snap-on APOLLO+スキャンツール、PTEN革新賞を受賞",
+    excerpt:"Snap-onの「APOLLO+」スキャンツールが2025年Professional Tool & Equipment News（PTEN）革新賞を自動車スキャンツール部門で受賞。高精度な診断能力と操作性が評価された。"
+  },
+  // KNIPEX
+  {
+    company:"KNIPEX", type:"overseas", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
+    url:"https://blog.knipex.com/en/en/blog/knipex-new-products-summer2025-faq",
+    title:"KNIPEX 夏季新製品：ErgoStrip PV・MultiCrimp PV ほか発売",
+    excerpt:"太陽光発電設備・電気工事向けの新製品を発表。ストリッパー「ErgoStrip PV」、ラチェットロック機構付きクリンプペンチ「MultiCrimp PV」など、専門工具ラインナップを大幅拡充。"
+  },
+  {
+    company:"KNIPEX", type:"overseas", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
+    url:"https://www.knipex.com/jp-jp/%E8%A3%BD%E5%93%81/%E6%96%B0%E5%95%86%E5%93%81",
+    title:"KNIPEX 2025年秋 新商品ラインナップ公開",
+    excerpt:"KNIPEXの日本向け新商品ページを更新。プライヤーレンチ・ペンチ類の新サイズ・新モデルを追加。プロフェッショナル工具として高い評価を受けるドイツ製品の最新情報が確認できる。"
+  },
+  {
+    company:"KNIPEX", type:"overseas", source:"Google News", date:"2025-10-15", priority:"低", category:"展示会",
+    url:"https://www.knipex.com/jp-jp",
+    title:"KNIPEX、国内工具展示会への出展を強化 2025年秋",
+    excerpt:"KNIPEXの日本総代理店が2025年秋の国内工具展示会への出展を積極的に展開。プライヤーレンチ・ニッパー類の新製品を会場で先行展示し、工具フェアなどでの存在感を高めている。"
+  },
+  // Milwaukee
+  {
+    company:"Milwaukee", type:"overseas", source:"公式サイト", date:"2025-10-28", priority:"高", category:"新製品",
+    url:"https://www.milwaukeetool.com/news/press-releases/milwaukee-drives-innovation-with-next-generation-of-m18-fuel-1_2in-high-torque-impact-wrenches",
+    title:"Milwaukee、M18 FUEL 1/2インチ ハイトルクインパクトレンチ 次世代モデル発売",
+    excerpt:"M18 FUELシステムの主力製品であるハイトルクインパクトレンチが次世代モデルに刷新。生産性・能力・快適性の3軸で従来モデルを大幅に上回る性能を実現。重工業・自動車整備向けに展開。"
+  },
+  {
+    company:"Milwaukee", type:"overseas", source:"公式サイト", date:"2025-10-27", priority:"中", category:"新製品",
+    url:"https://www.milwaukeetool.com/News/Press-Releases/New-M18-FUEL-Multi-Tool-Delivers-the-Fastest-Cuts-Lowest-Vibration-and-Power-for-Demolition",
+    title:"Milwaukee、M18 FUEL マルチツール 新モデル発売 最速切断・最低振動を実現",
+    excerpt:"M18 FUELマルチツールの新モデルを発売。従来比で最速の切断スピードと最低水準の振動値を両立。解体・仕上げ・リフォームなど多目的な用途に対応するパワーも強化されている。"
+  },
+  {
+    company:"Milwaukee", type:"overseas", source:"公式サイト", date:"2025-10-01", priority:"中", category:"DX・技術",
+    url:"https://www.milwaukeetool.com/News/Press-Releases/Quieter-Smoother-Faster-The-Next-Gen-M18-FUEL-SURGE",
+    title:"Milwaukee、M18 FUEL SURGE 次世代油圧ドライバー発売 静音・快適性を大幅向上",
+    excerpt:"次世代M18 FUEL SURGE 1/4インチ 油圧ドライバーを発売。POWERSTATEブラシレスモーターにより従来比3倍の締付スピードを実現しながら、騒音・振動を大幅に低減。住宅・商業工事に最適。"
+  },
+  // BOSCH
+  {
+    company:"BOSCH", type:"overseas", source:"公式サイト", date:"2025-10-28", priority:"中", category:"業績",
+    url:"https://www.bosch.com/company/annual-report/",
+    title:"Bosch アニュアルレポート2025 発行 電動工具部門の業績",
+    excerpt:"ボッシュが2025年度アニュアルレポートを発行。Power Tools部門は新興国市場の拡大と充電式工具への需要増加を背景に安定した成長を維持。プロフェッショナル向け製品ラインの強化が続く。"
+  },
+  {
+    company:"BOSCH", type:"overseas", source:"公式サイト", date:"2025-10-27", priority:"高", category:"新製品",
+    url:"https://www.bosch-professional.com/gb/en/knowledge-innovation/press-releases/contentpage_presse_overview.html",
+    title:"Bosch Professional 最新プレスリリース 新製品・ソリューション情報",
+    excerpt:"Bosch Professionalが最新のプレスリリースを公開。電動工具・測定機器・アクセサリを含む新製品ラインナップと、プロフェッショナル向けデジタルソリューション「Bosch Pro360」の拡充情報を発表。"
+  },
+  {
+    company:"BOSCH", type:"overseas", source:"公式サイト", date:"2025-10-15", priority:"低", category:"新製品",
+    url:"https://bosch-professional.com/gb/en/service/news/latest-innovations",
+    title:"Bosch Professional Latest Innovations 2025年秋の新製品情報",
+    excerpt:"Bosch Professionalが2025年秋の新製品・最新イノベーション情報を公開。EXPERTシリーズのアクセサリ拡充と、GSB・GSRシリーズの性能向上モデルが含まれる。プロ現場向けの製品強化が続く。"
+  },
+];
+
+const COMPANIES  = [...new Set(NEWS.map(n => n.company))];
+const CATEGORIES = ["新製品","DX・技術","業績","海外展開","展示会","その他"];
+const TODAY = '2025-10-28', YESTERDAY = '2025-10-27';
+const PORDER = { '高':0, '中':1, '低':2 };
+const PBAR   = { '高':'bar-high', '中':'bar-mid', '低':'bar-low' };
+const PDOT   = { '高':'dot-high', '中':'dot-mid', '低':'dot-low' };
+
+let activeCompanies      = new Set(COMPANIES);
+let activeDateFilter     = 'today';
+let activePriorityFilter = 'all';
+let activeCategoryFilter = 'all';
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+function initCompanyFilter() {
+  const el = document.getElementById('company-filter');
+  COMPANIES.forEach(c => {
+    const tag = document.createElement('span');
+    tag.className = 'c-tag active';
+    tag.textContent = c;
+    tag.onclick = () => {
+      activeCompanies.has(c) ? activeCompanies.delete(c) : activeCompanies.add(c);
+      tag.classList.toggle('active', activeCompanies.has(c));
+      render();
+    };
+    el.appendChild(tag);
+  });
+}
+
+function selectAll() {
+  activeCompanies = new Set(COMPANIES);
+  document.querySelectorAll('.c-tag').forEach(t => t.classList.add('active'));
+  render();
+}
+function deselectAll() {
+  activeCompanies.clear();
+  document.querySelectorAll('.c-tag').forEach(t => t.classList.remove('active'));
+  render();
+}
+function filterDate(val, btn) {
+  activeDateFilter = val;
+  btn.closest('.filter-options').querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function filterPriority(val, btn) {
+  activePriorityFilter = val;
+  btn.closest('.filter-options').querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function filterCategory(val, btn) {
+  activeCategoryFilter = val;
+  btn.closest('.filter-options').querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function filteredNews() {
+  return NEWS.filter(n => {
+    if (!activeCompanies.has(n.company)) return false;
+    if (activeDateFilter === 'today'     && n.date !== TODAY)      return false;
+    if (activeDateFilter === 'yesterday' && n.date !== YESTERDAY)  return false;
+    if (activePriorityFilter !== 'all'   && n.priority !== activePriorityFilter) return false;
+    if (activeCategoryFilter !== 'all'   && n.category !== activeCategoryFilter) return false;
+    return true;
+  }).sort((a, b) => PORDER[a.priority] - PORDER[b.priority]);
+}
+
+function render() {
+  const data = filteredNews();
+  document.getElementById('visible-count').textContent = data.length;
+  const list = document.getElementById('article-list');
+  list.innerHTML = '';
+  data.forEach(n => {
+    const div = document.createElement('div');
+    div.className = 'article-item';
+    div.innerHTML = `
+      <div class="article-priority-bar ${PBAR[n.priority]}"></div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span class="meta-company">${n.company}</span>
+          <span class="meta-sep">|</span>
+          <span class="meta-category">${n.category}</span>
+          <span class="meta-sep">|</span>
+          <span>${n.date.replace(/-/g,'/')}</span>
+          <span class="meta-sep">|</span>
+          <span>${n.source}</span>
+          <span class="meta-priority-dot ${PDOT[n.priority]}"></span>
+          <span style="font-size:10px;color:#aaa">重要度：${n.priority}</span>
+        </div>
+        <div class="article-title"><a href="${n.url}" target="_blank" rel="noopener">${n.title}</a></div>
+        <div class="article-excerpt">${n.excerpt}</div>
+      </div>`;
+    list.appendChild(div);
+  });
+}
+
+function renderSummary() {
+  document.getElementById('kpi-today').textContent      = NEWS.filter(n => n.date === TODAY).length;
+  document.getElementById('kpi-newproduct').textContent = NEWS.filter(n => n.category === '新製品').length;
+  document.getElementById('kpi-high').textContent       = NEWS.filter(n => n.priority === '高').length;
+  document.getElementById('sum-high').textContent       = NEWS.filter(n => n.priority === '高').length;
+  document.getElementById('sum-mid').textContent        = NEWS.filter(n => n.priority === '中').length;
+  document.getElementById('sum-low').textContent        = NEWS.filter(n => n.priority === '低').length;
+
+  const catCount = {};
+  CATEGORIES.forEach(c => catCount[c] = 0);
+  NEWS.forEach(n => catCount[n.category]++);
+  const catMax = Math.max(...Object.values(catCount));
+  document.getElementById('chart-category').innerHTML = CATEGORIES.map(cat => `
+    <div class="bc-row">
+      <div class="bc-label">${cat}</div>
+      <div class="bc-track">
+        <div class="bc-fill bc-${cat}" style="width:${(catCount[cat]/catMax*100).toFixed(1)}%">
+          <span class="bc-val">${catCount[cat]}</span>
+        </div>
+      </div>
+    </div>`).join('');
+
+  const coCount = {};
+  COMPANIES.forEach(c => coCount[c] = 0);
+  NEWS.forEach(n => coCount[n.company]++);
+  const coMax = Math.max(...Object.values(coCount));
+  document.getElementById('chart-company').innerHTML = COMPANIES.map(co => `
+    <div class="bc-row">
+      <div class="bc-label">${co}</div>
+      <div class="bc-track">
+        <div class="bc-fill bc-company" style="width:${(coCount[co]/coMax*100).toFixed(1)}%">
+          <span class="bc-val">${coCount[co]}</span>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+initCompanyFilter();
+renderSummary();
+render();
+</script>
+</body>
+</html>
