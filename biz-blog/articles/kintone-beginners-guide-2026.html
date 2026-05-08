@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>kintoneで始める中小企業のDX｜経営者が知っておくべき基本と活用事例【2026年】 | BizNext</title>
+  <meta name="description" content="「DXって何から始めればいい？」という中小企業のオーナー・幹部向けに、kintoneの基本から導入事例・料金・始め方まで、現場目線でわかりやすく解説します。">
+  <meta property="og:title" content="kintoneで始める中小企業のDX｜経営者が知っておくべき基本と活用事例【2026年】">
+  <meta property="og:description" content="「DXって何から始めればいい？」という中小企業のオーナー・幹部向けに、kintoneの基本から導入事例・料金・始め方まで、現場目線でわかりやすく解説します。">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "kintoneで始める中小企業のDX｜経営者が知っておくべき基本と活用事例【2026年】",
+  "datePublished": "2026-05-08",
+  "description": "「DXって何から始めればいい？」という中小企業のオーナー・幹部向けに、kintoneの基本から導入事例・料金・始め方まで、現場目線でわかりやすく解説します。",
+  "author": {
+    "@type": "Organization",
+    "name": "BizNext"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BizNext"
+  },
+  "mainEntityOfPage": "https://★ドメイン名★/articles/kintone-beginners-guide-2026.html"
+}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg:        #FFFFFF;
+  --bg-soft:   #F5F6F8;
+  --bg-band:   #EEF1F5;
+  --ink:       #14181F;
+  --ink-soft:  #2E343F;
+  --mid:       #545B68;
+  --sub:       #7B828F;
+  --line:      #DCE0E6;
+  --line-soft: #E8EBF0;
+  --primary:   #003B7A;
+  --primary-d: #002753;
+  --primary-l: #E8EEF6;
+  --accent:    #C8102E;
+  --radius:    2px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+               "Meiryo UI", Meiryo, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+
+/* ===== HEADER ===== */
+header.site {
+  background: var(--bg);
+  position: sticky; top: 0; z-index: 200;
+  border-bottom: 1px solid var(--line);
+}
+.hd-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+}
+.brand-wrap {
+  display: inline-flex; flex-direction: column; gap: 4px;
+  text-decoration: none; flex-shrink: 0;
+}
+.brand-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  color: var(--primary); text-transform: uppercase;
+  display: flex; align-items: center; gap: 7px;
+}
+.brand-eyebrow::before {
+  content: ''; display: block;
+  width: 18px; height: 2px;
+  background: var(--primary); flex-shrink: 0;
+}
+.brand-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #0052a8 0%, #003B7A 100%);
+  color: white;
+  font-size: 13px; font-weight: 800; letter-spacing: 1.2px;
+  padding: 6px 16px 6px 11px;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px rgba(0,59,122,.28), 0 1px 4px rgba(0,59,122,.12);
+  position: relative; overflow: hidden;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.brand-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.brand-btn::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(to bottom, rgba(255,255,255,.18), transparent);
+  pointer-events: none;
+}
+.brand-icon { width: 15px; height: 15px; flex-shrink: 0; position: relative; z-index: 1; }
+.brand-text { position: relative; z-index: 1; }
+.main-nav { display: flex; align-items: stretch; gap: 0; }
+.main-nav a {
+  display: inline-flex; align-items: center;
+  font-size: 14px; font-weight: 500; color: var(--ink-soft);
+  padding: 0 18px; height: 72px; position: relative;
+  transition: color 0.15s;
+}
+.main-nav a::after {
+  content: ""; position: absolute; left: 18px; right: 18px; bottom: 0;
+  height: 2px; background: var(--primary);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.main-nav a:hover { color: var(--primary); }
+.main-nav a:hover::after { transform: scaleX(1); }
+.main-nav a.active { color: var(--primary); }
+.main-nav a.active::after { transform: scaleX(1); }
+.hd-tools { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+
+/* ===== BREADCRUMB ===== */
+.crumb {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.crumb-inner {
+  max-width: 1280px; margin: 0 auto; padding: 10px 32px;
+  display: flex; align-items: center; gap: 8px; color: var(--mid);
+}
+.crumb a { color: var(--mid); }
+.crumb a:hover { color: var(--primary); text-decoration: underline; }
+.crumb .sep { color: var(--sub); }
+.crumb .here { color: var(--ink); font-weight: 500; }
+
+/* ===== HERO ===== */
+.hero { background: var(--bg); border-bottom: 1px solid var(--line); }
+.hero-inner {
+  max-width: 1280px; margin: 0 auto; padding: 56px 32px;
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center;
+}
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+.hero-eyebrow .bar { width: 28px; height: 2px; background: var(--primary); }
+.hero-eyebrow .text {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--primary);
+}
+.hero h1 {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 900;
+  line-height: 1.4; letter-spacing: -0.005em; color: var(--ink); margin-bottom: 22px;
+}
+.hero h1 .strong { color: var(--primary); }
+.hero p.lead { font-size: 16px; line-height: 2.0; color: var(--ink-soft); margin-bottom: 32px; max-width: 32em; }
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--primary); color: #fff;
+  padding: 14px 28px; font-size: 15px; font-weight: 700;
+  border-radius: 2px; transition: background 0.15s;
+  margin-right: 12px;
+}
+.hero-cta:hover { background: var(--primary-d); }
+.hero-cta::after { content: "›"; font-size: 18px; }
+.hero-cta-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: var(--ink);
+  padding: 14px 24px; font-size: 15px; font-weight: 700;
+  border: 1px solid var(--line); border-radius: 2px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.hero-cta-ghost:hover { border-color: var(--primary); color: var(--primary); }
+.hero-cta-ghost::after { content: "›"; font-size: 18px; color: var(--mid); }
+.hero-vis {
+  position: relative; aspect-ratio: 5 / 4;
+  background: var(--bg-band) center/cover no-repeat; border: 1px solid var(--line); overflow: hidden;
+}
+.hero-vis .stripes {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(14,24,45,0.18) 0%, rgba(14,24,45,0.55) 100%);
+}
+.hero-vis .badge {
+  position: absolute; top: 24px; left: 24px; z-index: 2;
+  background: rgba(255,255,255,0.92); padding: 8px 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; border: 1px solid rgba(255,255,255,0.5); color: var(--mid);
+}
+.hero-vis .label {
+  position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 2;
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.hero-vis .label .num {
+  font-size: 80px; font-weight: 700; color: #fff;
+  line-height: 0.9; letter-spacing: -0.02em; text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.hero-vis .label .meta { text-align: right; font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+.hero-vis .label .meta strong { display: block; color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+
+/* ===== CATEGORY BAND ===== */
+.cat-band { background: var(--bg); border-bottom: 1px solid var(--line); }
+.cat-band-inner {
+  max-width: 1280px; margin: 0 auto; padding: 24px 32px;
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 0;
+}
+.cat-tile {
+  text-align: center; padding: 14px 12px;
+  border-right: 1px solid var(--line-soft);
+  cursor: pointer; transition: background 0.15s, color 0.15s;
+}
+.cat-tile:last-child { border-right: none; }
+.cat-tile:hover { background: var(--bg-soft); }
+.cat-tile .ico {
+  width: 32px; height: 32px; margin: 0 auto 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--primary-l); color: var(--primary);
+  font-weight: 700; font-size: 13px; border-radius: 50%;
+}
+.cat-tile .ja { display: block; font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+.cat-tile .en { display: block; font-size: 10.5px; color: var(--sub); letter-spacing: 0.05em; margin-top: 2px; }
+
+/* ===== SECTION ===== */
+.section { padding: 64px 0 24px; }
+.section-head {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; margin-bottom: 28px;
+  border-bottom: 2px solid var(--ink); padding-bottom: 14px;
+}
+.section-head .left { display: flex; align-items: baseline; gap: 14px; }
+.section-head .left .bar { width: 4px; height: 22px; background: var(--primary); align-self: center; flex-shrink: 0; }
+.section-head h2 { font-size: 24px; font-weight: 900; letter-spacing: 0.005em; color: var(--ink); line-height: 1.3; }
+.section-head h2 .en { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sub); margin-top: 3px; }
+.section-head .right { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--mid); }
+.section-head .right a { color: var(--primary); font-weight: 600; }
+.section-head .right a:hover { text-decoration: underline; }
+
+/* ===== TAGS ===== */
+.tag-cat {
+  display: inline-block;
+  background: var(--primary); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 4px 12px; border-radius: 1px;
+}
+.tag-new {
+  display: inline-block;
+  background: var(--accent); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 1px; text-transform: uppercase;
+}
+
+/* ===== PICKUP ===== */
+.pickup {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px;
+}
+.pickup-main {
+  background: var(--bg); border: 1px solid var(--line);
+  display: flex; flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.pickup-main:hover { border-color: var(--primary); box-shadow: 0 6px 18px rgba(0,59,122,0.08); }
+.pickup-vis {
+  aspect-ratio: 16 / 9; background: var(--bg-band) center/cover no-repeat;
+  position: relative; border-bottom: 1px solid var(--line-soft); overflow: hidden;
+}
+.pickup-vis .stripes {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(14,24,45,0.15) 0%, rgba(14,24,45,0.60) 100%);
+}
+.pickup-vis .label-mark {
+  position: absolute; top: 18px; left: 18px; z-index: 2;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.35); padding: 5px 10px;
+  backdrop-filter: blur(4px);
+}
+.pickup-vis .num {
+  position: absolute; right: 20px; bottom: 14px; z-index: 2;
+  font-size: 72px; font-weight: 700; color: rgba(255,255,255,0.9);
+  line-height: 0.9; letter-spacing: -0.02em; text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+}
+.pickup-body { padding: 28px 28px 24px; flex: 1; }
+.pickup-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.pickup-meta .date { font-size: 13px; color: var(--mid); }
+.pickup-title {
+  font-size: 22px; font-weight: 900; line-height: 1.55;
+  letter-spacing: -0.005em; color: var(--ink); margin-bottom: 14px;
+}
+.pickup-main:hover .pickup-title { color: var(--primary); }
+.pickup-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.95; }
+.pickup-foot {
+  padding: 14px 28px; border-top: 1px solid var(--line-soft);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.pickup-foot .read {
+  font-size: 13px; font-weight: 700; color: var(--primary);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.pickup-foot .read::after { content: "›"; font-size: 14px; }
+.pickup-side { display: flex; flex-direction: column; gap: 12px; }
+.side-card {
+  background: var(--bg); border: 1px solid var(--line);
+  display: flex; flex: 1;
+  transition: border-color 0.2s, box-shadow 0.2s; min-height: 0;
+}
+.side-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,59,122,0.08); }
+.side-card-vis {
+  width: 130px; flex-shrink: 0;
+  background: var(--bg-band) center/cover no-repeat;
+  position: relative; border-right: 1px solid var(--line-soft);
+}
+.side-card-vis .stripes {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to right, rgba(14,24,45,0.45) 0%, rgba(14,24,45,0.15) 100%);
+}
+.side-card-vis .num {
+  position: absolute; right: 8px; bottom: 8px; z-index: 2;
+  font-size: 36px; font-weight: 700; color: rgba(255,255,255,0.9);
+  line-height: 0.9; letter-spacing: -0.02em; text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+}
+.side-card-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.side-card-body .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.side-card-body .meta .tag-cat { font-size: 10px; padding: 3px 9px; }
+.side-card-body .meta .date { font-size: 11.5px; color: var(--mid); }
+.side-card-body .title {
+  font-size: 14.5px; font-weight: 700; line-height: 1.6;
+  color: var(--ink); margin-bottom: 12px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.side-card:hover .side-card-body .title { color: var(--primary); }
+.side-card-body .read { font-size: 12px; font-weight: 700; color: var(--primary); margin-top: auto; }
+.side-card-body .read::after { content: " ›"; }
+
+/* ===== TABS + GRID ===== */
+.tabs {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: flex; border-bottom: 1px solid var(--line);
+  overflow-x: auto; scrollbar-width: none; margin-bottom: 28px;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-size: 14px; font-weight: 700; color: var(--mid);
+  padding: 14px 22px; border-bottom: 3px solid transparent;
+  margin-bottom: -1px; white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab .count {
+  font-size: 12px; font-weight: 500; margin-left: 6px; color: var(--sub);
+}
+.tab:hover { color: var(--primary); }
+.tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+.tab.active .count { color: var(--primary); }
+.grid {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px 16px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.card {
+  background: var(--bg); border: 1px solid var(--line);
+  display: flex; flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(0,59,122,0.08); transform: translateY(-2px); }
+.card-vis {
+  aspect-ratio: 16 / 9; background: var(--bg-band) center/cover no-repeat;
+  position: relative; border-bottom: 1px solid var(--line-soft); overflow: hidden;
+}
+.card-vis .stripes {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(14,24,45,0.10) 0%, rgba(14,24,45,0.52) 100%);
+}
+.card-vis .num {
+  position: absolute; right: 16px; bottom: 12px; z-index: 2;
+  font-size: 44px; font-weight: 700; color: rgba(255,255,255,0.95);
+  line-height: 0.9; text-shadow: 0 1px 10px rgba(0,0,0,0.35);
+}
+.card-vis .badge-row { position: absolute; top: 14px; left: 14px; z-index: 2; display: flex; gap: 6px; }
+.card-body { padding: 20px 22px 8px; flex: 1; }
+.card-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.card-meta .date { font-size: 12px; color: var(--mid); }
+.card-title {
+  font-size: 16px; font-weight: 700; line-height: 1.65; color: var(--ink); margin-bottom: 10px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card:hover .card-title { color: var(--primary); }
+.card-desc {
+  font-size: 13.5px; color: var(--ink-soft); line-height: 1.85; margin-bottom: 16px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-foot {
+  padding: 12px 22px; border-top: 1px solid var(--line-soft);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.card-foot .read {
+  font-size: 12.5px; font-weight: 700; color: var(--primary);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.card-foot .read::after { content: "›"; font-size: 13px; }
+.card-foot .pages { font-size: 11px; color: var(--sub); letter-spacing: 0.06em; }
+
+
+/* ===== FOOTER ===== */
+footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 32px 0; }
+.ft-inner { max-width: 1280px; margin: 0 auto; }
+.ft-top {
+  display: grid; grid-template-columns: 1.4fr 3fr; gap: 64px;
+  padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.ft-brand .ft-logo {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-weight: 900; font-size: 22px; color: #fff; margin-bottom: 18px;
+}
+.ft-brand .ft-logo { gap: 10px; }
+.ft-brand p { font-size: 13px; line-height: 2.0; color: rgba(255,255,255,0.65); max-width: 36ch; }
+.ft-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.ft-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.18); letter-spacing: 0.06em; }
+.ft-col h4 small { display: block; font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 500; margin-top: 3px; }
+.ft-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.6); padding: 5px 0 5px 14px; position: relative; transition: color 0.15s, padding-left 0.15s; }
+.ft-col a::before { content: "›"; position: absolute; left: 0; top: 5px; color: rgba(255,255,255,0.3); transition: color 0.15s; }
+.ft-col a:hover { color: #fff; padding-left: 18px; }
+.ft-col a:hover::before { color: var(--primary); }
+.ft-bottom { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; color: rgba(255,255,255,0.5); }
+
+/* ===== ARTICLE PAGE ===== */
+.art-page { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 320px; gap: 48px; padding-top: 48px; padding-bottom: 96px; }
+.art-main {}
+.art-side {}
+.art-header { margin-bottom: 36px; }
+.art-cat-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.art-cat-meta .date { font-size: 13px; color: var(--mid); }
+.art-title {
+  font-size: clamp(22px, 3.5vw, 34px); font-weight: 900;
+  line-height: 1.4; letter-spacing: -0.02em; color: var(--ink);
+  margin-bottom: 24px;
+  padding-bottom: 20px; border-bottom: 2px solid var(--ink);
+}
+.art-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 36px; }
+.art-tag { font-size: 12px; color: var(--sub); background: var(--bg-soft); border: 1px solid var(--line); padding: 4px 12px; border-radius: 1px; letter-spacing: 0.02em; }
+
+/* ===== ARTICLE BODY ===== */
+.art-body { font-size: 16px; line-height: 2.0; color: var(--ink); }
+.art-body h2 {
+  font-size: 21px; font-weight: 900; margin: 56px 0 18px;
+  padding: 0 0 12px; border-bottom: 2px solid var(--ink);
+  line-height: 1.4; letter-spacing: -0.01em;
+}
+.art-body h3 {
+  font-size: 17px; font-weight: 800; margin: 40px 0 12px;
+  padding-left: 14px; border-left: 3px solid var(--primary);
+  color: var(--ink); line-height: 1.5;
+}
+.art-body p { margin-bottom: 22px; }
+.art-body ul, .art-body ol { margin: 12px 0 22px 24px; }
+.art-body li { margin-bottom: 10px; }
+.art-body strong { color: var(--primary-d); font-weight: 800; }
+.art-body table {
+  width: 100%; border-collapse: collapse; margin: 28px 0;
+  font-size: 14px; border: 1px solid var(--line);
+}
+.art-body th { background: var(--ink); color: #fff; padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; }
+.art-body td { padding: 12px 16px; border-bottom: 1px solid var(--line-soft); }
+.art-body tr:nth-child(even) td { background: var(--bg-soft); }
+.art-body tr:last-child td { border-bottom: none; }
+
+/* ===== AFFILIATE BOX ===== */
+.aff-box {
+  background: var(--primary); border-radius: 2px;
+  padding: 28px 32px; margin: 44px 0; position: relative; overflow: hidden;
+}
+.aff-box::before {
+  content: ""; position: absolute; top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  background: rgba(255,255,255,0.05); border-radius: 50%;
+}
+.aff-label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 10px; display: block; }
+.aff-title { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 18px; line-height: 1.45; letter-spacing: -0.01em; position: relative; z-index: 1; }
+.aff-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--primary);
+  font-size: 14px; font-weight: 900; padding: 13px 26px;
+  border-radius: 2px; text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative; z-index: 1;
+}
+.aff-btn::after { content: " ›"; font-size: 16px; }
+.aff-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+.aff-note { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; position: relative; z-index: 1; }
+
+/* ===== RELATED ===== */
+.related-hd {
+  font-size: 16px; font-weight: 900; margin: 56px 0 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.related-hd::before { content: ""; display: block; width: 4px; height: 18px; background: var(--primary); border-radius: 1px; flex-shrink: 0; }
+.related-list { display: grid; gap: 10px; }
+.related-item {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  padding: 14px 18px; text-decoration: none; color: inherit;
+  transition: border-color 0.15s;
+}
+.related-item:hover { border-color: var(--primary); }
+.related-item:hover .related-title { color: var(--primary); }
+.related-tag { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 1px; white-space: nowrap; }
+.related-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+
+/* ===== SIDEBAR ===== */
+.side-widget { background: var(--bg-soft); border: 1px solid var(--line); padding: 22px 24px; margin-bottom: 24px; }
+.side-widget h4 { font-size: 13px; font-weight: 800; color: var(--ink); letter-spacing: 0.08em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+.side-cats a {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 0; border-bottom: 1px solid var(--line-soft);
+  font-size: 14px; color: var(--ink-soft); font-weight: 500;
+  transition: color 0.15s;
+}
+.side-cats a:last-child { border-bottom: none; }
+.side-cats a:hover { color: var(--primary); }
+.side-cats .cnt { font-size: 11px; color: var(--sub); }
+
+/* ===== RESPONSIVE ===== */
+
+/* タブレット〜小型PC */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
+  .hero-vis { display: none; }
+  .hero h1 { font-size: clamp(26px, 5vw, 38px); }
+  .pickup { grid-template-columns: 1fr; }
+  .pickup-side { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .cat-band-inner { grid-template-columns: repeat(3, 1fr); }
+  .cat-tile { padding: 14px 8px; border-bottom: 1px solid var(--line-soft); }
+  .ft-top { grid-template-columns: 1fr; gap: 32px; }
+  .ft-links { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .art-page { grid-template-columns: 1fr; padding-top: 32px; }
+  .art-side { display: none; }
+}
+
+/* スマートフォン */
+@media (max-width: 768px) {
+  /* 基本余白 */
+  .wrap,
+  .hd-inner,
+  .hero-inner,
+  .crumb-inner,
+  .cat-band-inner,
+  .section-head,
+  .pickup,
+  .grid,
+  .tabs { padding-left: 16px; padding-right: 16px; }
+
+  /* ヘッダー */
+  .hd-inner { height: 56px; gap: 12px; }
+  .brand-eyebrow { display: none; }
+  .brand-btn { font-size: 12px; padding: 5px 13px 5px 9px; }
+  .main-nav { display: none; }
+
+  /* ヒーロー */
+  .hero-inner { padding: 32px 16px 40px; }
+  .hero h1 { font-size: 26px; line-height: 1.5; }
+  .hero p.lead { font-size: 14.5px; line-height: 1.9; }
+  .hero-cta { padding: 13px 22px; font-size: 14px; margin-right: 8px; }
+  .hero-cta-ghost { padding: 13px 18px; font-size: 14px; }
+
+  /* カテゴリバンド */
+  .cat-band-inner { grid-template-columns: repeat(3, 1fr); }
+  .cat-tile { padding: 12px 6px; }
+  .cat-tile .ico { width: 28px; height: 28px; font-size: 11px; }
+  .cat-tile .ja { font-size: 11.5px; }
+  .cat-tile .en { display: none; }
+
+  /* セクション */
+  .section { padding: 40px 0 12px; }
+  .section-head { margin-bottom: 20px; }
+  .section-head h2 { font-size: 18px; }
+
+  /* ピックアップ */
+  .pickup-side { grid-template-columns: 1fr; }
+  .side-card { flex-direction: column; }
+  .side-card-vis { width: 100%; aspect-ratio: 16 / 9; border-right: none; border-bottom: 1px solid var(--line-soft); }
+  .side-card-body { padding: 14px 16px; }
+
+  /* カードグリッド */
+  .grid { grid-template-columns: 1fr; gap: 12px; }
+  .card-body { padding: 16px 18px 8px; }
+  .card-foot { padding: 10px 18px; }
+
+  /* タブ */
+  .tabs { padding-left: 16px; padding-right: 0; }
+  .tab { padding: 12px 16px; font-size: 13px; }
+
+  /* パンくず */
+  .crumb-inner { padding: 8px 16px; }
+
+  /* フッター */
+  footer.site { padding: 40px 16px 0; }
+  .ft-brand p { font-size: 12.5px; }
+  .ft-links { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .ft-bottom { flex-direction: column; gap: 6px; text-align: center; }
+
+  /* 記事ページ */
+  .art-page { padding: 20px 16px 56px; }
+  .art-title { font-size: 21px; }
+  .art-body { font-size: 15px; }
+  .art-body h2 { font-size: 18px; margin: 40px 0 14px; }
+  .art-body h3 { font-size: 15.5px; }
+  .aff-box { padding: 22px 18px; }
+}
+
+/* iPhone SE / 小型スマートフォン */
+@media (max-width: 390px) {
+  .hero h1 { font-size: 23px; }
+  .hero-cta, .hero-cta-ghost { display: block; width: 100%; text-align: center; box-sizing: border-box; }
+  .hero-cta { margin-right: 0; margin-bottom: 10px; }
+  .cat-band-inner { grid-template-columns: repeat(2, 1fr); }
+  .ft-links { grid-template-columns: 1fr; }
+  .aff-btn { width: 100%; justify-content: center; }
+  .art-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* iPhone ノッチ・Dynamic Island 対応 */
+@supports (padding: env(safe-area-inset-left)) {
+  .hd-inner,
+  .hero-inner,
+  footer.site { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+  footer.site { padding-bottom: env(safe-area-inset-bottom); }
+}
+</style>
+</head>
+<body>
+  
+  <header class="site">
+  <div class="hd-inner">
+    <a href="../index.html" class="brand-wrap">
+      <div class="brand-eyebrow">Business Media</div>
+      <div class="brand-btn">
+        <svg class="brand-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1"  y="9"  width="3" height="5" rx=".6" fill="white"/>
+          <rect x="6"  y="5"  width="3" height="9" rx=".6" fill="white"/>
+          <rect x="11" y="1"  width="3" height="13" rx=".6" fill="white"/>
+          <polyline points="2.5,9 7.5,5 12.5,1" stroke="rgba(255,255,255,0.45)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-text">BizNext</span>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="../index.html">トップ</a>
+      <a href="../index.html#index">記事一覧</a>
+      <a href="../index.html#cat-band">カテゴリ</a>
+      <a href="../index.html#about">運営方針</a>
+    </nav>
+  </div>
+</header>
+
+  <div class="crumb">
+    <div class="crumb-inner">
+      <a href="../index.html">トップ</a>
+      <span class="sep">›</span>
+      <a href="../index.html">DX推進</a>
+      <span class="sep">›</span>
+      <span class="here">kintoneで始める中小企業のDX｜経営者が知っておくべき…</span>
+    </div>
+  </div>
+
+  <div class="art-page">
+    <main class="art-main">
+      <header class="art-header">
+        <div class="art-cat-meta">
+          <span class="tag-cat" style="background:#006853;">DX推進</span>
+          <time class="date" style="font-size:13px;color:var(--mid);">2026年5月8日</time>
+          <span style="font-size:13px;color:var(--mid);">BizNext編集部</span>
+        </div>
+        <h1 class="art-title">kintoneで始める中小企業のDX｜経営者が知っておくべき基本と活用事例【2026年】</h1>
+        <div class="art-tags"><span class="art-tag">#kintone</span><span class="art-tag">#DX</span><span class="art-tag">#業務改善</span><span class="art-tag">#ノーコード</span><span class="art-tag">#中小企業</span><span class="art-tag">#デジタル化</span></div>
+      </header>
+
+      <div class="art-body">
+        <p>「DXを進めたいが、どこから手をつけていいか分からない」——多くの中小企業の経営者・管理職がこの悩みを抱えています。高額なシステム投資は難しいし、ITに詳しい社員もいない。そんな状況でも着実に業務をデジタル化できる方法があります。</p><p>それが<strong>kintone（キントーン）</strong>です。この記事では、kintoneを中心にDXの第一歩の踏み出し方を解説します。</p><h2>kintoneとは何か</h2><p>kintoneは、サイボウズ株式会社が提供するクラウド型の業務アプリ作成プラットフォームです。プログラミング不要で、Excel管理していた業務データをデータベース化・共有化できます。2026年現在、国内3万社以上が導入しています。</p><p>一言で表すなら「<strong>Excelの限界を超えた、チームで使えるデータ管理ツール</strong>」です。</p><h2>kintoneでできること</h2><h3>1. 業務アプリをドラッグ&ドロップで作成</h3><p>顧客管理・案件管理・在庫管理・日報管理など、自社の業務に合ったアプリを、プログラミングなしで作れます。フォームの項目（テキスト・数値・日付・プルダウン等）を画面上で組み合わせるだけです。</p><h3>2. データの一元管理と共有</h3><p>各部門がバラバラに管理していたExcelファイルを集約し、リアルタイムで全員が最新データにアクセスできます。「どれが最新版？」「誰が更新した？」という混乱がなくなります。</p><h3>3. ワークフロー（承認フロー）の自動化</h3><p>経費申請・稟議書・発注申請などの承認作業を電子化できます。申請→上長承認→経理処理の流れが自動化され、紙やメールでの管理が不要になります。</p><h3>4. 外部ツールとの連携</h3><p>Slack・ChatGPT・Google Workspace・freeeなど多数のツールと連携でき、既存の業務フローに組み込みやすいのが特徴です。</p><h2>中小企業の活用事例</h2><table><thead><tr><th>業種</th><th>導入前の課題</th><th>kintone活用内容</th><th>効果</th></tr></thead><tbody><tr><td>製造業（金属加工）</td><td>受注・在庫をExcelで個別管理、二重入力が多発</td><td>受注管理アプリ＋在庫連動</td><td>入力工数50%削減</td></tr><tr><td>建設業</td><td>日報・工程管理が紙ベース、現場と事務所の情報共有に時間がかかる</td><td>日報アプリ＋工程管理アプリ</td><td>報告時間を1日30分→5分に</td></tr><tr><td>卸売業</td><td>顧客ごとの案件状況がバラバラ、営業引継ぎが困難</td><td>顧客・案件管理アプリ</td><td>引継ぎ時間を80%削減</td></tr></tbody></table><h2>料金プラン</h2><table><thead><tr><th>プラン</th><th>月額（1ユーザー）</th><th>ユーザー数</th><th>ストレージ</th></tr></thead><tbody><tr><td>ライト</td><td>780円</td><td>5〜1,000名</td><td>5GB</td></tr><tr><td>スタンダード</td><td>1,500円</td><td>5〜1,000名</td><td>100GB</td></tr></tbody></table><p>※30日間無料トライアルあり（クレジットカード不要）</p><h2>始め方3ステップ</h2><h3>Step 1: 30日間無料トライアルで試す</h3><p>まずは無料で触ってみましょう。実際に日報や顧客管理アプリを作成して、使い勝手を確認します。サイボウズが提供するテンプレートアプリ（100種類以上）を使えば、すぐに動くものが作れます。</p><h3>Step 2: 1つの業務に絞って本番導入</h3><p>いきなり全業務を移行しようとすると失敗します。「まず日報管理だけ」「まず案件管理だけ」と絞って成功体験を作ることが重要です。</p><h3>Step 3: 横展開する</h3><p>1つの業務でkintoneの使い方が定着したら、他の業務へ横展開します。社内にkintoneを使いこなせる人材（キントーン推進担当）を1名育てておくと、後の展開がスムーズです。</p><h2>まとめ</h2><p>kintoneは「ITに詳しくない中小企業でも、自社に合った業務システムを作れる」という点が最大の強みです。高額なカスタムシステムを外注する前に、まずkintoneで業務フローを整理することをおすすめします。</p><p>30日間無料トライアルはクレジットカード不要で始められます。まず試してみることが、DXへの最初の一歩です。</p>
+      </div>
+
+      <div class="aff-box">
+  <span class="aff-label">この記事で紹介したサービス</span>
+  <div class="aff-title">kintone 30日間無料トライアル（クレジットカード不要）</div>
+  <a href="https://kintone.cybozu.co.jp/trial/" target="_blank" rel="noopener noreferrer nofollow" class="aff-btn">
+    kintoneを無料で試してみる →
+  </a>
+  <p class="aff-note">30日間無料・クレジットカード不要・100種類以上のテンプレートで今すぐ試せます</p>
+</div>
+
+      
+    </main>
+
+    <aside class="art-side">
+      <div class="side-widget">
+        <h4>カテゴリ</h4>
+        <div class="side-cats"><a href="../index.html"><span>AI・自動化</span><span class="cnt">AI & Automation</span></a><a href="../index.html"><span>SaaS・クラウド</span><span class="cnt">SaaS & Cloud</span></a><a href="../index.html"><span>DX推進</span><span class="cnt">Digital Transformation</span></a><a href="../index.html"><span>製造業向け</span><span class="cnt">Manufacturing</span></a><a href="../index.html"><span>人事・労務</span><span class="cnt">Human Resources</span></a><a href="../index.html"><span>財務・経営</span><span class="cnt">Finance & Management</span></a></div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="site">
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="ft-logo">
+          <svg style="width:14px;height:14px;flex-shrink:0;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="9" width="3" height="5" rx=".6" fill="white"/>
+            <rect x="6" y="5" width="3" height="9" rx=".6" fill="white"/>
+            <rect x="11" y="1" width="3" height="13" rx=".6" fill="white"/>
+          </svg>
+          BizNext
+        </div>
+        <p>中小企業の「次の一手」が見つかるメディア。製造業の営業現場経験をもとに、実際に使えるツール・ソリューションを厳選紹介しています。</p>
+      </div>
+      <div class="ft-links">
+        <div class="ft-col">
+          <h4>カテゴリ<small>Sections</small></h4>
+          <a href="../index.html">AI・自動化</a><a href="../index.html">SaaS・クラウド</a><a href="../index.html">DX推進</a><a href="../index.html">製造業向け</a><a href="../index.html">人事・労務</a><a href="../index.html">財務・経営</a>
+        </div>
+        <div class="ft-col">
+          <h4>サイト案内<small>Site Menu</small></h4>
+          <a href="../index.html">トップ</a>
+          <a href="../index.html#index">記事一覧</a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>&copy; 2026 BizNext. All rights reserved.</span>
+      <span>当サイトはアフィリエイト広告を利用しています</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

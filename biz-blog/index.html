@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>BizNext | 中小企業の「次の一手」が見つかるメディア</title>
+  <meta name="description" content="中小企業のオーナー・幹部向けに、業務効率化・DX・AI・SaaSツールを現場目線で紹介する情報メディアです。">
+  <meta property="og:title" content="BizNext | 中小企業の「次の一手」が見つかるメディア">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --bg:        #FFFFFF;
+  --bg-soft:   #F5F6F8;
+  --bg-band:   #EEF1F5;
+  --ink:       #14181F;
+  --ink-soft:  #2E343F;
+  --mid:       #545B68;
+  --sub:       #7B828F;
+  --line:      #DCE0E6;
+  --line-soft: #E8EBF0;
+  --primary:   #003B7A;
+  --primary-d: #002753;
+  --primary-l: #E8EEF6;
+  --accent:    #C8102E;
+  --radius:    2px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+               "Meiryo UI", Meiryo, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+
+/* ===== HEADER ===== */
+header.site {
+  background: var(--bg);
+  position: sticky; top: 0; z-index: 200;
+  border-bottom: 1px solid var(--line);
+}
+.hd-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px;
+}
+.brand-wrap {
+  display: inline-flex; flex-direction: column; gap: 4px;
+  text-decoration: none; flex-shrink: 0;
+}
+.brand-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  color: var(--primary); text-transform: uppercase;
+  display: flex; align-items: center; gap: 7px;
+}
+.brand-eyebrow::before {
+  content: ''; display: block;
+  width: 18px; height: 2px;
+  background: var(--primary); flex-shrink: 0;
+}
+.brand-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #0052a8 0%, #003B7A 100%);
+  color: white;
+  font-size: 13px; font-weight: 800; letter-spacing: 1.2px;
+  padding: 6px 16px 6px 11px;
+  border-radius: 5px;
+  box-shadow: 0 4px 16px rgba(0,59,122,.28), 0 1px 4px rgba(0,59,122,.12);
+  position: relative; overflow: hidden;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.brand-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.brand-btn::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(to bottom, rgba(255,255,255,.18), transparent);
+  pointer-events: none;
+}
+.brand-icon { width: 15px; height: 15px; flex-shrink: 0; position: relative; z-index: 1; }
+.brand-text { position: relative; z-index: 1; }
+.main-nav { display: flex; align-items: stretch; gap: 0; }
+.main-nav a {
+  display: inline-flex; align-items: center;
+  font-size: 14px; font-weight: 500; color: var(--ink-soft);
+  padding: 0 18px; height: 72px; position: relative;
+  transition: color 0.15s;
+}
+.main-nav a::after {
+  content: ""; position: absolute; left: 18px; right: 18px; bottom: 0;
+  height: 2px; background: var(--primary);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.main-nav a:hover { color: var(--primary); }
+.main-nav a:hover::after { transform: scaleX(1); }
+.main-nav a.active { color: var(--primary); }
+.main-nav a.active::after { transform: scaleX(1); }
+.hd-tools { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+
+/* ===== BREADCRUMB ===== */
+.crumb {
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.crumb-inner {
+  max-width: 1280px; margin: 0 auto; padding: 10px 32px;
+  display: flex; align-items: center; gap: 8px; color: var(--mid);
+}
+.crumb a { color: var(--mid); }
+.crumb a:hover { color: var(--primary); text-decoration: underline; }
+.crumb .sep { color: var(--sub); }
+.crumb .here { color: var(--ink); font-weight: 500; }
+
+/* ===== HERO ===== */
+.hero { background: var(--bg); border-bottom: 1px solid var(--line); }
+.hero-inner {
+  max-width: 1280px; margin: 0 auto; padding: 56px 32px;
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center;
+}
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+.hero-eyebrow .bar { width: 28px; height: 2px; background: var(--primary); }
+.hero-eyebrow .text {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--primary);
+}
+.hero h1 {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 900;
+  line-height: 1.4; letter-spacing: -0.005em; color: var(--ink); margin-bottom: 22px;
+}
+.hero h1 .strong { color: var(--primary); }
+.hero p.lead { font-size: 16px; line-height: 2.0; color: var(--ink-soft); margin-bottom: 32px; max-width: 32em; }
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--primary); color: #fff;
+  padding: 14px 28px; font-size: 15px; font-weight: 700;
+  border-radius: 2px; transition: background 0.15s;
+  margin-right: 12px;
+}
+.hero-cta:hover { background: var(--primary-d); }
+.hero-cta::after { content: "›"; font-size: 18px; }
+.hero-cta-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent; color: var(--ink);
+  padding: 14px 24px; font-size: 15px; font-weight: 700;
+  border: 1px solid var(--line); border-radius: 2px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.hero-cta-ghost:hover { border-color: var(--primary); color: var(--primary); }
+.hero-cta-ghost::after { content: "›"; font-size: 18px; color: var(--mid); }
+.hero-vis {
+  position: relative; aspect-ratio: 5 / 4;
+  background: var(--bg-band) center/cover no-repeat; border: 1px solid var(--line); overflow: hidden;
+}
+.hero-vis .stripes {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(14,24,45,0.18) 0%, rgba(14,24,45,0.55) 100%);
+}
+.hero-vis .badge {
+  position: absolute; top: 24px; left: 24px; z-index: 2;
+  background: rgba(255,255,255,0.92); padding: 8px 14px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; border: 1px solid rgba(255,255,255,0.5); color: var(--mid);
+}
+.hero-vis .label {
+  position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 2;
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.hero-vis .label .num {
+  font-size: 80px; font-weight: 700; color: #fff;
+  line-height: 0.9; letter-spacing: -0.02em; text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.hero-vis .label .meta { text-align: right; font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+.hero-vis .label .meta strong { display: block; color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+
+/* ===== CATEGORY BAND ===== */
+.cat-band { background: var(--bg); border-bottom: 1px solid var(--line); }
+.cat-band-inner {
+  max-width: 1280px; margin: 0 auto; padding: 24px 32px;
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 0;
+}
+.cat-tile {
+  text-align: center; padding: 14px 12px;
+  border-right: 1px solid var(--line-soft);
+  cursor: pointer; transition: background 0.15s, color 0.15s;
+}
+.cat-tile:last-child { border-right: none; }
+.cat-tile:hover { background: var(--bg-soft); }
+.cat-tile .ico {
+  width: 32px; height: 32px; margin: 0 auto 8px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--primary-l); color: var(--primary);
+  font-weight: 700; font-size: 13px; border-radius: 50%;
+}
+.cat-tile .ja { display: block; font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+.cat-tile .en { display: block; font-size: 10.5px; color: var(--sub); letter-spacing: 0.05em; margin-top: 2px; }
+
+/* ===== SECTION ===== */
+.section { padding: 64px 0 24px; }
+.section-head {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; margin-bottom: 28px;
+  border-bottom: 2px solid var(--ink); padding-bottom: 14px;
+}
+.section-head .left { display: flex; align-items: baseline; gap: 14px; }
+.section-head .left .bar { width: 4px; height: 22px; background: var(--primary); align-self: center; flex-shrink: 0; }
+.section-head h2 { font-size: 24px; font-weight: 900; letter-spacing: 0.005em; color: var(--ink); line-height: 1.3; }
+.section-head h2 .en { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--sub); margin-top: 3px; }
+.section-head .right { display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--mid); }
+.section-head .right a { color: var(--primary); font-weight: 600; }
+.section-head .right a:hover { text-decoration: underline; }
+
+/* ===== TAGS ===== */
+.tag-cat {
+  display: inline-block;
+  background: var(--primary); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 4px 12px; border-radius: 1px;
+}
+.tag-new {
+  display: inline-block;
+  background: var(--accent); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  padding: 3px 8px; border-radius: 1px; text-transform: uppercase;
+}
+
+/* ===== PICKUP ===== */
+.pickup {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px;
+}
+.pickup-main {
+  background: var(--bg); border: 1px solid var(--line);
+  display: flex; flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.pickup-main:hover { border-color: var(--primary); box-shadow: 0 6px 18px rgba(0,59,122,0.08); }
+.pickup-vis {
+  aspect-ratio: 16 / 9; background: var(--bg-band) center/cover no-repeat;
+  position: relative; border-bottom: 1px solid var(--line-soft); overflow: hidden;
+}
+.pickup-vis .stripes {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(14,24,45,0.15) 0%, rgba(14,24,45,0.60) 100%);
+}
+.pickup-vis .label-mark {
+  position: absolute; top: 18px; left: 18px; z-index: 2;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.35); padding: 5px 10px;
+  backdrop-filter: blur(4px);
+}
+.pickup-vis .num {
+  position: absolute; right: 20px; bottom: 14px; z-index: 2;
+  font-size: 72px; font-weight: 700; color: rgba(255,255,255,0.9);
+  line-height: 0.9; letter-spacing: -0.02em; text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+}
+.pickup-body { padding: 28px 28px 24px; flex: 1; }
+.pickup-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.pickup-meta .date { font-size: 13px; color: var(--mid); }
+.pickup-title {
+  font-size: 22px; font-weight: 900; line-height: 1.55;
+  letter-spacing: -0.005em; color: var(--ink); margin-bottom: 14px;
+}
+.pickup-main:hover .pickup-title { color: var(--primary); }
+.pickup-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.95; }
+.pickup-foot {
+  padding: 14px 28px; border-top: 1px solid var(--line-soft);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.pickup-foot .read {
+  font-size: 13px; font-weight: 700; color: var(--primary);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.pickup-foot .read::after { content: "›"; font-size: 14px; }
+.pickup-side { display: flex; flex-direction: column; gap: 12px; }
+.side-card {
+  background: var(--bg); border: 1px solid var(--line);
+  display: flex; flex: 1;
+  transition: border-color 0.2s, box-shadow 0.2s; min-height: 0;
+}
+.side-card:hover { border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,59,122,0.08); }
+.side-card-vis {
+  width: 130px; flex-shrink: 0;
+  background: var(--bg-band) center/cover no-repeat;
+  position: relative; border-right: 1px solid var(--line-soft);
+}
+.side-card-vis .stripes {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to right, rgba(14,24,45,0.45) 0%, rgba(14,24,45,0.15) 100%);
+}
+.side-card-vis .num {
+  position: absolute; right: 8px; bottom: 8px; z-index: 2;
+  font-size: 36px; font-weight: 700; color: rgba(255,255,255,0.9);
+  line-height: 0.9; letter-spacing: -0.02em; text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+}
+.side-card-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.side-card-body .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.side-card-body .meta .tag-cat { font-size: 10px; padding: 3px 9px; }
+.side-card-body .meta .date { font-size: 11.5px; color: var(--mid); }
+.side-card-body .title {
+  font-size: 14.5px; font-weight: 700; line-height: 1.6;
+  color: var(--ink); margin-bottom: 12px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.side-card:hover .side-card-body .title { color: var(--primary); }
+.side-card-body .read { font-size: 12px; font-weight: 700; color: var(--primary); margin-top: auto; }
+.side-card-body .read::after { content: " ›"; }
+
+/* ===== TABS + GRID ===== */
+.tabs {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: flex; border-bottom: 1px solid var(--line);
+  overflow-x: auto; scrollbar-width: none; margin-bottom: 28px;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; font-size: 14px; font-weight: 700; color: var(--mid);
+  padding: 14px 22px; border-bottom: 3px solid transparent;
+  margin-bottom: -1px; white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab .count {
+  font-size: 12px; font-weight: 500; margin-left: 6px; color: var(--sub);
+}
+.tab:hover { color: var(--primary); }
+.tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+.tab.active .count { color: var(--primary); }
+.grid {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px 16px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.card {
+  background: var(--bg); border: 1px solid var(--line);
+  display: flex; flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.card:hover { border-color: var(--primary); box-shadow: 0 4px 14px rgba(0,59,122,0.08); transform: translateY(-2px); }
+.card-vis {
+  aspect-ratio: 16 / 9; background: var(--bg-band) center/cover no-repeat;
+  position: relative; border-bottom: 1px solid var(--line-soft); overflow: hidden;
+}
+.card-vis .stripes {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to bottom, rgba(14,24,45,0.10) 0%, rgba(14,24,45,0.52) 100%);
+}
+.card-vis .num {
+  position: absolute; right: 16px; bottom: 12px; z-index: 2;
+  font-size: 44px; font-weight: 700; color: rgba(255,255,255,0.95);
+  line-height: 0.9; text-shadow: 0 1px 10px rgba(0,0,0,0.35);
+}
+.card-vis .badge-row { position: absolute; top: 14px; left: 14px; z-index: 2; display: flex; gap: 6px; }
+.card-body { padding: 20px 22px 8px; flex: 1; }
+.card-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.card-meta .date { font-size: 12px; color: var(--mid); }
+.card-title {
+  font-size: 16px; font-weight: 700; line-height: 1.65; color: var(--ink); margin-bottom: 10px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card:hover .card-title { color: var(--primary); }
+.card-desc {
+  font-size: 13.5px; color: var(--ink-soft); line-height: 1.85; margin-bottom: 16px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.card-foot {
+  padding: 12px 22px; border-top: 1px solid var(--line-soft);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.card-foot .read {
+  font-size: 12.5px; font-weight: 700; color: var(--primary);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.card-foot .read::after { content: "›"; font-size: 13px; }
+.card-foot .pages { font-size: 11px; color: var(--sub); letter-spacing: 0.06em; }
+
+
+/* ===== FOOTER ===== */
+footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 32px 0; }
+.ft-inner { max-width: 1280px; margin: 0 auto; }
+.ft-top {
+  display: grid; grid-template-columns: 1.4fr 3fr; gap: 64px;
+  padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.ft-brand .ft-logo {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-weight: 900; font-size: 22px; color: #fff; margin-bottom: 18px;
+}
+.ft-brand .ft-logo { gap: 10px; }
+.ft-brand p { font-size: 13px; line-height: 2.0; color: rgba(255,255,255,0.65); max-width: 36ch; }
+.ft-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.ft-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.18); letter-spacing: 0.06em; }
+.ft-col h4 small { display: block; font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); font-weight: 500; margin-top: 3px; }
+.ft-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.6); padding: 5px 0 5px 14px; position: relative; transition: color 0.15s, padding-left 0.15s; }
+.ft-col a::before { content: "›"; position: absolute; left: 0; top: 5px; color: rgba(255,255,255,0.3); transition: color 0.15s; }
+.ft-col a:hover { color: #fff; padding-left: 18px; }
+.ft-col a:hover::before { color: var(--primary); }
+.ft-bottom { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; color: rgba(255,255,255,0.5); }
+
+/* ===== ARTICLE PAGE ===== */
+.art-page { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 320px; gap: 48px; padding-top: 48px; padding-bottom: 96px; }
+.art-main {}
+.art-side {}
+.art-header { margin-bottom: 36px; }
+.art-cat-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.art-cat-meta .date { font-size: 13px; color: var(--mid); }
+.art-title {
+  font-size: clamp(22px, 3.5vw, 34px); font-weight: 900;
+  line-height: 1.4; letter-spacing: -0.02em; color: var(--ink);
+  margin-bottom: 24px;
+  padding-bottom: 20px; border-bottom: 2px solid var(--ink);
+}
+.art-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 36px; }
+.art-tag { font-size: 12px; color: var(--sub); background: var(--bg-soft); border: 1px solid var(--line); padding: 4px 12px; border-radius: 1px; letter-spacing: 0.02em; }
+
+/* ===== ARTICLE BODY ===== */
+.art-body { font-size: 16px; line-height: 2.0; color: var(--ink); }
+.art-body h2 {
+  font-size: 21px; font-weight: 900; margin: 56px 0 18px;
+  padding: 0 0 12px; border-bottom: 2px solid var(--ink);
+  line-height: 1.4; letter-spacing: -0.01em;
+}
+.art-body h3 {
+  font-size: 17px; font-weight: 800; margin: 40px 0 12px;
+  padding-left: 14px; border-left: 3px solid var(--primary);
+  color: var(--ink); line-height: 1.5;
+}
+.art-body p { margin-bottom: 22px; }
+.art-body ul, .art-body ol { margin: 12px 0 22px 24px; }
+.art-body li { margin-bottom: 10px; }
+.art-body strong { color: var(--primary-d); font-weight: 800; }
+.art-body table {
+  width: 100%; border-collapse: collapse; margin: 28px 0;
+  font-size: 14px; border: 1px solid var(--line);
+}
+.art-body th { background: var(--ink); color: #fff; padding: 12px 16px; text-align: left; font-size: 13px; font-weight: 700; }
+.art-body td { padding: 12px 16px; border-bottom: 1px solid var(--line-soft); }
+.art-body tr:nth-child(even) td { background: var(--bg-soft); }
+.art-body tr:last-child td { border-bottom: none; }
+
+/* ===== AFFILIATE BOX ===== */
+.aff-box {
+  background: var(--primary); border-radius: 2px;
+  padding: 28px 32px; margin: 44px 0; position: relative; overflow: hidden;
+}
+.aff-box::before {
+  content: ""; position: absolute; top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  background: rgba(255,255,255,0.05); border-radius: 50%;
+}
+.aff-label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 10px; display: block; }
+.aff-title { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 18px; line-height: 1.45; letter-spacing: -0.01em; position: relative; z-index: 1; }
+.aff-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--primary);
+  font-size: 14px; font-weight: 900; padding: 13px 26px;
+  border-radius: 2px; text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative; z-index: 1;
+}
+.aff-btn::after { content: " ›"; font-size: 16px; }
+.aff-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+.aff-note { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; position: relative; z-index: 1; }
+
+/* ===== RELATED ===== */
+.related-hd {
+  font-size: 16px; font-weight: 900; margin: 56px 0 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.related-hd::before { content: ""; display: block; width: 4px; height: 18px; background: var(--primary); border-radius: 1px; flex-shrink: 0; }
+.related-list { display: grid; gap: 10px; }
+.related-item {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  padding: 14px 18px; text-decoration: none; color: inherit;
+  transition: border-color 0.15s;
+}
+.related-item:hover { border-color: var(--primary); }
+.related-item:hover .related-title { color: var(--primary); }
+.related-tag { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 1px; white-space: nowrap; }
+.related-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+
+/* ===== SIDEBAR ===== */
+.side-widget { background: var(--bg-soft); border: 1px solid var(--line); padding: 22px 24px; margin-bottom: 24px; }
+.side-widget h4 { font-size: 13px; font-weight: 800; color: var(--ink); letter-spacing: 0.08em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+.side-cats a {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 0; border-bottom: 1px solid var(--line-soft);
+  font-size: 14px; color: var(--ink-soft); font-weight: 500;
+  transition: color 0.15s;
+}
+.side-cats a:last-child { border-bottom: none; }
+.side-cats a:hover { color: var(--primary); }
+.side-cats .cnt { font-size: 11px; color: var(--sub); }
+
+/* ===== RESPONSIVE ===== */
+
+/* タブレット〜小型PC */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
+  .hero-vis { display: none; }
+  .hero h1 { font-size: clamp(26px, 5vw, 38px); }
+  .pickup { grid-template-columns: 1fr; }
+  .pickup-side { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .cat-band-inner { grid-template-columns: repeat(3, 1fr); }
+  .cat-tile { padding: 14px 8px; border-bottom: 1px solid var(--line-soft); }
+  .ft-top { grid-template-columns: 1fr; gap: 32px; }
+  .ft-links { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .art-page { grid-template-columns: 1fr; padding-top: 32px; }
+  .art-side { display: none; }
+}
+
+/* スマートフォン */
+@media (max-width: 768px) {
+  /* 基本余白 */
+  .wrap,
+  .hd-inner,
+  .hero-inner,
+  .crumb-inner,
+  .cat-band-inner,
+  .section-head,
+  .pickup,
+  .grid,
+  .tabs { padding-left: 16px; padding-right: 16px; }
+
+  /* ヘッダー */
+  .hd-inner { height: 56px; gap: 12px; }
+  .brand-eyebrow { display: none; }
+  .brand-btn { font-size: 12px; padding: 5px 13px 5px 9px; }
+  .main-nav { display: none; }
+
+  /* ヒーロー */
+  .hero-inner { padding: 32px 16px 40px; }
+  .hero h1 { font-size: 26px; line-height: 1.5; }
+  .hero p.lead { font-size: 14.5px; line-height: 1.9; }
+  .hero-cta { padding: 13px 22px; font-size: 14px; margin-right: 8px; }
+  .hero-cta-ghost { padding: 13px 18px; font-size: 14px; }
+
+  /* カテゴリバンド */
+  .cat-band-inner { grid-template-columns: repeat(3, 1fr); }
+  .cat-tile { padding: 12px 6px; }
+  .cat-tile .ico { width: 28px; height: 28px; font-size: 11px; }
+  .cat-tile .ja { font-size: 11.5px; }
+  .cat-tile .en { display: none; }
+
+  /* セクション */
+  .section { padding: 40px 0 12px; }
+  .section-head { margin-bottom: 20px; }
+  .section-head h2 { font-size: 18px; }
+
+  /* ピックアップ */
+  .pickup-side { grid-template-columns: 1fr; }
+  .side-card { flex-direction: column; }
+  .side-card-vis { width: 100%; aspect-ratio: 16 / 9; border-right: none; border-bottom: 1px solid var(--line-soft); }
+  .side-card-body { padding: 14px 16px; }
+
+  /* カードグリッド */
+  .grid { grid-template-columns: 1fr; gap: 12px; }
+  .card-body { padding: 16px 18px 8px; }
+  .card-foot { padding: 10px 18px; }
+
+  /* タブ */
+  .tabs { padding-left: 16px; padding-right: 0; }
+  .tab { padding: 12px 16px; font-size: 13px; }
+
+  /* パンくず */
+  .crumb-inner { padding: 8px 16px; }
+
+  /* フッター */
+  footer.site { padding: 40px 16px 0; }
+  .ft-brand p { font-size: 12.5px; }
+  .ft-links { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .ft-bottom { flex-direction: column; gap: 6px; text-align: center; }
+
+  /* 記事ページ */
+  .art-page { padding: 20px 16px 56px; }
+  .art-title { font-size: 21px; }
+  .art-body { font-size: 15px; }
+  .art-body h2 { font-size: 18px; margin: 40px 0 14px; }
+  .art-body h3 { font-size: 15.5px; }
+  .aff-box { padding: 22px 18px; }
+}
+
+/* iPhone SE / 小型スマートフォン */
+@media (max-width: 390px) {
+  .hero h1 { font-size: 23px; }
+  .hero-cta, .hero-cta-ghost { display: block; width: 100%; text-align: center; box-sizing: border-box; }
+  .hero-cta { margin-right: 0; margin-bottom: 10px; }
+  .cat-band-inner { grid-template-columns: repeat(2, 1fr); }
+  .ft-links { grid-template-columns: 1fr; }
+  .aff-btn { width: 100%; justify-content: center; }
+  .art-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* iPhone ノッチ・Dynamic Island 対応 */
+@supports (padding: env(safe-area-inset-left)) {
+  .hd-inner,
+  .hero-inner,
+  footer.site { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+  footer.site { padding-bottom: env(safe-area-inset-bottom); }
+}
+
+  .grid .card { display: flex; }
+  </style>
+</head>
+<body>
+  
+  <header class="site">
+  <div class="hd-inner">
+    <a href="index.html" class="brand-wrap">
+      <div class="brand-eyebrow">Business Media</div>
+      <div class="brand-btn">
+        <svg class="brand-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1"  y="9"  width="3" height="5" rx=".6" fill="white"/>
+          <rect x="6"  y="5"  width="3" height="9" rx=".6" fill="white"/>
+          <rect x="11" y="1"  width="3" height="13" rx=".6" fill="white"/>
+          <polyline points="2.5,9 7.5,5 12.5,1" stroke="rgba(255,255,255,0.45)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="brand-text">BizNext</span>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="active">トップ</a>
+      <a href="index.html#index" class="active">記事一覧</a>
+      <a href="index.html#cat-band">カテゴリ</a>
+      <a href="index.html#about">運営方針</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- BREADCRUMB -->
+  <div class="crumb">
+    <div class="crumb-inner">
+      <span class="here">トップ &nbsp;記事一覧</span>
+    </div>
+  </div>
+
+  <section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <span class="bar"></span>
+        <span class="text">For Small &amp; Mid-sized Business Owners</span>
+      </div>
+      <h1>ビジネスの<span class="strong">「次の一手」</span>が、<br>ここで見つかる。</h1>
+      <p class="lead">AI・DX・SaaS・製造業ソリューションまで。製造業の営業現場で培った視点で、本当に使えるツールだけを編集部が現場目線で紹介します。</p>
+      <div>
+        <a href="#index" class="hero-cta">記事一覧を見る</a>
+      </div>
+    </div>
+    <div class="hero-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85&auto=format&fit=crop');">
+      <div class="stripes"></div>
+      <div class="label">
+        <span class="num">04</span>
+        <div class="meta">
+          <strong>掲載記事数</strong>
+          2026年5月9日更新
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <nav class="cat-band" id="cat-band"><div class="cat-band-inner">
+  <a class="cat-tile" data-jump="ai-tools">
+    <span class="ico">AI</span>
+    <span class="ja">AI・自動化</span>
+    <span class="en">AI & Automation</span>
+  </a>
+  <a class="cat-tile" data-jump="saas">
+    <span class="ico">SS</span>
+    <span class="ja">SaaS・クラウド</span>
+    <span class="en">SaaS & Cloud</span>
+  </a>
+  <a class="cat-tile" data-jump="dx">
+    <span class="ico">DX</span>
+    <span class="ja">DX推進</span>
+    <span class="en">Digital Transformation</span>
+  </a>
+  <a class="cat-tile" data-jump="manufacturing">
+    <span class="ico">MF</span>
+    <span class="ja">製造業向け</span>
+    <span class="en">Manufacturing</span>
+  </a>
+  <a class="cat-tile" data-jump="hr">
+    <span class="ico">HR</span>
+    <span class="ja">人事・労務</span>
+    <span class="en">Human Resources</span>
+  </a>
+  <a class="cat-tile" data-jump="finance">
+    <span class="ico">FN</span>
+    <span class="ja">財務・経営</span>
+    <span class="en">Finance & Management</span>
+  </a>
+</div></nav>
+
+  <!-- PICKUP -->
+  <section class="section">
+    <div class="section-head">
+      <div class="left">
+        <span class="bar"></span>
+        <h2>ピックアップ<span class="en">Pickup Articles</span></h2>
+      </div>
+      <div class="right"><span>2026年5月9日 更新</span></div>
+    </div>
+    <div class="pickup">
+  <a href="articles/rpa-tools-smb-5select-2026.html" class="pickup-main">
+  <div class="pickup-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=960&q=80&auto=format&fit=crop');">
+    <div class="stripes"></div>
+    <span class="label-mark">Cover · 01 · AI & Automation</span>
+    <span class="num">01</span>
+  </div>
+  <div class="pickup-body">
+    <div class="pickup-meta">
+      <span class="tag-cat" style="background:#003B7A;">AI・自動化</span>
+      <span class="tag-new">NEW</span>
+      <time class="date">2026年5月8日</time>
+    </div>
+    <h3 class="pickup-title">中小企業・個人事業主向けおすすめRPAツール5選【2026年最新版】</h3>
+    <p class="pickup-desc">「RPAを導入したいが何を選べばいい？」という中小企業・個人事業主向けに、コスト・使いやすさ・サポート体制を比較しておすすめRPAツール5選を厳選紹介します。</p>
+  </div>
+  <div class="pickup-foot">
+    <span class="read">記事を読む</span>
+    <span style="font-size:12px;color:var(--sub);">5 min read</span>
+  </div>
+</a>
+  <div class="pickup-side"><a href="articles/kintone-beginners-guide-2026.html" class="side-card">
+  <div class="side-card-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=960&q=80&auto=format&fit=crop');">
+    <div class="stripes"></div>
+    <span class="num">02</span>
+  </div>
+  <div class="side-card-body">
+    <div class="meta">
+      <span class="tag-cat" style="background:#006853;font-size:10px;padding:3px 9px;">DX推進</span>
+      <time class="date">2026年5月8日</time>
+    </div>
+    <div class="title">kintoneで始める中小企業のDX｜経営者が知っておくべき基本と活用事例【2026年】</div>
+    <span class="read">記事を読む</span>
+  </div>
+</a>
+<a href="articles/chatwork-review-2026.html" class="side-card">
+  <div class="side-card-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=960&q=80&auto=format&fit=crop');">
+    <div class="stripes"></div>
+    <span class="num">03</span>
+  </div>
+  <div class="side-card-body">
+    <div class="meta">
+      <span class="tag-cat" style="background:#003B7A;font-size:10px;padding:3px 9px;">SaaS・クラウド</span>
+      <time class="date">2026年5月8日</time>
+    </div>
+    <div class="title">Chatwork徹底レビュー｜中小企業の社内連絡はこれ1本で解決【2026年最新】</div>
+    <span class="read">記事を読む</span>
+  </div>
+</a>
+<a href="articles/ai-translation-manufacturing-2026.html" class="side-card">
+  <div class="side-card-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=960&q=80&auto=format&fit=crop');">
+    <div class="stripes"></div>
+    <span class="num">04</span>
+  </div>
+  <div class="side-card-body">
+    <div class="meta">
+      <span class="tag-cat" style="background:#B45309;font-size:10px;padding:3px 9px;">製造業向け</span>
+      <time class="date">2026年5月8日</time>
+    </div>
+    <div class="title">製造業の多言語化コストを大幅削減｜AI翻訳ツール完全ガイド【2026年版】</div>
+    <span class="read">記事を読む</span>
+  </div>
+</a>
+</div>
+</div>
+  </section>
+
+  <!-- ALL ARTICLES -->
+  <section class="section" id="index">
+    <div class="section-head">
+      <div class="left">
+        <span class="bar"></span>
+        <h2>すべての記事<span class="en">All Articles</span></h2>
+      </div>
+      <div class="right"><span>全 4 件</span></div>
+    </div>
+    <div class="tabs"><button class="tab active" data-cat="all">すべて<span class="count">4</span></button>
+<button class="tab" data-cat="ai-tools">AI・自動化<span class="count">1</span></button>
+<button class="tab" data-cat="saas">SaaS・クラウド<span class="count">1</span></button>
+<button class="tab" data-cat="dx">DX推進<span class="count">1</span></button>
+<button class="tab" data-cat="manufacturing">製造業向け<span class="count">1</span></button>
+</div>
+<div class="grid"><a href="articles/rpa-tools-smb-5select-2026.html" class="card" data-cat="ai-tools">
+  <div class="card-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=960&q=80&auto=format&fit=crop');">
+    <div class="stripes"></div>
+    <div class="badge-row"><span class="tag-new">NEW</span></div>
+    <span class="num">01</span>
+  </div>
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="tag-cat" style="background:#003B7A;font-size:10px;padding:3px 9px;">AI・自動化</span>
+      <time class="date">2026年5月8日</time>
+    </div>
+    <h3 class="card-title">中小企業・個人事業主向けおすすめRPAツール5選【2026年最新版】</h3>
+    <p class="card-desc">「RPAを導入したいが何を選べばいい？」という中小企業・個人事業主向けに、コスト・使いやすさ・サポート体制を比較しておすすめRPAツール5選を厳選紹介します。</p>
+  </div>
+  <div class="card-foot">
+    <span class="read">記事を読む</span>
+    <span class="pages">5 min</span>
+  </div>
+</a>
+<a href="articles/kintone-beginners-guide-2026.html" class="card" data-cat="dx">
+  <div class="card-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=960&q=80&auto=format&fit=crop');">
+    <div class="stripes"></div>
+    <div class="badge-row"><span class="tag-new">NEW</span></div>
+    <span class="num">02</span>
+  </div>
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="tag-cat" style="background:#006853;font-size:10px;padding:3px 9px;">DX推進</span>
+      <time class="date">2026年5月8日</time>
+    </div>
+    <h3 class="card-title">kintoneで始める中小企業のDX｜経営者が知っておくべき基本と活用事例【2026年】</h3>
+    <p class="card-desc">「DXって何から始めればいい？」という中小企業のオーナー・幹部向けに、kintoneの基本から導入事例・料金・始め方まで、現場目線でわかりやすく解説します。</p>
+  </div>
+  <div class="card-foot">
+    <span class="read">記事を読む</span>
+    <span class="pages">5 min</span>
+  </div>
+</a>
+<a href="articles/chatwork-review-2026.html" class="card" data-cat="saas">
+  <div class="card-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=960&q=80&auto=format&fit=crop');">
+    <div class="stripes"></div>
+    <div class="badge-row"></div>
+    <span class="num">03</span>
+  </div>
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="tag-cat" style="background:#003B7A;font-size:10px;padding:3px 9px;">SaaS・クラウド</span>
+      <time class="date">2026年5月8日</time>
+    </div>
+    <h3 class="card-title">Chatwork徹底レビュー｜中小企業の社内連絡はこれ1本で解決【2026年最新】</h3>
+    <p class="card-desc">中小企業がChatworkを導入すべき理由を料金・機能・Slack比較の観点で解説。月額750円から使える国内最大級のビジネスチャットの実力を徹底検証します。</p>
+  </div>
+  <div class="card-foot">
+    <span class="read">記事を読む</span>
+    <span class="pages">5 min</span>
+  </div>
+</a>
+<a href="articles/ai-translation-manufacturing-2026.html" class="card" data-cat="manufacturing">
+  <div class="card-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=960&q=80&auto=format&fit=crop');">
+    <div class="stripes"></div>
+    <div class="badge-row"></div>
+    <span class="num">04</span>
+  </div>
+  <div class="card-body">
+    <div class="card-meta">
+      <span class="tag-cat" style="background:#B45309;font-size:10px;padding:3px 9px;">製造業向け</span>
+      <time class="date">2026年5月8日</time>
+    </div>
+    <h3 class="card-title">製造業の多言語化コストを大幅削減｜AI翻訳ツール完全ガイド【2026年版】</h3>
+    <p class="card-desc">製品カタログ・マニュアルの多言語化に悩む製造業向けに、DeepL・ChatGPTを活用したAI翻訳の実践的な使い方と費用対効果をわかりやすく解説します。</p>
+  </div>
+  <div class="card-foot">
+    <span class="read">記事を読む</span>
+    <span class="pages">5 min</span>
+  </div>
+</a>
+</div>
+  </section>
+
+  <footer class="site">
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="ft-logo">
+          <svg style="width:14px;height:14px;flex-shrink:0;" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="9" width="3" height="5" rx=".6" fill="white"/>
+            <rect x="6" y="5" width="3" height="9" rx=".6" fill="white"/>
+            <rect x="11" y="1" width="3" height="13" rx=".6" fill="white"/>
+          </svg>
+          BizNext
+        </div>
+        <p>中小企業の「次の一手」が見つかるメディア。製造業の営業現場経験をもとに、実際に使えるツール・ソリューションを厳選紹介しています。</p>
+      </div>
+      <div class="ft-links">
+        <div class="ft-col">
+          <h4>カテゴリ<small>Sections</small></h4>
+          <a href="index.html">AI・自動化</a><a href="index.html">SaaS・クラウド</a><a href="index.html">DX推進</a><a href="index.html">製造業向け</a><a href="index.html">人事・労務</a><a href="index.html">財務・経営</a>
+        </div>
+        <div class="ft-col">
+          <h4>サイト案内<small>Site Menu</small></h4>
+          <a href="index.html">トップ</a>
+          <a href="index.html#index">記事一覧</a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>&copy; 2026 BizNext. All rights reserved.</span>
+      <span>当サイトはアフィリエイト広告を利用しています</span>
+    </div>
+  </div>
+</footer>
+  <script>
+(function() {
+  var tabs = document.querySelectorAll('.tab');
+  var cards = document.querySelectorAll('.card[data-cat]');
+  function activate(cat) {
+    tabs.forEach(function(t) { t.classList.toggle('active', t.dataset.cat === cat); });
+    cards.forEach(function(card) {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
+    });
+  }
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() { activate(tab.dataset.cat); });
+  });
+  document.querySelectorAll('.cat-tile[data-jump]').forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      var cat = item.dataset.jump;
+      activate(cat);
+      var el = document.getElementById('index');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+</script>
+</body>
+</html>
