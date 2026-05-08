@@ -663,34 +663,105 @@
   }
 
   /* ══════════════════════════════
-     レスポンシブ対応
+     iPhone / スマホ全般対応
   ══════════════════════════════ */
+
+  /* タップ時の青いハイライトを除去（iOS） */
+  button, a, input { -webkit-tap-highlight-color: transparent; }
+
+  /* 横スクロール完全防止 */
+  html, body { overflow-x: hidden; max-width: 100%; }
+
   @media (max-width: 768px) {
-    .site-header-inner { flex-direction: column; align-items: flex-start; gap: 6px; padding: 0 16px; }
-    .site-title { font-size: 18px; }
-    .site-meta { flex-wrap: wrap; gap: 8px; }
-    .tab-nav { padding: 0 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; white-space: nowrap; flex-wrap: nowrap; }
+    /* ヘッダー */
+    .site-header { padding: 10px 0; }
+    .site-header-inner {
+      flex-direction: column; align-items: flex-start;
+      gap: 8px; padding: 0 16px;
+    }
+    .site-title { font-size: 17px; }
+    .site-meta { flex-wrap: wrap; gap: 6px; font-size: 11px; }
+    /* ヘッダーボタンのタッチ領域を確保 */
+    .header-btn { padding: 8px 12px; font-size: 12px; }
+
+    /* タブ（横スクロール） */
+    .tab-nav {
+      padding: 0 0 0 16px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; flex-wrap: nowrap;
+      /* タブ全体が1行に収まるよう白背景で固定 */
+      position: sticky; top: 0; z-index: 10;
+    }
     .tab-nav::-webkit-scrollbar { display: none; }
-    .tab-btn { padding: 12px 14px; font-size: 12px; }
-    .container { padding: 20px 16px; }
-    .summary-container { padding: 20px 16px; }
-    .filter-bar { gap: 16px; }
+    .tab-btn { padding: 12px 16px; font-size: 12px; white-space: nowrap; min-height: 44px; }
+
+    /* コンテナ余白 */
+    .container { padding: 16px 16px; }
+    .summary-container { padding: 16px 16px; }
+
+    /* フィルターバー */
+    .filter-bar { gap: 14px; }
     .company-tags { max-width: 100%; }
+    /* フィルターボタンのタッチ領域 */
+    .f-btn { min-height: 36px; padding: 6px 10px; font-size: 12px; }
+    .c-tag { min-height: 32px; padding: 5px 10px; }
+
+    /* KPI → 2列 */
     .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .kpi-num { font-size: 32px; }
+
+    /* サマリーグリッド → 1列 */
     .summary-grid { grid-template-columns: 1fr; gap: 24px; }
-    .article-list.tile-view { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-    .login-box { padding: 32px 24px; margin: 0 16px; }
-  }
-  @media (max-width: 480px) {
+
+    /* タイル表示 → 1列（スマホでは確実に1列） */
     .article-list.tile-view { grid-template-columns: 1fr; }
-    .kpi-num { font-size: 30px; }
-    .f-btn { font-size: 11px; padding: 4px 8px; }
-    .site-header { padding: 12px 0 10px; }
-    .site-title { font-size: 16px; }
-    .site-meta { font-size: 11px; }
-    .login-box { padding: 28px 18px; margin: 0 12px; }
-    .login-title { font-size: 20px; }
-    .tab-btn { font-size: 11px; padding: 10px 12px; }
+
+    /* ログイン画面 */
+    .login-box { width: auto; max-width: 400px; margin: 0 20px; }
+
+    /* モーダル */
+    .modal-box {
+      width: 100%; max-width: 100%;
+      max-height: 85vh;
+      border-radius: 12px 12px 0 0;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      border-top: 4px solid #111;
+    }
+    .modal-overlay { align-items: flex-end; }
+    .modal-body { padding: 16px; -webkit-overflow-scrolling: touch; }
+    .modal-header { padding: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    /* iOS Safari 自動ズーム防止：input は16px以上必須 */
+    input, select, textarea { font-size: 16px !important; }
+
+    /* ヘッダーさらに詰める */
+    .site-title { font-size: 15px; }
+    .site-meta .user-badge { font-size: 10px; }
+
+    /* タブ文字 */
+    .tab-btn { font-size: 11px; padding: 10px 14px; }
+
+    /* タイル1列は維持 */
+    .article-list.tile-view { grid-template-columns: 1fr; gap: 12px; }
+
+    /* 記事タイトル少し小さく */
+    .article-title { font-size: 14px; }
+    .article-excerpt { font-size: 12px; }
+
+    /* KPI */
+    .kpi-num { font-size: 28px; }
+    .kpi-label { font-size: 11px; }
+
+    /* ログインボックス */
+    .login-box { margin: 0 16px; }
+    .login-title { font-size: 18px; }
+    .login-field input { font-size: 16px; } /* iOS ズーム防止 */
+    .login-btn { padding: 14px; font-size: 15px; min-height: 48px; }
+
+    /* 表示切替ボタン */
+    .vt-btn { padding: 6px 10px; font-size: 11px; min-height: 36px; }
   }
 </style>
 </head>
