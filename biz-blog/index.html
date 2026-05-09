@@ -124,16 +124,10 @@ header.site {
 .crumb .here { color: var(--ink); font-weight: 500; }
 
 /* ===== HERO ===== */
-.hero { background: var(--bg); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
-#biz-hero-canvas {
-  position: absolute; inset: 0; z-index: 0;
-  width: 100% !important; height: 100% !important;
-  pointer-events: none; display: block;
-}
+.hero { background: var(--bg); border-bottom: 1px solid var(--line); }
 .hero-inner {
   max-width: 1280px; margin: 0 auto; padding: 56px 32px;
   display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center;
-  position: relative; z-index: 1;
 }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; }
 .hero-eyebrow .bar { width: 28px; height: 2px; background: var(--primary); }
@@ -660,7 +654,6 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
   </div>
 
   <section class="hero">
-  <canvas id="biz-hero-canvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-eyebrow">
@@ -1323,13 +1316,7 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
     tick();
   }
 
-  /* ─── ヒーロー背景（テキストエリア側）: 薄め ─── */
-  initParticleAnim('biz-hero-canvas', {
-    count: 70, maxDist: 120, speed: 0.45,
-    alphaBase: 0.18, alphaMult: 0.40, lineAlpha: 0.25
-  });
-
-  /* ─── 画像エリア（.hero-vis）: 濃いめ・鮮やか ─── */
+  /* ─── 画像エリア（.hero-vis）のみ ─── */
   initParticleAnim('biz-vis-canvas', {
     count: 38, maxDist: 95, speed: 0.42,
     alphaBase: 0.35, alphaMult: 0.55, lineAlpha: 0.38
