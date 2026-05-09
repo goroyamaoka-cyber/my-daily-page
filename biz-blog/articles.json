@@ -7,6 +7,34 @@
     "description": "「なんとなく営業している」から「再現性ある営業」へ。法人営業・製造業商材に強い書籍を中心に、読むだけでなく明日から使えるスキルが身につく10冊を厳選紹介します。"
   },
   {
+    "slug": "paperless-guide-2026",
+    "title": "中小企業のペーパーレス化完全ガイド｜電子帳簿保存法対応・コスト削減の進め方【2026年版】",
+    "date": "2026-05-09",
+    "category": "dx",
+    "description": "2024年から義務化された電子帳簿保存法への対応も含め、中小企業がペーパーレス化を進める手順・おすすめツール・コスト削減効果を解説します。"
+  },
+  {
+    "slug": "multilingual-catalog-cost-2026",
+    "title": "多言語カタログ制作の費用相場｜英語・中国語対応の方法とAI翻訳活用法【2026年版】",
+    "date": "2026-05-09",
+    "category": "manufacturing",
+    "description": "製品カタログの多言語化（英語・中国語・韓国語など）にかかる費用相場と、AI翻訳・DTPの最新動向を解説。コストを50%以上削減できるAI翻訳活用法も紹介。"
+  },
+  {
+    "slug": "manufacturing-cost-tools-2026",
+    "title": "製造業の原価管理ツール比較5選｜ERP・原価計算ソフトの選び方と導入費用【2026年版】",
+    "date": "2026-05-09",
+    "category": "manufacturing",
+    "description": "製造業の原価管理・原価計算に対応したツールを5つ比較。中小製造業が原価把握できていない問題を解決するソフト選びのポイントと費用相場を解説します。"
+  },
+  {
+    "slug": "kintone-vs-salesforce-2026",
+    "title": "kintone vs Salesforce 徹底比較｜中小企業のCRM・業務アプリ選びの正解【2026年版】",
+    "date": "2026-05-09",
+    "category": "saas",
+    "description": "kintoneとSalesforceを料金・機能・カスタマイズ性・中小企業への適合性で比較。「Salesforceは中小企業に過剰では？」という疑問に答えます。"
+  },
+  {
     "slug": "hr-books-relationships-2026",
     "title": "人間関係に役立つ書籍10選｜中小企業の経営者・管理職が読むべきビジネス書【2026年版】",
     "date": "2026-05-09",
@@ -14,11 +42,53 @@
     "description": "チームをまとめ、取引先・部下・上司との関係を改善したい経営者・管理職のために、人間関係の本質を変える書籍10冊を厳選。すぐ使えるエッセンスとともに紹介します。"
   },
   {
+    "slug": "dx-roadmap-sme-2026",
+    "title": "中小企業のDX推進ロードマップ｜失敗しない3ステップと優先順位の決め方【2026年版】",
+    "date": "2026-05-09",
+    "category": "dx",
+    "description": "「DXを進めたいが何から手をつければいいか分からない」中小企業向けに、現場で使える3ステップのロードマップを解説。優先すべきツール・よくある失敗パターンも紹介。"
+  },
+  {
+    "slug": "cloud-accounting-comparison-2026",
+    "title": "クラウド会計ソフト比較｜freee・マネーフォワード・弥生の違いを中小企業目線で解説【2026年版】",
+    "date": "2026-05-09",
+    "category": "finance",
+    "description": "freee・マネーフォワードクラウド・弥生会計オンラインを料金・使いやすさ・インボイス対応・銀行連携の観点で徹底比較。中小企業・個人事業主の選び方ガイド付き。"
+  },
+  {
+    "slug": "chatgpt-business-use-cases-2026",
+    "title": "ChatGPT 業務活用 事例10選｜中小企業が今すぐ使える具体的な使い方【2026年最新】",
+    "date": "2026-05-09",
+    "category": "ai-tools",
+    "description": "「ChatGPTを導入したいが何から始めればいい？」という中小企業向けに、営業・経理・製造・人事など部門別の実践的な活用事例を10個厳選。すぐ使えるプロンプト例付きで紹介します。"
+  },
+  {
+    "slug": "chat-tools-comparison-2026",
+    "title": "Slack・Chatwork・Teams 徹底比較｜中小企業に最適なチャットツールはどれか【2026年版】",
+    "date": "2026-05-09",
+    "category": "saas",
+    "description": "Slack・Chatwork・Microsoft Teamsを料金・使いやすさ・外部連携・日本語サポートの観点で徹底比較。製造業・BtoB中小企業の選び方ガイド付き。"
+  },
+  {
     "slug": "ceo-bible-books-2026",
     "title": "経営者向けバイブル10選｜会社を強くする「座右の書」を厳選【2026年版】",
     "date": "2026-05-09",
     "category": "finance",
     "description": "「もし経営者が1冊だけ読むなら」を起点に、戦略・組織・哲学・イノベーションの各領域から本物の経営力を養う書籍10冊を厳選。中小企業オーナーが今こそ読むべきバイブルを紹介します。"
+  },
+  {
+    "slug": "attendance-tools-comparison-2026",
+    "title": "勤怠管理システム比較5選｜中小企業に最適なクラウド勤怠ツールの選び方【2026年版】",
+    "date": "2026-05-09",
+    "category": "hr",
+    "description": "KING OF TIME・ジョブカン・マネーフォワード勤怠・freee人事労務・Touch on Timeを料金・機能・使いやすさで比較。中小企業の勤怠管理デジタル化ガイド付き。"
+  },
+  {
+    "slug": "ai-minutes-tools-2026",
+    "title": "AI議事録ツール比較5選｜自動文字起こし・要約まで使える最新ツール【2026年版】",
+    "date": "2026-05-09",
+    "category": "ai-tools",
+    "description": "会議の録音から議事録まで自動化できるAIツールを5つ比較。Notta・Otter・CLOVA Note・tl;dv・Meetingfyのコスト・精度・日本語対応を徹底比較します。"
   },
   {
     "slug": "rpa-tools-smb-5select-2026",
