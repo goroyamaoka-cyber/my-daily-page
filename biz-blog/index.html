@@ -124,10 +124,16 @@ header.site {
 .crumb .here { color: var(--ink); font-weight: 500; }
 
 /* ===== HERO ===== */
-.hero { background: var(--bg); border-bottom: 1px solid var(--line); }
+.hero { background: var(--bg); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+#biz-hero-canvas {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100% !important; height: 100% !important;
+  pointer-events: none; display: block;
+}
 .hero-inner {
   max-width: 1280px; margin: 0 auto; padding: 56px 32px;
   display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center;
+  position: relative; z-index: 1;
 }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px; }
 .hero-eyebrow .bar { width: 28px; height: 2px; background: var(--primary); }
@@ -173,13 +179,8 @@ header.site {
   font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
   text-transform: uppercase; border: 1px solid rgba(255,255,255,0.5); color: var(--mid);
 }
-.hero-vis canvas {
-  position: absolute; inset: 0; z-index: 2;
-  width: 100% !important; height: 100% !important;
-  pointer-events: none; display: block;
-}
 .hero-vis .label {
-  position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 3;
+  position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 2;
   display: flex; justify-content: space-between; align-items: flex-end;
 }
 .hero-vis .label .num {
@@ -654,6 +655,7 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
   </div>
 
   <section class="hero">
+  <canvas id="biz-hero-canvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
     <div class="hero-text">
       <div class="hero-eyebrow">
@@ -668,7 +670,6 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
     </div>
     <div class="hero-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85&auto=format&fit=crop');">
       <div class="stripes"></div>
-      <canvas id="biz-hero-canvas"></canvas>
       <div class="label">
         <span class="num">17</span>
         <div class="meta">
@@ -1193,51 +1194,70 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
 
-  var LABELS = ['01','10','11','AI','DX','API','SaaS','CRM','ERP','IoT','KPI','B2B','RPA','GPT','5G','ML'];
-  var MAX_DIST = 95;
-  var COUNT = 42;
+  /* ─── 設定 ─── */
+  var LABELS    = ['01','10','11','AI','DX','API','SaaS','CRM','ERP','IoT',
+                   'KPI','B2B','RPA','GPT','5G','ML','PIM','DTP','OCR','EDI'];
+  var MAX_DIST  = 120;   /* 接続線を引く最大距離 */
+  var COUNT     = 70;    /* パーティクル数 */
+  var HUE_SPEED = 0.18;  /* 色変化の速さ（小さいほどゆっくり）*/
+
   var W = 0, H = 0, particles = [], raf = null;
 
+  /* ─── リサイズ ─── */
   function resize() {
-    var parent = canvas.parentElement;
+    var parent = canvas.parentElement;          /* .hero section */
     W = canvas.width  = parent.offsetWidth;
     H = canvas.height = parent.offsetHeight;
     init();
   }
 
+  /* ─── パーティクル初期化 ─── */
   function init() {
     particles = [];
     for (var i = 0; i < COUNT; i++) {
       particles.push({
-        x:  Math.random() * W,
-        y:  Math.random() * H,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        r:  Math.random() * 2.2 + 0.9,
-        a:  Math.random() * 0.45 + 0.15,
-        lbl: Math.random() < 0.38 ? LABELS[Math.floor(Math.random() * LABELS.length)] : null
+        x:        Math.random() * W,
+        y:        Math.random() * H,
+        vx:       (Math.random() - 0.5) * 0.5,
+        vy:       (Math.random() - 0.5) * 0.5,
+        r:        Math.random() * 2.5 + 1.0,
+        alpha:    Math.random() * 0.55 + 0.2,
+        /* 各パーティクルが独自の色相を持ち、それぞれ違う速度で変化する */
+        hue:      Math.random() * 360,
+        hueSpeed: (Math.random() * 0.25 + 0.08) * (Math.random() < 0.5 ? 1 : -1),
+        lbl:      Math.random() < 0.36 ? LABELS[Math.floor(Math.random() * LABELS.length)] : null
       });
     }
   }
 
+  /* ─── hsl 文字列ヘルパー ─── */
+  function hsl(h, s, l, a) {
+    return 'hsla(' + (h % 360) + ',' + s + '%,' + l + '%,' + a + ')';
+  }
+
+  /* ─── アニメーションループ ─── */
   function tick() {
     ctx.clearRect(0, 0, W, H);
 
     /* ── 接続線 ── */
     for (var i = 0; i < particles.length; i++) {
+      var pi = particles[i];
       for (var j = i + 1; j < particles.length; j++) {
-        var dx = particles[i].x - particles[j].x;
-        var dy = particles[i].y - particles[j].y;
-        var d  = Math.sqrt(dx * dx + dy * dy);
+        var pj  = particles[j];
+        var dx  = pi.x - pj.x;
+        var dy  = pi.y - pj.y;
+        var d   = Math.sqrt(dx * dx + dy * dy);
         if (d < MAX_DIST) {
-          var lineAlpha = (1 - d / MAX_DIST) * 0.28;
+          /* 2粒子の中間の色相で線を描く */
+          var midHue   = (pi.hue + pj.hue) / 2;
+          var lineAlpha = (1 - d / MAX_DIST) * 0.30;
           ctx.save();
           ctx.globalAlpha = lineAlpha;
-          ctx.strokeStyle = '#7EB8F7';
-          ctx.lineWidth   = 0.7;
+          ctx.strokeStyle = hsl(midHue, 70, 70, 1);
+          ctx.lineWidth   = 0.65;
           ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.moveTo(pi.x, pi.y);
+          ctx.lineTo(pj.x, pj.y);
           ctx.stroke();
           ctx.restore();
         }
@@ -1247,33 +1267,42 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
     /* ── パーティクル ── */
     for (var k = 0; k < particles.length; k++) {
       var p = particles[k];
+
+      /* 移動 */
       p.x += p.vx;
       p.y += p.vy;
-      if (p.x < -24) p.x = W + 24;
-      else if (p.x > W + 24) p.x = -24;
-      if (p.y < -24) p.y = H + 24;
-      else if (p.y > H + 24) p.y = -24;
+      if (p.x < -30) p.x = W + 30;
+      else if (p.x > W + 30) p.x = -30;
+      if (p.y < -30) p.y = H + 30;
+      else if (p.y > H + 30) p.y = -30;
+
+      /* 色相をゆっくり変化 */
+      p.hue = (p.hue + p.hueSpeed + 360) % 360;
 
       ctx.save();
-      ctx.globalAlpha = p.a;
-      /* ハロー */
-      var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3.5);
-      g.addColorStop(0,   'rgba(120,190,255,0.7)');
-      g.addColorStop(1,   'rgba(120,190,255,0)');
-      ctx.fillStyle = g;
+      ctx.globalAlpha = p.alpha;
+
+      /* ハロー（ぼんやりした光） */
+      var grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4.5);
+      grd.addColorStop(0,   hsl(p.hue, 90, 72, 0.65));
+      grd.addColorStop(0.5, hsl(p.hue, 85, 60, 0.20));
+      grd.addColorStop(1,   hsl(p.hue, 80, 55, 0));
+      ctx.fillStyle = grd;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r * 3.5, 0, Math.PI * 2);
+      ctx.arc(p.x, p.y, p.r * 4.5, 0, Math.PI * 2);
       ctx.fill();
-      /* コア */
-      ctx.fillStyle = 'rgba(200,230,255,0.95)';
+
+      /* コア（明るい芯） */
+      ctx.fillStyle = hsl(p.hue, 95, 88, 1);
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fill();
-      /* ラベル */
+
+      /* テキストラベル */
       if (p.lbl) {
-        ctx.globalAlpha = p.a * 0.65;
-        ctx.font = '9px "Courier New", Courier, monospace';
-        ctx.fillStyle = '#B8DAFF';
+        ctx.globalAlpha = p.alpha * 0.70;
+        ctx.font        = '9px "Courier New", Courier, monospace';
+        ctx.fillStyle   = hsl(p.hue, 80, 80, 1);
         ctx.fillText(p.lbl, p.x + p.r + 3.5, p.y + 3.5);
       }
       ctx.restore();
@@ -1282,14 +1311,14 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
     raf = requestAnimationFrame(tick);
   }
 
-  /* ResizeObserver で親要素のサイズ変化を検知 */
+  /* ─── サイズ追従 ─── */
   if (window.ResizeObserver) {
     new ResizeObserver(function() { resize(); }).observe(canvas.parentElement);
   } else {
     window.addEventListener('resize', resize);
   }
 
-  /* IntersectionObserver でモバイル非表示時は停止 */
+  /* ─── スクロール外で停止（省電力） ─── */
   if (window.IntersectionObserver) {
     new IntersectionObserver(function(entries) {
       entries.forEach(function(e) {
