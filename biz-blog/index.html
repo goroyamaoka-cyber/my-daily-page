@@ -173,8 +173,13 @@ header.site {
   font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
   text-transform: uppercase; border: 1px solid rgba(255,255,255,0.5); color: var(--mid);
 }
+.hero-vis canvas {
+  position: absolute; inset: 0; z-index: 2;
+  width: 100% !important; height: 100% !important;
+  pointer-events: none; display: block;
+}
 .hero-vis .label {
-  position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 2;
+  position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 3;
   display: flex; justify-content: space-between; align-items: flex-end;
 }
 .hero-vis .label .num {
@@ -663,6 +668,7 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
     </div>
     <div class="hero-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85&auto=format&fit=crop');">
       <div class="stripes"></div>
+      <canvas id="biz-hero-canvas"></canvas>
       <div class="label">
         <span class="num">17</span>
         <div class="meta">
@@ -1179,6 +1185,122 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+})();
+</script>
+  <script>
+(function() {
+  var canvas = document.getElementById('biz-hero-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  var LABELS = ['01','10','11','AI','DX','API','SaaS','CRM','ERP','IoT','KPI','B2B','RPA','GPT','5G','ML'];
+  var MAX_DIST = 95;
+  var COUNT = 42;
+  var W = 0, H = 0, particles = [], raf = null;
+
+  function resize() {
+    var parent = canvas.parentElement;
+    W = canvas.width  = parent.offsetWidth;
+    H = canvas.height = parent.offsetHeight;
+    init();
+  }
+
+  function init() {
+    particles = [];
+    for (var i = 0; i < COUNT; i++) {
+      particles.push({
+        x:  Math.random() * W,
+        y:  Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.45,
+        vy: (Math.random() - 0.5) * 0.45,
+        r:  Math.random() * 2.2 + 0.9,
+        a:  Math.random() * 0.45 + 0.15,
+        lbl: Math.random() < 0.38 ? LABELS[Math.floor(Math.random() * LABELS.length)] : null
+      });
+    }
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+
+    /* ── 接続線 ── */
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i + 1; j < particles.length; j++) {
+        var dx = particles[i].x - particles[j].x;
+        var dy = particles[i].y - particles[j].y;
+        var d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < MAX_DIST) {
+          var lineAlpha = (1 - d / MAX_DIST) * 0.28;
+          ctx.save();
+          ctx.globalAlpha = lineAlpha;
+          ctx.strokeStyle = '#7EB8F7';
+          ctx.lineWidth   = 0.7;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+    }
+
+    /* ── パーティクル ── */
+    for (var k = 0; k < particles.length; k++) {
+      var p = particles[k];
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < -24) p.x = W + 24;
+      else if (p.x > W + 24) p.x = -24;
+      if (p.y < -24) p.y = H + 24;
+      else if (p.y > H + 24) p.y = -24;
+
+      ctx.save();
+      ctx.globalAlpha = p.a;
+      /* ハロー */
+      var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3.5);
+      g.addColorStop(0,   'rgba(120,190,255,0.7)');
+      g.addColorStop(1,   'rgba(120,190,255,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r * 3.5, 0, Math.PI * 2);
+      ctx.fill();
+      /* コア */
+      ctx.fillStyle = 'rgba(200,230,255,0.95)';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+      /* ラベル */
+      if (p.lbl) {
+        ctx.globalAlpha = p.a * 0.65;
+        ctx.font = '9px "Courier New", Courier, monospace';
+        ctx.fillStyle = '#B8DAFF';
+        ctx.fillText(p.lbl, p.x + p.r + 3.5, p.y + 3.5);
+      }
+      ctx.restore();
+    }
+
+    raf = requestAnimationFrame(tick);
+  }
+
+  /* ResizeObserver で親要素のサイズ変化を検知 */
+  if (window.ResizeObserver) {
+    new ResizeObserver(function() { resize(); }).observe(canvas.parentElement);
+  } else {
+    window.addEventListener('resize', resize);
+  }
+
+  /* IntersectionObserver でモバイル非表示時は停止 */
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { if (!raf) tick(); }
+        else { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+      });
+    }, { threshold: 0.01 }).observe(canvas);
+  }
+
+  resize();
+  tick();
 })();
 </script>
 </body>
