@@ -179,8 +179,13 @@ header.site {
   font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
   text-transform: uppercase; border: 1px solid rgba(255,255,255,0.5); color: var(--mid);
 }
+.hero-vis canvas {
+  position: absolute; inset: 0; z-index: 2;
+  width: 100% !important; height: 100% !important;
+  pointer-events: none; display: block;
+}
 .hero-vis .label {
-  position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 2;
+  position: absolute; bottom: 24px; left: 24px; right: 24px; z-index: 3;
   display: flex; justify-content: space-between; align-items: flex-end;
 }
 .hero-vis .label .num {
@@ -670,6 +675,7 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
     </div>
     <div class="hero-vis" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=85&auto=format&fit=crop');">
       <div class="stripes"></div>
+      <canvas id="biz-vis-canvas"></canvas>
       <div class="label">
         <span class="num">17</span>
         <div class="meta">
@@ -1190,146 +1196,145 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
 </script>
   <script>
 (function() {
-  var canvas = document.getElementById('biz-hero-canvas');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
+  var LABELS = ['01','10','11','AI','DX','API','SaaS','CRM','ERP','IoT',
+                'KPI','B2B','RPA','GPT','5G','ML','PIM','DTP','OCR','EDI'];
 
-  /* ─── 設定 ─── */
-  var LABELS    = ['01','10','11','AI','DX','API','SaaS','CRM','ERP','IoT',
-                   'KPI','B2B','RPA','GPT','5G','ML','PIM','DTP','OCR','EDI'];
-  var MAX_DIST  = 120;   /* 接続線を引く最大距離 */
-  var COUNT     = 70;    /* パーティクル数 */
-  var HUE_SPEED = 0.18;  /* 色変化の速さ（小さいほどゆっくり）*/
-
-  var W = 0, H = 0, particles = [], raf = null;
-
-  /* ─── リサイズ ─── */
-  function resize() {
-    var parent = canvas.parentElement;          /* .hero section */
-    W = canvas.width  = parent.offsetWidth;
-    H = canvas.height = parent.offsetHeight;
-    init();
-  }
-
-  /* ─── パーティクル初期化 ─── */
-  function init() {
-    particles = [];
-    for (var i = 0; i < COUNT; i++) {
-      particles.push({
-        x:        Math.random() * W,
-        y:        Math.random() * H,
-        vx:       (Math.random() - 0.5) * 0.5,
-        vy:       (Math.random() - 0.5) * 0.5,
-        r:        Math.random() * 2.5 + 1.0,
-        alpha:    Math.random() * 0.55 + 0.2,
-        /* 各パーティクルが独自の色相を持ち、それぞれ違う速度で変化する */
-        hue:      Math.random() * 360,
-        hueSpeed: (Math.random() * 0.25 + 0.08) * (Math.random() < 0.5 ? 1 : -1),
-        lbl:      Math.random() < 0.36 ? LABELS[Math.floor(Math.random() * LABELS.length)] : null
-      });
-    }
-  }
-
-  /* ─── hsl 文字列ヘルパー ─── */
   function hsl(h, s, l, a) {
-    return 'hsla(' + (h % 360) + ',' + s + '%,' + l + '%,' + a + ')';
+    return 'hsla(' + ((h % 360 + 360) % 360) + ',' + s + '%,' + l + '%,' + a + ')';
   }
 
-  /* ─── アニメーションループ ─── */
-  function tick() {
-    ctx.clearRect(0, 0, W, H);
+  /* ─── 汎用パーティクルアニメーション初期化 ─── */
+  function initParticleAnim(canvasId, opts) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    var ctx     = canvas.getContext('2d');
+    var maxDist = opts.maxDist  || 110;
+    var count   = opts.count    || 45;
+    var speed   = opts.speed    || 0.45;
+    var alphaBase = opts.alphaBase || 0.20;
+    var alphaMult = opts.alphaMult || 0.45;
+    var lineA   = opts.lineAlpha || 0.28;
 
-    /* ── 接続線 ── */
-    for (var i = 0; i < particles.length; i++) {
-      var pi = particles[i];
-      for (var j = i + 1; j < particles.length; j++) {
-        var pj  = particles[j];
-        var dx  = pi.x - pj.x;
-        var dy  = pi.y - pj.y;
-        var d   = Math.sqrt(dx * dx + dy * dy);
-        if (d < MAX_DIST) {
-          /* 2粒子の中間の色相で線を描く */
-          var midHue   = (pi.hue + pj.hue) / 2;
-          var lineAlpha = (1 - d / MAX_DIST) * 0.30;
-          ctx.save();
-          ctx.globalAlpha = lineAlpha;
-          ctx.strokeStyle = hsl(midHue, 70, 70, 1);
-          ctx.lineWidth   = 0.65;
-          ctx.beginPath();
-          ctx.moveTo(pi.x, pi.y);
-          ctx.lineTo(pj.x, pj.y);
-          ctx.stroke();
-          ctx.restore();
+    var W = 0, H = 0, particles = [], raf = null;
+
+    function resize() {
+      var parent = canvas.parentElement;
+      W = canvas.width  = parent.offsetWidth;
+      H = canvas.height = parent.offsetHeight;
+      init();
+    }
+
+    function init() {
+      particles = [];
+      for (var i = 0; i < count; i++) {
+        particles.push({
+          x:        Math.random() * W,
+          y:        Math.random() * H,
+          vx:       (Math.random() - 0.5) * speed,
+          vy:       (Math.random() - 0.5) * speed,
+          r:        Math.random() * 2.4 + 1.0,
+          alpha:    Math.random() * alphaMult + alphaBase,
+          hue:      Math.random() * 360,
+          hueSpeed: (Math.random() * 0.22 + 0.07) * (Math.random() < 0.5 ? 1 : -1),
+          lbl:      Math.random() < 0.36 ? LABELS[Math.floor(Math.random() * LABELS.length)] : null
+        });
+      }
+    }
+
+    function tick() {
+      ctx.clearRect(0, 0, W, H);
+
+      /* 接続線 */
+      for (var i = 0; i < particles.length; i++) {
+        var pi = particles[i];
+        for (var j = i + 1; j < particles.length; j++) {
+          var pj = particles[j];
+          var dx = pi.x - pj.x, dy = pi.y - pj.y;
+          var d  = Math.sqrt(dx * dx + dy * dy);
+          if (d < maxDist) {
+            var midH = (pi.hue + pj.hue) / 2;
+            ctx.save();
+            ctx.globalAlpha = (1 - d / maxDist) * lineA;
+            ctx.strokeStyle = hsl(midH, 75, 72, 1);
+            ctx.lineWidth   = 0.65;
+            ctx.beginPath();
+            ctx.moveTo(pi.x, pi.y);
+            ctx.lineTo(pj.x, pj.y);
+            ctx.stroke();
+            ctx.restore();
+          }
         }
       }
-    }
 
-    /* ── パーティクル ── */
-    for (var k = 0; k < particles.length; k++) {
-      var p = particles[k];
+      /* パーティクル */
+      for (var k = 0; k < particles.length; k++) {
+        var p = particles[k];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < -30) p.x = W + 30; else if (p.x > W + 30) p.x = -30;
+        if (p.y < -30) p.y = H + 30; else if (p.y > H + 30) p.y = -30;
+        p.hue = (p.hue + p.hueSpeed + 360) % 360;
 
-      /* 移動 */
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < -30) p.x = W + 30;
-      else if (p.x > W + 30) p.x = -30;
-      if (p.y < -30) p.y = H + 30;
-      else if (p.y > H + 30) p.y = -30;
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
 
-      /* 色相をゆっくり変化 */
-      p.hue = (p.hue + p.hueSpeed + 360) % 360;
+        /* ハロー */
+        var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4.5);
+        g.addColorStop(0,   hsl(p.hue, 90, 72, 0.70));
+        g.addColorStop(0.5, hsl(p.hue, 85, 60, 0.22));
+        g.addColorStop(1,   hsl(p.hue, 80, 55, 0));
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4.5, 0, Math.PI * 2);
+        ctx.fill();
 
-      ctx.save();
-      ctx.globalAlpha = p.alpha;
+        /* コア */
+        ctx.fillStyle = hsl(p.hue, 95, 90, 1);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
 
-      /* ハロー（ぼんやりした光） */
-      var grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4.5);
-      grd.addColorStop(0,   hsl(p.hue, 90, 72, 0.65));
-      grd.addColorStop(0.5, hsl(p.hue, 85, 60, 0.20));
-      grd.addColorStop(1,   hsl(p.hue, 80, 55, 0));
-      ctx.fillStyle = grd;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r * 4.5, 0, Math.PI * 2);
-      ctx.fill();
-
-      /* コア（明るい芯） */
-      ctx.fillStyle = hsl(p.hue, 95, 88, 1);
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-
-      /* テキストラベル */
-      if (p.lbl) {
-        ctx.globalAlpha = p.alpha * 0.70;
-        ctx.font        = '9px "Courier New", Courier, monospace';
-        ctx.fillStyle   = hsl(p.hue, 80, 80, 1);
-        ctx.fillText(p.lbl, p.x + p.r + 3.5, p.y + 3.5);
+        /* ラベル */
+        if (p.lbl) {
+          ctx.globalAlpha = p.alpha * 0.70;
+          ctx.font        = '9px "Courier New", Courier, monospace';
+          ctx.fillStyle   = hsl(p.hue, 80, 82, 1);
+          ctx.fillText(p.lbl, p.x + p.r + 3.5, p.y + 3.5);
+        }
+        ctx.restore();
       }
-      ctx.restore();
+
+      raf = requestAnimationFrame(tick);
     }
 
-    raf = requestAnimationFrame(tick);
+    if (window.ResizeObserver) {
+      new ResizeObserver(function() { resize(); }).observe(canvas.parentElement);
+    } else {
+      window.addEventListener('resize', resize);
+    }
+    if (window.IntersectionObserver) {
+      new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { if (!raf) tick(); }
+          else { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+        });
+      }, { threshold: 0.01 }).observe(canvas);
+    }
+    resize();
+    tick();
   }
 
-  /* ─── サイズ追従 ─── */
-  if (window.ResizeObserver) {
-    new ResizeObserver(function() { resize(); }).observe(canvas.parentElement);
-  } else {
-    window.addEventListener('resize', resize);
-  }
+  /* ─── ヒーロー背景（テキストエリア側）: 薄め ─── */
+  initParticleAnim('biz-hero-canvas', {
+    count: 70, maxDist: 120, speed: 0.45,
+    alphaBase: 0.18, alphaMult: 0.40, lineAlpha: 0.25
+  });
 
-  /* ─── スクロール外で停止（省電力） ─── */
-  if (window.IntersectionObserver) {
-    new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) { if (!raf) tick(); }
-        else { if (raf) { cancelAnimationFrame(raf); raf = null; } }
-      });
-    }, { threshold: 0.01 }).observe(canvas);
-  }
+  /* ─── 画像エリア（.hero-vis）: 濃いめ・鮮やか ─── */
+  initParticleAnim('biz-vis-canvas', {
+    count: 38, maxDist: 95, speed: 0.42,
+    alphaBase: 0.35, alphaMult: 0.55, lineAlpha: 0.38
+  });
 
-  resize();
-  tick();
 })();
 </script>
 </body>
