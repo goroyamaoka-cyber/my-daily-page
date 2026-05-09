@@ -533,8 +533,8 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
 
 /* タブレット〜小型PC */
 @media (max-width: 1024px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
-  .hero-vis { display: none; }
+  .hero-inner { grid-template-columns: 1fr; gap: 28px; padding: 48px 24px; }
+  .hero-vis { display: block; aspect-ratio: 16 / 9; }
   .hero h1 { font-size: clamp(26px, 5vw, 38px); }
   .pickup { grid-template-columns: 1fr; }
   .pickup-side { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -567,11 +567,15 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
   .main-nav { display: none; }
 
   /* ヒーロー */
-  .hero-inner { padding: 32px 16px 40px; }
+  .hero-inner { padding: 28px 16px 0; gap: 20px; }
   .hero h1 { font-size: 26px; line-height: 1.5; }
   .hero p.lead { font-size: 14.5px; line-height: 1.9; }
   .hero-cta { padding: 13px 22px; font-size: 14px; margin-right: 8px; }
   .hero-cta-ghost { padding: 13px 18px; font-size: 14px; }
+  /* 画像：フル幅で16:9 */
+  .hero-vis { aspect-ratio: 16 / 9; border-left: none; border-right: none; }
+  .hero-vis .label .num { font-size: 56px; }
+  .hero-vis .label .meta { font-size: 11px; }
 
   /* カテゴリバンド */
   .cat-band-inner { grid-template-columns: repeat(3, 1fr); }
@@ -623,6 +627,7 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
   .hero h1 { font-size: 23px; }
   .hero-cta, .hero-cta-ghost { display: block; width: 100%; text-align: center; box-sizing: border-box; }
   .hero-cta { margin-right: 0; margin-bottom: 10px; }
+  .hero-vis .label .num { font-size: 44px; }
   .cat-band-inner { grid-template-columns: repeat(2, 1fr); }
   .ft-links { grid-template-columns: 1fr; }
   .aff-btn { width: 100%; justify-content: center; }
