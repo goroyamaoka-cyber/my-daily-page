@@ -1,10 +1,24 @@
 [
   {
+    "slug": "zen-business-mindset-2026",
+    "title": "禅とビジネスマインド｜「今ここ」に集中する力が、AI時代のビジネスパーソンを変える",
+    "date": "2026-05-09",
+    "category": "hr",
+    "description": "スティーブ・ジョブズが禅に傾倒し、マインドフルネスが経営に広がった理由。禅の「今ここ」「初心」「無」の概念が、情報過多・AI時代のビジネスパーソンに与える本質的な力を解説。"
+  },
+  {
     "slug": "what-is-claude-code-2026",
     "title": "Claude Codeとは何か｜AIがパソコンを操作して仕事を自動化する次世代ツールを解説【2026年版】",
     "date": "2026-05-09",
     "category": "ai-tools",
     "description": "「Claude Codeってなに？」という疑問に答えます。ChatGPTやGeminiとの違い、実際にできること・できないこと、中小企業での活用可能性を分かりやすく解説します。"
+  },
+  {
+    "slug": "what-ai-cannot-do-business-2026",
+    "title": "AIにはできないビジネス業務とは何か｜人間の強みが問われる2026年",
+    "date": "2026-05-09",
+    "category": "ai-tools",
+    "description": "ChatGPT・Claude・Geminiが急速に仕事を変えている今、「AIにできないこと」を正確に理解することが競争力の源泉になる。判断・共感・倫理・関係構築・創造——人間固有の価値を整理して解説。"
   },
   {
     "slug": "web-structure-basics-2026",
@@ -49,6 +63,13 @@
     "description": "営業の現場でAIをどう使えば成果が変わるか。商談準備・提案書作成・メール文章・顧客分析・失注分析まで、ChatGPT・Claude・Geminiの使い分けと実際のプロンプト例を具体的に紹介。"
   },
   {
+    "slug": "peter-thiel-zero-to-one-2026",
+    "title": "ピーター・ティールから学ぶビジネスマインド｜「競争は敗者のもの」という逆説的思考",
+    "date": "2026-05-09",
+    "category": "hr",
+    "description": "PayPal・Palantir・Facebookの最初の外部投資家——ピーター・ティールの「ゼロ・トゥ・ワン」が問う「誰も知らない真実」とは何か。競争ではなく独占を目指す逆張りのビジネス哲学を解説。"
+  },
+  {
     "slug": "paperless-guide-2026",
     "title": "中小企業のペーパーレス化完全ガイド｜電子帳簿保存法対応・コスト削減の進め方【2026年版】",
     "date": "2026-05-09",
@@ -75,6 +96,13 @@
     "date": "2026-05-09",
     "category": "saas",
     "description": "kintoneとSalesforceを料金・機能・カスタマイズ性・中小企業への適合性で比較。「Salesforceは中小企業に過剰では？」という疑問に答えます。"
+  },
+  {
+    "slug": "jim-collins-good-to-great-2026",
+    "title": "ジム・コリンズを知る｜「ビジョナリーカンパニー」が教える偉大な組織の法則",
+    "date": "2026-05-09",
+    "category": "hr",
+    "description": "「Good to Great（ビジョナリーカンパニー2）」で世界を変えたジム・コリンズ。レベル5のリーダーシップ・ハリネズミの概念・規律の文化——偉大な企業に共通する法則を中小企業経営に活かす方法を解説。"
   },
   {
     "slug": "hr-books-relationships-2026",
