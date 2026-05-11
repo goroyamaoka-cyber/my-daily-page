@@ -527,26 +527,38 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
 /* ===== AFFILIATE BOX ===== */
 .aff-box {
   background: var(--primary); border-radius: 2px;
-  padding: 28px 32px; margin: 44px 0; position: relative; overflow: hidden;
+  padding: 24px 28px; margin: 44px 0; position: relative; overflow: hidden;
+  display: flex; align-items: center; gap: 22px;
 }
 .aff-box::before {
   content: ""; position: absolute; top: -40px; right: -40px;
   width: 160px; height: 160px;
   background: rgba(255,255,255,0.05); border-radius: 50%;
 }
-.aff-label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 10px; display: block; }
-.aff-title { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 18px; line-height: 1.45; letter-spacing: -0.01em; position: relative; z-index: 1; }
+.aff-img-wrap {
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.aff-img-wrap a { display: block; }
+.aff-img {
+  width: 80px; height: 110px; object-fit: cover;
+  border-radius: 3px; display: block;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.15s;
+}
+.aff-img-wrap a:hover .aff-img { transform: scale(1.04); }
+.aff-content { flex: 1; position: relative; z-index: 1; min-width: 0; }
+.aff-label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 8px; display: block; }
+.aff-title { font-size: 17px; font-weight: 900; color: #fff; margin-bottom: 14px; line-height: 1.45; letter-spacing: -0.01em; }
 .aff-btn {
   display: inline-flex; align-items: center; gap: 8px;
   background: #fff; color: var(--primary);
-  font-size: 14px; font-weight: 900; padding: 13px 26px;
+  font-size: 14px; font-weight: 900; padding: 11px 22px;
   border-radius: 2px; text-decoration: none;
   transition: transform 0.15s, box-shadow 0.15s;
-  position: relative; z-index: 1;
 }
 .aff-btn::after { content: " ›"; font-size: 16px; }
 .aff-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-.aff-note { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; position: relative; z-index: 1; }
+.aff-note { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 10px; }
 
 /* ===== RELATED ===== */
 .related-hd {
@@ -674,7 +686,9 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
   .art-body { font-size: 15px; }
   .art-body h2 { font-size: 18px; margin: 40px 0 14px; }
   .art-body h3 { font-size: 15.5px; }
-  .aff-box { padding: 22px 18px; }
+  .aff-box { padding: 20px 18px; flex-direction: column; align-items: flex-start; gap: 14px; }
+  .aff-img { width: 64px; height: 88px; }
+  .aff-title { font-size: 15px; margin-bottom: 10px; }
 }
 
 /* iPhone SE / 小型スマートフォン */
@@ -799,12 +813,19 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
       </div>
 
       <div class="aff-box">
-  <span class="aff-label">この記事で紹介したサービス</span>
+<div class="aff-img-wrap">
+  <a href="https://www.amazon.co.jp/s?k=%E7%94%B0%E5%B0%BB%E6%9C%9B+%E3%82%AD%E3%83%BC%E3%82%A8%E3%83%B3%E3%82%B9&i=stripbooks" target="_blank" rel="noopener noreferrer nofollow">
+    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=120&q=80&auto=format&fit=crop" alt="「付加価値のつくりかた」田尻望（かんき出版）" class="aff-img" loading="lazy">
+  </a>
+</div>
+<div class="aff-content">
+  <span class="aff-label">この記事で紹介した書籍・サービス</span>
   <div class="aff-title">「付加価値のつくりかた」田尻望（かんき出版）</div>
-  <a href="https://amzn.to/biznext-tajiri-value" target="_blank" rel="noopener noreferrer nofollow" class="aff-btn">
+  <a href="https://www.amazon.co.jp/s?k=%E7%94%B0%E5%B0%BB%E6%9C%9B+%E3%82%AD%E3%83%BC%E3%82%A8%E3%83%B3%E3%82%B9&i=stripbooks" target="_blank" rel="noopener noreferrer nofollow" class="aff-btn">
     Amazonで見る →
   </a>
   <p class="aff-note">元キーエンストップ営業が明かす付加価値の構造。営業・マーケ・コンサル必読の実践書</p>
+</div>
 </div>
 
       <p class="related-hd">関連記事</p><div class="related-list"><a href="what-makes-sales-win-2026.html" class="related-item">

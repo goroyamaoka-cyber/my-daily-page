@@ -527,26 +527,38 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
 /* ===== AFFILIATE BOX ===== */
 .aff-box {
   background: var(--primary); border-radius: 2px;
-  padding: 28px 32px; margin: 44px 0; position: relative; overflow: hidden;
+  padding: 24px 28px; margin: 44px 0; position: relative; overflow: hidden;
+  display: flex; align-items: center; gap: 22px;
 }
 .aff-box::before {
   content: ""; position: absolute; top: -40px; right: -40px;
   width: 160px; height: 160px;
   background: rgba(255,255,255,0.05); border-radius: 50%;
 }
-.aff-label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 10px; display: block; }
-.aff-title { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 18px; line-height: 1.45; letter-spacing: -0.01em; position: relative; z-index: 1; }
+.aff-img-wrap {
+  flex-shrink: 0; position: relative; z-index: 1;
+}
+.aff-img-wrap a { display: block; }
+.aff-img {
+  width: 80px; height: 110px; object-fit: cover;
+  border-radius: 3px; display: block;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.15s;
+}
+.aff-img-wrap a:hover .aff-img { transform: scale(1.04); }
+.aff-content { flex: 1; position: relative; z-index: 1; min-width: 0; }
+.aff-label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 8px; display: block; }
+.aff-title { font-size: 17px; font-weight: 900; color: #fff; margin-bottom: 14px; line-height: 1.45; letter-spacing: -0.01em; }
 .aff-btn {
   display: inline-flex; align-items: center; gap: 8px;
   background: #fff; color: var(--primary);
-  font-size: 14px; font-weight: 900; padding: 13px 26px;
+  font-size: 14px; font-weight: 900; padding: 11px 22px;
   border-radius: 2px; text-decoration: none;
   transition: transform 0.15s, box-shadow 0.15s;
-  position: relative; z-index: 1;
 }
 .aff-btn::after { content: " ›"; font-size: 16px; }
 .aff-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-.aff-note { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; position: relative; z-index: 1; }
+.aff-note { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 10px; }
 
 /* ===== RELATED ===== */
 .related-hd {
@@ -674,7 +686,9 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
   .art-body { font-size: 15px; }
   .art-body h2 { font-size: 18px; margin: 40px 0 14px; }
   .art-body h3 { font-size: 15.5px; }
-  .aff-box { padding: 22px 18px; }
+  .aff-box { padding: 20px 18px; flex-direction: column; align-items: flex-start; gap: 14px; }
+  .aff-img { width: 64px; height: 88px; }
+  .aff-title { font-size: 15px; margin-bottom: 10px; }
 }
 
 /* iPhone SE / 小型スマートフォン */
@@ -945,28 +959,49 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
       </div>
 
       <div class="aff-box">
-  <span class="aff-label">この記事で紹介したサービス</span>
+<div class="aff-img-wrap">
+  <a href="https://www.sievert.de/" target="_blank" rel="noopener noreferrer nofollow">
+    <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=120&q=80&auto=format&fit=crop" alt="Sievert PIM（シエルト PIM）公式サイト" class="aff-img" loading="lazy">
+  </a>
+</div>
+<div class="aff-content">
+  <span class="aff-label">この記事で紹介した書籍・サービス</span>
   <div class="aff-title">Sievert PIM（シエルト PIM）公式サイト</div>
   <a href="https://www.sievert.de/" target="_blank" rel="noopener noreferrer nofollow" class="aff-btn">
     Sievert PIMを見る →
   </a>
   <p class="aff-note">製造業特化・InDesign連携・多言語対応に強みを持つドイツ発のPIM。国内パートナー経由で導入支援あり</p>
 </div>
+</div>
 <div class="aff-box">
-  <span class="aff-label">この記事で紹介したサービス</span>
+<div class="aff-img-wrap">
+  <a href="https://www.akeneo.com/" target="_blank" rel="noopener noreferrer nofollow">
+    <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=120&q=80&auto=format&fit=crop" alt="Akeneo 公式サイト（無料トライアルあり）" class="aff-img" loading="lazy">
+  </a>
+</div>
+<div class="aff-content">
+  <span class="aff-label">この記事で紹介した書籍・サービス</span>
   <div class="aff-title">Akeneo 公式サイト（無料トライアルあり）</div>
   <a href="https://www.akeneo.com/" target="_blank" rel="noopener noreferrer nofollow" class="aff-btn">
     Akeneoを試してみる →
   </a>
   <p class="aff-note">オープンソース版で低コスト導入も可能。EC展開・グローバル対応に強いグローバルトップPIM</p>
 </div>
+</div>
 <div class="aff-box">
-  <span class="aff-label">この記事で紹介したサービス</span>
+<div class="aff-img-wrap">
+  <a href="https://www.amazon.co.jp/s?k=%E8%A3%BD%E9%80%A0%E6%A5%AD+DX&i=stripbooks" target="_blank" rel="noopener noreferrer nofollow">
+    <img src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=120&q=80&auto=format&fit=crop" alt="「製造業DX・データ活用」関連書籍（Amazon）" class="aff-img" loading="lazy">
+  </a>
+</div>
+<div class="aff-content">
+  <span class="aff-label">この記事で紹介した書籍・サービス</span>
   <div class="aff-title">「製造業DX・データ活用」関連書籍（Amazon）</div>
-  <a href="https://amzn.to/biznext-manufacturing-dx" target="_blank" rel="noopener noreferrer nofollow" class="aff-btn">
+  <a href="https://www.amazon.co.jp/s?k=%E8%A3%BD%E9%80%A0%E6%A5%AD+DX&i=stripbooks" target="_blank" rel="noopener noreferrer nofollow" class="aff-btn">
     Amazonで見る →
   </a>
   <p class="aff-note">製造業のデータ活用・DX推進を体系的に学べる参考書</p>
+</div>
 </div>
 
       <p class="related-hd">関連記事</p><div class="related-list"><a href="pdm-guide-introduction-2026.html" class="related-item">
