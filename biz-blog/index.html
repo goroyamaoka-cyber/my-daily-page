@@ -2137,7 +2137,7 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
       <div class="ft-links">
         <div class="ft-col">
           <h4>カテゴリ<small>Sections</small></h4>
-          <a href="index.html">AI・自動化</a><a href="index.html">SaaS・クラウド</a><a href="index.html">DX推進</a><a href="index.html">製造業向け</a><a href="index.html">人事・労務</a><a href="index.html">財務・経営</a>
+          <a href="index.html?cat=ai-tools">AI・自動化</a><a href="index.html?cat=saas">SaaS・クラウド</a><a href="index.html?cat=dx">DX推進</a><a href="index.html?cat=manufacturing">製造業向け</a><a href="index.html?cat=hr">人事・労務</a><a href="index.html?cat=finance">財務・経営</a>
         </div>
         <div class="ft-col">
           <h4>サイト案内<small>Site Menu</small></h4>
@@ -2253,6 +2253,19 @@ footer.site { background: #1A1F2A; color: rgba(255,255,255,0.7); padding: 56px 3
       applyFilter();
     });
   }
+
+  /* ─── URL パラメータ(?cat=xxx)からカテゴリを初期化 ─── */
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var cat = params.get('cat');
+    if (cat) {
+      activateTab(cat);
+      var el = document.getElementById('index');
+      if (el) setTimeout(function() {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 120);
+    }
+  })();
 })();
 </script>
   <script>
