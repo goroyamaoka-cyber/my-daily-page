@@ -1,0 +1,20 @@
+# my-daily-page — 公開ブログ(biz-blog)はAI/検索に開放、社内資料はブロック
+# 注意: GitHub Pagesプロジェクト配下のため、本ファイルは host ルート(/robots.txt)未満の扱い。
+#       確実な保護は各HTMLの <meta name=robots content=noindex> で担保している。
+
+User-agent: *
+Disallow: /KTC競合ニュース収集.html
+Disallow: /KTC%E7%AB%B6%E5%90%88%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E5%8F%8E%E9%9B%86.html
+Disallow: /zendesk.html
+Disallow: /zendesk.html
+Disallow: /商品DB.html
+Disallow: /%E5%95%86%E5%93%81DB.html
+Disallow: /商品選定サイト.html
+Disallow: /%E5%95%86%E5%93%81%E9%81%B8%E5%AE%9A%E3%82%B5%E3%82%A4%E3%83%88.html
+Disallow: /導入事例_mockup.html
+Disallow: /%E5%B0%8E%E5%85%A5%E4%BA%8B%E4%BE%8B_mockup.html
+Disallow: /顧客ニュース収集.html
+Disallow: /%E9%A1%A7%E5%AE%A2%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9%E5%8F%8E%E9%9B%86.html
+Allow: /biz-blog/
+
+Sitemap: https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/sitemap.xml
