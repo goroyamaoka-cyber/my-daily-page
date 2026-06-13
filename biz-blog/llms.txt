@@ -10,7 +10,11 @@
 
 ## 記事一覧
 
+- [営業が使う最高の提案書とは｜相手を動かす構成・デザイン・伝え方の全技術](https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/ultimate-sales-proposal-guide-2026.html): 「読まれない提案書」「断られる提案書」には共通した欠点があります。相手の意思決定を動かす提案書の構成・デザイン・言葉の選び方・プレゼンとの連動まで、トップ営業が実践する提案書の全技術を解説します。（人事・労務 / 2026-06-13）
+- [人の心に響くメッセージ・振る舞い・作法｜相手の感情を動かす言葉と所作の技術](https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/message-behavior-etiquette-that-moves-hearts-2026.html): なぜ同じ内容を話しても「響く人」と「響かない人」がいるのか。人の心を動かすメッセージの構造・非言語コミュニケーション・礼儀作法の本質を、心理学・行動科学・一流ビジネスパーソンの実践から体系的に解説します。（人事・労務 / 2026-06-13）
+- [成果を上げる営業パーソンの特徴｜トップ営業が持つ思考・習慣・行動の全解剖](https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/high-performance-salesperson-traits-2026.html): 成果を出し続ける営業と、頑張っているのに結果が出ない営業の差はどこにあるのか。トップ営業パーソンに共通する思考パターン・日常習慣・商談スタイル・自己管理の方法を徹底解剖します。（人事・労務 / 2026-06-13）
 - [AIO対策とは何か｜詳細と今後の展望を徹底解説【2026年版】](https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/aio-strategy-complete-guide-2026.html): AIO（AI Optimization）はAI検索時代の新しいSEOです。Google AI Overviews・Perplexity・ChatGPT SearchにコンテンツをAIに引用させるための施策を、技術的メカニズムから実践手順・今後の展望まで体系的に解説します。（AI・自動化 / 2026-06-13）
+- [人の心をつかむ行動・言動｜なぜあの人は自然と人を惹きつけるのか](https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/actions-words-that-win-hearts-2026.html): 「あの人のそばにいると安心する」「あの人には何でも話せる」——そう思われる人と、そうでない人の差はどこにあるのか。人の心を自然につかむ行動・言動・習慣を、心理学・行動科学・一流リーダーの実践から具体的に解説します。（人事・労務 / 2026-06-13）
 - [本当に営業はAIに駆逐されない業務なのか｜冷静に考える「営業の未来」](https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/will-ai-replace-sales-2026.html): 「営業はAIに代替されない」という言説が広がっています。しかし本当にそうなのか？AIがすでに侵食している営業業務と、人間が優位性を保てる領域を冷静に分析。営業パーソンが今すぐ取るべき戦略を提示します。（人事・労務 / 2026-06-01）
 - [新規ビジネスとAIの関連性｜AIが「起業・新事業」の勝ち筋を根本から変えた](https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/new-business-and-ai-2026.html): AIの登場で、新規ビジネスを立ち上げるコスト・スピード・参入障壁が劇的に変わりました。アイデアの検証・開発・マーケティング・オペレーションをAIが肩代わりする時代、新規事業の勝ち筋はどう変わったのかを解説します。（AI・自動化 / 2026-05-30）
 - [翻訳という業務の行く末｜AI翻訳が変える「言語の壁」とビジネスの地図](https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/future-of-translation-business-2026.html): DeepL・ChatGPT・Claude・Google翻訳の進化により、翻訳業務は根本から変わりつつあります。人間翻訳者の仕事は消えるのか？製造業・出版・法律・医療における翻訳の未来と、企業が今取るべき戦略を解説します。（AI・自動化 / 2026-05-29）
