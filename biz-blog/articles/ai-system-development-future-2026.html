@@ -13,6 +13,10 @@
   <meta property="og:url" content="https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/ai-system-development-future-2026.html">
   <meta property="og:site_name" content="BizNext">
   <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1551434678-e076c223a692?w=960&q=80&auto=format&fit=crop">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1551434678-e076c223a692?w=960&q=80&auto=format&fit=crop">
   <meta name="author" content="BizNext編集部">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <script type="application/ld+json">
@@ -34,6 +38,22 @@
       },
       "articleSection": "DX推進",
       "keywords": "AI開発, GitHub Copilot, ローコード, DX, システム開発",
+      "wordCount": 92,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=960&q=80&auto=format&fit=crop",
+        "width": 960,
+        "height": 640
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1.art-title",
+          ".art-body > p:first-child",
+          "h2",
+          "h3"
+        ]
+      },
       "author": {
         "@type": "Organization",
         "name": "BizNext",
@@ -44,7 +64,29 @@
       },
       "isPartOf": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#website"
-      }
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "AI開発"
+        },
+        {
+          "@type": "Thing",
+          "name": "GitHub Copilot"
+        },
+        {
+          "@type": "Thing",
+          "name": "ローコード"
+        },
+        {
+          "@type": "Thing",
+          "name": "DX"
+        },
+        {
+          "@type": "Thing",
+          "name": "システム開発"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -84,6 +126,75 @@
       "publisher": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#org"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "第1の波：「コーディング補助」から「コーディング代替」へ",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2022年頃のAIは「コードの補完」が主な役割でした。しかし今や、「仕様を伝えれば動くコードが生成される」フェーズに突入しています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "第2の波：ノーコード・ローコードの本命化",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AIと並行して「ノーコード／ローコード」ツールも急速に進化しています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "第3の波：AIエージェントによる「自律型開発」",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "最も劇的な変化はこれから来ます。AIエージェントが自律的にタスクを分解し、複数のツールを操作しながらシステムを開発するフェーズです。すでに「Devin（AIエンジニア）」「Claude Code」などのツールが、バグ修正・機能追加・テスト実行を人間の監督下で自律実行できるレベルに達しています。2026〜2027年にかけて、AI同士が協調してシステムを開発する「マルチエージェント開発」が実用段階に入ると予測されています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "「エンジニア不要論」は本当か？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "結論から言えば、「単純実装エンジニアは激減するが、上流設計・AI活用エンジニアの需要は急増する」というのが現実です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "減っていくもの\n\n  定型的なCRUD（登録・参照・更新・削除）システムの実装\n  既存仕様書に沿った機能追加・バグ修正\n  テストコードの自動生成\n  コードレビュー（初期品質チェック）\n\n\n増えていくもの\n\n  要件定義・システム設計：AIに「何を作らせるか」を決める上流工程\n  AIプロンプト設計：AIから最高の出力を引き出す技術\n  セキュリティ・品質保証：AIが生成したコードの脆弱性チェック\n  AIシステムの設計・統合：複数のAIエージェントを組み合わせたシステム構築\n  ビジネス翻訳力：経営課題をシステム要件に変換できる能力\n\n\n企業が今すぐ取るべき3つのアクション\n\n① 開発チームへのAIツール導入を即断する",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GitHub CopilotやCursorを「まず全員に使わせる」だけで、開発生産性が平均30〜40%向上するというデータが出ています。月額数千円のツール費用は、人件費削減効果と比べると誤差の範囲です。「様子を見る」ことのコストが最も高いのが現状です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "② 「作る」から「選んで組み合わせる」へ発想転換",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "スクラッチ（ゼロから）開発することへのこだわりを捨てましょう。SaaS・ノーコードツール・APIの組み合わせで実現できる機能を、多額のコストをかけて自社開発している企業がまだ多い。「何を自社で作り、何を外部ツールで賄うか」の判断基準を明確化することが急務です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "③ 「要件定義力」を社内に持つ",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI時代に最も価値を持つのは、業務知識とIT知識を橋渡しできる人材です。「現場の課題をシステム要件に落とし込める人」「AIツールの可能性と限界を理解して発注できる人」を育てることが、今後のDX推進の鍵になります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "エンジニアが生き残るための3つの方向性\n\n  AI活用の専門家になる：プロンプト設計・AIエージェント構築・LLMの微調整\n  ドメイン専門家との融合：製造業・医療・金融などの業界知識とITを掛け合わせる\n  上流へのシフト：実装者からアーキテクト・テックリードへの転換\n\n\nまとめ：AIはエンジニアを「置き換える」ではなく「拡張する」",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "歴史を振り返れば、印刷機が写字生を、電卓が計算係を消滅させたように、AIは単純なコーディング作業を自動化します。しかし同時に、新しい価値を生み出す仕事の領域は必ず広がります。「AIに仕事を奪われる」ではなく「AIを使って今まで不可能だったことを実現する」という発想への転換が、企業にとっても個人にとっても、これからの10年の分かれ道になります。"
+          }
+        }
+      ]
     }
   ]
 }

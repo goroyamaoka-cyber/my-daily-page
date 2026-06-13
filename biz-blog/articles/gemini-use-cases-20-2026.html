@@ -13,6 +13,10 @@
   <meta property="og:url" content="https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/gemini-use-cases-20-2026.html">
   <meta property="og:site_name" content="BizNext">
   <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=960&q=80&auto=format&fit=crop">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=960&q=80&auto=format&fit=crop">
   <meta name="author" content="BizNext編集部">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <script type="application/ld+json">
@@ -34,6 +38,22 @@
       },
       "articleSection": "AI・自動化",
       "keywords": "Gemini, Google AI, AI活用, 業務効率化, Google Workspace, 生成AI",
+      "wordCount": 123,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?w=960&q=80&auto=format&fit=crop",
+        "width": 960,
+        "height": 640
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1.art-title",
+          ".art-body > p:first-child",
+          "h2",
+          "h3"
+        ]
+      },
       "author": {
         "@type": "Organization",
         "name": "BizNext",
@@ -44,7 +64,33 @@
       },
       "isPartOf": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#website"
-      }
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Gemini"
+        },
+        {
+          "@type": "Thing",
+          "name": "Google AI"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI活用"
+        },
+        {
+          "@type": "Thing",
+          "name": "業務効率化"
+        },
+        {
+          "@type": "Thing",
+          "name": "Google Workspace"
+        },
+        {
+          "@type": "Thing",
+          "name": "生成AI"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -84,6 +130,75 @@
       "publisher": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#org"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "GeminiはGoogleエコシステムと使うと真価を発揮する",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Geminiの最大の強みは、Googleのあらゆるサービスと深く統合されていることです。Gmail・Google Docs・スプレッドシート・YouTube・Google検索——これらを日常的に使っているなら、Geminiは単なる「チャットAI」以上の生産性ツールになります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gmail連携（事例1〜5）\n\n事例1：メールの返信下書きを1クリック生成",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gmailでメールを開き、Geminiアイコンをクリックすると「このメールへの返信を下書き」ボタンが表示されます。受信したメールの内容を自動で読み取り、適切な返信文を生成。承諾・辞退・確認依頼など状況に応じたトーンも調整できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "事例2：受信メールの要約（長いメールチェーンを3行で把握）",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "長いメールスレッドの要約をGeminiが自動生成。「このメールチェーンの要点は？ 私が対応すべきことは？」と聞くだけで、決定事項・未解決事項・自分へのアクションを整理してくれます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "事例3：メール文章のトーン変換",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "書いたメールをGeminiに貼り付けて「もっとフォーマルに」「簡潔に80字以内で」「相手が怒っている場合の謝罪トーンで」と指示するだけで文章を変換。感情的になりがちなクレーム返信も冷静に整えてくれます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "事例4：メールから自動でToDoリスト作成",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「このメールから私がやるべきことをToDoリストにして」と入力すると、期限・担当・内容を整理したリストを自動生成。Google Tasksに直接追加も可能。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "事例5：多言語メールの翻訳・返信",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "英語・中国語・韓国語など外国語のメールをGeminiが翻訳し、日本語で内容を説明。「この英文メールに日本語で返信したいが、返信も英語で書いて」という指示にも1ステップで対応します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Google Docs連携（事例6〜10）\n\n事例6：提案書のドラフトをゼロから生成",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Google Docsで「✦ Geminiで下書き作成」をクリックし、「製造業向けの多言語カタログ制作サービスの提案書を作成して。A4・3ページ想定。」と入力するだけで構成・見出し・本文の骨格が完成します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "事例7：既存文書のリライト・要約",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "長い報告書・マニュアルをDocに貼り付けて「この文書を経営者向けに1ページのエグゼクティブサマリーにまとめて」と指示。読み手のレベルに合わせた要約が数秒で完成します。"
+          }
+        }
+      ]
     }
   ]
 }

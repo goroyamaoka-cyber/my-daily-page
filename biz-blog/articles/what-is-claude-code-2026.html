@@ -13,6 +13,10 @@
   <meta property="og:url" content="https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/what-is-claude-code-2026.html">
   <meta property="og:site_name" content="BizNext">
   <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?w=960&q=80&auto=format&fit=crop">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?w=960&q=80&auto=format&fit=crop">
   <meta name="author" content="BizNext編集部">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <script type="application/ld+json">
@@ -34,6 +38,22 @@
       },
       "articleSection": "AI・自動化",
       "keywords": "Claude Code, Claude, Anthropic, AI自動化, AI活用, 生成AI, エージェントAI",
+      "wordCount": 143,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=960&q=80&auto=format&fit=crop",
+        "width": 960,
+        "height": 640
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1.art-title",
+          ".art-body > p:first-child",
+          "h2",
+          "h3"
+        ]
+      },
       "author": {
         "@type": "Organization",
         "name": "BizNext",
@@ -44,7 +64,37 @@
       },
       "isPartOf": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#website"
-      }
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Claude Code"
+        },
+        {
+          "@type": "Thing",
+          "name": "Claude"
+        },
+        {
+          "@type": "Thing",
+          "name": "Anthropic"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI自動化"
+        },
+        {
+          "@type": "Thing",
+          "name": "AI活用"
+        },
+        {
+          "@type": "Thing",
+          "name": "生成AI"
+        },
+        {
+          "@type": "Thing",
+          "name": "エージェントAI"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -84,6 +134,75 @@
       "publisher": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#org"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Claude Codeは「チャットAI」とは根本的に違う",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ChatGPTやGeminiは「質問をすると答えてくれるAI」です。画面の前に座って、テキストを入力して、返ってきた答えを見て、それを自分でコピーして使う——これがこれまでのAIの使い方でした。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "具体的に何ができるのか\n\n① ファイルの読み書き・処理の自動化",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「このフォルダにある50本のExcelファイルを読み込んで、売上合計を集計して新しいExcelに出力して」と指示するだけで、Claude Codeが自動でPythonスクリプトを書き、実行し、結果ファイルを生成します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "② ウェブブラウザを操作してデータ収集",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「競合5社のWebサイトから製品価格を収集して一覧表にして」と指示すると、Claude Codeがブラウザを自動操作してWebページを巡回し、情報を収集して整理します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "③ コードを書いてアプリやツールを作る",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「社内の勤怠データを毎朝集計して、異常値があれば担当者にメールを送るスクリプトを作って」と指示すると、Claude Codeがプログラムを設計・実装・テストまで一貫して行います。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "④ 複数の作業をつなげた「ワークフロー」の自動実行",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "単発の作業だけでなく、「①議事録ファイルを読む→②要約する→③ToDoリストを抽出する→④担当者別にメール送信する」という複数ステップの作業を、一つの指示で自動実行できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "⑤ バグの発見・修正（エンジニア向け）",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "既存のプログラムを読み込んで「このコードのどこに問題があるか分析して、修正して」と指示すると、コードの問題を発見し修正案を提示するだけでなく、実際に修正を加えて動作確認まで行います。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ChatGPT・Geminiとの根本的な違い\n\n比較項目ChatGPT / GeminiClaude Code\n\n基本的な使い方チャット画面で質問・回答指示を与えると自律的に作業を実行\n実行能力テキストで「答え」を出力するだけ実際にファイル・プログラム・ブラウザを操作\n作業の継続性人間が結果をコピーして次の作業へ複数ステップを自律的につなげて完了まで実行\n使いやすさ誰でも使える（ブラウザのみ）技術的な設定が必要（現状はIT担当者向け）\n対象ユーザー全社員・経営者・非エンジニア主にエンジニア・IT担当者・技術的な経営者\n\n\n\n「エージェントAI」という概念",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Claude Codeのような自律的に作業を行うAIを「AIエージェント」と呼びます。従来のAI（チャットAI）が「答えを教えてくれるAI」なら、AIエージェントは「実際に動いて仕事を完了させるAI」です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "開発元「Anthropic」とはどんな会社か",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Claude Codeを開発したAnthropicは、2021年にOpenAI（ChatGPTの開発元）の元幹部たちが設立したAI企業です。「AIの安全性」を最も重視する企業文化が特徴で、Googleも大規模投資を行っている注目企業です。"
+          }
+        }
+      ]
     }
   ]
 }

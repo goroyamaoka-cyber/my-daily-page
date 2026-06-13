@@ -13,6 +13,10 @@
   <meta property="og:url" content="https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/quality-trouble-situations-2026.html">
   <meta property="og:site_name" content="BizNext">
   <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=960&q=80&auto=format&fit=crop">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=960&q=80&auto=format&fit=crop">
   <meta name="author" content="BizNext編集部">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <script type="application/ld+json">
@@ -34,6 +38,22 @@
       },
       "articleSection": "製造業向け",
       "keywords": "品質管理, 品質トラブル, リスク管理, 製造業, 不良防止",
+      "wordCount": 56,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=960&q=80&auto=format&fit=crop",
+        "width": 960,
+        "height": 640
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1.art-title",
+          ".art-body > p:first-child",
+          "h2",
+          "h3"
+        ]
+      },
       "author": {
         "@type": "Organization",
         "name": "BizNext",
@@ -44,7 +64,29 @@
       },
       "isPartOf": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#website"
-      }
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "品質管理"
+        },
+        {
+          "@type": "Thing",
+          "name": "品質トラブル"
+        },
+        {
+          "@type": "Thing",
+          "name": "リスク管理"
+        },
+        {
+          "@type": "Thing",
+          "name": "製造業"
+        },
+        {
+          "@type": "Thing",
+          "name": "不良防止"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -84,6 +126,75 @@
       "publisher": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#org"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "状況1：「初めて」が重なったとき",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "新しい顧客・新しい仕様・新しい担当者・新しいツール——これらが2つ以上重なったとき、品質トラブルの発生率は急上昇します。「慣れていない要素が多いほどリスクは掛け算で増える」という認識が必要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "状況2：納期がタイトなとき",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「急いでいるから確認を省こう」——この判断が最も多くのトラブルを生みます。納期プレッシャーは確認工程を省く心理的圧力として働きます。急いでいるほど、確認を省いてはいけないというのは、現場の鉄則です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "状況3：担当者が変わったとき（引き継ぎ直後）",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "退職・異動・産休による引き継ぎ直後は、ナレッジのロスが最大化します。特に「言語化されていない暗黙知」（この顧客はここを特に気にする、など）が引き継がれないことで品質が落ちます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "状況4：仕様変更が途中で入ったとき",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "製造・制作の途中で仕様変更が発生すると、変更前の作業が「ゴミ」になるだけでなく、変更後の確認が不完全になりやすい。「変更した箇所だけ」確認して、変更の影響が波及した部分の確認を忘れるという典型的なミスが起きます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "状況5：「いつも通りだろう」という慢心があるとき",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "長年の取引先・繰り返し作業・慣れた工程——こうした「いつも通り」の案件で大きなトラブルが起きます。慢心は確認行動を省かせます。熟練者ほど「確認しなくても大丈夫」という錯覚に陥りやすい。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "状況6：コミュニケーションが複数経路になったとき",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "顧客・営業・制作・外注先と複数の伝達経路がある場合、情報が途中で変形します。「伝言ゲーム」の構造がミスを生む。特に口頭・メール・チャット・電話が混在すると、最新の指示が何かが不明瞭になります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "状況7：チームが疲弊・人員不足のとき",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "残業続き・人員不足・多案件並行——疲弊した現場では確認行動の質が著しく低下します。「体が動いていても、頭が動いていない」状態で確認しても意味がない。これは個人の問題ではなく、マネジメントの問題です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "まとめ：トラブルは「犯人探し」より「状況管理」",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "品質トラブルが発生した時、「誰がミスをしたか」を追う文化の組織は、同じトラブルを繰り返します。「どういう状況でミスが起きたか」を分析し、その状況を作らないように仕組みを変える組織だけが、品質を継続的に改善できます。上記の7つの危険状況を定期的にチェックリストとして確認し、先手を打つことが品質経営の本質です。"
+          }
+        }
+      ]
     }
   ]
 }

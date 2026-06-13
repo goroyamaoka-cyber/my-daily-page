@@ -13,6 +13,10 @@
   <meta property="og:url" content="https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/articles/web-structure-basics-2026.html">
   <meta property="og:site_name" content="BizNext">
   <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=960&q=80&auto=format&fit=crop">
+  <meta property="og:image:width" content="960">
+  <meta property="og:image:height" content="640">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=960&q=80&auto=format&fit=crop">
   <meta name="author" content="BizNext編集部">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <script type="application/ld+json">
@@ -34,6 +38,22 @@
       },
       "articleSection": "DX推進",
       "keywords": "WEB仕組み, WEBサイト構造, HTML基礎, ドメイン, サーバー, SEO基礎, DX, ビジネスIT基礎",
+      "wordCount": 220,
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=960&q=80&auto=format&fit=crop",
+        "width": 960,
+        "height": 640
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          "h1.art-title",
+          ".art-body > p:first-child",
+          "h2",
+          "h3"
+        ]
+      },
       "author": {
         "@type": "Organization",
         "name": "BizNext",
@@ -44,7 +64,41 @@
       },
       "isPartOf": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#website"
-      }
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "WEB仕組み"
+        },
+        {
+          "@type": "Thing",
+          "name": "WEBサイト構造"
+        },
+        {
+          "@type": "Thing",
+          "name": "HTML基礎"
+        },
+        {
+          "@type": "Thing",
+          "name": "ドメイン"
+        },
+        {
+          "@type": "Thing",
+          "name": "サーバー"
+        },
+        {
+          "@type": "Thing",
+          "name": "SEO基礎"
+        },
+        {
+          "@type": "Thing",
+          "name": "DX"
+        },
+        {
+          "@type": "Thing",
+          "name": "ビジネスIT基礎"
+        }
+      ]
     },
     {
       "@type": "BreadcrumbList",
@@ -84,6 +138,75 @@
       "publisher": {
         "@id": "https://goroyamaoka-cyber.github.io/my-daily-page/biz-blog/#org"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "なぜビジネスパーソンがWEBの仕組みを知る必要があるのか",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WEBサイトの制作・改修・SEO対策・広告運用——これらをすべて外部に任せているビジネスパーソンも多いでしょう。しかし「仕組みを知っている依頼者」と「知らない依頼者」では、制作会社との会話の質・発注精度・費用対効果の判断力が大きく変わります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "まず大前提：WEBサイトが表示されるまでの全体像",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "あなたがブラウザのアドレスバーに「https://example.com」と入力してからページが表示されるまでの間に、実は以下のことが0.1〜2秒以内に起きています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "① ドメインとIPアドレス——WEBの「住所」",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "インターネット上のすべてのサーバー（コンピュータ）には、IPアドレスと呼ばれる数字の住所があります（例：203.0.113.42）。しかし人間は数字の羅列を覚えられないため、「ドメイン名」という人間に読みやすい名前が付けられています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "② サーバー——WEBサイトのデータが置かれる場所",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "サーバーとは、24時間365日インターネットに接続された、ファイルを保管・配信するコンピュータです。自社のWEBサイトは、どこかのサーバー上に保管されています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "サーバーの主な種類\n\n種類特徴向いているケース\n\n共有サーバー（レンタルサーバー）複数サイトで1台のサーバーを共有。安価（月500〜2,000円程度）中小企業の一般的なサイト・ブログ\nVPS（仮想専用サーバー）1台を仮想的に分割。共有より自由度高い（月2,000〜10,000円）ある程度のアクセス数があるサイト\nクラウドサーバーAWS・GCP・Azureなど。スケール自在・従量課金急激なアクセス変動があるサービス・EC\n専用サーバー1台を丸ごと借りる。高性能・高コスト高トラフィックサイト・セキュリティ要件が高い場合\n\n\nビジネスでの意味： 「サーバーが落ちる」とWEBサイトに誰もアクセスできなくなります。EC・予約サイト・採用サイトなど収益に直結するサイトでは、稼働率（アップタイム）99.9%以上のサーバーを選ぶことが重要です。\n\n③ HTTP・HTTPS——データの「通信ルール」",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "あなたのブラウザとサーバーがデータをやりとりするときのルール（プロトコル）がHTTPです。そのHTTPにSSL暗号化を加えたのがHTTPSです。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "④ WEBサイトを構成する3つの言語",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WEBページは、主に3種類のファイル（コード）で構成されています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "HTML——「骨格」を作る言語",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HTML（HyperText Markup Language）は、Webページの「構造・内容」を定義する言語です。「ここは見出し」「ここは段落」「ここはリンク」「ここは画像」と、コンテンツの意味を記述します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "CSS——「デザイン」を担う言語",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CSS（Cascading Style Sheets）は、HTMLで作った構造に「色・フォント・レイアウト・余白」などのデザインを適用する言語です。"
+          }
+        }
+      ]
     }
   ]
 }
