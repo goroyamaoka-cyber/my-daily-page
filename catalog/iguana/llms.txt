@@ -1,0 +1,42 @@
+# IGUANA カタログ
+
+超硬エンドミル / 切削工具の製品カタログです。
+製造元: ZECHA Hartmetall-Werkzeugfabrikation GmbH
+
+## データアクセス
+- 全型番データ（JSON）: https://goroyamaoka-cyber.github.io/iguana/data/products.json
+- カタログトップ: https://goroyamaoka-cyber.github.io/iguana/index.html
+
+## シリーズ一覧
+- 918.F2シリーズ（1件）
+- 918.F3シリーズ（11件）
+- 930.F3シリーズ（6件）
+- 930.T2（1件）
+- 931.T2シリーズ（1件）
+- 931.T3シリーズ（9件）
+- 935.B2シリーズ（58件）
+- 935.T2シリーズ（12件）
+- 935.T3シリーズ（93件）
+
+## 型番の探し方
+1. https://goroyamaoka-cyber.github.io/iguana/data/products.json の products 配列を参照
+2. part_number フィールドで型番検索可能
+3. 各型番の詳細は product_url を参照
+
+## よくある質問
+Q: 918.F2.0030.000.006のスペックは？
+A: 形状: スクエアエンドミル / 刃径: 0.3mm / R: 0.0mm / 首下長: 0.6mm / 用途: 非鉄金属の仕上げ加工用。詳細: https://goroyamaoka-cyber.github.io/iguana/product/918-F2-0030-000-006.html
+
+Q: 918.F3.0040.000.008のスペックは？
+A: 形状: スクエアエンドミル / 刃径: 0.4mm / R: 0.0mm / 首下長: 0.8mm / 用途: 非鉄金属の仕上げ加工用。詳細: https://goroyamaoka-cyber.github.io/iguana/product/918-F3-0040-000-008.html
+
+Q: 918.F3.0050.000.010のスペックは？
+A: 形状: スクエアエンドミル / 刃径: 0.5mm / R: 0.0mm / 首下長: 1.0mm / 用途: 非鉄金属の仕上げ加工用。詳細: https://goroyamaoka-cyber.github.io/iguana/product/918-F3-0050-000-010.html
+
+Q: 918.F3.0070.000.014のスペックは？
+A: 形状: スクエアエンドミル / 刃径: 0.7mm / R: 0.0mm / 首下長: 1.4mm / 用途: 非鉄金属の仕上げ加工用。詳細: https://goroyamaoka-cyber.github.io/iguana/product/918-F3-0070-000-014.html
+
+Q: 918.F3.0080.000.016のスペックは？
+A: 形状: スクエアエンドミル / 刃径: 0.8mm / R: 0.0mm / 首下長: 1.6mm / 用途: 非鉄金属の仕上げ加工用。詳細: https://goroyamaoka-cyber.github.io/iguana/product/918-F3-0080-000-016.html
+
+

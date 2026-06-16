@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://goroyamaoka-cyber.github.io/iguana/sitemap.xml
